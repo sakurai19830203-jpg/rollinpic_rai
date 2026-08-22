@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カプエス2観戦ガイド | αοκι氏作</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@600;700&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #ffcc00;
+      --secondary: #ff3300;
+      --bg-dark: #0c0c12;
+      --card-bg: rgba(20, 20, 30, 0.88);
+      --border-color: rgba(255, 204, 0, 0.4);
+      --text: #ffffff;
+      --text-muted: #b0b0c0;
+
+      /* Groove Theme Colors */
+      --c-groove: #00ff66;
+      --a-groove: #00ccff;
+      --p-groove: #00f0ff;
+      --s-groove: #cc33ff;
+      --n-groove: #ff9900;
+      --k-groove: #ff3333;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 20% 20%, rgba(255, 51, 0, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(255, 204, 0, 0.15) 0%, transparent 40%),
+        linear-gradient(180deg, #07070a 0%, #12121c 100%);
+      background-attachment: fixed;
+      color: var(--text);
+      font-family: 'Noto Sans JP', sans-serif;
+      line-height: 1.8;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 10, 15, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid var(--primary);
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+    }
+
+    .header-logo img {
+      max-height: 40px;
+      width: auto;
+      filter: drop-shadow(0 0 6px rgba(255, 204, 0, 0.5));
+    }
+
+    .lang-switcher {
+      display: flex;
+      gap: 5px;
+      background: #1a1a24;
+      padding: 4px;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+    }
+
+    .lang-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      padding: 6px 14px;
+      font-weight: bold;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .lang-btn.active {
+      background: var(--primary);
+      color: #000;
+      box-shadow: 0 0 10px rgba(255, 204, 0, 0.6);
+    }
+
+    /* Container */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 30px 15px 60px;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.95rem;
+      transition: transform 0.2s;
+    }
+
+    .back-btn:hover {
+      transform: translateX(-5px);
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      margin-bottom: 30px;
+      border-bottom: 1px solid rgba(255,204,0,0.2);
+      padding-bottom: 20px;
+    }
+
+    .hero-title {
+      font-family: 'Teko', sans-serif;
+      font-size: 3.2rem;
+      color: var(--primary);
+      letter-spacing: 2px;
+      line-height: 1.1;
+      text-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
+    }
+
+    /* Article Section Card Layout */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 24px 28px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+      margin-bottom: 20px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .section-header {
+      color: var(--primary);
+      font-size: 1.3rem;
+      font-weight: 900;
+      border-bottom: 1px solid rgba(255, 204, 0, 0.3);
+      padding-bottom: 8px;
+      margin-bottom: 15px;
+    }
+
+    .intro-card {
+      background: rgba(255, 204, 0, 0.08);
+      border: 2px solid rgba(255, 204, 0, 0.4);
+    }
+
+    /* Groove Specific Box Design */
+    .groove-box {
+      border-radius: 8px;
+      padding: 18px;
+      margin-top: 15px;
+      background: rgba(10, 10, 15, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-left: 5px solid #fff;
+    }
+
+    .groove-box.c-grv { border-left-color: var(--c-groove); }
+    .groove-box.c-grv .groove-title { color: var(--c-groove); }
+
+    .groove-box.a-grv { border-left-color: var(--a-groove); }
+    .groove-box.a-grv .groove-title { color: var(--a-groove); }
+
+    .groove-box.p-grv { border-left-color: var(--p-groove); }
+    .groove-box.p-grv .groove-title { color: var(--p-groove); }
+
+    .groove-box.s-grv { border-left-color: var(--s-groove); }
+    .groove-box.s-grv .groove-title { color: var(--s-groove); }
+
+    .groove-box.n-grv { border-left-color: var(--n-groove); }
+    .groove-box.n-grv .groove-title { color: var(--n-groove); }
+
+    .groove-box.k-grv { border-left-color: var(--k-groove); }
+    .groove-box.k-grv .groove-title { color: var(--k-groove); }
+
+    .groove-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      .hero-title { font-size: 2.4rem; }
+      .card { padding: 18px; }
+      .section-header { font-size: 1.15rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-logo">
+      <img src="RollinPic2025.png" alt="Rollin'Pic Logo" onerror="this.style.display='none'; document.getElementById('header-text').style.display='inline';">
+      <span id="header-text" style="display:none; font-family:'Teko'; font-size:1.5rem; color:var(--primary); font-weight:bold;">Rollin'pic</span>
+    </div>
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="switchLang('ja', event)">JP</button>
+      <button class="lang-btn" onclick="switchLang('en', event)">EN</button>
+    </div>
+  </header>
+
+  <div class="container">
+    
+    <a href="rollinpic2025.html" class="back-btn" data-ja="← 大会TOPへ戻る" data-en="← Back to Main Page">← 大会TOPへ戻る</a>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1 class="hero-title" data-ja="カプエス2 観戦ガイド" data-en="CVS2 Spectator Guide">カプエス2 観戦ガイド</h1>
+    </section>
+
+    <!-- 導入文 -->
+    <div class="card intro-card">カプエス2の特徴的なシステムをまとめました。
+これらを知ったうえで観戦していただくと、カプエス2の事をよく知らない他ゲー勢の方も楽しめると思います。
+長文になってしまいましたが、ぜひ読んでみてください。</div>
+
+    <!-- 各セクション -->
+    <div class="card">
+      <div class="section-header">【前転キャンセル（Rolling Cancel）】</div>
+大会名の一部にも採用されている、このゲームを象徴するテクニックの１つ。
+弱P+弱K同時押しで出る前転を入力後、3F以内に必殺技のコマンドを完成させる事により、前転の出がかりをキャンセルしてその後に出した必殺技 に25F程度の打撃無敵を付与する事ができる。
+前転を使用できるC、A、Nグルーヴでのみ使用可能（P、S、Kグルーヴには前転が存在しないため使用不可）。
+Lv3スパコンの無敵が基本22Fなので、それよりも長い無敵がノーゲージで使用可能。
+対策としては、判定では潰せないだけで普通の必殺技と同様の対策で良く、
+技によって
+①ガードして反撃
+②発生前に投げる
+③空振らせて差し返し
+④後から出した無敵技で判定勝ちを狙う
+などの対策が有る。
+当然、反撃を受けない技を投げ間合いの外から空振らずに出すと超強い。
+    </div>
+
+    <div class="card">
+      <div class="section-header">【前転】</div>
+1F目から27Fの全身打撃無敵で近付く事が出来る強い行動。弱P+弱K同時押しでとっさに出せるため、相手がいつでも前転出来るという存在だけ で飛び道具を始めとする硬直の長い技に対してプレッシャーをかける事ができ、一部では「前キャンよりも前転の方が強い」という声も挙がるほど。
+全身無敵後の硬直にはキャラ差があるため、相手の真後ろに移動する、通称『裏周り前転』は、振り向くモーションの1Fはボタンを押しても技が出な いという仕様と合わさって硬直の少ないキャラで行うと非常に凶悪である。
+そのため、裏周り前転を読んで一歩下がり、発生の早い技からコンボを決める、といったやり込みにも注目していただきたい。
+    </div>
+
+    <div class="card">
+      <div class="section-header">【レシオ制】</div>
+このゲームでは、レシオと呼ばれる数値を割り振る事により、1人から3人までのチームを編成する事が出来る。初心者が使用出来るキャラが少ない場 合に3人選ばなくてもいいというシステムはありがたいものの、総体力やシステム面においても3人チームが優遇されているため、競技シーンにおいて はほぼ全てがレシオ1，1，2の3人チームが選ばれている。
+先鋒や次鋒のキャラが瞬殺されると次からの展開に大きく影響するため、セット制のゲームよりも先鋒戦の重みが大きく、ゲージの受け渡しや体力回復 などもあるため、時間稼ぎをしてゲージを溜める、みたいな読み合いも発生する。
+    </div>
+
+    <div class="card">
+      <div class="section-header">【ガードゲージ】</div>
+このゲームではガードをし続けるとガードクラッシュして大きな隙が出来る。
+牽制をガードさせるだけでリターンがあるため、スリリングな地上戦が発生する。
+ガードゲージを削る量はダメージ量によって変化するが、概ね3秒以内に触り続ければ弱攻撃だけで触っても削る量が回復量を上回るため、
+後述するピヨり値も含めて一定時間内に触る事が重要。
+この通称『3秒ルール』を意識した駆け引きにぜひ注目していただきたい。
+    </div>
+
+    <div class="card">
+      <div class="section-header">【ピヨり値】</div>
+スパコンや一部を除いた打撃技を喰らうとピヨり値が溜まり、180Fの間に打撃技を喰らうかガードすると180Fカウントし直し、
+①180F経過
+②ガードクラッシュ
+③気絶
+のどれかの条件を満たすと一気に0になる。
+ピヨり値が一定（キャラによって60 or 70 or 80）以上溜まると気絶して膨大な隙が出来るため、
+試合結果に大きく影響してしまう。
+    </div>
+
+    <div class="card">
+      <div class="section-header">【投げ】</div>
+レバーを前か後に入れながら強Pで発生4FのP投げ、同じく強Kで発生6Fの代わりに投げ抜けが困難なK投げが可能。
+このゲームの打撃の発生は最速でも3Fで、打撃と投げが同時に当たった場合は投げが勝つため、前キャンも投げられるP投げは強い選択肢である。
+ただし、他のゲームのように通常投げ専用コマンドが無いため、
+空中判定や投げ無敵判定など、投げられない状態で投げようとしてしまうと、
+隙の膨大な立ち強Pなどが漏れてしまう。
+このため、投げを読まれると垂直Jからフルコンを喰らってしまうリスクがある。
+    </div>
+
+    <div class="card">
+      <div class="section-header">【投げ抜け】</div>
+通常投げで掴まれた後にレバー横要素+強P or 強Kで投げ抜けが可能。通常技の硬直中でも投げ抜けが出来るため、隙の少ない通常技に投げ抜けを仕込みつつ、ヒット時にコンボに移行するのがセオリー。ただし、暴れ潰しに 負けるため、様々な読み合いが発生している。
+    </div>
+
+    <div class="card">
+      <div class="section-header">【投げ無敵】</div>
+起き上がりやガード硬直復帰後は投げに対する無敵時間が存在し、技を出した場合は即座に投げ無敵が消失するものの、技を出さない場合は最大6F続 く。
+このため、投げ無敵が切れてから投げを出そうとすると必ず打撃で止められてしまうため、このゲームでは起き上がりに小技連打で投げを止めるといっ た他のゲームで上級者があまりやらない読み合いが発生している。
+ただし、低リスクで守る為には6Fの間ガードするという行動が相当強いため、投げ無敵時間を利用して打撃重ねをガードした後で飛ぶ、などといった 読み合いも発生し、上級者同士では投げ無敵が切れた直後に打撃を当てる、といった駆け引きも行われている。
+    </div>
+
+    <div class="card">
+      <div class="section-header">【フレームスキップ】</div>
+通常このゲームはターボ3の設定で遊ばれており、スピード感を演出するために一定周期で（おそらく5Fごとに1Fずつ）画面に表示するフレームを 飛ばしている。
+運が悪く最速となるフレームが飛んでしまうと、次のフレームに出した事と同じ扱いになってしまうため、最速でしか確定しない技が確定しなくなって しまう。それに加えて通常技は先行入力が一切効かないため、このゲームのビタ押しは他のゲームのビタ押し以上に安定しない。
+また、実際に画面に表示される時間はフレーム表の時間よりも短いため、中段の発生や通常技の硬直時間はフレーム表の数値よりも実際には短く反応が 難しい。
+    </div>
+
+    <div class="card">
+      <div class="section-header">【時間停止】</div>
+このゲームでは、スーパーコンボやオリコンの時間停止中にはレバーやボタン入力を受け付けないため、見てから無敵技で返すのは非常に難しい。ただ し、読み切ってスーパーコンボやオリコンで返す（通称：後光り）ことが出来た場合は、先に発動した側の無敵時間が後で発動した側の時間停止中に経 過してしまうため、非常に強力である。
+ただし、昇龍拳や前転、前転キャンセル（!?）など技固有の無敵時間は時間停止中に経過しないため、超上級者においてはオリコン発動時の短い時間 停止中に状況判断し、前転や前キャンで相手の後光りに対抗する、といった駆け引きも存在している。
+    </div>
+
+    <div class="card">
+      <div class="section-header">【必殺技の入力】</div>
+このゲームでは同じコマンドを偶数回入力すると、その必殺技が出なくなるため、レバーをグルグル回して無敵技で割り込む、という行動が安定しな い。また、昇龍も323入力では出ず、きっちり623入力で出す必要があるため、対空昇龍もそれなりに難しい。ガードクラッシュや前転の存在によ り、地上のプレッシャーが大きいゲームであり、対空昇龍をきっちり出す事はそれだけで素晴らしいため、そういった目で観戦していただきたい。
+    </div>
+
+    <div class="card">
+      <div class="section-header">【起き攻め】</div>
+このゲームではダウンさせた後に上入れっぱで詐欺飛び、のような連携が極端に少なく、ダウンさせた後に起き上がるタイミング等もキャラごとに異な るため、見えにくいめくりを綺麗に重ねるだけでも安定させるのが難しく、起き攻めループで終わる試合はかなり少ない。そのため、強烈な起き攻めが 決まった時はプレイヤーのやり込みに注目していただきたい。
+なお、リバサ前キャンで簡単に返せそうに見えるかもしれないが、前転に先行入力
+が効かないため、リバサ前キャンはビタ押しでしか出せない。起き上がりのタイミングがキャラによって違う事も相まってかなり難しい。1Fでも早く 入力すると無敵が付与されない普通の必殺技が出てしまうため、重要な場面でリバサ前キャンを狙うだけでもかなりの胆力が必要となる。リバーサル表 記とともに起き攻めを返せた時は、「前キャンはク●」と言うのでなく、プレーヤーを褒めてあげて欲しい。
+    </div>
+
+    <div class="card">
+      <div class="section-header">【各グルーヴ紹介】</div>
+大会のモチーフである6つの輪の由来となっている、このゲームを象徴するシステムの1つ。
+6つのグルーヴによって個性が出ているため、違いを知ったうえで観戦していただきたい。
+なお、各グルーヴ固有のシステムについてはwiki参照の事。
+
+      <div class="groove-box c-grv">
+        <div class="groove-title">☆Cグルーヴ</div>・特徴
+空中ガードによる防御と、ゲージ常備による安定した立ち回りが強み。
+特に差し返しの通常技からLv2スパコンに繋げるのが強く、
+逆キャンセルでピヨり値も入るため、一番ピヨらせコンボを狙えるグルーヴ。
+安定感がある反面、他のグルーヴほど尖った特徴が無いのが欠点か。
+・対策
+欠点の無いグルーヴのため、こちらのグルーヴの尖った部分をいかに押し付けられるかが勝負の分かれ目。
+あまり無理をして差し返しスパコンを喰らわないように気を付けたい。
+      </div>
+
+      <div class="groove-box a-grv">
+        <div class="groove-title">☆Aグルーヴ</div>・特徴
+ゲージが溜まった時に使えるオリコンという最強のシステムを持つ代わりに、
+ゲージが溜まるまでは最弱という尖ったグルーヴ。
+ゲージが溜まるまでのグルーヴ差が前キャンの発覚により縮まった事と、
+攻めさせた方が有利の組み合わせでは特にゲージを溜める行為そのものが強いため、ゲージが無い状態でもそれなりに闘えるようになり、現在では最強 の呼び声も高い。
+・対策
+安易にゲージ溜めをさせないようにプレッシャーをかけつつ、近付き過ぎて返り討ちにあわないようなバランス感覚が求められる。
+また、1試合に2回以上オリコンを喰らうとかなり厳しい展開になるため、繊細な駆け引きも必要である。
+      </div>
+
+      <div class="groove-box p-grv">
+        <div class="groove-title">☆Pグルーヴ</div>・特徴
+ブロッキングがあるため、ゲージさえ溜まってしまえばスパコン確定状況を作りやすく、そこが強みのグルーヴ。
+その一方でゲージ溜め速度は一番遅く、ガードゲージも一番短いため、ブロッキングのセンスが問われる。
+また、ブロッキングの停止時間が短いため、小技に反撃するためには確認せずにボタンを押す必要があり、
+確認せずにリスクを負って通常技を出していくのか、大技を読んでブロ確認から最大反撃を入れていくのか、状況判断力が問われる。
+・対策
+ブロッキングの方向とタイミングを散らして防御を崩すことが重要。
+手癖でボタンを押してしまうと手痛い反撃を喰らう為、精神力も重要。
+      </div>
+
+      <div class="groove-box s-grv">
+        <div class="groove-title">☆Sグルーヴ</div>・特徴
+「避け」を使用する事によって打撃に対して全身無敵になる事ができるため、
+非常にピヨりづらく手堅い守備が可能なグルーヴ。
+体力が残り僅かになるとレベル1スパコンが連発できるようになるため、
+一部のキャラの爆発力には目を見張るものがある。
+・対策
+隙の大きな牽制を控え、常に避けられた時の事を考慮した立ち回りが必要。
+体力を僅かに残してしまうと逆転される恐れがあるため、体力調整も重要。
+      </div>
+
+      <div class="groove-box n-grv">
+        <div class="groove-title">☆Nグルーヴ</div>・特徴
+ラン・前転・小ジャンプを兼ね備えたスピーディーな攻めが可能なグルーヴ。
+唯一無二のガードキャンセル前転からの反撃で守備力も兼ね備える。
+ただしMAX発動をしないと火力に乏しく、やれる事が多い分使いこなす事が難しい。
+・対策
+ガードキャンセル前転の存在により、普段反撃されない技でも反撃される場合があるため、警戒が必要。
+普段の立ち回りは最強クラスのグルーヴなので、上手く凌いでゲージを溜め、
+火力差を活かして読み合いをしたい。
+      </div>
+
+      <div class="groove-box k-grv">
+        <div class="groove-title">☆Kグルーヴ</div>・特徴
+ダメージを喰らうと溜まるゲージが特徴で、怒り爆発した時の火力アップ、防御力アップが凄まじい。
+リスクの少ないジャストディフェンスによる制圧力も高く、
+お互い真正面から殴り合ったら最強のグルーヴである事は間違いない。
+欠点としては前転だけでなくガードキャンセルも無いため、
+オリコンをガードした後に返す手段がない。
+また、前転での脱出が出来ないため、一部連携から抜け出すのが難しい。
+・対策
+こちらが手を出さない限り相手がゲージを溜める手段が無いため、
+上手くゲージを溜めて有利な状況を作ってから読み合いをしたい。
+相手も当然それを阻止してくるため、対応力が問われる。
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>Guide content by αοκι / Redesigned for Rollin'Pic 2025</p>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    function switchLang(lang, event) {
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      document.querySelectorAll('[data-ja]').forEach(el => {
+        el.textContent = el.getAttribute(`data-${lang}`);
+      });
+    }
+  </script>
+</body>
+</html>
