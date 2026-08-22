@@ -100,6 +100,52 @@
       padding-bottom: 2px;
     }
 
+    /* カウントダウンタイマー */
+    .countdown-container {
+      margin-top: 20px;
+      background: rgba(10, 10, 16, 0.7);
+      border: 1px solid var(--panel-border);
+      border-top: 2px solid var(--accent-yellow);
+      display: inline-block;
+      padding: 12px 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+    }
+
+    .countdown-label {
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
+    .countdown-timer {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .time-block {
+      text-align: center;
+    }
+
+    .time-val {
+      font-family: 'Teko', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent-yellow);
+      line-height: 1;
+      display: block;
+      min-width: 42px;
+    }
+
+    .time-unit {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
     /* Guide Banner */
     .guide-banner {
       background-color: #000;
@@ -540,6 +586,21 @@
       background: #080810;
     }
 
+    .hashtag-box {
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(255, 204, 0, 0.3);
+      padding: 14px;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .hashtag-title {
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--accent-yellow);
+      letter-spacing: 1px;
+    }
+
     /* Archive Accordion Section */
     .archive-section {
       background: var(--panel-bg);
@@ -655,6 +716,20 @@
       <div class="world-title-wrap">
         <span class="world-main-txt">CAPCOM vs SNK 2 世界大会</span>
         <p style="margin-top: 10px; font-size: 0.95rem; color: var(--text-muted); font-weight: bold;">＜大会概要＞ 開催場所 ： 南浦和プレイスポットビッグワンセカンド</p>
+      </div>
+
+      <!-- カウントダウンタイマー -->
+      <div class="countdown-container">
+        <div class="countdown-label">DAY 1 開幕まで</div>
+        <div class="countdown-timer">
+          <div class="time-block"><span class="time-val" id="cd-days">--</span><span class="time-unit">DAYS</span></div>
+          <div style="font-family:'Teko'; font-size:2rem; color:var(--text-muted); align-self:flex-start;">:</div>
+          <div class="time-block"><span class="time-val" id="cd-hours">--</span><span class="time-unit">HOURS</span></div>
+          <div style="font-family:'Teko'; font-size:2rem; color:var(--text-muted); align-self:flex-start;">:</div>
+          <div class="time-block"><span class="time-val" id="cd-mins">--</span><span class="time-unit">MINS</span></div>
+          <div style="font-family:'Teko'; font-size:2rem; color:var(--text-muted); align-self:flex-start;">:</div>
+          <div class="time-block"><span class="time-val" id="cd-secs">--</span><span class="time-unit">SECS</span></div>
+        </div>
       </div>
     </section>
 
@@ -926,7 +1001,7 @@
 
     </div>
 
-    <!-- Streams & Location Panel -->
+    <!-- Streams & Location & Hashtag Panel -->
     <div class="sub-grid">
       <div class="sub-panel">
         <h3 class="panel-title">配信チャンネル</h3>
@@ -954,9 +1029,20 @@
 
         <a href="https://twitter.com/public_bigone" target="_blank" class="stream-link">▶ X (Twitter): @public_bigone</a>
       </div>
+
+      <!-- X Hashtag Panel -->
+      <div class="sub-panel">
+        <h3 class="panel-title">X (TWITTER) HASHTAG</h3>
+        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">大会の感想・応援コメントの投稿・検索はこちら！</p>
+        <div class="hashtag-box">
+          <div class="hashtag-title">#Rollinpic2026</div>
+        </div>
+        <a href="https://twitter.com/intent/tweet?hashtags=Rollinpic2026" target="_blank" class="stream-link" style="margin-top:12px; text-align:center; background:#1da1f2; border-color:#1da1f2;">▶ Xでポストする</a>
+        <a href="https://twitter.com/search?q=%23Rollinpic2026" target="_blank" class="stream-link" style="text-align:center;">▶ #Rollinpic2026 を検索</a>
+      </div>
     </div>
 
-    <!-- Guide Banner (移動位置) -->
+    <!-- Guide Banner -->
     <div class="guide-banner">
       <div class="guide-banner-inner">
         <div class="guide-title">カプエス2 観戦ガイド（αοκι氏作）</div>
@@ -1082,6 +1168,34 @@
       document.querySelectorAll('.acc-body').forEach(b => b.style.display = 'none');
       body.style.display = isOpen ? 'none' : 'block';
     }
+
+    // カウントダウン処理
+    function updateCountdown() {
+      const targetDate = new Date('2026-11-21T10:00:00+09:00').getTime();
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.getElementById('cd-days').textContent = '00';
+        document.getElementById('cd-hours').textContent = '00';
+        document.getElementById('cd-mins').textContent = '00';
+        document.getElementById('cd-secs').textContent = '00';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+      document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+      document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
   </script>
 </body>
 </html>
