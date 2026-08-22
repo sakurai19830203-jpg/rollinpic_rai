@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rollin'pic 2025 | CAPCOM vs SNK 2 World Championship</title>
+  <title>Rollin'pic 2026 | CAPCOM vs SNK 2 World Championship</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+JP:wght@800;900&family=Teko:wght@700;900&display=swap" rel="stylesheet">
@@ -45,7 +45,7 @@
       background: rgba(0, 0, 0, 0.9);
       backdrop-filter: blur(5px);
       border-bottom: 3px solid var(--accent-yellow);
-      padding: 8px 20px;
+      padding: 10px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -58,31 +58,6 @@
       height: 32px;
       width: auto;
       display: block;
-    }
-
-    .lang-switcher {
-      display: flex;
-      gap: 2px;
-      background: #111;
-      padding: 2px;
-      border: 1px solid #333;
-    }
-
-    .lang-btn {
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      padding: 4px 12px;
-      font-family: 'Teko', sans-serif;
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .lang-btn.active {
-      background: var(--accent-yellow);
-      color: #000;
-      font-weight: bold;
     }
 
     /* Main Container */
@@ -110,7 +85,7 @@
 
     .main-logo-container img {
       width: 100%;
-      height: auto;
+      height auto;
       display: block;
       filter: drop-shadow(0 10px 30px rgba(0,0,0,0.95));
     }
@@ -275,7 +250,7 @@
       letter-spacing: 1px;
     }
 
-    /* ルールバナー（カード内目立つスタイル） */
+    /* ルールバナー */
     .rule-banner {
       background: linear-gradient(135deg, rgba(20, 20, 28, 0.95), rgba(5, 5, 10, 0.95));
       border: 1px solid var(--accent-yellow);
@@ -301,17 +276,6 @@
       letter-spacing: 0.5px;
     }
 
-    .rule-banner:hover {
-      background: var(--accent-yellow);
-      box-shadow: 6px 6px 0px #000;
-      transform: scale(1.02) skewX(-6deg);
-    }
-
-    .rule-banner:hover .rule-banner-inner {
-      color: #000;
-    }
-
-    /* 工事中状態のルールバナー */
     .rule-banner.disabled {
       background: rgba(15, 15, 22, 0.85);
       border: 1px dashed #444455;
@@ -323,16 +287,6 @@
     .rule-banner.disabled .rule-banner-inner {
       color: #888899;
       font-weight: bold;
-    }
-
-    .rule-banner.disabled:hover {
-      background: rgba(15, 15, 22, 0.85);
-      transform: skewX(-6deg);
-      box-shadow: 2px 2px 0px #000;
-    }
-
-    .rule-banner.disabled:hover .rule-banner-inner {
-      color: #888899;
     }
 
     .info-table {
@@ -350,7 +304,56 @@
     .info-table td:first-child { color: var(--text-muted); }
     .info-table td:last-child { text-align: right; font-weight: bold; font-size: 1.05rem; }
 
-    /* エントリーボタン（工事中スタイル） */
+    /* 予選日程テーブル */
+    .qualifier-section {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      background: rgba(5, 5, 8, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 12px;
+      border-radius: 4px;
+    }
+
+    .qualifier-title {
+      font-size: 0.95rem;
+      font-weight: 900;
+      color: var(--capcom-blue);
+      margin-bottom: 10px;
+      border-left: 4px solid var(--capcom-blue);
+      padding-left: 8px;
+    }
+
+    .qualifier-table-wrapper {
+      overflow-x: auto;
+    }
+
+    .qualifier-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .qualifier-table th {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--accent-yellow);
+      padding: 6px 8px;
+      font-weight: bold;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .qualifier-table td {
+      padding: 6px 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: #e0e0e0;
+    }
+
+    .qualifier-table tr:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    /* エントリーボタン */
     .entry-btn {
       display: block;
       width: 100%;
@@ -589,12 +592,8 @@
   <!-- Top Strip Header -->
   <header>
     <div class="header-logo">
-      <img src="RollinPic2025.png" alt="Rollin'Pic 2025 Logo" onerror="this.style.display='none'; document.getElementById('txt-logo').style.display='block';">
-      <span id="txt-logo" style="display:none; font-family:'Anton'; font-size:1.4rem; color:var(--accent-yellow);">ROLLIN'PIC 2025</span>
-    </div>
-    <div class="lang-switcher">
-      <button class="lang-btn active" onclick="switchLang('ja', event)">JP</button>
-      <button class="lang-btn" onclick="switchLang('en', event)">EN</button>
+      <img src="RollinPic2025.png" alt="Rollin'Pic 2026 Logo" onerror="this.style.display='none'; document.getElementById('txt-logo').style.display='block';">
+      <span id="txt-logo" style="display:none; font-family:'Anton'; font-size:1.4rem; color:var(--accent-yellow);">ROLLIN'PIC 2026</span>
     </div>
   </header>
 
@@ -603,23 +602,23 @@
     <!-- Hero Poster Area -->
     <section class="hero">
       <div class="main-logo-container">
-        <img src="RollinPic2025.png" alt="Rollin'Pic 2025" onerror="this.style.display='none'; document.getElementById('hero-fallback').style.display='block';">
-        <h1 id="hero-fallback" style="display:none; font-family:'Anton'; font-size:4rem; color:var(--accent-yellow);">ROLLIN'PIC 2025</h1>
+        <img src="RollinPic2025.png" alt="Rollin'Pic 2026" onerror="this.style.display='none'; document.getElementById('hero-fallback').style.display='block';">
+        <h1 id="hero-fallback" style="display:none; font-family:'Anton'; font-size:4rem; color:var(--accent-yellow);">ROLLIN'PIC 2026</h1>
       </div>
 
       <div class="world-title-wrap">
-        <span class="world-main-txt" data-ja="CAPCOM vs. SNK 2 世界大会" data-en="CAPCOM vs. SNK 2 WORLD CHAMPIONSHIP">CAPCOM vs. SNK 2 世界大会</span>
-        <p style="margin-top: 10px; font-size: 0.95rem; color: var(--text-muted); font-weight: bold;" data-ja="＜大会概要＞ 開催場所 ： 南浦和プレイスポットビッグワンセカンド" data-en="&lt;OVERVIEW&gt; Venue: Minami-Urawa Play Spot Big-One 2nd">＜大会概要＞ 開催場所 ： 南浦和プレイスポットビッグワンセカンド</p>
+        <span class="world-main-txt">CAPCOM vs. SNK 2 世界大会</span>
+        <p style="margin-top: 10px; font-size: 0.95rem; color: var(--text-muted); font-weight: bold;">＜大会概要＞ 開催場所 ： 南浦和プレイスポットビッグワンセカンド</p>
       </div>
     </section>
 
     <!-- Guide Banner -->
     <div class="guide-banner">
       <div class="guide-banner-inner">
-        <div class="guide-title" data-ja="カプエス2 観戦ガイド（αοκι氏作）" data-en="CVS2 SPECTATOR GUIDE BY αοκι">カプエス2 観戦ガイド（αοκι氏作）</div>
-        <div class="guide-desc" data-ja="初心者・他ゲー勢必見！前キャンやグルーヴ特徴を徹底解説" data-en="Essential guide explaining Rolling Cancel, Grooves, and core mechanics">初心者・他ゲー勢必見！前キャンやグルーヴ特徴を徹底解説</div>
+        <div class="guide-title">カプエス2 観戦ガイド（αοκι氏作）</div>
+        <div class="guide-desc">初心者・他ゲー勢必見！前キャンやグルーヴ特徴を徹底解説</div>
       </div>
-      <a href="cvs2_guide.html" target="_blank" class="btn-guide" data-ja="ガイドを読む" data-en="READ GUIDE">ガイドを読む</a>
+      <a href="cvs2_guide.html" target="_blank" class="btn-guide">ガイドを読む</a>
     </div>
 
     <!-- Main Tournament Block -->
@@ -629,55 +628,157 @@
 
       <!-- DAY 1 -->
       <div class="event-card capcom-side">
-        <span class="date-badge">DAY 1 — 11/21 (土)</span>
-        <h2 class="card-heading" data-ja="個人戦 (Singles)" data-en="SINGLES TOURNAMENT">個人戦 (Singles)</h2>
+        <span class="date-badge">DAY 1 — 2026/11/21 (土)</span>
+        <h2 class="card-heading">個人戦 (Singles)</h2>
         
         <!-- 個人戦 ルールバナー -->
-        <div class="rule-banner disabled" data-ja="🚧 個人戦 ルール詳細（近日公開）" data-en="🚧 SINGLES RULES (COMING SOON)">
+        <div class="rule-banner disabled">
           <div class="rule-banner-inner">
             🚧 個人戦 ルール詳細（近日公開）
           </div>
         </div>
 
         <table class="info-table">
-          <tr><td data-ja="受付時間" data-en="Registration">受付時間</td><td>10:30 ～ 12:30</td></tr>
-          <tr><td data-ja="大会開始" data-en="Start Time">大会開始</td><td>13:30</td></tr>
-          <tr><td data-ja="参加費" data-en="Entry Fee">参加費</td><td>1,000円 / 人</td></tr>
+          <tr><td>受付時間</td><td>10:30 ～ 12:30</td></tr>
+          <tr><td>大会開始</td><td>13:30</td></tr>
+          <tr><td>参加費</td><td>1,000円 / 人</td></tr>
         </table>
+
+        <!-- 予選日程表 -->
+        <div class="qualifier-section">
+          <div class="qualifier-title">個人戦 予選日程・選抜枠</div>
+          <div class="qualifier-table-wrapper">
+            <table class="qualifier-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>日時</th>
+                  <th>都道府県</th>
+                  <th>予選実施店舗</th>
+                  <th>選抜形式</th>
+                  <th>通過選手（主なキャラ）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>昨年シングル優勝者</td>
+                  <td>ライ（K：舞、響、サガット）</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>-</td>
+                  <td>愛知</td>
+                  <td>名古屋GAME BOX Q3</td>
+                  <td>ランバト総合一位</td>
+                  <td>未定</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>-</td>
+                  <td>大阪</td>
+                  <td>アミューズファクトリーAXE</td>
+                  <td>ランバト総合一位</td>
+                  <td>未定</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>-</td>
+                  <td>東京</td>
+                  <td>西日暮里バーサス・南浦和ビックワンセカンド</td>
+                  <td>ランバト総合一位</td>
+                  <td>未定</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>-</td>
+                  <td>東京</td>
+                  <td>西日暮里バーサス・南浦和ビックワン</td>
+                  <td>ランバト総合二位</td>
+                  <td>未定</td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>9/18(金)</td>
+                  <td>北海道</td>
+                  <td>札幌MAXIM HERO</td>
+                  <td>シード争奪戦トーナメント</td>
+                  <td>未定</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>9/21(祝)</td>
+                  <td>東京</td>
+                  <td>南浦和ビックワン</td>
+                  <td>シード争奪戦トーナメント</td>
+                  <td>未定</td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td>10/17(土)</td>
+                  <td>大阪</td>
+                  <td>アミューズファクトリーAXE</td>
+                  <td>シード争奪戦トーナメント</td>
+                  <td>未定</td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td>未定</td>
+                  <td>愛知</td>
+                  <td>名古屋GAME BOX Q3</td>
+                  <td>シード争奪戦トーナメント</td>
+                  <td>未定</td>
+                </tr>
+                <tr><td>10</td><td>11/2(土)</td><td>当日枠</td><td>-</td><td>-</td><td>未定</td></tr>
+                <tr><td>11</td><td>11/2(土)</td><td>当日枠</td><td>-</td><td>-</td><td>未定</td></tr>
+                <tr><td>12</td><td>11/2(土)</td><td>当日枠</td><td>-</td><td>-</td><td>未定</td></tr>
+                <tr><td>13</td><td>11/2(土)</td><td>当日枠</td><td>-</td><td>-</td><td>未定</td></tr>
+                <tr><td>14</td><td>11/2(土)</td><td>当日枠</td><td>-</td><td>-</td><td>未定</td></tr>
+                <tr><td>15</td><td>11/2(土)</td><td>当日枠</td><td>-</td><td>-</td><td>未定</td></tr>
+                <tr><td>16</td><td>11/2(土)</td><td>当日枠</td><td>-</td><td>-</td><td>未定</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
         <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 10px;">
-          <span style="color: var(--capcom-blue); font-weight: 900;" data-ja="【優勝特典】" data-en="[Winner Perks]">【優勝特典】</span><br>
+          <span style="color: var(--capcom-blue); font-weight: 900;">【優勝特典】</span><br>
           ・Rollin'pic 2027 シード権獲得<br>
           ・2027当日予選くじ引き担当<br>
           ・オリジナルイベント開催権 (1年間)
         </div>
-        <div class="entry-btn disabled" data-ja="🚧 個人戦 エントリー（近日公開）" data-en="🚧 SINGLES ENTRY (COMING SOON)">🚧 個人戦 エントリー（近日公開）</div>
+        <div class="entry-btn disabled">🚧 個人戦 エントリー（近日公開）</div>
       </div>
 
       <!-- DAY 2 -->
       <div class="event-card snk-side">
-        <span class="date-badge">DAY 2 — 11/22 (日)</span>
-        <h2 class="card-heading" data-ja="3on3 チーム戦" data-en="3on3 TEAM TOURNAMENT">3on3 チーム戦</h2>
+        <span class="date-badge">DAY 2 — 2026/11/22 (日)</span>
+        <h2 class="card-heading">3on3 チーム戦</h2>
         
         <!-- チーム戦 ルールバナー -->
-        <div class="rule-banner disabled" data-ja="🚧 チーム戦 ルール詳細（近日公開）" data-en="🚧 3on3 RULES (COMING SOON)">
+        <div class="rule-banner disabled">
           <div class="rule-banner-inner">
             🚧 チーム戦 ルール詳細（近日公開）
           </div>
         </div>
 
         <table class="info-table">
-          <tr><td data-ja="受付時間" data-en="Registration">受付時間</td><td>10:30 ～ 11:30</td></tr>
-          <tr><td data-ja="大会開始" data-en="Start Time">大会開始</td><td>12:30</td></tr>
-          <tr><td data-ja="参加費" data-en="Entry Fee">参加費</td><td>1,000円 / 人</td></tr>
+          <tr><td>受付時間</td><td>10:30 ～ 11:30</td></tr>
+          <tr><td>大会開始</td><td>12:30</td></tr>
+          <tr><td>参加費</td><td>1,000円 / 人</td></tr>
         </table>
-        <div class="entry-btn disabled" style="margin-top: 85px;" data-ja="🚧 3on3 エントリー（近日公開）" data-en="🚧 3on3 ENTRY (COMING SOON)">🚧 3on3 エントリー（近日公開）</div>
+        <div class="entry-btn disabled" style="margin-top: 85px;">🚧 3on3 エントリー（近日公開）</div>
       </div>
 
       <!-- DAY 3 -->
       <div class="event-card vs-side">
-        <span class="date-badge">DAY 3 — 11/23 (祝)</span>
-        <h2 class="card-heading" data-ja="SPECIAL FT10" data-en="SPECIAL FT10 MATCHES">SPECIAL FT10</h2>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: -10px; margin-bottom: 15px;" data-ja="2025年個人戦優勝者ライが見たいFT10" data-en="Special FT10 matches selected by 2025 Singles Champion Rai">2025年個人戦優勝者ライが見たいFT10</p>
+        <span class="date-badge">DAY 3 — 2026/11/23 (祝)</span>
+        <h2 class="card-heading">SPECIAL FT10</h2>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: -10px; margin-bottom: 4px;">2025年個人戦優勝者ライが見たいFT10</p>
+        <p style="font-size: 1rem; color: var(--accent-yellow); font-weight: 900; margin-bottom: 15px; letter-spacing: 0.5px;">RAI Presents Special FT10</p>
         
         <div class="ft10-container">
           
@@ -738,13 +839,13 @@
     <!-- Streams & Location Panel -->
     <div class="sub-grid">
       <div class="sub-panel">
-        <h3 class="panel-title" data-ja="配信チャンネル" data-en="LIVE STREAMS">配信チャンネル</h3>
+        <h3 class="panel-title">配信チャンネル</h3>
         <a href="https://www.youtube.com/@big-one2ndchannel128" target="_blank" class="stream-link">▶ YouTube: big-one2ndchannel128</a>
         <a href="https://www.twitch.tv/d44bas" target="_blank" class="stream-link">▶ Twitch: d44bas</a>
       </div>
 
       <div class="sub-panel">
-        <h3 class="panel-title" data-ja="開催店舗情報" data-en="VENUE LOCATION">開催店舗情報</h3>
+        <h3 class="panel-title">開催店舗情報</h3>
         <div style="font-weight: 900; font-size: 1.1rem; color: #fff;">南浦和プレイスポットビッグワンセカンド</div>
         <div style="font-size: 0.85rem; color: var(--text-muted); margin: 4px 0 12px;">〒336-0017 埼玉県さいたま市南区南浦和 2丁目 27-12</div>
         
@@ -767,7 +868,7 @@
 
     <!-- Past Archives -->
     <div class="archive-section">
-      <h3 class="panel-title" data-ja="過去大会HP / 動画" data-en="PAST TOURNAMENT HP / VIDEOS">過去大会HP / 動画</h3>
+      <h3 class="panel-title">過去大会HP / 動画</h3>
 
       <div class="acc-item">
         <button class="acc-btn" onclick="toggleAcc(this)">
@@ -875,15 +976,6 @@
 
   <!-- Script -->
   <script>
-    function switchLang(lang, event) {
-      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
-
-      document.querySelectorAll('[data-ja]').forEach(el => {
-        el.textContent = el.getAttribute(`data-${lang}`);
-      });
-    }
-
     function toggleAcc(btn) {
       const body = btn.nextElementSibling;
       const isOpen = body.style.display === 'block';
