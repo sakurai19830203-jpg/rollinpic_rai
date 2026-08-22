@@ -44,53 +44,6 @@
       line-height: 1.8;
     }
 
-    /* Header */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(10, 10, 15, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 2px solid var(--primary);
-      padding: 12px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.8);
-    }
-
-    .header-logo img {
-      max-height: 40px;
-      width: auto;
-      filter: drop-shadow(0 0 6px rgba(255, 204, 0, 0.5));
-    }
-
-    .lang-switcher {
-      display: flex;
-      gap: 5px;
-      background: #1a1a24;
-      padding: 4px;
-      border-radius: 20px;
-      border: 1px solid var(--border-color);
-    }
-
-    .lang-btn {
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      padding: 6px 14px;
-      font-weight: bold;
-      border-radius: 16px;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .lang-btn.active {
-      background: var(--primary);
-      color: #000;
-      box-shadow: 0 0 10px rgba(255, 204, 0, 0.6);
-    }
-
     /* Container */
     .container {
       max-width: 900px;
@@ -209,25 +162,13 @@
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="header-logo">
-      <img src="RollinPic2025.png" alt="Rollin'Pic Logo" onerror="this.style.display='none'; document.getElementById('header-text').style.display='inline';">
-      <span id="header-text" style="display:none; font-family:'Teko'; font-size:1.5rem; color:var(--primary); font-weight:bold;">Rollin'pic</span>
-    </div>
-    <div class="lang-switcher">
-      <button class="lang-btn active" onclick="switchLang('ja', event)">JP</button>
-      <button class="lang-btn" onclick="switchLang('en', event)">EN</button>
-    </div>
-  </header>
-
   <div class="container">
     
-    <a href="rollinpic2025.html" class="back-btn" data-ja="← 大会TOPへ戻る" data-en="← Back to Main Page">← 大会TOPへ戻る</a>
+    <a href="rollinpic2026.html" class="back-btn">← 大会TOPへ戻る</a>
 
     <!-- Hero Section -->
     <section class="hero">
-      <h1 class="hero-title" data-ja="カプエス2 観戦ガイド" data-en="CVS2 Spectator Guide">カプエス2 観戦ガイド</h1>
+      <h1 class="hero-title">カプエス2 観戦ガイド</h1>
     </section>
 
     <!-- 導入文 -->
@@ -276,7 +217,7 @@ Lv3スパコンの無敵が基本22Fなので、それよりも長い無敵が�
 
     <div class="card">
       <div class="section-header">【ピヨり値】</div>
-スパコンや一部を除いた打撃技を喰らうとピヨり値が溜まり、180Fの間に打撃技を喰らうかガードすると180Fカウントし直し、
+スパコンや一部を除いた打撃技を喰らうとピヨり値が溜まり、180Fの間打撃技を喰らうかガードすると180Fカウントし直し、
 ①180F経過
 ②ガードクラッシュ
 ③気絶
@@ -416,16 +357,5 @@ Lv3スパコンの無敵が基本22Fなので、それよりも長い無敵が�
     <p>Guide content by αοκι / Redesigned for Rollin'Pic 2025</p>
   </footer>
 
-  <!-- Script -->
-  <script>
-    function switchLang(lang, event) {
-      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
-
-      document.querySelectorAll('[data-ja]').forEach(el => {
-        el.textContent = el.getAttribute(`data-${lang}`);
-      });
-    }
-  </script>
 </body>
 </html>
