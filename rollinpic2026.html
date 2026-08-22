@@ -70,6 +70,19 @@
       filter: drop-shadow(0 10px 30px rgba(0,0,0,0.95));
     }
 
+    /* 公式ロゴ表示エリア */
+    .official-logo-container {
+      max-width: 320px;
+      margin: 15px auto 10px;
+    }
+
+    .official-logo-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.8));
+    }
+
     .world-title-wrap {
       margin-top: 8px;
     }
@@ -361,18 +374,20 @@
       font-weight: bold;
     }
 
-    /* FT10 Matches */
+    /* FT10 Matches Design Dynamic Overlay */
     .ft10-container {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
       margin-top: 10px;
     }
 
     .ft10-row {
-      background: rgba(5, 5, 8, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(5, 5, 8, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       padding: 12px 14px;
+      position: relative;
+      overflow: hidden;
     }
 
     .ft10-label {
@@ -382,6 +397,8 @@
       letter-spacing: 1px;
       margin-bottom: 4px;
       line-height: 1;
+      position: relative;
+      z-index: 2;
     }
 
     .vs-matchup {
@@ -389,13 +406,64 @@
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
       gap: 8px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .side-player {
+      position: relative;
+      padding: 8px 10px;
+      border-radius: 4px;
+      background: rgba(0, 0, 0, 0.45);
+      overflow: hidden;
     }
 
     .side-player.left { text-align: left; }
     .side-player.right { text-align: right; }
 
+    /* 背景ダイナミックキャラオーバーレイ */
+    .player-bg-layer {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      z-index: 1;
+      opacity: 0.28;
+      display: flex;
+      align-items: center;
+      pointer-events: none;
+      filter: grayscale(20%) contrast(120%);
+    }
+
+    .side-player.left .player-bg-layer {
+      left: 0;
+      justify-content: flex-start;
+      mask-image: linear-gradient(to right, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+      -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+    }
+
+    .side-player.right .player-bg-layer {
+      right: 0;
+      justify-content: flex-end;
+      mask-image: linear-gradient(to left, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+      -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+    }
+
+    .player-bg-layer img {
+      height: 140%;
+      width: auto;
+      object-fit: contain;
+      margin: 0 -8px;
+    }
+
+    .player-content {
+      position: relative;
+      z-index: 2;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.9), 0 0 2px rgba(0,0,0,1);
+    }
+
     .p-name {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 900;
       color: #fff;
       display: block;
@@ -414,9 +482,10 @@
     .grv-c { color: #00ff66; }
 
     .team-chars {
-      font-size: 0.78rem;
-      color: var(--text-muted);
+      font-size: 0.8rem;
+      color: #d0d0dd;
       display: block;
+      font-weight: bold;
     }
 
     .vs-mark {
@@ -578,8 +647,13 @@
         <h1 id="hero-fallback" style="display:none; font-family:'Anton'; font-size:4rem; color:var(--accent-yellow);">ROLLIN'PIC 2026</h1>
       </div>
 
+      <!-- 公式ロゴ配置エリア -->
+      <div class="official-logo-container">
+        <img src="official_logo.png" alt="CAPCOM vs SNK 2 Official Logo" onerror="this.style.display='none';">
+      </div>
+
       <div class="world-title-wrap">
-        <span class="world-main-txt">CAPCOM vs. SNK 2 世界大会</span>
+        <span class="world-main-txt">CAPCOM vs SNK 2 世界大会</span>
         <p style="margin-top: 10px; font-size: 0.95rem; color: var(--text-muted); font-weight: bold;">＜大会概要＞ 開催場所 ： 南浦和プレイスポットビッグワンセカンド</p>
       </div>
     </section>
@@ -751,15 +825,35 @@
           <div class="ft10-row">
             <div class="ft10-label">MATCH 1</div>
             <div class="vs-matchup">
+              
+              <!-- LEFT PLAYER -->
               <div class="side-player left">
-                <span class="p-name">ピノキオ</span>
-                <span class="team-chars"><span class="grv-tag grv-k">K</span>春麗 / キャミィ / サガット</span>
+                <div class="player-bg-layer">
+                  <img src="chunli.png" alt="" onerror="this.style.display='none';">
+                  <img src="cammy.png" alt="" onerror="this.style.display='none';">
+                  <img src="sagat.png" alt="" onerror="this.style.display='none';">
+                </div>
+                <div class="player-content">
+                  <span class="p-name">ピノキオ</span>
+                  <span class="team-chars"><span class="grv-tag grv-k">K</span>春麗 / キャミィ / サガット</span>
+                </div>
               </div>
+
               <div class="vs-mark">VS</div>
+
+              <!-- RIGHT PLAYER -->
               <div class="side-player right">
-                <span class="p-name">ワタリ</span>
-                <span class="team-chars"><span class="grv-tag grv-a">A</span>庵 / ブランカ / ベガ</span>
+                <div class="player-bg-layer">
+                  <img src="iori.png" alt="" onerror="this.style.display='none';">
+                  <img src="blanka.png" alt="" onerror="this.style.display='none';">
+                  <img src="vega.png" alt="" onerror="this.style.display='none';">
+                </div>
+                <div class="player-content">
+                  <span class="p-name">ワタリ</span>
+                  <span class="team-chars"><span class="grv-tag grv-a">A</span>庵 / ブランカ / ベガ</span>
+                </div>
               </div>
+
             </div>
           </div>
 
@@ -767,15 +861,35 @@
           <div class="ft10-row">
             <div class="ft10-label">MATCH 2</div>
             <div class="vs-matchup">
+              
+              <!-- LEFT PLAYER -->
               <div class="side-player left">
-                <span class="p-name">GAO</span>
-                <span class="team-chars"><span class="grv-tag grv-k">K</span>ギース / ナコルル / ロック</span>
+                <div class="player-bg-layer">
+                  <img src="geese.png" alt="" onerror="this.style.display='none';">
+                  <img src="nakoruru.png" alt="" onerror="this.style.display='none';">
+                  <img src="rock.png" alt="" onerror="this.style.display='none';">
+                </div>
+                <div class="player-content">
+                  <span class="p-name">GAO</span>
+                  <span class="team-chars"><span class="grv-tag grv-k">K</span>ギース / ナコルル / ロック</span>
+                </div>
               </div>
+
               <div class="vs-mark">VS</div>
+
+              <!-- RIGHT PLAYER -->
               <div class="side-player right">
-                <span class="p-name">喫音</span>
-                <span class="team-chars"><span class="grv-tag grv-k">K</span>ナコルル / 響 / サガット</span>
+                <div class="player-bg-layer">
+                  <img src="nakoruru.png" alt="" onerror="this.style.display='none';">
+                  <img src="hibiki.png" alt="" onerror="this.style.display='none';">
+                  <img src="sagat.png" alt="" onerror="this.style.display='none';">
+                </div>
+                <div class="player-content">
+                  <span class="p-name">喫音</span>
+                  <span class="team-chars"><span class="grv-tag grv-k">K</span>ナコルル / 響 / サガット</span>
+                </div>
               </div>
+
             </div>
           </div>
 
@@ -783,15 +897,35 @@
           <div class="ft10-row">
             <div class="ft10-label">MATCH 3</div>
             <div class="vs-matchup">
+              
+              <!-- LEFT PLAYER -->
               <div class="side-player left">
-                <span class="p-name">D44</span>
-                <span class="team-chars"><span class="grv-tag grv-a">A</span>山崎 / ブランカ / ベガ</span>
+                <div class="player-bg-layer">
+                  <img src="yamazaki.png" alt="" onerror="this.style.display='none';">
+                  <img src="blanka.png" alt="" onerror="this.style.display='none';">
+                  <img src="vega.png" alt="" onerror="this.style.display='none';">
+                </div>
+                <div class="player-content">
+                  <span class="p-name">D44</span>
+                  <span class="team-chars"><span class="grv-tag grv-a">A</span>山崎 / ブランカ / ベガ</span>
+                </div>
               </div>
+
               <div class="vs-mark">VS</div>
+
+              <!-- RIGHT PLAYER -->
               <div class="side-player right">
-                <span class="p-name">kiku</span>
-                <span class="team-chars"><span class="grv-tag grv-c">C</span>キャミィ / 春麗 / サガット</span>
+                <div class="player-bg-layer">
+                  <img src="cammy.png" alt="" onerror="this.style.display='none';">
+                  <img src="chunli.png" alt="" onerror="this.style.display='none';">
+                  <img src="sagat.png" alt="" onerror="this.style.display='none';">
+                </div>
+                <div class="player-content">
+                  <span class="p-name">kiku</span>
+                  <span class="team-chars"><span class="grv-tag grv-c">C</span>キャミィ / 春麗 / サガット</span>
+                </div>
               </div>
+
             </div>
           </div>
 
@@ -936,7 +1070,7 @@
   <!-- Footer -->
   <footer>
     <p>問い合わせ先: <a href="https://twitter.com/Ryo151" target="_blank">@Ryo151 (X / Twitter)</a></p>
-    <p style="margin-top: 5px;">&copy; Rollin'Pic Tournament Committee / CAPCOM vs. SNK 2 Community</p>
+    <p style="margin-top: 5px;">&copy; Rollin'Pic Tournament Committee / CAPCOM vs SNK 2 Community</p>
   </footer>
 
   <!-- Script -->
