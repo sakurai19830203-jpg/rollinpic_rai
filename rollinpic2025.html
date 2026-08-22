@@ -85,7 +85,7 @@
 
     .main-logo-container img {
       width: 100%;
-      height auto;
+      height: auto;
       display: block;
       filter: drop-shadow(0 10px 30px rgba(0,0,0,0.95));
     }
@@ -120,7 +120,7 @@
       border-top: 1px solid #333;
       border-bottom: 1px solid #333;
       padding: 24px 25px;
-      margin-bottom: 50px;
+      margin-bottom: 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -167,6 +167,55 @@
     .btn-guide:hover {
       transform: scale(1.08) skewX(6deg);
       background: #fff;
+    }
+
+    /* 予選日程テーブル（SCHEDULEの上に配置） */
+    .qualifier-section {
+      margin-bottom: 50px;
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      padding: 20px;
+      box-shadow: 8px 8px 0px #000;
+    }
+
+    .qualifier-title {
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--accent-yellow);
+      margin-bottom: 14px;
+      border-left: 5px solid var(--accent-yellow);
+      padding-left: 10px;
+      letter-spacing: 0.5px;
+    }
+
+    .qualifier-table-wrapper {
+      overflow-x: auto;
+    }
+
+    .qualifier-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .qualifier-table th {
+      background: rgba(255, 204, 0, 0.1);
+      color: var(--accent-yellow);
+      padding: 10px 12px;
+      font-weight: bold;
+      border-bottom: 2px solid var(--panel-border);
+    }
+
+    .qualifier-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      color: #e0e0e0;
+    }
+
+    .qualifier-table tr:hover {
+      background: rgba(255, 255, 255, 0.04);
     }
 
     /* Schedule Section Header */
@@ -304,55 +353,6 @@
     .info-table td:first-child { color: var(--text-muted); }
     .info-table td:last-child { text-align: right; font-weight: bold; font-size: 1.05rem; }
 
-    /* 予選日程テーブル */
-    .qualifier-section {
-      margin-top: 20px;
-      margin-bottom: 20px;
-      background: rgba(5, 5, 8, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 12px;
-      border-radius: 4px;
-    }
-
-    .qualifier-title {
-      font-size: 0.95rem;
-      font-weight: 900;
-      color: var(--capcom-blue);
-      margin-bottom: 10px;
-      border-left: 4px solid var(--capcom-blue);
-      padding-left: 8px;
-    }
-
-    .qualifier-table-wrapper {
-      overflow-x: auto;
-    }
-
-    .qualifier-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.8rem;
-      text-align: left;
-      white-space: nowrap;
-    }
-
-    .qualifier-table th {
-      background: rgba(255, 255, 255, 0.08);
-      color: var(--accent-yellow);
-      padding: 6px 8px;
-      font-weight: bold;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .qualifier-table td {
-      padding: 6px 8px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      color: #e0e0e0;
-    }
-
-    .qualifier-table tr:hover {
-      background: rgba(255, 255, 255, 0.03);
-    }
-
     /* エントリーボタン */
     .entry-btn {
       display: block;
@@ -424,7 +424,7 @@
     .grv-tag {
       font-family: 'Teko', sans-serif;
       font-size: 1.1rem;
-      padding: 0 4px;
+      padding: 0 4px 0 0;
       display: inline-block;
       line-height: 1;
     }
@@ -592,7 +592,7 @@
   <!-- Top Strip Header -->
   <header>
     <div class="header-logo">
-      <img src="RollinPic2025.png" alt="Rollin'Pic 2026 Logo" onerror="this.style.display='none'; document.getElementById('txt-logo').style.display='block';">
+      <img src="RollinPic2025.png" alt="Rollin'Pic 2025 Logo" onerror="this.style.display='none'; document.getElementById('txt-logo').style.display='block';">
       <span id="txt-logo" style="display:none; font-family:'Anton'; font-size:1.4rem; color:var(--accent-yellow);">ROLLIN'PIC 2026</span>
     </div>
   </header>
@@ -602,7 +602,7 @@
     <!-- Hero Poster Area -->
     <section class="hero">
       <div class="main-logo-container">
-        <img src="RollinPic2025.png" alt="Rollin'Pic 2026" onerror="this.style.display='none'; document.getElementById('hero-fallback').style.display='block';">
+        <img src="RollinPic2025.png" alt="Rollin'Pic 2025" onerror="this.style.display='none'; document.getElementById('hero-fallback').style.display='block';">
         <h1 id="hero-fallback" style="display:none; font-family:'Anton'; font-size:4rem; color:var(--accent-yellow);">ROLLIN'PIC 2026</h1>
       </div>
 
@@ -619,6 +619,99 @@
         <div class="guide-desc">初心者・他ゲー勢必見！前キャンやグルーヴ特徴を徹底解説</div>
       </div>
       <a href="cvs2_guide.html" target="_blank" class="btn-guide">ガイドを読む</a>
+    </div>
+
+    <!-- DAY1個人戦シード予選日程(9枠) 9月1日現在 （SCHEDULEの上に配置） -->
+    <div class="qualifier-section">
+      <div class="qualifier-title">DAY1個人戦シード予選日程(9枠) 9月1日現在</div>
+      <div class="qualifier-table-wrapper">
+        <table class="qualifier-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>日時</th>
+              <th>都道府県</th>
+              <th>予選実施店舗</th>
+              <th>選抜形式</th>
+              <th>通過選手（主なキャラクター）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>昨年シングル優勝者</td>
+              <td>ライ（K：舞、響、サガット）</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>-</td>
+              <td>愛知</td>
+              <td>名古屋GAME BOX Q3</td>
+              <td>ランバト総合一位</td>
+              <td>未定</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>-</td>
+              <td>大阪</td>
+              <td>アミューズファクトリーAXE</td>
+              <td>ランバト総合一位</td>
+              <td>未定</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>-</td>
+              <td>東京</td>
+              <td>西日暮里バーサス・南浦和ビックワンセカンド</td>
+              <td>ランバト総合一位</td>
+              <td>未定</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>-</td>
+              <td>東京</td>
+              <td>西日暮里バーサス・南浦和ビックワン</td>
+              <td>ランバト総合二位</td>
+              <td>未定</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>9/18(金)</td>
+              <td>北海道</td>
+              <td>GIGO札幌駅西口</td>
+              <td>シード争奪戦トーナメント</td>
+              <td>未定</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>9/21(祝)</td>
+              <td>東京</td>
+              <td>南浦和ビックワン</td>
+              <td>シード争奪戦トーナメント</td>
+              <td>未定</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>10/17(土)</td>
+              <td>大阪</td>
+              <td>アミューズファクトリーAXE</td>
+              <td>シード争奪戦トーナメント</td>
+              <td>未定</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>未定</td>
+              <td>愛知</td>
+              <td>名古屋GAME BOX Q3</td>
+              <td>シード争奪戦トーナメント</td>
+              <td>未定</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <!-- Main Tournament Block -->
@@ -639,110 +732,10 @@
         </div>
 
         <table class="info-table">
-          <tr><td>受付時間</td><td>10:30 ～ 12:30</td></tr>
-          <tr><td>大会開始</td><td>13:30</td></tr>
-          <tr><td>参加費</td><td>1,000円 / 人</td></tr>
+          <tr><td>受付時間</td><td>未定</td></tr>
+          <tr><td>大会開始</td><td>未定</td></tr>
+          <tr><td>参加費</td><td>未定</td></tr>
         </table>
-
-        <!-- 予選日程表 -->
-        <div class="qualifier-section">
-          <div class="qualifier-title">個人戦 予選日程・選抜枠</div>
-          <div class="qualifier-table-wrapper">
-            <table class="qualifier-table">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>日時</th>
-                  <th>都道府県</th>
-                  <th>予選実施店舗</th>
-                  <th>選抜形式</th>
-                  <th>通過選手（主なキャラ）</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>昨年シングル優勝者</td>
-                  <td>ライ（K：舞、響、サガット）</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>-</td>
-                  <td>愛知</td>
-                  <td>名古屋GAME BOX Q3</td>
-                  <td>ランバト総合一位</td>
-                  <td>未定</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>-</td>
-                  <td>大阪</td>
-                  <td>アミューズファクトリーAXE</td>
-                  <td>ランバト総合一位</td>
-                  <td>未定</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>-</td>
-                  <td>東京</td>
-                  <td>西日暮里バーサス・南浦和ビックワンセカンド</td>
-                  <td>ランバト総合一位</td>
-                  <td>未定</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>-</td>
-                  <td>東京</td>
-                  <td>西日暮里バーサス・南浦和ビックワン</td>
-                  <td>ランバト総合二位</td>
-                  <td>未定</td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td>9/18(金)</td>
-                  <td>北海道</td>
-                  <td>札幌MAXIM HERO</td>
-                  <td>シード争奪戦トーナメント</td>
-                  <td>未定</td>
-                </tr>
-                <tr>
-                  <td>7</td>
-                  <td>9/21(祝)</td>
-                  <td>東京</td>
-                  <td>南浦和ビックワン</td>
-                  <td>シード争奪戦トーナメント</td>
-                  <td>未定</td>
-                </tr>
-                <tr>
-                  <td>8</td>
-                  <td>10/17(土)</td>
-                  <td>大阪</td>
-                  <td>アミューズファクトリーAXE</td>
-                  <td>シード争奪戦トーナメント</td>
-                  <td>未定</td>
-                </tr>
-                <tr>
-                  <td>9</td>
-                  <td>未定</td>
-                  <td>愛知</td>
-                  <td>名古屋GAME BOX Q3</td>
-                  <td>シード争奪戦トーナメント</td>
-                  <td>未定</td>
-                </tr>
-                <tr><td>10</td><td>11/2(土)</td><td>当日枠</td><td>-</td><td>-</td><td>未定</td></tr>
-                <tr><td>11</td><td>11/2(土)</td><td>当日枠</td><td>-</td><td>-</td><td>未定</td></tr>
-                <tr><td>12</td><td>11/2(土)</td><td>当日枠</td><td>-</td><td>-</td><td>未定</td></tr>
-                <tr><td>13</td><td>11/2(土)</td><td>当日枠</td><td>-</td><td>-</td><td>未定</td></tr>
-                <tr><td>14</td><td>11/2(土)</td><td>当日枠</td><td>-</td><td>-</td><td>未定</td></tr>
-                <tr><td>15</td><td>11/2(土)</td><td>当日枠</td><td>-</td><td>-</td><td>未定</td></tr>
-                <tr><td>16</td><td>11/2(土)</td><td>当日枠</td><td>-</td><td>-</td><td>未定</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
 
         <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 10px;">
           <span style="color: var(--capcom-blue); font-weight: 900;">【優勝特典】</span><br>
@@ -766,9 +759,9 @@
         </div>
 
         <table class="info-table">
-          <tr><td>受付時間</td><td>10:30 ～ 11:30</td></tr>
-          <tr><td>大会開始</td><td>12:30</td></tr>
-          <tr><td>参加費</td><td>1,000円 / 人</td></tr>
+          <tr><td>受付時間</td><td>未定</td></tr>
+          <tr><td>大会開始</td><td>未定</td></tr>
+          <tr><td>参加費</td><td>未定</td></tr>
         </table>
         <div class="entry-btn disabled" style="margin-top: 85px;">🚧 3on3 エントリー（近日公開）</div>
       </div>
@@ -787,13 +780,13 @@
             <div class="ft10-label">MATCH 1</div>
             <div class="vs-matchup">
               <div class="side-player left">
-                <span class="p-name"><span class="grv-tag grv-k">K</span>ピノキオ</span>
-                <span class="team-chars">春麗 / キャミー / サガット</span>
+                <span class="p-name">ピノキオ</span>
+                <span class="team-chars"><span class="grv-tag grv-k">K</span>春麗 / キャミィ / サガット</span>
               </div>
               <div class="vs-mark">VS</div>
               <div class="side-player right">
-                <span class="p-name"><span class="grv-tag grv-a">A</span>ワタリ</span>
-                <span class="team-chars">庵 / ブランカ / ベガ</span>
+                <span class="p-name">ワタリ</span>
+                <span class="team-chars"><span class="grv-tag grv-a">A</span>庵 / ブランカ / ベガ</span>
               </div>
             </div>
           </div>
@@ -803,13 +796,13 @@
             <div class="ft10-label">MATCH 2</div>
             <div class="vs-matchup">
               <div class="side-player left">
-                <span class="p-name"><span class="grv-tag grv-k">K</span>GAO</span>
-                <span class="team-chars">ギース / ナコルル / ロック</span>
+                <span class="p-name">GAO</span>
+                <span class="team-chars"><span class="grv-tag grv-k">K</span>ギース / ナコルル / ロック</span>
               </div>
               <div class="vs-mark">VS</div>
               <div class="side-player right">
-                <span class="p-name"><span class="grv-tag grv-k">K</span>喫音</span>
-                <span class="team-chars">ナコルル / 響 / サガット</span>
+                <span class="p-name">喫音</span>
+                <span class="team-chars"><span class="grv-tag grv-k">K</span>ナコルル / 響 / サガット</span>
               </div>
             </div>
           </div>
@@ -819,13 +812,13 @@
             <div class="ft10-label">MATCH 3</div>
             <div class="vs-matchup">
               <div class="side-player left">
-                <span class="p-name"><span class="grv-tag grv-a">A</span>D44</span>
-                <span class="team-chars">山崎 / ブランカ / ベガ</span>
+                <span class="p-name">D44</span>
+                <span class="team-chars"><span class="grv-tag grv-a">A</span>山崎 / ブランカ / ベガ</span>
               </div>
               <div class="vs-mark">VS</div>
               <div class="side-player right">
-                <span class="p-name"><span class="grv-tag grv-c">C</span>kiku</span>
-                <span class="team-chars">キャミー / 春麗 / サガット</span>
+                <span class="p-name">kiku</span>
+                <span class="team-chars"><span class="grv-tag grv-c">C</span>キャミィ / 春麗 / サガット</span>
               </div>
             </div>
           </div>
@@ -900,7 +893,7 @@
             <a target="_blank" href="https://www.youtube.com/watch?v=8726arjY8zo">Rollin'Pic Tokyo 2024 Day 1 Singles Top8 Part1 2024/11/02</a>
             <a target="_blank" href="https://www.youtube.com/watch?v=mMtHM6anp_I">Rollin'Pic Tokyo 2024 Day 2 / 3on3 Top8 Part1 2024/11/03</a>
             <a target="_blank" href="https://www.youtube.com/watch?v=V_piqtPft_s">Rollin'Pic Tokyo 2024 Day 2 / 3on3 Top8 Part2 2024/11/03</a>
-            <a target="_blank" href="https://www.youtube.com/watch?v=WcOni0I1KrY">Rollin'Pic Tokyo 2024 Day 2 / 3on3 Top8 Part3 2024/11/03</a>
+            <a target="_blank" href="https://www.youtube.com/watch?v=WcOni0I1KurY">Rollin'Pic Tokyo 2024 Day 2 / 3on3 Top8 Part3 2024/11/03</a>
             <a target="_blank" href="https://www.youtube.com/watch?v=bhy2tY8eDoo">Rollin'Pic Tokyo 2024 Day 3 / 10 Players RR Part1 2024/11/04</a>
             <a target="_blank" href="https://www.youtube.com/watch?v=aScUYeR0Ie0">Rollin'Pic Tokyo 2024 Day 3 / 10 Players RR Part2 2024/11/04</a>
             <a target="_blank" href="https://www.youtube.com/watch?v=zxzi832e4ao">Rollin'Pic Tokyo 2024 Day 3 / 10 Players RR Part3 2024/11/04</a>
