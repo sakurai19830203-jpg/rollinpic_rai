@@ -394,7 +394,7 @@
       box-shadow: none;
     }
 
-    /* --- FT10 MATCHUP DESIGN (PC Default) --- */
+    /* --- FT10 MATCHUP DESIGN --- */
     .ft10-container {
       display: flex;
       flex-direction: column;
@@ -412,17 +412,32 @@
       overflow: hidden;
     }
 
+    .ft10-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+      padding-left: 6px;
+      padding-right: 6px;
+    }
+
     .ft10-label {
       font-family: 'Teko', sans-serif;
       font-size: 1.25rem;
       font-weight: 900;
       color: var(--accent-yellow);
       letter-spacing: 1.5px;
-      margin-bottom: 6px;
       line-height: 1;
       text-shadow: 0 0 10px rgba(255, 204, 0, 0.8);
       text-transform: uppercase;
-      padding-left: 6px;
+    }
+
+    .match-catchphrase {
+      font-size: 0.82rem;
+      font-weight: 900;
+      color: #ffaa00;
+      letter-spacing: 0.5px;
+      text-shadow: 0 0 8px rgba(255, 170, 0, 0.5);
     }
 
     .vs-matchup {
@@ -430,7 +445,7 @@
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
       position: relative;
-      min-height: 115px;
+      min-height: 110px;
       height: auto;
     }
 
@@ -441,7 +456,7 @@
       display: flex;
       align-items: center;
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      padding: 12px 16px;
+      padding: 10px 14px;
       border-radius: 2px;
     }
 
@@ -450,6 +465,8 @@
       border-left: 5px solid var(--capcom-blue);
       clip-path: polygon(0 0, 100% 0, 93% 100%, 0 100%);
       margin-right: -4px;
+      justify-content: flex-start;
+      text-align: left;
     }
 
     .side-player.right {
@@ -457,8 +474,8 @@
       border-right: 5px solid var(--snk-red);
       clip-path: polygon(7% 0, 100% 0, 100% 100%, 0 100%);
       margin-left: -4px;
-      text-align: right;
       justify-content: flex-end;
+      text-align: right;
     }
 
     .ft10-row:hover .side-player.left {
@@ -507,7 +524,7 @@
       filter: grayscale(0%) brightness(1.05);
     }
 
-    /* テキスト・アイコン構造 */
+    /* PC版コンテンツ構造 */
     .player-content {
       position: relative;
       z-index: 2;
@@ -516,30 +533,28 @@
       flex-direction: column;
     }
 
+    .side-player.left .player-content {
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .side-player.right .player-content {
+      align-items: flex-end;
+      text-align: right;
+    }
+
     .player-main-header {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .side-player.right .player-main-header {
       justify-content: flex-end;
     }
 
-    /* スマホ時用の丸型顔写真アバター (PCでは非表示) */
-    .player-avatar-mobile {
-      display: none;
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--accent-yellow);
-      box-shadow: 0 0 10px rgba(0,0,0,0.8);
-      flex-shrink: 0;
-    }
-
     .p-name {
-      font-size: 1.35rem;
+      font-size: 1.25rem;
       font-weight: 900;
       color: #ffffff;
       letter-spacing: 0.5px;
@@ -556,7 +571,7 @@
 
     .grv-tag {
       font-family: 'Teko', sans-serif;
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       padding: 0 2px 0 0;
       display: inline-block;
       line-height: 1;
@@ -567,11 +582,10 @@
     .grv-k { color: var(--snk-red); text-shadow: 0 0 6px rgba(255, 42, 75, 0.7); }
     .grv-c { color: #00ff66; text-shadow: 0 0 6px rgba(0, 255, 102, 0.7); }
 
-    /* キャラクターアイコン表示枠 (PC 42px / スマホ 38px に拡大) */
     .char-icon-group {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       margin-top: 6px;
     }
 
@@ -580,46 +594,46 @@
     }
 
     .char-thumb {
-      width: 42px;
-      height: 42px;
-      border-radius: 4px;
-      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      width: 32px;
+      height: 32px;
+      border-radius: 3px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
       object-fit: cover;
       background: rgba(0,0,0,0.6);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.85);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.8);
       transition: transform 0.2s ease, border-color 0.2s ease;
     }
 
     .ft10-row:hover .char-thumb {
-      transform: translateY(-2px) scale(1.1);
+      transform: translateY(-2px) scale(1.08);
       border-color: var(--accent-yellow);
     }
 
     .team-chars {
-      font-size: 0.88rem;
+      font-size: 0.82rem;
       color: #f0f0ff;
       display: block;
       font-weight: 800;
       line-height: 1.2;
-      margin-top: 5px;
+      margin-top: 4px;
       text-shadow: 0 2px 4px #000, 0 0 6px #000;
     }
 
     .vs-mark {
       z-index: 10;
       font-family: 'Anton', sans-serif;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       color: #ffffff;
       font-style: italic;
       background: #000;
       border: 1.5px solid var(--accent-yellow);
-      padding: 2px 8px;
+      padding: 2px 6px;
       box-shadow: 0 0 12px rgba(255, 204, 0, 0.9), 0 0 4px #000;
       text-shadow: 1px 1px 0px #000;
       pointer-events: none;
       line-height: 1;
       transform: rotate(-6deg);
-      margin: 0 -4px;
+      margin: 0 -3px;
     }
 
     /* ─── QUALIFIER STAGE SELECT SECTION ─── */
@@ -987,7 +1001,7 @@
       }
     }
 
-    /* ─── スマホ専用 FT10 カードレイアウト (650px以下) ─── */
+    /* ─── スマホ専用：丸アバター＆配置調整 (画面幅650px以下) ─── */
     @media (max-width: 650px) {
       .guide-banner {
         flex-direction: column;
@@ -996,80 +1010,91 @@
       }
       .guide-banner-inner { transform: none; }
       .btn-guide { clip-path: none; width: 100%; margin-top: 10px; }
-      
-      /* FT10 全体レイアウト */
+
       .vs-matchup {
-        display: flex;
-        flex-direction: column;
-        height: auto;
+        grid-template-columns: 1fr;
         gap: 6px;
       }
-      
+
       .side-player {
-        width: 100%;
-        padding: 12px 14px !important;
-        clip-path: none !important;
-        margin: 0 !important;
+        padding: 12px 14px;
+        clip-path: none;
+        margin: 0;
         border-radius: 4px;
       }
 
-      /* スマホ用 背景写真非表示 & 大判丸アバター(56px)表示 */
-      .player-bg-photo-wrap { display: none !important; }
-      .player-avatar-mobile { display: block !important; }
-
-      /* キャラアイコンサイズ（スマホ 38px） */
-      .char-thumb {
-        width: 38px !important;
-        height: 38px !important;
+      /* スマホ版ではPC用背景写真は非表示にし、丸型アバターを使用 */
+      .player-bg-photo-wrap {
+        display: none !important;
       }
 
-      /* 左側（1P）: 左寄せ */
+      .player-avatar-circle {
+        display: block !important;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--accent-yellow);
+        box-shadow: 0 0 8px rgba(0,0,0,0.8);
+      }
+
+      /* 左側（1P）のスマホ設定 */
       .side-player.left {
-        text-align: left !important;
-        justify-content: flex-start !important;
-        border-left: 4px solid var(--capcom-blue) !important;
-        border-right: none !important;
-        background: linear-gradient(135deg, rgba(0, 225, 255, 0.25) 0%, rgba(10, 10, 16, 0.95) 100%) !important;
+        border-left: 4px solid var(--capcom-blue);
+        border-right: none;
+        text-align: left;
       }
-
-      .side-player.left .player-main-header {
-        justify-content: flex-start !important;
+      .side-player.left .player-content {
         flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
       }
-
+      .side-player.left .player-main-header {
+        flex-direction: row;
+        gap: 8px;
+      }
       .side-player.left .char-icon-group {
-        justify-content: flex-start !important;
+        justify-content: flex-end;
       }
 
-      /* 右側（2P）: 右寄せ & 左右反転でバランス最適化 */
+      /* 右側（2P）のスマホ設定：完全右寄せ & 左側に丸アバター・キャラ配置 */
       .side-player.right {
+        border-right: 4px solid var(--snk-red);
+        border-left: none;
         text-align: right !important;
         justify-content: flex-end !important;
-        border-right: 4px solid var(--snk-red) !important;
-        border-left: none !important;
-        background: linear-gradient(225deg, rgba(255, 42, 75, 0.25) 0%, rgba(10, 10, 16, 0.95) 100%) !important;
       }
-
+      .side-player.right .player-content {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+        text-align: right !important;
+        align-items: flex-end;
+      }
       .side-player.right .player-main-header {
-        justify-content: flex-end !important;
-        flex-direction: row-reverse; /* 右側はアバターを一番右に配置 */
+        flex-direction: row-reverse !important;
+        justify-content: flex-start !important;
+        gap: 8px;
       }
-
       .side-player.right .char-icon-group {
-        justify-content: flex-end !important;
+        justify-content: flex-start !important;
       }
 
-      /* VSマーク */
       .vs-mark {
         transform: rotate(0deg);
         margin: 2px auto;
         display: inline-block;
-        font-size: 1.05rem;
-        padding: 2px 10px;
+        font-size: 1rem;
+        padding: 2px 8px;
       }
 
       .rule-banner { transform: none; }
       .rule-banner-inner { transform: none; }
+    }
+
+    /* デフォルト（PC等）ではスマホ用丸アバターを隠す */
+    .player-avatar-circle {
+      display: none;
     }
   </style>
 </head>
@@ -1174,7 +1199,10 @@
           
           <!-- Match 1 -->
           <div class="ft10-row">
-            <div class="ft10-label">MATCH 1</div>
+            <div class="ft10-header-row">
+              <span class="ft10-label">MATCH 1</span>
+              <span class="match-catchphrase">北海道最強、古の猛者対決</span>
+            </div>
             <div class="vs-matchup">
               
               <!-- LEFT PLAYER (ピノキオ) -->
@@ -1184,7 +1212,7 @@
                 </div>
                 <div class="player-content">
                   <div class="player-main-header">
-                    <img class="player-avatar-mobile" src="player_pinokio.png" alt="" onerror="this.style.display='none';">
+                    <img class="player-avatar-circle" src="player_pinokio.png" alt="" onerror="this.style.display='none';">
                     <span class="p-name">ピノキオ</span>
                   </div>
                   <div class="char-icon-group">
@@ -1205,8 +1233,8 @@
                 </div>
                 <div class="player-content">
                   <div class="player-main-header">
+                    <img class="player-avatar-circle" src="player_watari.png" alt="" onerror="this.style.display='none';">
                     <span class="p-name">ワタリ</span>
-                    <img class="player-avatar-mobile" src="player_watari.png" alt="" onerror="this.style.display='none';">
                   </div>
                   <div class="char-icon-group">
                     <img class="char-thumb" src="iori.png" alt="" onerror="this.style.display='none';">
@@ -1222,7 +1250,10 @@
 
           <!-- Match 2 -->
           <div class="ft10-row">
-            <div class="ft10-label">MATCH 2</div>
+            <div class="ft10-header-row">
+              <span class="ft10-label">MATCH 2</span>
+              <span class="match-catchphrase">東西最恐Kグル対決</span>
+            </div>
             <div class="vs-matchup">
               
               <!-- LEFT PLAYER (GAO) -->
@@ -1232,7 +1263,7 @@
                 </div>
                 <div class="player-content">
                   <div class="player-main-header">
-                    <img class="player-avatar-mobile" src="player_gao.png" alt="" onerror="this.style.display='none';">
+                    <img class="player-avatar-circle" src="player_gao.png" alt="" onerror="this.style.display='none';">
                     <span class="p-name">GAO</span>
                   </div>
                   <div class="char-icon-group">
@@ -1253,8 +1284,8 @@
                 </div>
                 <div class="player-content">
                   <div class="player-main-header">
+                    <img class="player-avatar-circle" src="player_kitsuon.png" alt="" onerror="this.style.display='none';">
                     <span class="p-name">喫音</span>
-                    <img class="player-avatar-mobile" src="player_kitsuon.png" alt="" onerror="this.style.display='none';">
                   </div>
                   <div class="char-icon-group">
                     <img class="char-thumb" src="nakoruru.png" alt="" onerror="this.style.display='none';">
@@ -1270,7 +1301,10 @@
 
           <!-- Match 3 -->
           <div class="ft10-row">
-            <div class="ft10-label">MATCH 3</div>
+            <div class="ft10-header-row">
+              <span class="ft10-label">MATCH 3</span>
+              <span class="match-catchphrase">カプエス会最強は俺だ。覇者対決</span>
+            </div>
             <div class="vs-matchup">
               
               <!-- LEFT PLAYER (D44) -->
@@ -1280,7 +1314,7 @@
                 </div>
                 <div class="player-content">
                   <div class="player-main-header">
-                    <img class="player-avatar-mobile" src="player_d44.png" alt="" onerror="this.style.display='none';">
+                    <img class="player-avatar-circle" src="player_d44.png" alt="" onerror="this.style.display='none';">
                     <span class="p-name">D44</span>
                   </div>
                   <div class="char-icon-group">
@@ -1301,8 +1335,8 @@
                 </div>
                 <div class="player-content">
                   <div class="player-main-header">
+                    <img class="player-avatar-circle" src="player_kiku.png" alt="" onerror="this.style.display='none';">
                     <span class="p-name">kiku</span>
-                    <img class="player-avatar-mobile" src="player_kiku.png" alt="" onerror="this.style.display='none';">
                   </div>
                   <div class="char-icon-group">
                     <img class="char-thumb" src="cammy.png" alt="" onerror="this.style.display='none';">
