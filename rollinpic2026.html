@@ -87,6 +87,7 @@
       margin-top: 8px;
     }
 
+    /* 元のフォントデザイン */
     .world-main-txt {
       display: inline-block;
       font-family: 'Noto Sans JP', sans-serif;
@@ -100,9 +101,22 @@
       padding-bottom: 2px;
     }
 
+    /* キャッチフレーズ演出 */
+    .hero-catchphrase {
+      margin-top: 14px;
+      font-size: clamp(1.15rem, 3.2vw, 1.85rem);
+      font-weight: 900;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #ffffff 0%, var(--accent-yellow) 50%, #ff8800 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 20px rgba(255, 204, 0, 0.4);
+      font-style: italic;
+    }
+
     /* カウントダウンタイマー */
     .countdown-container {
-      margin-top: 20px;
+      margin-top: 22px;
       background: rgba(10, 10, 16, 0.7);
       border: 1px solid var(--panel-border);
       border-top: 2px solid var(--accent-yellow);
@@ -206,136 +220,6 @@
     .btn-guide:hover {
       transform: scale(1.08) skewX(6deg);
       background: #fff;
-    }
-
-    /* ─── QUALIFIER STAGE SELECT SECTION ─── */
-    .qualifier-section {
-      margin-bottom: 50px;
-      background: linear-gradient(180deg, rgba(18, 18, 26, 0.95) 0%, rgba(8, 8, 12, 0.98) 100%);
-      border: 1px solid rgba(255, 204, 0, 0.4);
-      border-top: 4px solid var(--accent-yellow);
-      padding: 22px 20px;
-      box-shadow: 0 0 25px rgba(255, 204, 0, 0.12), 8px 8px 0px #000;
-      position: relative;
-    }
-
-    .qualifier-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      border-bottom: 2px solid rgba(255, 204, 0, 0.25);
-      padding-bottom: 10px;
-      margin-bottom: 16px;
-    }
-
-    .qualifier-title-wrap {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .qualifier-badge {
-      font-family: 'Teko', sans-serif;
-      font-size: 1.2rem;
-      background: var(--accent-yellow);
-      color: #000;
-      font-weight: 900;
-      padding: 1px 8px;
-      letter-spacing: 1px;
-      transform: skewX(-10deg);
-      box-shadow: 2px 2px 0px #000;
-    }
-
-    .qualifier-title {
-      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
-      font-weight: 900;
-      color: #ffffff;
-      letter-spacing: 1px;
-      text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
-    }
-
-    .qualifier-sub {
-      font-family: 'Teko', sans-serif;
-      font-size: 1.1rem;
-      color: var(--accent-yellow);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      opacity: 0.8;
-    }
-
-    .qualifier-table-wrapper {
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(0, 0, 0, 0.6);
-    }
-
-    .qualifier-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.88rem;
-      text-align: left;
-    }
-
-    .qualifier-table th {
-      background: linear-gradient(90deg, rgba(255, 204, 0, 0.2) 0%, rgba(0, 0, 0, 0.8) 100%);
-      color: var(--accent-yellow);
-      padding: 12px 14px;
-      font-weight: 900;
-      font-size: 0.85rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      border-bottom: 2px solid rgba(255, 204, 0, 0.4);
-      white-space: nowrap;
-    }
-
-    .qualifier-table td {
-      padding: 11px 14px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-      color: #e0e0e0;
-      transition: background 0.2s ease;
-    }
-
-    .qualifier-table tr {
-      transition: all 0.2s ease;
-    }
-
-    .qualifier-table tr:hover td {
-      background: rgba(255, 204, 0, 0.08);
-      color: #fff;
-    }
-
-    .qualifier-table tr.seeded-row {
-      background: rgba(0, 225, 255, 0.05);
-    }
-
-    .qualifier-table tr.seeded-row:hover td {
-      background: rgba(0, 225, 255, 0.12);
-    }
-
-    .num-col {
-      font-family: 'Teko', sans-serif;
-      font-size: 1.3rem;
-      font-weight: 900;
-      color: var(--accent-yellow);
-      width: 40px;
-    }
-
-    .pass-tag {
-      display: inline-block;
-      background: rgba(0, 225, 255, 0.15);
-      border: 1px solid var(--capcom-blue);
-      color: var(--capcom-blue);
-      font-size: 0.75rem;
-      font-weight: 900;
-      padding: 1px 6px;
-      border-radius: 2px;
-      margin-right: 6px;
-      letter-spacing: 0.5px;
-    }
-
-    .pending-txt {
-      color: var(--text-muted);
-      font-style: italic;
     }
 
     /* Schedule Section Header */
@@ -684,6 +568,136 @@
       margin: 0 -2px;
     }
 
+    /* ─── QUALIFIER STAGE SELECT SECTION ─── */
+    .qualifier-section {
+      margin-bottom: 50px;
+      background: linear-gradient(180deg, rgba(18, 18, 26, 0.95) 0%, rgba(8, 8, 12, 0.98) 100%);
+      border: 1px solid rgba(255, 204, 0, 0.4);
+      border-top: 4px solid var(--accent-yellow);
+      padding: 22px 20px;
+      box-shadow: 0 0 25px rgba(255, 204, 0, 0.12), 8px 8px 0px #000;
+      position: relative;
+    }
+
+    .qualifier-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 2px solid rgba(255, 204, 0, 0.25);
+      padding-bottom: 10px;
+      margin-bottom: 16px;
+    }
+
+    .qualifier-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .qualifier-badge {
+      font-family: 'Teko', sans-serif;
+      font-size: 1.2rem;
+      background: var(--accent-yellow);
+      color: #000;
+      font-weight: 900;
+      padding: 1px 8px;
+      letter-spacing: 1px;
+      transform: skewX(-10deg);
+      box-shadow: 2px 2px 0px #000;
+    }
+
+    .qualifier-title {
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+    }
+
+    .qualifier-sub {
+      font-family: 'Teko', sans-serif;
+      font-size: 1.1rem;
+      color: var(--accent-yellow);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+
+    .qualifier-table-wrapper {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .qualifier-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      text-align: left;
+    }
+
+    .qualifier-table th {
+      background: linear-gradient(90deg, rgba(255, 204, 0, 0.2) 0%, rgba(0, 0, 0, 0.8) 100%);
+      color: var(--accent-yellow);
+      padding: 12px 14px;
+      font-weight: 900;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-bottom: 2px solid rgba(255, 204, 0, 0.4);
+      white-space: nowrap;
+    }
+
+    .qualifier-table td {
+      padding: 11px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      color: #e0e0e0;
+      transition: background 0.2s ease;
+    }
+
+    .qualifier-table tr {
+      transition: all 0.2s ease;
+    }
+
+    .qualifier-table tr:hover td {
+      background: rgba(255, 204, 0, 0.08);
+      color: #fff;
+    }
+
+    .qualifier-table tr.seeded-row {
+      background: rgba(0, 225, 255, 0.05);
+    }
+
+    .qualifier-table tr.seeded-row:hover td {
+      background: rgba(0, 225, 255, 0.12);
+    }
+
+    .num-col {
+      font-family: 'Teko', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--accent-yellow);
+      width: 40px;
+    }
+
+    .pass-tag {
+      display: inline-block;
+      background: rgba(0, 225, 255, 0.15);
+      border: 1px solid var(--capcom-blue);
+      color: var(--capcom-blue);
+      font-size: 0.75rem;
+      font-weight: 900;
+      padding: 1px 6px;
+      border-radius: 2px;
+      margin-right: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .pending-txt {
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
     /* Sub Panels */
     .sub-grid {
       display: grid;
@@ -825,7 +839,7 @@
       font-weight: bold;
     }
 
-    /* ─── RESPONSIVE STYLES (スマホ対応・横スクロール解除) ─── */
+    /* ─── RESPONSIVE STYLES (スマホ対応) ─── */
     @media (max-width: 768px) {
       .qualifier-header {
         flex-direction: column;
@@ -836,7 +850,6 @@
         font-size: 0.9rem;
       }
 
-      /* テーブル表示を解除し、縦並びカードレイアウトに変換 */
       .qualifier-table, 
       .qualifier-table tbody, 
       .qualifier-table tr, 
@@ -846,7 +859,7 @@
       }
 
       .qualifier-table thead {
-        display: none; /* スマホではヘッダー行を非表示 */
+        display: none;
       }
 
       .qualifier-table-wrapper {
@@ -878,7 +891,6 @@
         font-size: 0.88rem;
       }
 
-      /* スマホカード内の要素配置カスタマイズ */
       .qualifier-table td.num-col {
         position: absolute;
         top: 8px;
@@ -888,22 +900,21 @@
         opacity: 0.8;
       }
 
-      /* 日時＋都道府県＋店舗を1つの見出し状にする */
-      .qualifier-table td:nth-child(2) { /* 日時 */
+      .qualifier-table td:nth-child(2) {
         font-family: 'Teko', sans-serif;
         font-size: 1.1rem;
         color: var(--accent-yellow);
         font-weight: bold;
       }
 
-      .qualifier-table td:nth-child(3) { /* 都道府県 */
+      .qualifier-table td:nth-child(3) {
         display: inline-block;
         font-weight: bold;
         color: #fff;
         margin-right: 6px;
       }
 
-      .qualifier-table td:nth-child(4) { /* 店舗名 */
+      .qualifier-table td:nth-child(4) {
         display: block;
         font-size: 1.0rem;
         font-weight: 900;
@@ -914,7 +925,7 @@
         border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
       }
 
-      .qualifier-table td:nth-child(5) { /* 選抜形式 */
+      .qualifier-table td:nth-child(5) {
         font-size: 0.82rem;
         color: var(--text-muted);
       }
@@ -923,7 +934,7 @@
         color: var(--text-muted);
       }
 
-      .qualifier-table td:nth-child(6) { /* 通過選手 */
+      .qualifier-table td:nth-child(6) {
         margin-top: 6px;
         padding-top: 6px;
         border-top: 1px solid rgba(255, 204, 0, 0.15);
@@ -982,6 +993,8 @@
 
       <div class="world-title-wrap">
         <span class="world-main-txt">CAPCOM vs SNK 2 世界大会</span>
+        <!-- キャッチフレーズ -->
+        <div class="hero-catchphrase">己の『選んだ道』で、世界を叩きのめせ。</div>
         <p style="margin-top: 10px; font-size: 0.95rem; color: var(--text-muted); font-weight: bold;">＜大会概要＞ 開催場所 ： 南浦和プレイスポットビッグワンセカンド</p>
       </div>
 
@@ -999,106 +1012,6 @@
         </div>
       </div>
     </section>
-
-    <!-- DAY1個人戦シード予選日程(9枠) 9月1日現在 -->
-    <div class="qualifier-section">
-      <div class="qualifier-header">
-        <div class="qualifier-title-wrap">
-          <span class="qualifier-badge">ROAD TO DAY 1</span>
-          <h3 class="qualifier-title">個人戦 シード予選日程 (全9枠) <span style="font-size:0.85rem; color:var(--text-muted); font-weight:normal; margin-left:2px;">9月1日現在</span></h3>
-        </div>
-        <div class="qualifier-sub">QUALIFIERS STAGE SELECT</div>
-      </div>
-
-      <div class="qualifier-table-wrapper">
-        <table class="qualifier-table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>日時</th>
-              <th>都道府県</th>
-              <th>予選実施店舗</th>
-              <th>選抜形式</th>
-              <th>通過選手（主なキャラクター）</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="seeded-row">
-              <td class="num-col">01</td>
-              <td>日程未定</td>
-              <td>全国</td>
-              <td>-</td>
-              <td>昨年シングル優勝者</td>
-              <td><div><span class="pass-tag">SEED</span><strong>ライ</strong>（<span class="grv-tag grv-k">K</span>舞、響、サガット）</div></td>
-            </tr>
-            <tr>
-              <td class="num-col">02</td>
-              <td>日程未定</td>
-              <td>愛知</td>
-              <td>名古屋GAME BOX Q3</td>
-              <td>ランバト総合一位</td>
-              <td class="pending-txt">未定</td>
-            </tr>
-            <tr>
-              <td class="num-col">03</td>
-              <td>日程未定</td>
-              <td>大阪</td>
-              <td>アミューズファクトリーAXE</td>
-              <td>ランバト総合一位</td>
-              <td class="pending-txt">未定</td>
-            </tr>
-            <tr>
-              <td class="num-col">04</td>
-              <td>日程未定</td>
-              <td>東京</td>
-              <td>西日暮里バーサス・南浦和ビックワンセカンド</td>
-              <td>ランバト総合一位</td>
-              <td class="pending-txt">未定</td>
-            </tr>
-            <tr>
-              <td class="num-col">05</td>
-              <td>日程未定</td>
-              <td>東京</td>
-              <td>西日暮里バーサス・南浦和ビックワン</td>
-              <td>ランバト総合二位</td>
-              <td class="pending-txt">未定</td>
-            </tr>
-            <tr>
-              <td class="num-col">06</td>
-              <td>9/18(金)</td>
-              <td>北海道</td>
-              <td>GIGO札幌駅西口</td>
-              <td>シード争奪戦トーナメント</td>
-              <td class="pending-txt">未定</td>
-            </tr>
-            <tr>
-              <td class="num-col">07</td>
-              <td>9/21(祝)</td>
-              <td>東京</td>
-              <td>南浦和ビックワン</td>
-              <td>シード争奪戦トーナメント</td>
-              <td class="pending-txt">未定</td>
-            </tr>
-            <tr>
-              <td class="num-col">08</td>
-              <td>10/17(土)</td>
-              <td>大阪</td>
-              <td>アミューズファクトリーAXE</td>
-              <td>シード争奪戦トーナメント</td>
-              <td class="pending-txt">未定</td>
-            </tr>
-            <tr>
-              <td class="num-col">09</td>
-              <td>日程未定</td>
-              <td>愛知</td>
-              <td>名古屋GAME BOX Q3</td>
-              <td>シード争奪戦トーナメント</td>
-              <td class="pending-txt">未定</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
 
     <!-- Main Tournament Block -->
     <div class="block-header">SCHEDULE</div>
@@ -1273,6 +1186,106 @@
 
       </div>
 
+    </div>
+
+    <!-- DAY1個人戦シード予選日程(9枠) 9月1日現在 （DAY 3の下に配置） -->
+    <div class="qualifier-section">
+      <div class="qualifier-header">
+        <div class="qualifier-title-wrap">
+          <span class="qualifier-badge">ROAD TO DAY 1</span>
+          <h3 class="qualifier-title">個人戦 シード予選日程 (全9枠) <span style="font-size:0.85rem; color:var(--text-muted); font-weight:normal; margin-left:2px;">9月1日現在</span></h3>
+        </div>
+        <div class="qualifier-sub">QUALIFIERS STAGE SELECT</div>
+      </div>
+
+      <div class="qualifier-table-wrapper">
+        <table class="qualifier-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>日時</th>
+              <th>都道府県</th>
+              <th>予選実施店舗</th>
+              <th>選抜形式</th>
+              <th>通過選手（主なキャラクター）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="seeded-row">
+              <td class="num-col">01</td>
+              <td>日程未定</td>
+              <td>全国</td>
+              <td>-</td>
+              <td>昨年シングル優勝者</td>
+              <td><div><span class="pass-tag">SEED</span><strong>ライ</strong>（<span class="grv-tag grv-k">K</span>舞、響、サガット）</div></td>
+            </tr>
+            <tr>
+              <td class="num-col">02</td>
+              <td>日程未定</td>
+              <td>愛知</td>
+              <td>名古屋GAME BOX Q3</td>
+              <td>ランバト総合一位</td>
+              <td class="pending-txt">未定</td>
+            </tr>
+            <tr>
+              <td class="num-col">03</td>
+              <td>日程未定</td>
+              <td>大阪</td>
+              <td>アミューズファクトリーAXE</td>
+              <td>ランバト総合一位</td>
+              <td class="pending-txt">未定</td>
+            </tr>
+            <tr>
+              <td class="num-col">04</td>
+              <td>日程未定</td>
+              <td>東京</td>
+              <td>西日暮里バーサス・南浦和ビックワンセカンド</td>
+              <td>ランバト総合一位</td>
+              <td class="pending-txt">未定</td>
+            </tr>
+            <tr>
+              <td class="num-col">05</td>
+              <td>日程未定</td>
+              <td>東京</td>
+              <td>西日暮里バーサス・南浦和ビックワン</td>
+              <td>ランバト総合二位</td>
+              <td class="pending-txt">未定</td>
+            </tr>
+            <tr>
+              <td class="num-col">06</td>
+              <td>9/18(金)</td>
+              <td>北海道</td>
+              <td>GIGO札幌駅西口</td>
+              <td>シード争奪戦トーナメント</td>
+              <td class="pending-txt">未定</td>
+            </tr>
+            <tr>
+              <td class="num-col">07</td>
+              <td>9/21(祝)</td>
+              <td>東京</td>
+              <td>南浦和ビックワン</td>
+              <td>シード争奪戦トーナメント</td>
+              <td class="pending-txt">未定</td>
+            </tr>
+            <tr>
+              <td class="num-col">08</td>
+              <td>10/17(土)</td>
+              <td>大阪</td>
+              <td>アミューズファクトリーAXE</td>
+              <td>シード争奪戦トーナメント</td>
+              <td class="pending-txt">未定</td>
+            </tr>
+            <tr>
+              <td class="num-col">09</td>
+              <td>日程未定</td>
+              <td>愛知</td>
+              <td>名古屋GAME BOX Q3</td>
+              <td>シード争奪戦トーナメント</td>
+              <td class="pending-txt">未定</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <!-- Streams & Location & Hashtag Panel -->
