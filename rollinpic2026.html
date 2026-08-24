@@ -394,33 +394,35 @@
       box-shadow: none;
     }
 
-    /* --- FT10 VS BATTLE MATCH DESIGN --- */
+    /* --- FT10 MATCHUP DESIGN --- */
     .ft10-container {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 18px;
       margin-top: 15px;
     }
 
     .ft10-row {
-      background: rgba(0, 0, 0, 0.85);
-      border: 1px solid rgba(255, 204, 0, 0.3);
-      padding: 8px 6px;
+      background: rgba(4, 4, 8, 0.95);
+      border: 1px solid rgba(255, 204, 0, 0.35);
+      padding: 10px 8px;
       position: relative;
-      box-shadow: inset 0 0 20px rgba(0,0,0,0.9), 0 4px 12px rgba(0,0,0,0.5);
+      box-shadow: inset 0 0 25px rgba(0,0,0,0.95), 0 6px 16px rgba(0,0,0,0.6);
+      border-radius: 4px;
+      overflow: hidden;
     }
 
     .ft10-label {
       font-family: 'Teko', sans-serif;
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 900;
       color: var(--accent-yellow);
-      letter-spacing: 1px;
-      margin-bottom: 4px;
+      letter-spacing: 1.5px;
+      margin-bottom: 6px;
       line-height: 1;
-      text-shadow: 0 0 8px rgba(255, 204, 0, 0.6);
+      text-shadow: 0 0 10px rgba(255, 204, 0, 0.8);
       text-transform: uppercase;
-      padding-left: 4px;
+      padding-left: 6px;
     }
 
     .vs-matchup {
@@ -428,7 +430,7 @@
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
       position: relative;
-      min-height: 70px;
+      min-height: 105px;
       height: auto;
     }
 
@@ -438,133 +440,186 @@
       overflow: hidden;
       display: flex;
       align-items: center;
-      transition: all 0.3s ease;
-      padding: 6px 0;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 10px 14px;
+      border-radius: 2px;
     }
 
     .side-player.left {
-      background: linear-gradient(135deg, rgba(0, 225, 255, 0.25) 0%, rgba(0, 0, 0, 0.85) 100%);
-      border-left: 4px solid var(--capcom-blue);
-      clip-path: polygon(0 0, 100% 0, 95% 100%, 0 100%);
-      padding-left: 8px;
-      padding-right: 12px;
-      margin-right: -2px;
+      background: linear-gradient(110deg, rgba(0, 225, 255, 0.22) 0%, rgba(6, 12, 20, 0.95) 85%);
+      border-left: 5px solid var(--capcom-blue);
+      clip-path: polygon(0 0, 100% 0, 93% 100%, 0 100%);
+      margin-right: -4px;
     }
 
     .side-player.right {
-      background: linear-gradient(225deg, rgba(255, 42, 75, 0.25) 0%, rgba(0, 0, 0, 0.85) 100%);
-      border-right: 4px solid var(--snk-red);
-      clip-path: polygon(5% 0, 100% 0, 100% 100%, 0 100%);
-      padding-right: 8px;
-      padding-left: 12px;
-      margin-left: -2px;
+      background: linear-gradient(250deg, rgba(255, 42, 75, 0.22) 0%, rgba(20, 6, 10, 0.95) 85%);
+      border-right: 5px solid var(--snk-red);
+      clip-path: polygon(7% 0, 100% 0, 100% 100%, 0 100%);
+      margin-left: -4px;
       text-align: right;
       justify-content: flex-end;
     }
 
     .ft10-row:hover .side-player.left {
-      background: linear-gradient(135deg, rgba(0, 225, 255, 0.45) 0%, rgba(0, 0, 0, 0.75) 100%);
+      background: linear-gradient(110deg, rgba(0, 225, 255, 0.45) 0%, rgba(6, 15, 28, 0.88) 85%);
     }
 
     .ft10-row:hover .side-player.right {
-      background: linear-gradient(225deg, rgba(255, 42, 75, 0.45) 0%, rgba(0, 0, 0, 0.75) 100%);
+      background: linear-gradient(250deg, rgba(255, 42, 75, 0.45) 0%, rgba(28, 6, 12, 0.88) 85%);
     }
 
-    .player-bg-layer {
+    /* PC用 背景プレイヤー写真 */
+    .player-bg-photo-wrap {
       position: absolute;
       top: 0;
       bottom: 0;
-      width: 100%;
+      width: 55%;
       z-index: 1;
-      opacity: 0.3;
-      display: flex;
-      align-items: center;
       pointer-events: none;
-      filter: grayscale(10%) contrast(130%);
-      transition: opacity 0.3s ease, filter 0.3s ease;
+      overflow: hidden;
     }
 
-    .ft10-row:hover .player-bg-layer {
-      opacity: 0.6;
-      filter: grayscale(0%) contrast(110%);
-    }
-
-    .side-player.left .player-bg-layer {
+    .side-player.left .player-bg-photo-wrap {
       left: 0;
-      justify-content: flex-start;
-      mask-image: linear-gradient(to right, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
-      -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
+      mask-image: linear-gradient(to right, rgba(0,0,0,0.85) 20%, rgba(0,0,0,0) 100%);
+      -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0.85) 20%, rgba(0,0,0,0) 100%);
     }
 
-    .side-player.right .player-bg-layer {
+    .side-player.right .player-bg-photo-wrap {
       right: 0;
-      justify-content: flex-end;
-      mask-image: linear-gradient(to left, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
-      -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
+      mask-image: linear-gradient(to left, rgba(0,0,0,0.85) 20%, rgba(0,0,0,0) 100%);
+      -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.85) 20%, rgba(0,0,0,0) 100%);
     }
 
-    .player-bg-layer img {
-      height: 150%;
-      width: auto;
-      object-fit: contain;
-      margin: 0 -10px;
+    .player-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(30%) brightness(0.85);
+      transition: transform 0.4s ease, filter 0.4s ease;
+      display: block;
     }
 
+    .ft10-row:hover .player-photo {
+      transform: scale(1.1);
+      filter: grayscale(0%) brightness(1.05);
+    }
+
+    /* テキスト・アイコン構造 */
     .player-content {
       position: relative;
       z-index: 2;
-      text-shadow: 0 2px 6px rgba(0,0,0,1), 0 0 3px rgba(0,0,0,1);
       width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .player-main-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .side-player.right .player-main-header {
+      justify-content: flex-end;
+    }
+
+    /* スマホ時用の丸型顔写真アバター (PCでは非表示) */
+    .player-avatar-mobile {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent-yellow);
+      box-shadow: 0 0 10px rgba(0,0,0,0.8);
+      flex-shrink: 0;
     }
 
     .p-name {
-      font-size: 1.05rem;
+      font-size: 1.25rem;
       font-weight: 900;
-      color: #fff;
-      display: block;
-      letter-spacing: 0.3px;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+      line-height: 1.1;
+      text-transform: uppercase;
     }
 
-    .side-player.left .p-name { color: #e6ffff; text-shadow: 0 0 6px rgba(0, 225, 255, 0.6); }
-    .side-player.right .p-name { color: #ffe6e8; text-shadow: 0 0 6px rgba(255, 42, 75, 0.6); }
+    .side-player.left .p-name { 
+      text-shadow: 0 0 8px rgba(0, 225, 255, 0.8), 0 2px 4px #000, 2px 2px 0px #000; 
+    }
+    .side-player.right .p-name { 
+      text-shadow: 0 0 8px rgba(255, 42, 75, 0.8), 0 2px 4px #000, 2px 2px 0px #000; 
+    }
 
     .grv-tag {
       font-family: 'Teko', sans-serif;
-      font-size: 1.0rem;
+      font-size: 1.15rem;
       padding: 0 2px 0 0;
       display: inline-block;
       line-height: 1;
-      font-weight: bold;
+      font-weight: 900;
     }
 
-    .grv-a { color: var(--capcom-blue); }
-    .grv-k { color: var(--snk-red); }
-    .grv-c { color: #00ff66; }
+    .grv-a { color: var(--capcom-blue); text-shadow: 0 0 6px rgba(0, 225, 255, 0.7); }
+    .grv-k { color: var(--snk-red); text-shadow: 0 0 6px rgba(255, 42, 75, 0.7); }
+    .grv-c { color: #00ff66; text-shadow: 0 0 6px rgba(0, 255, 102, 0.7); }
+
+    /* キャラクターアイコン表示枠 */
+    .char-icon-group {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 6px;
+    }
+
+    .side-player.right .char-icon-group {
+      justify-content: flex-end;
+    }
+
+    .char-thumb {
+      width: 32px;
+      height: 32px;
+      border-radius: 3px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      object-fit: cover;
+      background: rgba(0,0,0,0.6);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.8);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .ft10-row:hover .char-thumb {
+      transform: translateY(-2px) scale(1.08);
+      border-color: var(--accent-yellow);
+    }
 
     .team-chars {
-      font-size: 0.75rem;
-      color: #e0e0ee;
+      font-size: 0.82rem;
+      color: #f0f0ff;
       display: block;
-      font-weight: bold;
-      line-height: 1.25;
-      margin-top: 2px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-top: 4px;
+      text-shadow: 0 2px 4px #000, 0 0 6px #000;
     }
 
     .vs-mark {
       z-index: 10;
       font-family: 'Anton', sans-serif;
-      font-size: 1.0rem;
-      color: #fff;
+      font-size: 1.15rem;
+      color: #ffffff;
       font-style: italic;
       background: #000;
-      border: 1px solid var(--accent-yellow);
-      padding: 1px 4px;
-      box-shadow: 0 0 8px rgba(255, 204, 0, 0.8), 0 0 3px #000;
+      border: 1.5px solid var(--accent-yellow);
+      padding: 2px 6px;
+      box-shadow: 0 0 12px rgba(255, 204, 0, 0.9), 0 0 4px #000;
       text-shadow: 1px 1px 0px #000;
       pointer-events: none;
       line-height: 1;
       transform: rotate(-6deg);
-      margin: 0 -2px;
+      margin: 0 -3px;
     }
 
     /* ─── QUALIFIER STAGE SELECT SECTION ─── */
@@ -823,7 +878,7 @@
       font-weight: bold;
     }
 
-    /* ─── RESPONSIVE STYLES (スマホ対応) ─── */
+    /* ─── RESPONSIVE STYLES (スマホ・タブレット最適化) ─── */
     @media (max-width: 768px) {
       .qualifier-header {
         flex-direction: column;
@@ -932,6 +987,7 @@
       }
     }
 
+    /* スマホ専用 FT10 カードレイアウト */
     @media (max-width: 650px) {
       .guide-banner {
         flex-direction: column;
@@ -940,20 +996,50 @@
       }
       .guide-banner-inner { transform: none; }
       .btn-guide { clip-path: none; width: 100%; margin-top: 10px; }
-      .vs-matchup { display: flex; flex-direction: column; height: auto; gap: 8px; }
+      
+      /* FT10 スマホ最適化 */
+      .vs-matchup { display: flex; flex-direction: column; height: auto; gap: 10px; }
+      
       .side-player.left, .side-player.right {
         clip-path: none !important;
         margin: 0 !important;
         padding: 12px !important;
         width: 100%;
-        text-align: center !important;
-        justify-content: center !important;
+        text-align: left !important;
+        justify-content: flex-start !important;
+        border-radius: 4px;
       }
+
+      .side-player.left {
+        border-left: 4px solid var(--capcom-blue) !important;
+        border-right: none !important;
+        background: linear-gradient(135deg, rgba(0, 225, 255, 0.25) 0%, rgba(10, 10, 16, 0.95) 100%) !important;
+      }
+
+      .side-player.right {
+        border-left: 4px solid var(--snk-red) !important;
+        border-right: none !important;
+        background: linear-gradient(135deg, rgba(255, 42, 75, 0.25) 0%, rgba(10, 10, 16, 0.95) 100%) !important;
+      }
+
+      /* スマホでは背景透過写真を非表示にし、丸アバターでくっきり顔を見せる */
+      .player-bg-photo-wrap { display: none !important; }
+      .player-avatar-mobile { display: block !important; }
+
+      .side-player.right .player-main-header {
+        justify-content: flex-start !important;
+      }
+
+      .side-player.right .char-icon-group {
+        justify-content: flex-start !important;
+      }
+
       .vs-mark {
         transform: none;
-        margin: -4px auto;
+        margin: 2px auto;
         display: inline-block;
       }
+
       .rule-banner { transform: none; }
       .rule-banner-inner { transform: none; }
     }
@@ -1063,30 +1149,42 @@
             <div class="ft10-label">MATCH 1</div>
             <div class="vs-matchup">
               
-              <!-- LEFT PLAYER -->
+              <!-- LEFT PLAYER (ピノキオ) -->
               <div class="side-player left">
-                <div class="player-bg-layer">
-                  <img src="chunli.png" alt="" onerror="this.style.display='none';">
-                  <img src="cammy.png" alt="" onerror="this.style.display='none';">
-                  <img src="sagat.png" alt="" onerror="this.style.display='none';">
+                <div class="player-bg-photo-wrap">
+                  <img class="player-photo" src="player_pinokio.png" alt="ピノキオ" onerror="this.style.display='none';">
                 </div>
                 <div class="player-content">
-                  <span class="p-name">ピノキオ</span>
+                  <div class="player-main-header">
+                    <img class="player-avatar-mobile" src="player_pinokio.png" alt="" onerror="this.style.display='none';">
+                    <span class="p-name">ピノキオ</span>
+                  </div>
+                  <div class="char-icon-group">
+                    <img class="char-thumb" src="chunli.png" alt="" onerror="this.style.display='none';">
+                    <img class="char-thumb" src="cammy.png" alt="" onerror="this.style.display='none';">
+                    <img class="char-thumb" src="sagat.png" alt="" onerror="this.style.display='none';">
+                  </div>
                   <span class="team-chars"><span class="grv-tag grv-k">K</span>春麗 / キャミィ / サガット</span>
                 </div>
               </div>
 
               <div class="vs-mark">VS</div>
 
-              <!-- RIGHT PLAYER -->
+              <!-- RIGHT PLAYER (ワタリ) -->
               <div class="side-player right">
-                <div class="player-bg-layer">
-                  <img src="iori.png" alt="" onerror="this.style.display='none';">
-                  <img src="blanka.png" alt="" onerror="this.style.display='none';">
-                  <img src="vega.png" alt="" onerror="this.style.display='none';">
+                <div class="player-bg-photo-wrap">
+                  <img class="player-photo" src="player_watari.png" alt="ワタリ" onerror="this.style.display='none';">
                 </div>
                 <div class="player-content">
-                  <span class="p-name">ワタリ</span>
+                  <div class="player-main-header">
+                    <img class="player-avatar-mobile" src="player_watari.png" alt="" onerror="this.style.display='none';">
+                    <span class="p-name">ワタリ</span>
+                  </div>
+                  <div class="char-icon-group">
+                    <img class="char-thumb" src="iori.png" alt="" onerror="this.style.display='none';">
+                    <img class="char-thumb" src="blanka.png" alt="" onerror="this.style.display='none';">
+                    <img class="char-thumb" src="vega.png" alt="" onerror="this.style.display='none';">
+                  </div>
                   <span class="team-chars"><span class="grv-tag grv-a">A</span>庵 / ブランカ / ベガ</span>
                 </div>
               </div>
@@ -1099,30 +1197,42 @@
             <div class="ft10-label">MATCH 2</div>
             <div class="vs-matchup">
               
-              <!-- LEFT PLAYER -->
+              <!-- LEFT PLAYER (GAO) -->
               <div class="side-player left">
-                <div class="player-bg-layer">
-                  <img src="geese.png" alt="" onerror="this.style.display='none';">
-                  <img src="nakoruru.png" alt="" onerror="this.style.display='none';">
-                  <img src="rock.png" alt="" onerror="this.style.display='none';">
+                <div class="player-bg-photo-wrap">
+                  <img class="player-photo" src="player_gao.png" alt="GAO" onerror="this.style.display='none';">
                 </div>
                 <div class="player-content">
-                  <span class="p-name">GAO</span>
+                  <div class="player-main-header">
+                    <img class="player-avatar-mobile" src="player_gao.png" alt="" onerror="this.style.display='none';">
+                    <span class="p-name">GAO</span>
+                  </div>
+                  <div class="char-icon-group">
+                    <img class="char-thumb" src="geese.png" alt="" onerror="this.style.display='none';">
+                    <img class="char-thumb" src="nakoruru.png" alt="" onerror="this.style.display='none';">
+                    <img class="char-thumb" src="rock.png" alt="" onerror="this.style.display='none';">
+                  </div>
                   <span class="team-chars"><span class="grv-tag grv-k">K</span>ギース / ナコルル / ロック</span>
                 </div>
               </div>
 
               <div class="vs-mark">VS</div>
 
-              <!-- RIGHT PLAYER -->
+              <!-- RIGHT PLAYER (喫音) -->
               <div class="side-player right">
-                <div class="player-bg-layer">
-                  <img src="nakoruru.png" alt="" onerror="this.style.display='none';">
-                  <img src="hibiki.png" alt="" onerror="this.style.display='none';">
-                  <img src="sagat.png" alt="" onerror="this.style.display='none';">
+                <div class="player-bg-photo-wrap">
+                  <img class="player-photo" src="player_kitsuon.png" alt="喫音" onerror="this.style.display='none';">
                 </div>
                 <div class="player-content">
-                  <span class="p-name">喫音</span>
+                  <div class="player-main-header">
+                    <img class="player-avatar-mobile" src="player_kitsuon.png" alt="" onerror="this.style.display='none';">
+                    <span class="p-name">喫音</span>
+                  </div>
+                  <div class="char-icon-group">
+                    <img class="char-thumb" src="nakoruru.png" alt="" onerror="this.style.display='none';">
+                    <img class="char-thumb" src="hibiki.png" alt="" onerror="this.style.display='none';">
+                    <img class="char-thumb" src="sagat.png" alt="" onerror="this.style.display='none';">
+                  </div>
                   <span class="team-chars"><span class="grv-tag grv-k">K</span>ナコルル / 響 / サガット</span>
                 </div>
               </div>
@@ -1135,30 +1245,42 @@
             <div class="ft10-label">MATCH 3</div>
             <div class="vs-matchup">
               
-              <!-- LEFT PLAYER -->
+              <!-- LEFT PLAYER (D44) -->
               <div class="side-player left">
-                <div class="player-bg-layer">
-                  <img src="yamazaki.png" alt="" onerror="this.style.display='none';">
-                  <img src="blanka.png" alt="" onerror="this.style.display='none';">
-                  <img src="vega.png" alt="" onerror="this.style.display='none';">
+                <div class="player-bg-photo-wrap">
+                  <img class="player-photo" src="player_d44.png" alt="D44" onerror="this.style.display='none';">
                 </div>
                 <div class="player-content">
-                  <span class="p-name">D44</span>
+                  <div class="player-main-header">
+                    <img class="player-avatar-mobile" src="player_d44.png" alt="" onerror="this.style.display='none';">
+                    <span class="p-name">D44</span>
+                  </div>
+                  <div class="char-icon-group">
+                    <img class="char-thumb" src="yamazaki.png" alt="" onerror="this.style.display='none';">
+                    <img class="char-thumb" src="blanka.png" alt="" onerror="this.style.display='none';">
+                    <img class="char-thumb" src="vega.png" alt="" onerror="this.style.display='none';">
+                  </div>
                   <span class="team-chars"><span class="grv-tag grv-a">A</span>山崎 / ブランカ / ベガ</span>
                 </div>
               </div>
 
               <div class="vs-mark">VS</div>
 
-              <!-- RIGHT PLAYER -->
+              <!-- RIGHT PLAYER (kiku) -->
               <div class="side-player right">
-                <div class="player-bg-layer">
-                  <img src="cammy.png" alt="" onerror="this.style.display='none';">
-                  <img src="chunli.png" alt="" onerror="this.style.display='none';">
-                  <img src="sagat.png" alt="" onerror="this.style.display='none';">
+                <div class="player-bg-photo-wrap">
+                  <img class="player-photo" src="player_kiku.png" alt="kiku" onerror="this.style.display='none';">
                 </div>
                 <div class="player-content">
-                  <span class="p-name">kiku</span>
+                  <div class="player-main-header">
+                    <img class="player-avatar-mobile" src="player_kiku.png" alt="" onerror="this.style.display='none';">
+                    <span class="p-name">kiku</span>
+                  </div>
+                  <div class="char-icon-group">
+                    <img class="char-thumb" src="cammy.png" alt="" onerror="this.style.display='none';">
+                    <img class="char-thumb" src="chunli.png" alt="" onerror="this.style.display='none';">
+                    <img class="char-thumb" src="sagat.png" alt="" onerror="this.style.display='none';">
+                  </div>
                   <span class="team-chars"><span class="grv-tag grv-c">C</span>キャミィ / 春麗 / サガット</span>
                 </div>
               </div>
