@@ -208,27 +208,65 @@
       background: #fff;
     }
 
-    /* 予選日程テーブル（SCHEDULEの上に配置） */
+    /* ─── QUALIFIER STAGE SELECT SECTION ─── */
     .qualifier-section {
       margin-bottom: 50px;
-      background: var(--panel-bg);
-      border: 1px solid var(--panel-border);
-      padding: 20px;
-      box-shadow: 8px 8px 0px #000;
+      background: linear-gradient(180deg, rgba(18, 18, 26, 0.95) 0%, rgba(8, 8, 12, 0.98) 100%);
+      border: 1px solid rgba(255, 204, 0, 0.4);
+      border-top: 4px solid var(--accent-yellow);
+      padding: 22px 20px;
+      box-shadow: 0 0 25px rgba(255, 204, 0, 0.12), 8px 8px 0px #000;
+      position: relative;
+    }
+
+    .qualifier-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 2px solid rgba(255, 204, 0, 0.25);
+      padding-bottom: 10px;
+      margin-bottom: 16px;
+    }
+
+    .qualifier-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .qualifier-badge {
+      font-family: 'Teko', sans-serif;
+      font-size: 1.2rem;
+      background: var(--accent-yellow);
+      color: #000;
+      font-weight: 900;
+      padding: 1px 8px;
+      letter-spacing: 1px;
+      transform: skewX(-10deg);
+      box-shadow: 2px 2px 0px #000;
     }
 
     .qualifier-title {
-      font-size: 1.2rem;
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
       font-weight: 900;
+      color: #ffffff;
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+    }
+
+    .qualifier-sub {
+      font-family: 'Teko', sans-serif;
+      font-size: 1.1rem;
       color: var(--accent-yellow);
-      margin-bottom: 14px;
-      border-left: 5px solid var(--accent-yellow);
-      padding-left: 10px;
-      letter-spacing: 0.5px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.8;
     }
 
     .qualifier-table-wrapper {
-      overflow-x: auto;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.6);
     }
 
     .qualifier-table {
@@ -236,25 +274,68 @@
       border-collapse: collapse;
       font-size: 0.88rem;
       text-align: left;
-      white-space: nowrap;
     }
 
     .qualifier-table th {
-      background: rgba(255, 204, 0, 0.1);
+      background: linear-gradient(90deg, rgba(255, 204, 0, 0.2) 0%, rgba(0, 0, 0, 0.8) 100%);
       color: var(--accent-yellow);
-      padding: 10px 12px;
-      font-weight: bold;
-      border-bottom: 2px solid var(--panel-border);
+      padding: 12px 14px;
+      font-weight: 900;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-bottom: 2px solid rgba(255, 204, 0, 0.4);
+      white-space: nowrap;
     }
 
     .qualifier-table td {
-      padding: 10px 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 11px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
       color: #e0e0e0;
+      transition: background 0.2s ease;
     }
 
-    .qualifier-table tr:hover {
-      background: rgba(255, 255, 255, 0.04);
+    .qualifier-table tr {
+      transition: all 0.2s ease;
+    }
+
+    .qualifier-table tr:hover td {
+      background: rgba(255, 204, 0, 0.08);
+      color: #fff;
+    }
+
+    .qualifier-table tr.seeded-row {
+      background: rgba(0, 225, 255, 0.05);
+    }
+
+    .qualifier-table tr.seeded-row:hover td {
+      background: rgba(0, 225, 255, 0.12);
+    }
+
+    .num-col {
+      font-family: 'Teko', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--accent-yellow);
+      width: 40px;
+    }
+
+    .pass-tag {
+      display: inline-block;
+      background: rgba(0, 225, 255, 0.15);
+      border: 1px solid var(--capcom-blue);
+      color: var(--capcom-blue);
+      font-size: 0.75rem;
+      font-weight: 900;
+      padding: 1px 6px;
+      border-radius: 2px;
+      margin-right: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .pending-txt {
+      color: var(--text-muted);
+      font-style: italic;
     }
 
     /* Schedule Section Header */
@@ -430,7 +511,7 @@
       box-shadow: none;
     }
 
-    /* --- FT10 VS BATTLE MATCH DESIGN (対戦激突演出) --- */
+    /* --- FT10 VS BATTLE MATCH DESIGN --- */
     .ft10-container {
       display: flex;
       flex-direction: column;
@@ -478,7 +559,6 @@
       padding: 6px 0;
     }
 
-    /* 左右のスラッシュカット */
     .side-player.left {
       background: linear-gradient(135deg, rgba(0, 225, 255, 0.25) 0%, rgba(0, 0, 0, 0.85) 100%);
       border-left: 4px solid var(--capcom-blue);
@@ -499,7 +579,6 @@
       justify-content: flex-end;
     }
 
-    /* ホバー時のバックグラウンド強調 */
     .ft10-row:hover .side-player.left {
       background: linear-gradient(135deg, rgba(0, 225, 255, 0.45) 0%, rgba(0, 0, 0, 0.75) 100%);
     }
@@ -508,7 +587,6 @@
       background: linear-gradient(225deg, rgba(255, 42, 75, 0.45) 0%, rgba(0, 0, 0, 0.75) 100%);
     }
 
-    /* キャラクター画像レイヤー */
     .player-bg-layer {
       position: absolute;
       top: 0;
@@ -589,7 +667,6 @@
       margin-top: 2px;
     }
 
-    /* 中央激突 VS マーク（小型化） */
     .vs-mark {
       z-index: 10;
       font-family: 'Anton', sans-serif;
@@ -748,6 +825,118 @@
       font-weight: bold;
     }
 
+    /* ─── RESPONSIVE STYLES (スマホ対応・横スクロール解除) ─── */
+    @media (max-width: 768px) {
+      .qualifier-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+      .qualifier-sub {
+        font-size: 0.9rem;
+      }
+
+      /* テーブル表示を解除し、縦並びカードレイアウトに変換 */
+      .qualifier-table, 
+      .qualifier-table tbody, 
+      .qualifier-table tr, 
+      .qualifier-table td {
+        display: block;
+        width: 100%;
+      }
+
+      .qualifier-table thead {
+        display: none; /* スマホではヘッダー行を非表示 */
+      }
+
+      .qualifier-table-wrapper {
+        border: none;
+        background: transparent;
+      }
+
+      .qualifier-table tr {
+        background: rgba(16, 16, 24, 0.9);
+        border: 1px solid rgba(255, 204, 0, 0.25);
+        border-left: 4px solid var(--accent-yellow);
+        margin-bottom: 12px;
+        padding: 12px 14px;
+        position: relative;
+        box-shadow: 4px 4px 0px #000;
+      }
+
+      .qualifier-table tr.seeded-row {
+        border-left: 4px solid var(--capcom-blue);
+        background: linear-gradient(135deg, rgba(0, 225, 255, 0.08) 0%, rgba(16, 16, 24, 0.95) 100%);
+      }
+
+      .qualifier-table td {
+        padding: 3px 0;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 0.88rem;
+      }
+
+      /* スマホカード内の要素配置カスタマイズ */
+      .qualifier-table td.num-col {
+        position: absolute;
+        top: 8px;
+        right: 12px;
+        width: auto;
+        font-size: 1.5rem;
+        opacity: 0.8;
+      }
+
+      /* 日時＋都道府県＋店舗を1つの見出し状にする */
+      .qualifier-table td:nth-child(2) { /* 日時 */
+        font-family: 'Teko', sans-serif;
+        font-size: 1.1rem;
+        color: var(--accent-yellow);
+        font-weight: bold;
+      }
+
+      .qualifier-table td:nth-child(3) { /* 都道府県 */
+        display: inline-block;
+        font-weight: bold;
+        color: #fff;
+        margin-right: 6px;
+      }
+
+      .qualifier-table td:nth-child(4) { /* 店舗名 */
+        display: block;
+        font-size: 1.0rem;
+        font-weight: 900;
+        color: #fff;
+        margin-top: 2px;
+        margin-bottom: 6px;
+        padding-bottom: 6px;
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+      }
+
+      .qualifier-table td:nth-child(5) { /* 選抜形式 */
+        font-size: 0.82rem;
+        color: var(--text-muted);
+      }
+      .qualifier-table td:nth-child(5)::before {
+        content: "形式: ";
+        color: var(--text-muted);
+      }
+
+      .qualifier-table td:nth-child(6) { /* 通過選手 */
+        margin-top: 6px;
+        padding-top: 6px;
+        border-top: 1px solid rgba(255, 204, 0, 0.15);
+        font-weight: bold;
+      }
+      .qualifier-table td:nth-child(6)::before {
+        content: "通過者:";
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin-right: 8px;
+      }
+    }
+
     @media (max-width: 650px) {
       .guide-banner {
         flex-direction: column;
@@ -811,9 +1000,16 @@
       </div>
     </section>
 
-    <!-- DAY1個人戦シード予選日程(9枠) 9月1日現在 （SCHEDULEの上に配置） -->
+    <!-- DAY1個人戦シード予選日程(9枠) 9月1日現在 -->
     <div class="qualifier-section">
-      <div class="qualifier-title">DAY1個人戦シード予選日程(9枠) 9月1日現在</div>
+      <div class="qualifier-header">
+        <div class="qualifier-title-wrap">
+          <span class="qualifier-badge">ROAD TO DAY 1</span>
+          <h3 class="qualifier-title">個人戦 シード予選日程 (全9枠) <span style="font-size:0.85rem; color:var(--text-muted); font-weight:normal; margin-left:2px;">9月1日現在</span></h3>
+        </div>
+        <div class="qualifier-sub">QUALIFIERS STAGE SELECT</div>
+      </div>
+
       <div class="qualifier-table-wrapper">
         <table class="qualifier-table">
           <thead>
@@ -827,77 +1023,77 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>-</td>
-              <td>-</td>
+            <tr class="seeded-row">
+              <td class="num-col">01</td>
+              <td>日程未定</td>
+              <td>全国</td>
               <td>-</td>
               <td>昨年シングル優勝者</td>
-              <td>ライ（K：舞、響、サガット）</td>
+              <td><div><span class="pass-tag">SEED</span><strong>ライ</strong>（<span class="grv-tag grv-k">K</span>舞、響、サガット）</div></td>
             </tr>
             <tr>
-              <td>2</td>
-              <td>-</td>
+              <td class="num-col">02</td>
+              <td>日程未定</td>
               <td>愛知</td>
               <td>名古屋GAME BOX Q3</td>
               <td>ランバト総合一位</td>
-              <td>未定</td>
+              <td class="pending-txt">未定</td>
             </tr>
             <tr>
-              <td>3</td>
-              <td>-</td>
+              <td class="num-col">03</td>
+              <td>日程未定</td>
               <td>大阪</td>
               <td>アミューズファクトリーAXE</td>
               <td>ランバト総合一位</td>
-              <td>未定</td>
+              <td class="pending-txt">未定</td>
             </tr>
             <tr>
-              <td>4</td>
-              <td>-</td>
+              <td class="num-col">04</td>
+              <td>日程未定</td>
               <td>東京</td>
               <td>西日暮里バーサス・南浦和ビックワンセカンド</td>
               <td>ランバト総合一位</td>
-              <td>未定</td>
+              <td class="pending-txt">未定</td>
             </tr>
             <tr>
-              <td>5</td>
-              <td>-</td>
+              <td class="num-col">05</td>
+              <td>日程未定</td>
               <td>東京</td>
               <td>西日暮里バーサス・南浦和ビックワン</td>
               <td>ランバト総合二位</td>
-              <td>未定</td>
+              <td class="pending-txt">未定</td>
             </tr>
             <tr>
-              <td>6</td>
+              <td class="num-col">06</td>
               <td>9/18(金)</td>
               <td>北海道</td>
               <td>GIGO札幌駅西口</td>
               <td>シード争奪戦トーナメント</td>
-              <td>未定</td>
+              <td class="pending-txt">未定</td>
             </tr>
             <tr>
-              <td>7</td>
+              <td class="num-col">07</td>
               <td>9/21(祝)</td>
               <td>東京</td>
               <td>南浦和ビックワン</td>
               <td>シード争奪戦トーナメント</td>
-              <td>未定</td>
+              <td class="pending-txt">未定</td>
             </tr>
             <tr>
-              <td>8</td>
+              <td class="num-col">08</td>
               <td>10/17(土)</td>
               <td>大阪</td>
               <td>アミューズファクトリーAXE</td>
               <td>シード争奪戦トーナメント</td>
-              <td>未定</td>
+              <td class="pending-txt">未定</td>
             </tr>
             <tr>
-              <td>9</td>
-              <td>未定</td>
+              <td class="num-col">09</td>
+              <td>日程未定</td>
               <td>愛知</td>
               <td>名古屋GAME BOX Q3</td>
               <td>シード争奪戦トーナメント</td>
-              <td>未定</td>
+              <td class="pending-txt">未定</td>
             </tr>
           </tbody>
         </table>
@@ -1141,9 +1337,18 @@
         <div class="acc-body">
           <div class="video-list">
             <a target="_blank" href="http://cvs2.web.fc2.com/Rollinpic/2025/rollinpic2025.xhtml" class="hp-link">--Rollin'pic Tokyo 2025 HP--</a>
-            <a target="_blank" href="https://www.youtube.com/watch?v=fO5gPj0mDoI">Rollin'Pic Tokyo 2025 Day 2 3on3 Top 10 Part 6 2025/11/23 (Grand Final)</a>
-            <a target="_blank" href="https://www.youtube.com/watch?v=DXw2-3XTS7I">Rollin'Pic Tokyo 2025 Day 2 3on3 Top 10 Part 5 2025/11/23 (Semi Final)</a>
-            <a target="_blank" href="https://www.youtube.com/watch?v=v4K4oo7xWiM">Rollin'Pic Tokyo 2025 Day 1 Singles Top 16 / Top 8 2025/11/22</a>
+            <a target="_blank" href="https://www.youtube.com/watch?v=togWvV1lRd8">Rollin'Pic Tokyo 2025 Day 1 Singles Top 8 Part 2 2025/11/22</a>
+            <a target="_blank" href="https://www.youtube.com/watch?v=FjD1yCFcSUw">Rollin'Pic Tokyo 2025 Day 1 Singles Top 8 Part 1 2025/11/22</a>
+            <a target="_blank" href="https://www.youtube.com/watch?v=d2L9Wm4_FE4&t=266s">Rollin'Pic Tokyo 2025 Day 1 Singles Top 16 Part 4 2025/11/22</a>
+            <a target="_blank" href="https://www.youtube.com/watch?v=PnYhD36FKF8">Rollin'Pic Tokyo 2025 Day 1 Singles Top 16 Part 3 2025/11/22</a>
+            <a target="_blank" href="https://www.youtube.com/watch?v=7v5ISwYTf7U">Rollin'Pic Tokyo 2025 Day 1 Singles Top 16 Part 2 2025/11/22</a>
+            <a target="_blank" href="https://www.youtube.com/watch?v=NkFjHzXsvVg">Rollin'Pic Tokyo 2025 Day 1 Singles Top 16 Part 1 2025/11/22</a>
+            <a target="_blank" href="https://www.youtube.com/watch?v=fO5gPj0mDoI&t=1602s">Rollin'Pic Tokyo 2025 Day 2 3on3 Top 10 Part 6 2025/11/23</a>
+            <a target="_blank" href="https://www.youtube.com/watch?v=DXw2-3XTS7I&t=40s">Rollin'Pic Tokyo 2025 Day 2 3on3 Top 10 Part 5 2025/11/23</a>
+            <a target="_blank" href="https://www.youtube.com/watch?v=tzcNOt843J0&t=226s">Rollin'Pic Tokyo 2025 Day 2 3on3 Top 10 Part 4 2025/11/23</a>
+            <a target="_blank" href="https://www.youtube.com/watch?v=QrQyIDOMc2U&t=516s">Rollin'Pic Tokyo 2025 Day 2 3on3 Top 10 Part 3 2025/11/23</a>
+            <a target="_blank" href="https://www.youtube.com/watch?v=kpSKjSBcYpM&t=670s">Rollin'Pic Tokyo 2025 Day 2 3on3 Top 10 Part 2 2025/11/23</a>
+            <a target="_blank" href="https://www.youtube.com/watch?v=kH1mh1McHgs&t=1s">Rollin'Pic Tokyo 2025 Day 2 3on3 Top 10 Part 1 2025/11/23</a>
           </div>
         </div>
       </div>
