@@ -394,7 +394,7 @@
       box-shadow: none;
     }
 
-    /* --- FT10 SECRET MATCHUP DESIGN (BG Images & MATCH Header Only) --- */
+    /* --- FT10 SECRET MATCHUP DESIGN (Expanded Height to Avoid Cropping) --- */
     .ft10-container {
       display: flex;
       flex-direction: column;
@@ -407,12 +407,12 @@
       background-position: center;
       border: 1px solid rgba(255, 204, 0, 0.4);
       border-left: 5px solid var(--accent-yellow);
-      padding: 16px 18px;
+      padding: 20px 18px; /* 上下の余白を広げて縦幅を拡大 */
       position: relative;
       box-shadow: 4px 4px 0px #000;
       overflow: hidden;
       transition: all 0.3s ease;
-      height: 90px; /* MATCHヘッダーと背景が美しく収まる高さ */
+      height: 115px; /* 高さを十分に持たせて画像の縦が切れないように調整 */
       display: flex;
       align-items: center;
     }
@@ -453,25 +453,13 @@
 
     .secret-label {
       font-family: 'Teko', sans-serif;
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       font-weight: 900;
       color: var(--accent-yellow);
       letter-spacing: 2px;
       line-height: 1;
       text-transform: uppercase;
       text-shadow: 0 0 12px rgba(0, 0, 0, 0.9), 0 2px 4px #000;
-    }
-
-    .secret-status {
-      font-family: 'Teko', sans-serif;
-      font-size: 1.1rem;
-      color: #fff;
-      letter-spacing: 1.5px;
-      background: rgba(0, 0, 0, 0.65);
-      padding: 3px 12px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 2px;
-      text-shadow: 0 1px 3px #000;
     }
 
     /* ─── QUALIFIER STAGE SELECT SECTION ─── */
@@ -953,7 +941,6 @@
           <div class="secret-match-row match1-bg">
             <div class="secret-header">
               <span class="secret-label">MATCH 1</span>
-              <span class="secret-status">非公開 / CLASSIFIED</span>
             </div>
           </div>
 
@@ -961,7 +948,6 @@
           <div class="secret-match-row match2-bg">
             <div class="secret-header">
               <span class="secret-label">MATCH 2</span>
-              <span class="secret-status">非公開 / CLASSIFIED</span>
             </div>
           </div>
 
@@ -969,7 +955,6 @@
           <div class="secret-match-row match3-bg">
             <div class="secret-header">
               <span class="secret-label">MATCH 3</span>
-              <span class="secret-status">非公開 / CLASSIFIED</span>
             </div>
           </div>
 
