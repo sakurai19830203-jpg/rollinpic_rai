@@ -394,7 +394,7 @@
       box-shadow: none;
     }
 
-    /* --- FT10 SECRET MATCHUP DESIGN with BG IMAGES --- */
+    /* --- FT10 SECRET MATCHUP DESIGN with BG IMAGES (Overlay removed) --- */
     .ft10-container {
       display: flex;
       flex-direction: column;
@@ -414,7 +414,7 @@
       transition: all 0.3s ease;
     }
 
-    /* 背景画像を明るく（不透明度を下げ、オーバーレイを薄く）表示 */
+    /* 背景画像をしっかり見せつつ文字を読みやすくする軽量グラデーション */
     .secret-match-row.match1-bg {
       background-image: 
         linear-gradient(135deg, rgba(8, 8, 14, 0.45) 0%, rgba(4, 4, 8, 0.55) 100%),
@@ -518,41 +518,6 @@
       font-style: italic;
       text-shadow: 0 0 12px rgba(0, 0, 0, 0.9), 0 2px 4px #000;
       letter-spacing: 1px;
-    }
-
-    .secret-lock-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(6, 6, 10, 0.5); /* 読みやすさを確保しつつ背景写真をしっかり見せる濃度 */
-      backdrop-filter: blur(1.5px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 3px;
-      transition: opacity 0.2s ease;
-      z-index: 3;
-    }
-
-    .lock-main {
-      color: #fff;
-      font-weight: 900;
-      font-size: 0.92rem;
-      letter-spacing: 1.5px;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.9), 0 0 4px #000;
-    }
-
-    .lock-sub {
-      color: var(--accent-yellow);
-      font-family: 'Teko', sans-serif;
-      font-size: 1rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-shadow: 0 0 10px rgba(0, 0, 0, 0.9), 0 2px 4px #000;
-    }
-
-    .secret-match-row:hover .lock-main {
-      color: var(--accent-yellow);
     }
 
     /* ─── QUALIFIER STAGE SELECT SECTION ─── */
@@ -1030,7 +995,7 @@
         
         <div class="ft10-container">
           
-          <!-- Match 1 (Secret with BG) -->
+          <!-- Match 1 (Secret with BG - Overlay Removed) -->
           <div class="secret-match-row match1-bg">
             <div class="secret-header">
               <span class="secret-label">MATCH 1</span>
@@ -1046,14 +1011,10 @@
                 <span class="secret-player-name">PLAYER 2</span>
                 <span class="secret-sub-txt">青コーナー候補</span>
               </div>
-              <div class="secret-lock-overlay">
-                <span class="lock-main">🔒 非公開カード // 近日発表</span>
-                <span class="lock-sub">RESTRICTED MATCH // COMING SOON</span>
-              </div>
             </div>
           </div>
 
-          <!-- Match 2 (Secret with BG) -->
+          <!-- Match 2 (Secret with BG - Overlay Removed) -->
           <div class="secret-match-row match2-bg">
             <div class="secret-header">
               <span class="secret-label">MATCH 2</span>
@@ -1069,14 +1030,10 @@
                 <span class="secret-player-name">PLAYER 4</span>
                 <span class="secret-sub-txt">青コーナー候補</span>
               </div>
-              <div class="secret-lock-overlay">
-                <span class="lock-main">🔒 非公開カード // 近日発表</span>
-                <span class="lock-sub">RESTRICTED MATCH // COMING SOON</span>
-              </div>
             </div>
           </div>
 
-          <!-- Match 3 (Secret with BG) -->
+          <!-- Match 3 (Secret with BG - Overlay Removed) -->
           <div class="secret-match-row match3-bg">
             <div class="secret-header">
               <span class="secret-label">MATCH 3</span>
@@ -1091,10 +1048,6 @@
               <div class="secret-side-dummy right">
                 <span class="secret-player-name">PLAYER 6</span>
                 <span class="secret-sub-txt">青コーナー候補</span>
-              </div>
-              <div class="secret-lock-overlay">
-                <span class="lock-main">🔒 非公開カード // 近日発表</span>
-                <span class="lock-sub">RESTRICTED MATCH // COMING SOON</span>
               </div>
             </div>
           </div>
