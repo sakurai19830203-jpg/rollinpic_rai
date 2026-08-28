@@ -394,7 +394,7 @@
       box-shadow: none;
     }
 
-    /* --- FT10 SECRET MATCHUP DESIGN --- */
+    /* --- FT10 SECRET MATCHUP DESIGN with BG IMAGES --- */
     .ft10-container {
       display: flex;
       flex-direction: column;
@@ -403,7 +403,8 @@
     }
 
     .secret-match-row {
-      background: linear-gradient(135deg, rgba(16, 16, 24, 0.95) 0%, rgba(8, 8, 12, 0.98) 100%);
+      background-size: cover;
+      background-position: center;
       border: 1px solid rgba(255, 204, 0, 0.4);
       border-left: 5px solid var(--accent-yellow);
       padding: 16px 18px;
@@ -411,6 +412,25 @@
       box-shadow: 4px 4px 0px #000;
       overflow: hidden;
       transition: all 0.3s ease;
+    }
+
+    /* MATCH 1〜3それぞれの背景画像とダークオーバーレイ（文字視認性確保） */
+    .secret-match-row.match1-bg {
+      background-image: 
+        linear-gradient(135deg, rgba(12, 12, 20, 0.82) 0%, rgba(6, 6, 10, 0.90) 100%),
+        url('match1_bg.jpg');
+    }
+
+    .secret-match-row.match2-bg {
+      background-image: 
+        linear-gradient(135deg, rgba(12, 12, 20, 0.82) 0%, rgba(6, 6, 10, 0.90) 100%),
+        url('match2_bg.jpg');
+    }
+
+    .secret-match-row.match3-bg {
+      background-image: 
+        linear-gradient(135deg, rgba(12, 12, 20, 0.82) 0%, rgba(6, 6, 10, 0.90) 100%),
+        url('match3_bg.jpg');
     }
 
     .secret-match-row:hover {
@@ -424,6 +444,8 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 8px;
+      position: relative;
+      z-index: 2;
     }
 
     .secret-label {
@@ -434,29 +456,31 @@
       letter-spacing: 1.5px;
       line-height: 1;
       text-transform: uppercase;
-      text-shadow: 0 0 8px rgba(255, 204, 0, 0.6);
+      text-shadow: 0 0 8px rgba(255, 204, 0, 0.6), 0 2px 4px #000;
     }
 
     .secret-status {
       font-family: 'Teko', sans-serif;
       font-size: 0.95rem;
-      color: var(--text-muted);
+      color: #d0d0e0;
       letter-spacing: 1px;
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(0, 0, 0, 0.7);
       padding: 2px 10px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 2px;
+      text-shadow: 0 1px 3px #000;
     }
 
     .secret-content-box {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(0, 0, 0, 0.6);
-      border: 1px dashed rgba(255, 255, 255, 0.15);
+      background: rgba(0, 0, 0, 0.55);
+      border: 1px dashed rgba(255, 255, 255, 0.25);
       padding: 14px 20px;
       border-radius: 3px;
       position: relative;
+      z-index: 2;
     }
 
     .secret-side-dummy {
@@ -473,14 +497,14 @@
     .secret-player-name {
       font-size: 1.15rem;
       font-weight: 900;
-      color: #666677;
+      color: #888899;
       letter-spacing: 2px;
       text-transform: uppercase;
     }
 
     .secret-sub-txt {
       font-size: 0.75rem;
-      color: #555566;
+      color: #777788;
       font-weight: bold;
       letter-spacing: 1px;
     }
@@ -490,14 +514,14 @@
       font-size: 1.2rem;
       color: var(--accent-yellow);
       font-style: italic;
-      text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+      text-shadow: 0 0 10px rgba(255, 204, 0, 0.5), 0 2px 4px #000;
       letter-spacing: 1px;
     }
 
     .secret-lock-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(6, 6, 8, 0.78);
+      background: rgba(6, 6, 10, 0.75);
       backdrop-filter: blur(2px);
       display: flex;
       flex-direction: column;
@@ -505,6 +529,7 @@
       justify-content: center;
       gap: 3px;
       transition: opacity 0.2s ease;
+      z-index: 3;
     }
 
     .lock-main {
@@ -512,6 +537,7 @@
       font-weight: 900;
       font-size: 0.92rem;
       letter-spacing: 1.5px;
+      text-shadow: 0 2px 4px #000;
     }
 
     .lock-sub {
@@ -520,6 +546,7 @@
       font-size: 1rem;
       letter-spacing: 2px;
       text-transform: uppercase;
+      text-shadow: 0 0 8px rgba(255, 204, 0, 0.6), 0 2px 4px #000;
     }
 
     .secret-match-row:hover .lock-main {
@@ -1001,8 +1028,8 @@
         
         <div class="ft10-container">
           
-          <!-- Match 1 (Secret) -->
-          <div class="secret-match-row">
+          <!-- Match 1 (Secret with BG) -->
+          <div class="secret-match-row match1-bg">
             <div class="secret-header">
               <span class="secret-label">MATCH 1</span>
               <span class="secret-status">非公開 / CLASSIFIED</span>
@@ -1024,8 +1051,8 @@
             </div>
           </div>
 
-          <!-- Match 2 (Secret) -->
-          <div class="secret-match-row">
+          <!-- Match 2 (Secret with BG) -->
+          <div class="secret-match-row match2-bg">
             <div class="secret-header">
               <span class="secret-label">MATCH 2</span>
               <span class="secret-status">非公開 / CLASSIFIED</span>
@@ -1047,8 +1074,8 @@
             </div>
           </div>
 
-          <!-- Match 3 (Secret) -->
-          <div class="secret-match-row">
+          <!-- Match 3 (Secret with BG) -->
+          <div class="secret-match-row match3-bg">
             <div class="secret-header">
               <span class="secret-label">MATCH 3</span>
               <span class="secret-status">非公開 / CLASSIFIED</span>
