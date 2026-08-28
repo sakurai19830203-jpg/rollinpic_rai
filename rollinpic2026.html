@@ -394,246 +394,117 @@
       box-shadow: none;
     }
 
-    /* --- FT10 MATCHUP DESIGN --- */
+    /* --- FT10 SECRET MATCHUP DESIGN --- */
     .ft10-container {
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 14px;
       margin-top: 15px;
     }
 
-    .ft10-row {
-      background: rgba(4, 4, 8, 0.95);
-      border: 1px solid rgba(255, 204, 0, 0.35);
-      padding: 10px 8px;
+    .secret-match-row {
+      background: linear-gradient(135deg, rgba(16, 16, 24, 0.95) 0%, rgba(8, 8, 12, 0.98) 100%);
+      border: 1px solid rgba(255, 204, 0, 0.4);
+      border-left: 5px solid var(--accent-yellow);
+      padding: 16px 18px;
       position: relative;
-      box-shadow: inset 0 0 25px rgba(0,0,0,0.95), 0 6px 16px rgba(0,0,0,0.6);
-      border-radius: 4px;
+      box-shadow: 4px 4px 0px #000;
       overflow: hidden;
+      transition: all 0.3s ease;
     }
 
-    .ft10-header-row {
+    .secret-match-row:hover {
+      border-color: var(--capcom-blue);
+      border-left-color: var(--capcom-blue);
+      box-shadow: 6px 6px 0px rgba(0, 225, 255, 0.2);
+    }
+
+    .secret-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 6px;
-      padding-left: 6px;
-      padding-right: 6px;
+      margin-bottom: 8px;
     }
 
-    .ft10-label {
+    .secret-label {
       font-family: 'Teko', sans-serif;
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       font-weight: 900;
       color: var(--accent-yellow);
       letter-spacing: 1.5px;
       line-height: 1;
-      text-shadow: 0 0 10px rgba(255, 204, 0, 0.8);
       text-transform: uppercase;
+      text-shadow: 0 0 8px rgba(255, 204, 0, 0.6);
     }
 
-    .match-catchphrase {
-      font-size: 0.82rem;
-      font-weight: 900;
-      color: #ffaa00;
-      letter-spacing: 0.5px;
-      text-shadow: 0 0 8px rgba(255, 170, 0, 0.5);
-    }
-
-    .vs-matchup {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      position: relative;
-      min-height: 110px;
-      height: auto;
-    }
-
-    .side-player {
-      height: 100%;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      padding: 10px 14px;
+    .secret-status {
+      font-family: 'Teko', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 2px;
     }
 
-    .side-player.left {
-      background: linear-gradient(110deg, rgba(0, 225, 255, 0.22) 0%, rgba(6, 12, 20, 0.95) 85%);
-      border-left: 5px solid var(--capcom-blue);
-      clip-path: polygon(0 0, 100% 0, 93% 100%, 0 100%);
-      margin-right: -4px;
-      justify-content: flex-start;
-      text-align: left;
-    }
-
-    .side-player.right {
-      background: linear-gradient(250deg, rgba(255, 42, 75, 0.22) 0%, rgba(20, 6, 10, 0.95) 85%);
-      border-right: 5px solid var(--snk-red);
-      clip-path: polygon(7% 0, 100% 0, 100% 100%, 0 100%);
-      margin-left: -4px;
-      justify-content: flex-end;
-      text-align: right;
-    }
-
-    .ft10-row:hover .side-player.left {
-      background: linear-gradient(110deg, rgba(0, 225, 255, 0.45) 0%, rgba(6, 15, 28, 0.88) 85%);
-    }
-
-    .ft10-row:hover .side-player.right {
-      background: linear-gradient(250deg, rgba(255, 42, 75, 0.45) 0%, rgba(28, 6, 12, 0.88) 85%);
-    }
-
-    /* PC用 背景プレイヤー写真 */
-    .player-bg-photo-wrap {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 55%;
-      z-index: 1;
-      pointer-events: none;
-      overflow: hidden;
-    }
-
-    .side-player.left .player-bg-photo-wrap {
-      left: 0;
-      mask-image: linear-gradient(to right, rgba(0,0,0,0.85) 20%, rgba(0,0,0,0) 100%);
-      -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0.85) 20%, rgba(0,0,0,0) 100%);
-    }
-
-    .side-player.right .player-bg-photo-wrap {
-      right: 0;
-      mask-image: linear-gradient(to left, rgba(0,0,0,0.85) 20%, rgba(0,0,0,0) 100%);
-      -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.85) 20%, rgba(0,0,0,0) 100%);
-    }
-
-    .player-photo {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      filter: grayscale(30%) brightness(0.85);
-      transition: transform 0.4s ease, filter 0.4s ease;
-      display: block;
-    }
-
-    .ft10-row:hover .player-photo {
-      transform: scale(1.1);
-      filter: grayscale(0%) brightness(1.05);
-    }
-
-    /* PC版コンテンツ構造 */
-    .player-content {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .side-player.left .player-content {
-      align-items: flex-start;
-      text-align: left;
-    }
-
-    .side-player.right .player-content {
-      align-items: flex-end;
-      text-align: right;
-    }
-
-    .player-main-header {
+    .secret-content-box {
       display: flex;
       align-items: center;
-      gap: 10px;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px dashed rgba(255, 255, 255, 0.15);
+      padding: 14px 20px;
+      border-radius: 3px;
+      position: relative;
     }
 
-    .side-player.right .player-main-header {
-      justify-content: flex-end;
+    .secret-side-dummy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
     }
 
-    .p-name {
-      font-size: 1.25rem;
+    .secret-side-dummy.right {
+      align-items: flex-end;
+    }
+
+    .secret-player-name {
+      font-size: 1.15rem;
       font-weight: 900;
-      color: #ffffff;
-      letter-spacing: 0.5px;
-      line-height: 1.1;
+      color: #666677;
+      letter-spacing: 2px;
       text-transform: uppercase;
     }
 
-    .side-player.left .p-name { 
-      text-shadow: 0 0 8px rgba(0, 225, 255, 0.8), 0 2px 4px #000, 2px 2px 0px #000; 
-    }
-    .side-player.right .p-name { 
-      text-shadow: 0 0 8px rgba(255, 42, 75, 0.8), 0 2px 4px #000, 2px 2px 0px #000; 
-    }
-
-    .grv-tag {
-      font-family: 'Teko', sans-serif;
-      font-size: 1.15rem;
-      padding: 0 2px 0 0;
-      display: inline-block;
-      line-height: 1;
-      font-weight: 900;
+    .secret-vs {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.2rem;
+      color: var(--accent-yellow);
+      font-style: italic;
+      text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+      letter-spacing: 1px;
     }
 
-    .grv-a { color: var(--capcom-blue); text-shadow: 0 0 6px rgba(0, 225, 255, 0.7); }
-    .grv-k { color: var(--snk-red); text-shadow: 0 0 6px rgba(255, 42, 75, 0.7); }
-    .grv-c { color: #00ff66; text-shadow: 0 0 6px rgba(0, 255, 102, 0.7); }
-
-    .char-icon-group {
+    .secret-lock-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(6, 6, 8, 0.75);
+      backdrop-filter: blur(2px);
       display: flex;
       align-items: center;
-      gap: 5px;
-      margin-top: 6px;
+      justify-content: center;
+      gap: 8px;
+      color: #fff;
+      font-weight: 900;
+      font-size: 0.95rem;
+      letter-spacing: 2px;
+      transition: opacity 0.2s ease;
     }
 
-    .side-player.right .char-icon-group {
-      justify-content: flex-end;
-    }
-
-    .char-thumb {
-      width: 32px;
-      height: 32px;
-      border-radius: 3px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      object-fit: cover;
-      background: rgba(0,0,0,0.6);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.8);
-      transition: transform 0.2s ease, border-color 0.2s ease;
-    }
-
-    .ft10-row:hover .char-thumb {
-      transform: translateY(-2px) scale(1.08);
-      border-color: var(--accent-yellow);
-    }
-
-    .team-chars {
-      font-size: 0.82rem;
-      color: #f0f0ff;
-      display: block;
-      font-weight: 800;
-      line-height: 1.2;
-      margin-top: 4px;
-      text-shadow: 0 2px 4px #000, 0 0 6px #000;
-    }
-
-    .vs-mark {
-      z-index: 10;
-      font-family: 'Anton', sans-serif;
-      font-size: 1.15rem;
-      color: #ffffff;
-      font-style: italic;
-      background: #000;
-      border: 1.5px solid var(--accent-yellow);
-      padding: 2px 6px;
-      box-shadow: 0 0 12px rgba(255, 204, 0, 0.9), 0 0 4px #000;
-      text-shadow: 1px 1px 0px #000;
-      pointer-events: none;
-      line-height: 1;
-      transform: rotate(-6deg);
-      margin: 0 -3px;
+    .secret-match-row:hover .secret-lock-overlay {
+      color: var(--accent-yellow);
     }
 
     /* ─── QUALIFIER STAGE SELECT SECTION ─── */
@@ -1001,7 +872,6 @@
       }
     }
 
-    /* ─── スマホ専用：丸アバター＆配置調整 (画面幅650px以下) ─── */
     @media (max-width: 650px) {
       .guide-banner {
         flex-direction: column;
@@ -1010,91 +880,8 @@
       }
       .guide-banner-inner { transform: none; }
       .btn-guide { clip-path: none; width: 100%; margin-top: 10px; }
-
-      .vs-matchup {
-        grid-template-columns: 1fr;
-        gap: 6px;
-      }
-
-      .side-player {
-        padding: 12px 14px;
-        clip-path: none;
-        margin: 0;
-        border-radius: 4px;
-      }
-
-      /* スマホ版ではPC用背景写真は非表示にし、丸型アバターを使用 */
-      .player-bg-photo-wrap {
-        display: none !important;
-      }
-
-      .player-avatar-circle {
-        display: block !important;
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 2px solid var(--accent-yellow);
-        box-shadow: 0 0 8px rgba(0,0,0,0.8);
-      }
-
-      /* 左側（1P）のスマホ設定 */
-      .side-player.left {
-        border-left: 4px solid var(--capcom-blue);
-        border-right: none;
-        text-align: left;
-      }
-      .side-player.left .player-content {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-      }
-      .side-player.left .player-main-header {
-        flex-direction: row;
-        gap: 8px;
-      }
-      .side-player.left .char-icon-group {
-        justify-content: flex-end;
-      }
-
-      /* 右側（2P）のスマホ設定：完全右寄せ & 左側に丸アバター・キャラ配置 */
-      .side-player.right {
-        border-right: 4px solid var(--snk-red);
-        border-left: none;
-        text-align: right !important;
-        justify-content: flex-end !important;
-      }
-      .side-player.right .player-content {
-        flex-direction: row-reverse;
-        justify-content: space-between;
-        align-items: center;
-        text-align: right !important;
-        align-items: flex-end;
-      }
-      .side-player.right .player-main-header {
-        flex-direction: row-reverse !important;
-        justify-content: flex-start !important;
-        gap: 8px;
-      }
-      .side-player.right .char-icon-group {
-        justify-content: flex-start !important;
-      }
-
-      .vs-mark {
-        transform: rotate(0deg);
-        margin: 2px auto;
-        display: inline-block;
-        font-size: 1rem;
-        padding: 2px 8px;
-      }
-
       .rule-banner { transform: none; }
       .rule-banner-inner { transform: none; }
-    }
-
-    /* デフォルト（PC等）ではスマホ用丸アバターを隠す */
-    .player-avatar-circle {
-      display: none;
     }
   </style>
 </head>
@@ -1102,26 +889,22 @@
 
   <div class="container">
 
-    <!-- Hero Poster Area -->
     <section class="hero">
       <div class="main-logo-container">
         <img src="RollinPic2025.png" alt="Rollin'Pic 2025" onerror="this.style.display='none'; document.getElementById('hero-fallback').style.display='block';">
         <h1 id="hero-fallback" style="display:none; font-family:'Anton'; font-size:4rem; color:var(--accent-yellow);">ROLLIN'PIC 2026</h1>
       </div>
 
-      <!-- 公式ロゴ表示エリア -->
       <div class="official-logo-container">
         <img src="official_logo.png" alt="CAPCOM vs SNK 2 Official Logo" onerror="this.style.display='none';">
       </div>
 
       <div class="world-title-wrap">
         <span class="world-main-txt">CAPCOM vs SNK 2 世界大会</span>
-        <!-- キャッチフレーズ -->
         <div class="hero-catchphrase">己の『選んだ道』で、世界を叩きのめせ</div>
         <p style="margin-top: 10px; font-size: 0.95rem; color: var(--text-muted); font-weight: bold;">＜大会概要＞ 開催場所 ： 南浦和プレイスポットビッグワンセカンド</p>
       </div>
 
-      <!-- カウントダウンタイマー -->
       <div class="countdown-container">
         <div class="countdown-label">DAY 1 開幕まで</div>
         <div class="countdown-timer">
@@ -1136,17 +919,14 @@
       </div>
     </section>
 
-    <!-- Main Tournament Block -->
     <div class="block-header">SCHEDULE</div>
 
     <div class="schedule-grid">
 
-      <!-- DAY 1 -->
       <div class="event-card capcom-side">
         <span class="date-badge">DAY 1 — 2026/11/21 (土)</span>
         <h2 class="card-heading">個人戦 (Singles)</h2>
         
-        <!-- 個人戦 ルールバナー -->
         <div class="rule-banner disabled">
           <div class="rule-banner-inner">
             🚧 個人戦 ルール詳細（近日公開）
@@ -1168,12 +948,10 @@
         <a href="https://forms.gle/b4JJ3ANQm8SZjEZF6" target="_blank" class="entry-btn">個人戦 エントリー（受付中）</a>
       </div>
 
-      <!-- DAY 2 -->
       <div class="event-card snk-side">
         <span class="date-badge">DAY 2 — 2026/11/22 (日)</span>
         <h2 class="card-heading">3on3 チーム戦</h2>
         
-        <!-- チーム戦 ルールバナー -->
         <div class="rule-banner disabled">
           <div class="rule-banner-inner">
             🚧 チーム戦 ルール詳細（近日公開）
@@ -1188,7 +966,6 @@
         <a href="https://forms.gle/9MT6A1zSpe1Ny7AK7" target="_blank" class="entry-btn" style="margin-top: 85px;">3on3 エントリー（受付中）</a>
       </div>
 
-      <!-- DAY 3 -->
       <div class="event-card vs-side">
         <span class="date-badge">DAY 3 — 2026/11/23 (祝)</span>
         <h2 class="card-heading">SPECIAL FT10</h2>
@@ -1197,156 +974,60 @@
         
         <div class="ft10-container">
           
-          <!-- Match 1 -->
-          <div class="ft10-row">
-            <div class="ft10-header-row">
-              <span class="ft10-label">MATCH 1</span>
-              <span class="match-catchphrase">最強のオリコン・スパコン対決</span>
+          <div class="secret-match-row">
+            <div class="secret-header">
+              <span class="secret-label">MATCH 1</span>
+              <span class="secret-status">CLASSIFIED</span>
             </div>
-            <div class="vs-matchup">
-              
-              <!-- LEFT PLAYER (ピノキオ) -->
-              <div class="side-player left">
-                <div class="player-bg-photo-wrap">
-                  <img class="player-photo" src="player_pinokio.png" alt="ピノキオ" onerror="this.style.display='none';">
-                </div>
-                <div class="player-content">
-                  <div class="player-main-header">
-                    <img class="player-avatar-circle" src="player_pinokio.png" alt="" onerror="this.style.display='none';">
-                    <span class="p-name">ピノキオ</span>
-                  </div>
-                  <div class="char-icon-group">
-                    <img class="char-thumb" src="chunli.png" alt="" onerror="this.style.display='none';">
-                    <img class="char-thumb" src="cammy.png" alt="" onerror="this.style.display='none';">
-                    <img class="char-thumb" src="sagat.png" alt="" onerror="this.style.display='none';">
-                  </div>
-                  <span class="team-chars"><span class="grv-tag grv-k">K</span>春麗 / キャミィ / サガット</span>
-                </div>
+            <div class="secret-content-box">
+              <div class="secret-side-dummy">
+                <span class="secret-player-name">PLAYER 1</span>
               </div>
-
-              <div class="vs-mark">VS</div>
-
-              <!-- RIGHT PLAYER (ワタリ) -->
-              <div class="side-player right">
-                <div class="player-bg-photo-wrap">
-                  <img class="player-photo" src="player_watari.png" alt="ワタリ" onerror="this.style.display='none';">
-                </div>
-                <div class="player-content">
-                  <div class="player-main-header">
-                    <img class="player-avatar-circle" src="player_watari.png" alt="" onerror="this.style.display='none';">
-                    <span class="p-name">ワタリ</span>
-                  </div>
-                  <div class="char-icon-group">
-                    <img class="char-thumb" src="iori.png" alt="" onerror="this.style.display='none';">
-                    <img class="char-thumb" src="blanka.png" alt="" onerror="this.style.display='none';">
-                    <img class="char-thumb" src="vega.png" alt="" onerror="this.style.display='none';">
-                  </div>
-                  <span class="team-chars"><span class="grv-tag grv-a">A</span>庵 / ブランカ / ベガ</span>
-                </div>
+              <div class="secret-vs">VS</div>
+              <div class="secret-side-dummy right">
+                <span class="secret-player-name">PLAYER 2</span>
               </div>
-
+              <div class="secret-lock-overlay">
+                🔒 RESTRICTED MATCH // COMING SOON
+              </div>
             </div>
           </div>
 
-          <!-- Match 2 -->
-          <div class="ft10-row">
-            <div class="ft10-header-row">
-              <span class="ft10-label">MATCH 2</span>
-              <span class="match-catchphrase">東西最恐Kグル対決</span>
+          <div class="secret-match-row">
+            <div class="secret-header">
+              <span class="secret-label">MATCH 2</span>
+              <span class="secret-status">CLASSIFIED</span>
             </div>
-            <div class="vs-matchup">
-              
-              <!-- LEFT PLAYER (GAO) -->
-              <div class="side-player left">
-                <div class="player-bg-photo-wrap">
-                  <img class="player-photo" src="player_gao.png" alt="GAO" onerror="this.style.display='none';">
-                </div>
-                <div class="player-content">
-                  <div class="player-main-header">
-                    <img class="player-avatar-circle" src="player_gao.png" alt="" onerror="this.style.display='none';">
-                    <span class="p-name">GAO</span>
-                  </div>
-                  <div class="char-icon-group">
-                    <img class="char-thumb" src="geese.png" alt="" onerror="this.style.display='none';">
-                    <img class="char-thumb" src="nakoruru.png" alt="" onerror="this.style.display='none';">
-                    <img class="char-thumb" src="rock.png" alt="" onerror="this.style.display='none';">
-                  </div>
-                  <span class="team-chars"><span class="grv-tag grv-k">K</span>ギース / ナコルル / ロック</span>
-                </div>
+            <div class="secret-content-box">
+              <div class="secret-side-dummy">
+                <span class="secret-player-name">PLAYER 3</span>
               </div>
-
-              <div class="vs-mark">VS</div>
-
-              <!-- RIGHT PLAYER (喫音) -->
-              <div class="side-player right">
-                <div class="player-bg-photo-wrap">
-                  <img class="player-photo" src="player_kitsuon.png" alt="喫音" onerror="this.style.display='none';">
-                </div>
-                <div class="player-content">
-                  <div class="player-main-header">
-                    <img class="player-avatar-circle" src="player_kitsuon.png" alt="" onerror="this.style.display='none';">
-                    <span class="p-name">喫音</span>
-                  </div>
-                  <div class="char-icon-group">
-                    <img class="char-thumb" src="nakoruru.png" alt="" onerror="this.style.display='none';">
-                    <img class="char-thumb" src="hibiki.png" alt="" onerror="this.style.display='none';">
-                    <img class="char-thumb" src="sagat.png" alt="" onerror="this.style.display='none';">
-                  </div>
-                  <span class="team-chars"><span class="grv-tag grv-k">K</span>ナコルル / 響 / サガット</span>
-                </div>
+              <div class="secret-vs">VS</div>
+              <div class="secret-side-dummy right">
+                <span class="secret-player-name">PLAYER 4</span>
               </div>
-
+              <div class="secret-lock-overlay">
+                🔒 RESTRICTED MATCH // COMING SOON
+              </div>
             </div>
           </div>
 
-          <!-- Match 3 -->
-          <div class="ft10-row">
-            <div class="ft10-header-row">
-              <span class="ft10-label">MATCH 3</span>
-              <span class="match-catchphrase">カプエス最強プライド対決</span>
+          <div class="secret-match-row">
+            <div class="secret-header">
+              <span class="secret-label">MATCH 3</span>
+              <span class="secret-status">CLASSIFIED</span>
             </div>
-            <div class="vs-matchup">
-              
-              <!-- LEFT PLAYER (D44) -->
-              <div class="side-player left">
-                <div class="player-bg-photo-wrap">
-                  <img class="player-photo" src="player_d44.png" alt="D44" onerror="this.style.display='none';">
-                </div>
-                <div class="player-content">
-                  <div class="player-main-header">
-                    <img class="player-avatar-circle" src="player_d44.png" alt="" onerror="this.style.display='none';">
-                    <span class="p-name">D44</span>
-                  </div>
-                  <div class="char-icon-group">
-                    <img class="char-thumb" src="yamazaki.png" alt="" onerror="this.style.display='none';">
-                    <img class="char-thumb" src="blanka.png" alt="" onerror="this.style.display='none';">
-                    <img class="char-thumb" src="vega.png" alt="" onerror="this.style.display='none';">
-                  </div>
-                  <span class="team-chars"><span class="grv-tag grv-a">A</span>山崎 / ブランカ / ベガ</span>
-                </div>
+            <div class="secret-content-box">
+              <div class="secret-side-dummy">
+                <span class="secret-player-name">PLAYER 5</span>
               </div>
-
-              <div class="vs-mark">VS</div>
-
-              <!-- RIGHT PLAYER (kiku) -->
-              <div class="side-player right">
-                <div class="player-bg-photo-wrap">
-                  <img class="player-photo" src="player_kiku.png" alt="kiku" onerror="this.style.display='none';">
-                </div>
-                <div class="player-content">
-                  <div class="player-main-header">
-                    <img class="player-avatar-circle" src="player_kiku.png" alt="" onerror="this.style.display='none';">
-                    <span class="p-name">kiku</span>
-                  </div>
-                  <div class="char-icon-group">
-                    <img class="char-thumb" src="cammy.png" alt="" onerror="this.style.display='none';">
-                    <img class="char-thumb" src="chunli.png" alt="" onerror="this.style.display='none';">
-                    <img class="char-thumb" src="sagat.png" alt="" onerror="this.style.display='none';">
-                  </div>
-                  <span class="team-chars"><span class="grv-tag grv-c">C</span>キャミィ / 春麗 / サガット</span>
-                </div>
+              <div class="secret-vs">VS</div>
+              <div class="secret-side-dummy right">
+                <span class="secret-player-name">PLAYER 6</span>
               </div>
-
+              <div class="secret-lock-overlay">
+                🔒 RESTRICTED MATCH // COMING SOON
+              </div>
             </div>
           </div>
 
@@ -1356,7 +1037,6 @@
 
     </div>
 
-    <!-- DAY1個人戦シード予選日程(9枠) 9月1日現在 -->
     <div class="qualifier-section">
       <div class="qualifier-header">
         <div class="qualifier-title-wrap">
@@ -1437,17 +1117,17 @@
             </tr>
             <tr>
               <td class="num-col">08</td>
-              <td>10/17(土)</td>
-              <td>大阪</td>
-              <td>アミューズファクトリーAXE</td>
+              <td>10/3(土)</td>
+              <td>愛知</td>
+              <td>名古屋GAME BOX Q3</td>
               <td>シード争奪戦トーナメント</td>
               <td class="pending-txt">未定</td>
             </tr>
             <tr>
               <td class="num-col">09</td>
-              <td>日程未定</td>
-              <td>愛知</td>
-              <td>名古屋GAME BOX Q3</td>
+              <td>10/17(土)</td>
+              <td>大阪</td>
+              <td>アミューズファクトリーAXE</td>
               <td>シード争奪戦トーナメント</td>
               <td class="pending-txt">未定</td>
             </tr>
@@ -1456,7 +1136,6 @@
       </div>
     </div>
 
-    <!-- Streams & Location Panel -->
     <div class="sub-grid">
       <div class="sub-panel">
         <h3 class="panel-title">配信チャンネル</h3>
@@ -1469,7 +1148,6 @@
         <div style="font-weight: 900; font-size: 1.1rem; color: #fff;">南浦和プレイスポットビッグワンセカンド</div>
         <div style="font-size: 0.85rem; color: var(--text-muted); margin: 4px 0 12px;">〒336-0017 埼玉県さいたま市南区南浦和 2丁目 27-12</div>
         
-        <!-- Google Map 埋め込み -->
         <div style="width: 100%; height: 200px; margin-bottom: 12px; border: 1px solid var(--panel-border); overflow: hidden;">
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3235.158498845115!2d139.6685834!3d35.8450831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018c1e2df89f92d%3A0x8e8eb4be8ed01d81!2z44CSMzM2LTAwMTcg6K-E44G-44G_5biC5Y2X5Yy65Y2X5rSm5pKMMi0yNy0xMg!5e0!3m2!1sja!2sjp!4v1700000000000!5m2!1sja!2sjp" 
@@ -1486,7 +1164,6 @@
       </div>
     </div>
 
-    <!-- Guide Banner -->
     <div class="guide-banner">
       <div class="guide-banner-inner">
         <div class="guide-title">カプエス2 観戦ガイド（αοκι氏作）</div>
@@ -1495,7 +1172,6 @@
       <a href="cvs2_guide.html" target="_blank" class="btn-guide">ガイドを読む</a>
     </div>
 
-    <!-- Past Archives -->
     <div class="archive-section">
       <h3 class="panel-title">過去大会HP / 動画</h3>
 
@@ -1606,13 +1282,11 @@
 
   </div>
 
-  <!-- Footer -->
   <footer>
     <p>問い合わせ先: <a href="https://twitter.com/Ryo151" target="_blank">@Ryo151 (X / Twitter)</a> / ライ(Rai)（<a href="https://twitter.com/rai_kapibara" target="_blank">@rai_kapibara</a>）</p>
-    <p style="margin-top: 5px;">&copy; Rollin'Pic Tournament Committee / CAPCOM vs SNK 2 Community</p>
+    <p style="margin-top: 5px;">© Rollin'Pic Tournament Committee / CAPCOM vs SNK 2 Community</p>
   </footer>
 
-  <!-- Script -->
   <script>
     function toggleAcc(btn) {
       const body = btn.nextElementSibling;
