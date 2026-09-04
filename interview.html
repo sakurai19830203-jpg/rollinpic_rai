@@ -36,27 +36,28 @@
       background-attachment: fixed;
       color: var(--text);
       font-family: 'Noto Sans JP', sans-serif;
-      line-height: 1.6;
+      line-height: 1.5;
       overflow-x: hidden;
     }
 
     .container {
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 30px 15px 80px;
+      padding: 40px 15px 80px;
     }
 
     /* Page Header */
     .interview-hero {
       text-align: center;
-      padding: 15px 0 30px;
-      margin-bottom: 30px;
+      padding: 20px 0 40px;
+      margin-bottom: 40px;
       border-bottom: 2px solid rgba(255, 204, 0, 0.3);
+      position: relative;
     }
 
     .back-link {
       display: inline-block;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
       color: var(--accent-yellow);
       text-decoration: none;
       font-family: 'Teko', sans-serif;
@@ -72,7 +73,7 @@
 
     .interview-hero h1 {
       font-family: 'Anton', sans-serif;
-      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
       color: #fff;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -80,243 +81,176 @@
     }
 
     .interview-hero p {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: var(--text-muted);
       margin-top: 5px;
       letter-spacing: 1px;
     }
 
-    /* ─── 主催者コメントエリア ─── */
-    .organizer-section {
-      background: linear-gradient(180deg, rgba(20, 20, 30, 0.95) 0%, rgba(10, 10, 16, 0.98) 100%);
-      border: 1px solid var(--accent-yellow);
-      border-top: 5px solid var(--accent-yellow);
-      padding: 28px 24px;
-      margin-bottom: 50px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.8), 8px 8px 0px #000;
-      position: relative;
-    }
-
-    .organizer-header {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      margin-bottom: 20px;
-      border-bottom: 2px solid rgba(255, 204, 0, 0.2);
-      padding-bottom: 15px;
-    }
-
-    .organizer-avatar {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      border: 3px solid var(--accent-yellow);
-      overflow: hidden;
-      flex-shrink: 0;
-      background: #000;
-      box-shadow: 0 0 15px rgba(255, 204, 0, 0.4);
-    }
-
-    .organizer-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .organizer-meta {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .organizer-role {
-      font-family: 'Teko', sans-serif;
-      font-size: 1.2rem;
-      color: var(--accent-yellow);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      line-height: 1;
-    }
-
-    .organizer-name {
-      font-size: 1.7rem;
-      font-weight: 900;
-      color: #fff;
-      letter-spacing: 1px;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.8);
-    }
-
-    .organizer-comment-body {
-      font-size: 0.98rem;
-      color: #e2e2ec;
-      line-height: 1.8;
-      background: rgba(0, 0, 0, 0.4);
-      padding: 18px 20px;
-      border-left: 4px solid var(--capcom-blue);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      white-space: pre-wrap;
-    }
-
-    /* Match Block */
-    .match-section {
+    /* Match Section */
+    .match-interview-block {
       background: linear-gradient(180deg, rgba(16, 16, 22, 0.95) 0%, rgba(8, 8, 12, 0.98) 100%);
       border: 1px solid var(--panel-border);
       border-top: 5px solid var(--accent-yellow);
-      margin-bottom: 50px;
+      margin-bottom: 60px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.8), 8px 8px 0px #000;
+      position: relative;
       overflow: hidden;
     }
 
-    .match-header {
-      background: linear-gradient(135deg, rgba(255, 204, 0, 0.15) 0%, rgba(0, 0, 0, 0.8) 100%);
-      padding: 20px;
-      border-bottom: 2px solid rgba(255, 204, 0, 0.3);
+    .match-header-banner {
+      background: linear-gradient(90deg, rgba(255, 204, 0, 0.15) 0%, transparent 100%);
+      padding: 16px 24px;
+      border-bottom: 1px solid rgba(255, 204, 0, 0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .match-number {
+      font-family: 'Teko', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--accent-yellow);
+      letter-spacing: 2px;
+      line-height: 1;
+    }
+
+    .match-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* Fighters Showcase */
+    .fighters-showcase {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 30px 20px;
+      background: rgba(0, 0, 0, 0.4);
+      border-bottom: 1px solid var(--panel-border);
+      text-align: center;
+    }
+
+    .fighter-profile {
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center;
-      position: relative;
+      gap: 10px;
     }
 
-    .match-tag {
-      font-family: 'Teko', sans-serif;
-      font-size: 1.6rem;
-      font-weight: 900;
-      color: var(--accent-yellow);
-      letter-spacing: 3px;
-      line-height: 1;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 2px 12px;
-      border: 1px solid rgba(255, 204, 0, 0.4);
-      transform: skewX(-10deg);
-    }
-
-    .match-vs-container {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      font-size: clamp(1.3rem, 3.5vw, 1.8rem);
-      font-weight: 900;
-      color: #fff;
-      letter-spacing: 1px;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
-    }
-
-    .vs-emblem {
-      font-family: 'Anton', sans-serif;
-      font-size: 1.4rem;
-      font-style: italic;
-      color: var(--snk-red);
-      background: rgba(255, 42, 75, 0.15);
-      border: 1px solid var(--snk-red);
-      padding: 0 10px;
-      line-height: 1.2;
-      transform: skewX(-15deg);
-      box-shadow: 0 0 12px rgba(255, 42, 75, 0.4);
-    }
-
-    /* Player Block */
-    .player-interview-block {
-      padding: 28px 20px;
-      border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
-    }
-
-    .player-interview-block:last-child {
-      border-bottom: none;
-    }
-
-    .player-profile-header {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      margin-bottom: 22px;
-      background: linear-gradient(90deg, rgba(255, 204, 0, 0.12) 0%, rgba(16, 16, 24, 0.6) 100%);
-      padding: 14px 18px;
-      border-left: 6px solid var(--accent-yellow);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 4px 4px 0px #000;
-    }
-
-    .player-avatar {
-      width: 80px;
-      height: 80px;
+    .fighter-avatar {
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
       border: 3px solid var(--accent-yellow);
       overflow: hidden;
-      flex-shrink: 0;
-      background: #000;
-      box-shadow: 0 0 15px rgba(255, 204, 0, 0.4);
+      background: #1a1a24;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.8);
     }
 
-    .player-avatar img {
+    .fighter-avatar img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    .player-name-tag {
-      font-size: 1.6rem;
+    .fighter-name {
+      font-size: 1.4rem;
       font-weight: 900;
       color: #fff;
       letter-spacing: 1px;
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+      text-shadow: 0 2px 4px #000;
     }
 
-    /* QA Cards */
-    .qa-card {
-      background: rgba(10, 10, 16, 0.85);
-      border: 1px solid #222230;
+    .vs-sign {
+      font-family: 'Anton', sans-serif;
+      font-size: 2rem;
+      color: var(--snk-red);
+      font-style: italic;
+      text-shadow: 0 0 10px rgba(255, 42, 75, 0.6);
+      padding: 0 15px;
+    }
+
+    /* Q&A List Area */
+    .qa-container {
+      padding: 30px 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .qa-item {
+      background: rgba(12, 12, 18, 0.7);
+      border: 1px solid #252532;
       border-left: 4px solid var(--capcom-blue);
-      padding: 18px 20px;
-      margin-bottom: 15px;
+      padding: 20px;
       box-shadow: 4px 4px 0px #000;
     }
 
-    .qa-q {
-      font-size: 0.95rem;
+    .question-title {
+      font-size: 0.98rem;
       font-weight: 900;
       color: var(--accent-yellow);
-      margin-bottom: 12px;
+      margin-bottom: 16px;
+      line-height: 1.5;
       display: flex;
       gap: 8px;
-      line-height: 1.4;
     }
 
-    .qa-q span {
+    .question-title span {
       color: var(--capcom-blue);
       font-family: 'Teko', sans-serif;
       font-size: 1.3rem;
       line-height: 1;
     }
 
-    .qa-a {
-      font-size: 1.1rem;
-      font-weight: 900;
-      color: #fff;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 12px 16px;
-      border-left: 3px solid var(--accent-yellow);
-      border-top: 1px solid #1a1a24;
-      border-right: 1px solid #1a1a24;
-      border-bottom: 1px solid #1a1a24;
+    .answers-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
     }
 
-    @media (max-width: 600px) {
-      .player-avatar {
-        width: 65px;
-        height: 65px;
+    @media (max-width: 768px) {
+      .answers-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
       }
-      .player-name-tag {
-        font-size: 1.35rem;
+      .fighters-showcase {
+        grid-template-columns: 1fr;
+        gap: 20px;
       }
-      .organizer-avatar {
-        width: 75px;
-        height: 75px;
+      .vs-sign {
+        font-size: 1.5rem;
+        padding: 5px 0;
       }
-      .organizer-name {
-        font-size: 1.4rem;
+      .fighter-avatar {
+        width: 80px;
+        height: 80px;
       }
+    }
+
+    .answer-box {
+      background: rgba(6, 6, 10, 0.8);
+      border: 1px solid #1e1e28;
+      padding: 12px 16px;
+    }
+
+    .answer-fighter {
+      font-size: 0.75rem;
+      font-weight: bold;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .answer-text {
+      font-size: 1rem;
+      font-weight: 900;
+      color: #fff;
     }
 
     /* Footer */
@@ -326,7 +260,6 @@
       color: var(--text-muted);
       font-size: 0.88rem;
       border-top: 1px solid #1a1a22;
-      margin-top: 40px;
     }
 
     footer a {
@@ -340,245 +273,327 @@
 
   <div class="container">
 
+    <!-- Header -->
     <div class="interview-hero">
       <a href="index.html" class="back-link">◀ TOPページへ戻る</a>
       <h1>Special FT10 Interviews</h1>
       <p>DAY 3 スペシャルマッチ出場選手 事前インタビュー</p>
     </div>
 
-    <section class="organizer-section">
-      <div class="organizer-header">
-        <div class="organizer-avatar">
-          <img src="player_rai.png" alt="ライ(Rai)" onerror="this.src='https://via.placeholder.com/100?text=RAI'">
-        </div>
-        <div class="organizer-meta">
-          <span class="organizer-role">FT10 Organizer Message</span>
-          <div class="organizer-name">ライ (Rai) 選手</div>
-        </div>
-      </div>
-      <div class="organizer-comment-body">今回のFT10対決は、カプエスへの強い愛と確かな実力を持ったメンバー同士で、どちらが勝つか全く予想がつかない最高の組み合わせを選びました。今まさにカプエス2をやり込んでいる現役勢はもちろん、引退勢や動画勢、普段あまり格闘ゲームを見ない方まで、誰もがワクワクできるメンツが揃ったと自負しています。
-出場するプレイヤーは全員が最強に近い実力者であり、キャラのやり込み、反応の反応の良さ、プレイングの精度はどれも一級品。文字通り「見るだけで面白い」対決になっています。
-それぞれのカードの見どころも非常に熱いです。ワタリさんとピノキオさんの「A対K」は、10先という流れの中でどう試合を展開していくかが勝負の分かれ目になります。GAOさんと喫音さんの「K対K」は、Kグルーヴならではのスピード感やジャストディフェンスの精度、そして一瞬の隙を突くぶっぱなしの応酬が見逃せません。そして、キクさんとD44さんの「C対A」は、ローリンピック優勝者同士の対決であり、カプエス界の最強とプライドを決める最高峰の戦いになるはずです。ぜひご期待ください！</div>
-    </section>
-
-
-    <div class="match-section">
-      <div class="match-header">
-        <span class="match-tag">MATCH 1</span>
-        <div class="match-vs-container">
-          <span>ピノキオ</span>
-          <span class="vs-emblem">VS</span>
-          <span>ワタリ</span>
-        </div>
+    <!-- ================= MATCH 1 ================= -->
+    <div class="match-interview-block">
+      <div class="match-header-banner">
+        <span class="match-number">MATCH 1</span>
+        <span class="match-subtitle">Special Exhibition Match</span>
       </div>
 
-      <div class="player-interview-block">
-        <div class="player-profile-header">
-          <div class="player-avatar">
-            <img src="player_pinokio.png" alt="ピノキオ" onerror="this.src='https://via.placeholder.com/100?text=P'">
+      <div class="fighters-showcase">
+        <div class="fighter-profile">
+          <div class="fighter-avatar">
+            <img src="player_pinokio.png" alt="ピノキオ" onerror="this.src='https://via.placeholder.com/100?text=PINOCCHIO'">
           </div>
-          <div class="player-name-tag">ピノキオ 選手</div>
+          <div class="fighter-name">ピノキオ</div>
         </div>
-
-        <div class="qa-card">
-          <div class="qa-q"><span>Q1.</span>このスペシャルマッチのオファーを受けたとき、率直にどう感じましたか？（即答だった、覚悟が必要だったなど）</div>
-          <div class="qa-a">どきどきした</div>
-        </div>
-        <div class="qa-card">
-          <div class="qa-q"><span>Q2.</span>対戦相手のプレイヤーとしての第一印象と、一番警戒している強み（キャラコントロール、立ち回り、人読みなど）を教えてください。</div>
-          <div class="qa-a">楽しみである</div>
-        </div>
-        <div class="qa-card">
-          <div class="qa-q"><span>Q3.</span>短期戦（FT2/FT3）と違い、FT10という超長期戦において、勝敗を分ける一番のポイントは何だと考えていますか？また準備している対策や意識はありますか？</div>
-          <div class="qa-a">いつでも勝つ</div>
-        </div>
-        <div class="qa-card">
-          <div class="qa-q"><span>Q4.</span>今回の戦いを通じて、視聴者や格ゲーファンに自分のどんなプレイ・格ゲー美学を見せたいですか？</div>
-          <div class="qa-a">勇気をもらえる</div>
-        </div>
-        <div class="qa-card">
-          <div class="qa-q"><span>Q5.</span>最後に、画面の向こうで対峙する相手へ、一言メッセージ（宣戦布告）をお願いします。</div>
-          <div class="qa-a">愛を見せつける</div>
+        <div class="vs-sign">VS</div>
+        <div class="fighter-profile">
+          <div class="fighter-avatar">
+            <img src="player_watari.png" alt="ワタリ" onerror="this.src='https://via.placeholder.com/100?text=WATARI'">
+          </div>
+          <div class="fighter-name">ワタリ</div>
         </div>
       </div>
 
-      <div class="player-interview-block">
-        <div class="player-profile-header" style="border-left-color: var(--snk-red);">
-          <div class="player-avatar" style="border-color: var(--snk-red); box-shadow: 0 0 15px rgba(255, 42, 75, 0.4);">
-            <img src="player_watari.png" alt="ワタリ" onerror="this.src='https://via.placeholder.com/100?text=W'">
+      <div class="qa-container">
+        
+        <!-- Q1 -->
+        <div class="qa-item">
+          <div class="question-title"><span>Q1.</span>「このスペシャルマッチのオファーを受けたとき、率直にどう感じましたか？（即答だった、覚悟が必要だったなど）」</div>
+          <div class="answers-grid">
+            <div class="answer-box">
+              <div class="answer-fighter">ピノキオ</div>
+              <div class="answer-text">どきどきした</div>
+            </div>
+            <div class="answer-box">
+              <div class="answer-fighter">ワタリ</div>
+              <div class="answer-text">わくわくした</div>
+            </div>
           </div>
-          <div class="player-name-tag">ワタリ 選手</div>
         </div>
 
-        <div class="qa-card">
-          <div class="qa-q"><span>Q1.</span>このスペシャルマッチのオファーを受けたとき、率直にどう感じましたか？（即答だった、覚悟が必要だったなど）</div>
-          <div class="qa-a">わくわくした</div>
+        <!-- Q2 -->
+        <div class="qa-item">
+          <div class="question-title"><span>Q2.</span>「対戦相手のプレイヤーとしての第一印象と、一番警戒している強み（キャラコントロール、立ち回り、人読みなど）を教えてください。」</div>
+          <div class="answers-grid">
+            <div class="answer-box">
+              <div class="answer-fighter">ピノキオ</div>
+              <div class="answer-text">楽しみである</div>
+            </div>
+            <div class="answer-box">
+              <div class="answer-fighter">ワタリ</div>
+              <div class="answer-text">どきどきした</div>
+            </div>
+          </div>
         </div>
-        <div class="qa-card">
-          <div class="qa-q"><span>Q2.</span>対戦相手のプレイヤーとしての第一印象と、一番警戒している強み（キャラコントロール、立ち回り、人読みなど）を教えてください。</div>
-          <div class="qa-a">どきどきした</div>
+
+        <!-- Q3 -->
+        <div class="qa-item">
+          <div class="question-title"><span>Q3.</span>「短期戦（FT2/FT3）と違い、FT10という超長期戦において、勝敗を分ける一番のポイントは何だと考えていますか？」また準備している対策や意識はありますか？」</div>
+          <div class="answers-grid">
+            <div class="answer-box">
+              <div class="answer-fighter">ピノキオ</div>
+              <div class="answer-text">いつでも勝つ</div>
+            </div>
+            <div class="answer-box">
+              <div class="answer-fighter">ワタリ</div>
+              <div class="answer-text">楽しみである</div>
+            </div>
+          </div>
         </div>
-        <div class="qa-card">
-          <div class="qa-q"><span>Q3.</span>短期戦（FT2/FT3）と違い、FT10という超長期戦において、勝敗を分ける一番のポイントは何だと考えていますか？また準備している対策や意識はありますか？</div>
-          <div class="qa-a">楽しみである</div>
+
+        <!-- Q4 -->
+        <div class="qa-item">
+          <div class="question-title"><span>Q4.</span>「今回の戦いを通じて、視聴者や格ゲーファンに自分のどんなプレイ・格ゲー美学を見せたいですか？」</div>
+          <div class="answers-grid">
+            <div class="answer-box">
+              <div class="answer-fighter">ピノキオ</div>
+              <div class="answer-text">勇気をもらえる</div>
+            </div>
+            <div class="answer-box">
+              <div class="answer-fighter">ワタリ</div>
+              <div class="answer-text">いつでも勝つ</div>
+            </div>
+          </div>
         </div>
-        <div class="qa-card">
-          <div class="qa-q"><span>Q4.</span>今回の戦いを通じて、視聴者や格ゲーファンに自分のどんなプレイ・格ゲー美学を見せたいですか？</div>
-          <div class="qa-a">いつでも勝つ</div>
+
+        <!-- Q5 -->
+        <div class="qa-item">
+          <div class="question-title"><span>Q5.</span>「最後に、画面の向こうで対峙する相手へ、一言メッセージ（宣戦布告）をお願いします。」</div>
+          <div class="answers-grid">
+            <div class="answer-box">
+              <div class="answer-fighter">ピノキオ</div>
+              <div class="answer-text">愛を見せつける</div>
+            </div>
+            <div class="answer-box">
+              <div class="answer-fighter">ワタリ</div>
+              <div class="answer-text">勇気をもらえる</div>
+            </div>
+          </div>
         </div>
-        <div class="qa-card">
-          <div class="qa-q"><span>Q5.</span>最後に、画面の向こうで対峙する相手へ、一言メッセージ（宣戦布告）をお願いします。</div>
-          <div class="qa-a">勇気をもらえる</div>
-        </div>
+
       </div>
     </div>
 
 
-    <div class="match-section">
-      <div class="match-header">
-        <span class="match-tag" style="color: var(--capcom-blue);">MATCH 2</span>
-        <div class="match-vs-container">
-          <span>GAO</span>
-          <span class="vs-emblem" style="color: var(--capcom-blue); background: rgba(0, 225, 255, 0.15); border-color: var(--capcom-blue); box-shadow: 0 0 12px rgba(0, 225, 255, 0.4);">VS</span>
-          <span>喫音</span>
+    <!-- ================= MATCH 2 ================= -->
+    <div class="match-interview-block">
+      <div class="match-header-banner">
+        <span class="match-number" style="color: var(--capcom-blue);">MATCH 2</span>
+        <span class="match-subtitle">Special Exhibition Match</span>
+      </div>
+
+      <div class="fighters-showcase">
+        <div class="fighter-profile">
+          <div class="fighter-avatar" style="border-color: var(--capcom-blue);">
+            <img src="player_gao.png" alt="GAO" onerror="this.src='https://via.placeholder.com/100?text=GAO'">
+          </div>
+          <div class="fighter-name">GAO</div>
+        </div>
+        <div class="vs-sign">VS</div>
+        <div class="fighter-profile">
+          <div class="fighter-avatar" style="border-color: var(--capcom-blue);">
+            <img src="player_kitsuon.png" alt="喫音" onerror="this.src='https://via.placeholder.com/100?text=KITSUON'">
+          </div>
+          <div class="fighter-name">喫音</div>
         </div>
       </div>
 
-      <div class="player-interview-block">
-        <div class="player-profile-header" style="border-left-color: var(--capcom-blue);">
-          <div class="player-avatar" style="border-color: var(--capcom-blue); box-shadow: 0 0 15px rgba(0, 225, 255, 0.4);">
-            <img src="player_gao.png" alt="GAO" onerror="this.src='https://via.placeholder.com/100?text=G'">
+      <div class="qa-container">
+        
+        <!-- Q1 -->
+        <div class="qa-item" style="border-left-color: var(--snk-red);">
+          <div class="question-title"><span>Q1.</span>「このスペシャルマッチのオファーを受けたとき、率直にどう感じましたか？（即答だった、覚悟が必要だったなど）」</div>
+          <div class="answers-grid">
+            <div class="answer-box">
+              <div class="answer-fighter">GAO</div>
+              <div class="answer-text">勇気をもらえる</div>
+            </div>
+            <div class="answer-box">
+              <div class="answer-fighter">喫音</div>
+              <div class="answer-text">いつでも勝つ</div>
+            </div>
           </div>
-          <div class="player-name-tag">GAO 選手</div>
         </div>
 
-        <div class="qa-card">
-          <div class="qa-q"><span>Q1.</span>このスペシャルマッチのオファーを受けたとき、率直にどう感じましたか？（即答だった、覚悟が必要だったなど）</div>
-          <div class="qa-a">勇気をもらえる</div>
-        </div>
-        <div class="qa-card">
-          <div class="qa-q"><span>Q2.</span>対戦相手のプレイヤーとしての第一印象と、一番警戒している強み（キャラコントロール、立ち回り、人読みなど）を教えてください。</div>
-          <div class="qa-a">わくわくした</div>
-        </div>
-        <div class="qa-card">
-          <div class="qa-q"><span>Q3.</span>短期戦（FT2/FT3）と違い、FT10という超長期戦において、勝敗を分ける一番のポイントは何だと考えていますか？また準備している対策や意識はありますか？</div>
-          <div class="qa-a">楽しみである</div>
-        </div>
-        <div class="qa-card">
-          <div class="qa-q"><span>Q4.</span>今回の戦いを通じて、視聴者や格ゲーファンに自分のどんなプレイ・格ゲー美学を見せたいですか？</div>
-          <div class="qa-a">楽しみである</div>
-        </div>
-        <div class="qa-card">
-          <div class="qa-q"><span>Q5.</span>最後に、画面の向こうで対峙する相手へ、一言メッセージ（宣戦布告）をお願いします。</div>
-          <div class="qa-a">いつでも勝つ</div>
-        </div>
-      </div>
-
-      <div class="player-interview-block">
-        <div class="player-profile-header" style="border-left-color: var(--capcom-blue);">
-          <div class="player-avatar" style="border-color: var(--capcom-blue); box-shadow: 0 0 15px rgba(0, 225, 255, 0.4);">
-            <img src="player_kitsuon.png" alt="喫音" onerror="this.src='https://via.placeholder.com/100?text=K'">
+        <!-- Q2 -->
+        <div class="qa-item" style="border-left-color: var(--snk-red);">
+          <div class="question-title"><span>Q2.</span>「対戦相手のプレイヤーとしての第一印象と、一番警戒している強み（キャラコントロール、立ち回り、人読みなど）を教えてください。」</div>
+          <div class="answers-grid">
+            <div class="answer-box">
+              <div class="answer-fighter">GAO</div>
+              <div class="answer-text">わくわくした</div>
+            </div>
+            <div class="answer-box">
+              <div class="answer-fighter">喫音</div>
+              <div class="answer-text">勇気をもらえる</div>
+            </div>
           </div>
-          <div class="player-name-tag">喫音 選手</div>
         </div>
 
-        <div class="qa-card">
-          <div class="qa-q"><span>Q1.</span>このスペシャルマッチのオファーを受けたとき、率直にどう感じましたか？（即答だった、覚悟が必要だったなど）</div>
-          <div class="qa-a">いつでも勝つ</div>
+        <!-- Q3 -->
+        <div class="qa-item" style="border-left-color: var(--snk-red);">
+          <div class="question-title"><span>Q3.</span>「短期戦（FT2/FT3）と違い、FT10という超長期戦において、勝敗を分ける一番のポイントは何だと考えていますか？」また準備している対策や意識はありますか？」</div>
+          <div class="answers-grid">
+            <div class="answer-box">
+              <div class="answer-fighter">GAO</div>
+              <div class="answer-text">楽しみである</div>
+            </div>
+            <div class="answer-box">
+              <div class="answer-fighter">喫音</div>
+              <div class="answer-text">どきどきした</div>
+            </div>
+          </div>
         </div>
-        <div class="qa-card">
-          <div class="qa-q"><span>Q2.</span>対戦相手のプレイヤーとしての第一印象と、一番警戒している強み（キャラコントロール、立ち回り、人読みなど）を教えてください。</div>
-          <div class="qa-a">勇気をもらえる</div>
+
+        <!-- Q4 -->
+        <div class="qa-item" style="border-left-color: var(--snk-red);">
+          <div class="question-title"><span>Q4.</span>「今回の戦いを通じて、視聴者や格ゲーファンに自分のどんなプレイ・格ゲー美学を見せたいですか？」</div>
+          <div class="answers-grid">
+            <div class="answer-box">
+              <div class="answer-fighter">GAO</div>
+              <div class="answer-text">楽しみである</div>
+            </div>
+            <div class="answer-box">
+              <div class="answer-fighter">喫音</div>
+              <div class="answer-text">どきどきした</div>
+            </div>
+          </div>
         </div>
-        <div class="qa-card">
-          <div class="qa-q"><span>Q3.</span>短期戦（FT2/FT3）と違い、FT10という超長期戦において、勝敗を分ける一番のポイントは何だと考えていますか？また準備している対策や意識はありますか？</div>
-          <div class="qa-a">どきどきした</div>
+
+        <!-- Q5 -->
+        <div class="qa-item" style="border-left-color: var(--snk-red);">
+          <div class="question-title"><span>Q5.</span>「最後に、画面の向こうで対峙する相手へ、一言メッセージ（宣戦布告）をお願いします。」</div>
+          <div class="answers-grid">
+            <div class="answer-box">
+              <div class="answer-fighter">GAO</div>
+              <div class="answer-text">いつでも勝つ</div>
+            </div>
+            <div class="answer-box">
+              <div class="answer-fighter">喫音</div>
+              <div class="answer-text">楽しみである</div>
+            </div>
+          </div>
         </div>
-        <div class="qa-card">
-          <div class="qa-q"><span>Q4.</span>今回の戦いを通じて、視聴者や格ゲーファンに自分のどんなプレイ・格ゲー美学を見せたいですか？</div>
-          <div class="qa-a">どきどきした</div>
-        </div>
-        <div class="qa-card">
-          <div class="qa-q"><span>Q5.</span>最後に、画面の向こうで対峙する相手へ、一言メッセージ（宣戦布告）をお願いします。</div>
-          <div class="qa-a">楽しみである</div>
-        </div>
+
       </div>
     </div>
 
 
-    <div class="match-section">
-      <div class="match-header">
-        <span class="match-tag" style="color: var(--snk-red);">MATCH 3</span>
-        <div class="match-vs-container">
-          <span>D44</span>
-          <span class="vs-emblem">VS</span>
-          <span>KIKU</span>
+    <!-- ================= MATCH 3 ================= -->
+    <div class="match-interview-block">
+      <div class="match-header-banner">
+        <span class="match-number" style="color: var(--snk-red);">MATCH 3</span>
+        <span class="match-subtitle">Special Exhibition Match</span>
+      </div>
+
+      <div class="fighters-showcase">
+        <div class="fighter-profile">
+          <div class="fighter-avatar" style="border-color: var(--snk-red);">
+            <img src="player_d44.png" alt="D44" onerror="this.src='https://via.placeholder.com/100?text=D44'">
+          </div>
+          <div class="fighter-name">D44</div>
+        </div>
+        <div class="vs-sign">VS</div>
+        <div class="fighter-profile">
+          <div class="fighter-avatar" style="border-color: var(--snk-red);">
+            <img src="player_kiku.png" alt="KIKU" onerror="this.src='https://via.placeholder.com/100?text=KIKU'">
+          </div>
+          <div class="fighter-name">KIKU</div>
         </div>
       </div>
 
-      <div class="player-interview-block">
-        <div class="player-profile-header" style="border-left-color: var(--snk-red);">
-          <div class="player-avatar" style="border-color: var(--snk-red); box-shadow: 0 0 15px rgba(255, 42, 75, 0.4);">
-            <img src="player_d44.png" alt="D44" onerror="this.src='https://via.placeholder.com/100?text=D'">
+      <div class="qa-container">
+        
+        <!-- Q1 -->
+        <div class="qa-item" style="border-left-color: var(--accent-yellow);">
+          <div class="question-title"><span>Q1.</span>「このスペシャルマッチのオファーを受けたとき、率直にどう感じましたか？（即答だった、覚悟が必要だったなど）」</div>
+          <div class="answers-grid">
+            <div class="answer-box">
+              <div class="answer-fighter">D44</div>
+              <div class="answer-text">楽しみである</div>
+            </div>
+            <div class="answer-box">
+              <div class="answer-fighter">KIKU</div>
+              <div class="answer-text">愛を見せつける</div>
+            </div>
           </div>
-          <div class="player-name-tag">D44 選手</div>
         </div>
 
-        <div class="qa-card">
-          <div class="qa-q"><span>Q1.</span>このスペシャルマッチのオファーを受けたとき、率直にどう感じましたか？（即答だった、覚悟が必要だったなど）</div>
-          <div class="qa-a">楽しみである</div>
-        </div>
-        <div class="qa-card">
-          <div class="qa-q"><span>Q2.</span>対戦相手のプレイヤーとしての第一印象と、一番警戒している強み（キャラコントロール、立ち回り、人読みなど）を教えてください。</div>
-          <div class="qa-a">楽しみである</div>
-        </div>
-        <div class="qa-card">
-          <div class="qa-q"><span>Q3.</span>短期戦（FT2/FT3）と違い、FT10という超長期戦において、勝敗を分ける一番のポイントは何だと考えていますか？また準備している対策や意識はありますか？</div>
-          <div class="qa-a">いつでも勝つ</div>
-        </div>
-        <div class="qa-card">
-          <div class="qa-q"><span>Q4.</span>今回の戦いを通じて、視聴者や格ゲーファンに自分のどんなプレイ・格ゲー美学を見せたいですか？</div>
-          <div class="qa-a">わくわくした</div>
-        </div>
-        <div class="qa-card">
-          <div class="qa-q"><span>Q5.</span>最後に、画面の向こうで対峙する相手へ、一言メッセージ（宣戦布告）をお願いします。</div>
-          <div class="qa-a">わくわくした</div>
-        </div>
-      </div>
-
-      <div class="player-interview-block">
-        <div class="player-profile-header" style="border-left-color: var(--snk-red);">
-          <div class="player-avatar" style="border-color: var(--snk-red); box-shadow: 0 0 15px rgba(255, 42, 75, 0.4);">
-            <img src="player_kiku.png" alt="KIKU" onerror="this.src='https://via.placeholder.com/100?text=K'">
+        <!-- Q2 -->
+        <div class="qa-item" style="border-left-color: var(--accent-yellow);">
+          <div class="question-title"><span>Q2.</span>「対戦相手のプレイヤーとしての第一印象と、一番警戒している強み（キャラコントロール、立ち回り、人読みなど）を教えてください。」</div>
+          <div class="answers-grid">
+            <div class="answer-box">
+              <div class="answer-fighter">D44</div>
+              <div class="answer-text">楽しみである</div>
+            </div>
+            <div class="answer-box">
+              <div class="answer-fighter">KIKU</div>
+              <div class="answer-text">楽しみである</div>
+            </div>
           </div>
-          <div class="player-name-tag">KIKU 選手</div>
         </div>
 
-        <div class="qa-card">
-          <div class="qa-q"><span>Q1.</span>このスペシャルマッチのオファーを受けたとき、率直にどう感じましたか？（即答だった、覚悟が必要だったなど）</div>
-          <div class="qa-a">愛を見せつける</div>
+        <!-- Q3 -->
+        <div class="qa-item" style="border-left-color: var(--accent-yellow);">
+          <div class="question-title"><span>Q3.</span>「短期戦（FT2/FT3）と違い、FT10という超長期戦において、勝敗を分ける一番のポイントは何だと考えていますか？」また準備している対策や意識はありますか？」</div>
+          <div class="answers-grid">
+            <div class="answer-box">
+              <div class="answer-fighter">D44</div>
+              <div class="answer-text">いつでも勝つ</div>
+            </div>
+            <div class="answer-box">
+              <div class="answer-fighter">KIKU</div>
+              <div class="answer-text">いつでも勝つ</div>
+            </div>
+          </div>
         </div>
-        <div class="qa-card">
-          <div class="qa-q"><span>Q2.</span>対戦相手のプレイヤーとしての第一印象と、一番警戒している強み（キャラコントロール、立ち回り、人読みなど）を教えてください。</div>
-          <div class="qa-a">楽しみである</div>
+
+        <!-- Q4 -->
+        <div class="qa-item" style="border-left-color: var(--accent-yellow);">
+          <div class="question-title"><span>Q4.</span>「今回の戦いを通じて、視聴者や格ゲーファンに自分のどんなプレイ・格ゲー美学を見せたいですか？」</div>
+          <div class="answers-grid">
+            <div class="answer-box">
+              <div class="answer-fighter">D44</div>
+              <div class="answer-text">わくわくした</div>
+            </div>
+            <div class="answer-box">
+              <div class="answer-fighter">KIKU</div>
+              <div class="answer-text">勇気をもらえる</div>
+            </div>
+          </div>
         </div>
-        <div class="qa-card">
-          <div class="qa-q"><span>Q3.</span>短期戦（FT2/FT3）と違い、FT10という超長期戦において、勝敗を分ける一番のポイントは何だと考えていますか？また準備している対策や意識はありますか？</div>
-          <div class="qa-a">いつでも勝つ</div>
+
+        <!-- Q5 -->
+        <div class="qa-item" style="border-left-color: var(--accent-yellow);">
+          <div class="question-title"><span>Q5.</span>「最後に、画面の向こうで対峙する相手へ、一言メッセージ（宣戦布告）をお願いします。」</div>
+          <div class="answers-grid">
+            <div class="answer-box">
+              <div class="answer-fighter">D44</div>
+              <div class="answer-text">わくわくした</div>
+            </div>
+            <div class="answer-box">
+              <div class="answer-fighter">KIKU</div>
+              <div class="answer-text">わくわくした</div>
+            </div>
+          </div>
         </div>
-        <div class="qa-card">
-          <div class="qa-q"><span>Q4.</span>今回の戦いを通じて、視聴者や格ゲーファンに自分のどんなプレイ・格ゲー美学を見せたいですか？</div>
-          <div class="qa-a">勇気をもらえる</div>
-        </div>
-        <div class="qa-card">
-          <div class="qa-q"><span>Q5.</span>最後に、画面の向こうで対峙する相手へ、一言メッセージ（宣戦布告）をお願いします。</div>
-          <div class="qa-a">わくわくした</div>
-        </div>
+
       </div>
     </div>
 
   </div>
 
+  <!-- Footer -->
   <footer>
     <p>問い合わせ先: <a href="https://twitter.com/Ryo151" target="_blank">@Ryo151 (X / Twitter)</a> / ライ(Rai)（<a href="https://twitter.com/rai_kapibara" target="_blank">@rai_kapibara</a>）</p>
     <p style="margin-top: 5px;">© Rollin'Pic Tournament Committee / CAPCOM vs SNK 2 Community</p>
