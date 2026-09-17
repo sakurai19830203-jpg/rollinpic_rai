@@ -394,7 +394,7 @@
       box-shadow: none;
     }
 
-    /* --- FT10 SECRET MATCHUP DESIGN (Further Expanded Vertical Height) --- */
+    /* --- FT10 SECRET MATCHUP DESIGN --- */
     .ft10-container {
       display: flex;
       flex-direction: column;
@@ -403,11 +403,8 @@
     }
 
     .secret-match-row {
-      background-size: cover;
-      background-position: center;
       border: 1px solid rgba(255, 204, 0, 0.4);
       border-left: 5px solid var(--accent-yellow);
-      padding: 95px 18px; /* 上下のパディングをさらに広げ、背景を最大限にアピール */
       position: relative;
       box-shadow: 4px 4px 0px #000;
       overflow: hidden;
@@ -416,20 +413,37 @@
       align-items: center;
     }
 
-    /* 背景画像と視認性確保のための軽いグラデーション */
+    /* Match 1: 1377x768の画像をそのまま綺麗に全表示（文字なし） */
     .secret-match-row.match1-bg {
-      background-image: 
-        linear-gradient(135deg, rgba(8, 8, 14, 0.4) 0%, rgba(4, 4, 8, 0.5) 100%),
-        url('match1_bg.jpg');
+      background: #0d0d12;
+      padding: 0;
+    }
+
+    .match1-img-wrap {
+      position: relative;
+      width: 100%;
+      line-height: 0;
+    }
+
+    .match1-img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     .secret-match-row.match2-bg {
+      background-size: cover;
+      background-position: center;
+      padding: 95px 18px;
       background-image: 
         linear-gradient(135deg, rgba(8, 8, 14, 0.4) 0%, rgba(4, 4, 8, 0.5) 100%),
         url('match2_bg.jpg');
     }
 
     .secret-match-row.match3-bg {
+      background-size: cover;
+      background-position: center;
+      padding: 95px 18px;
       background-image: 
         linear-gradient(135deg, rgba(8, 8, 14, 0.4) 0%, rgba(4, 4, 8, 0.5) 100%),
         url('match3_bg.jpg');
@@ -936,10 +950,10 @@
         
         <div class="ft10-container">
           
-          <!-- Match 1 -->
+          <!-- Match 1 (画像のみで文字なし・綺麗に全表示) -->
           <div class="secret-match-row match1-bg">
-            <div class="secret-header">
-              <span class="secret-label">MATCH 1</span>
+            <div class="match1-img-wrap">
+              <img src="match1_bg.jpg" alt="Match 1 Background" onerror="this.style.display='none';">
             </div>
           </div>
 
