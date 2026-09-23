@@ -5,18 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ローリンピック2026年 3on3 チーム斡旋リスト</title>
   <style>
-    body { font-family: sans-serif; max-width: 650px; margin: 0 auto; padding: 15px; background: #f9f9f9; color: #333; }
+    body { font-family: sans-serif; max-width: 700px; margin: 0 auto; padding: 15px; background: #f9f9f9; color: #333; }
     h1 { font-size: 1.2rem; text-align: center; margin-bottom: 20px; }
-    .card { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; }
-    input, select, textarea, button { width: 100%; margin-top: 8px; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
-    button.submit-btn { background: #28a745; color: #fff; font-weight: bold; border: none; cursor: pointer; margin-top: 15px; font-size: 1rem; }
+    .card { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; }
+    
+    .form-group { margin-bottom: 18px; }
+    .form-group label { font-weight: bold; font-size: 0.95rem; display: block; margin-bottom: 6px; }
+    
+    input, select, textarea, button { width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; font-size: 0.95rem; }
+    .note { font-size: 0.8rem; color: #666; margin-top: 4px; display: block; font-weight: normal; }
+    button.submit-btn { background: #28a745; color: #fff; font-weight: bold; border: none; cursor: pointer; margin-top: 10px; font-size: 1rem; }
     button.submit-btn:disabled { background: #888; }
     table { width: 100%; border-collapse: collapse; background: #fff; }
-    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; font-size: 0.85rem; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; font-size: 0.85rem; word-break: break-word; }
     th { background: #eee; }
+    .time-cell { font-size: 0.75rem; color: #666; white-space: nowrap; }
     .x-link { color: #1da1f2; text-decoration: none; font-weight: bold; }
     .delete-btn { background: #dc3545; color: #fff; border: none; padding: 5px 8px; border-radius: 4px; cursor: pointer; font-size: 0.75rem; width: auto; margin: 0; }
     .delete-btn:hover { background: #bd2130; }
+    
+    .hp-field { display: none !important; }
   </style>
 </head>
 <body>
@@ -25,33 +33,55 @@
 
   <!-- 登録フォーム -->
   <div class="card">
-    <h3>参加者登録</h3>
-    <form id="registerForm">
-      <label>プレイヤー名
-        <input type="text" id="name" required placeholder="例: ウメハラ">
-      </label>
-      <label>X (Twitter) ID（@なし）
-        <input type="text" id="xId" required placeholder="例: daigothebeast">
-      </label>
-      <label>希望状況
+    <h3 style="margin-top: 0; margin-bottom: 15px;">参加者登録</h3>
+    <form id="registerForm" autocomplete="off">
+      
+      <div class="hp-field">
+        <label>Leave this empty</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="form-group">
+        <label for="name">プレイヤー名（必須）</label>
+        <input type="text" id="name" required maxlength="30" placeholder="例: ライ">
+      </div>
+
+      <div class="form-group">
+        <label for="xId">X (Twitter) ID（任意）</label>
+        <input type="text" id="xId" maxlength="30" placeholder="例: rai_kapibara">
+        <span class="note">※@は自動的に付与されるので入力不要</span>
+      </div>
+
+      <div class="form-group">
+        <label for="slot">希望状況</label>
         <select id="slot">
           <option value="@2人募集（自分1人）">@2人募集（自分1人）</option>
           <option value="@1人募集（すでに2人）">@1人募集（すでに2人）</option>
         </select>
-      </label>
-      <label>一言（使用キャラ・チーム状況など）
-        <textarea id="comment" rows="2" placeholder="例: Aさん、Bさんで決まっています。楽しめる方なら誰でも！"></textarea>
-      </label>
+      </div>
+
+      <div class="form-group">
+        <label for="comment">一言（使用キャラ・チーム状況など）</label>
+        <textarea id="comment" rows="2" maxlength="200" placeholder="例: Aさん（Kブラサガバル）Bさん（Aアレ）で決まっています。楽しめる方ならだれでも！"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="password">削除用パスワード（必須）</label>
+        <input type="password" id="password" required maxlength="20" placeholder="例: 1234">
+        <span class="note">※登録情報を削除する際に使用する任意の数字・英字</span>
+      </div>
+
       <button type="submit" id="submitBtn" class="submit-btn">登録</button>
     </form>
   </div>
 
   <!-- 一覧表示 -->
   <div class="card">
-    <h3>現在の登録者一覧</h3>
+    <h3 style="margin-top: 0; margin-bottom: 15px;">現在の登録者一覧</h3>
     <table>
       <thead>
         <tr>
+          <th>登録日時</th>
           <th>名前</th>
           <th>希望</th>
           <th>X連絡先</th>
@@ -60,13 +90,19 @@
         </tr>
       </thead>
       <tbody id="listBody">
-        <tr><td colspan="5">読み込み中...</td></tr>
+        <tr><td colspan="6">読み込み中...</td></tr>
       </tbody>
     </table>
   </div>
 
 <script>
-  const GAS_URL = "https://script.google.com/macros/s/AKfycbwymDMnmx_8-y1Xy446xWlBBiRTBP2aiXcY17dSO6kECUHMaI2D35heelfMPb8QAnBOyQ/exec"; // ご自身のGASのURLを設定
+  const GAS_URL = "https://script.google.com/macros/s/AKfycbx89mOoXLp4Z65mNjep0c7IQt1DI7iU6wY3Hut3YUJ6eJun-2VZDCYSPsnDQkb1sHS6EA/exec"; // ご自身のGASのURLを設定
+
+  let clientToken = localStorage.getItem("app_client_token");
+  if (!clientToken) {
+    clientToken = "c_" + Math.random().toString(36).substring(2) + Date.now().toString(36);
+    localStorage.setItem("app_client_token", clientToken);
+  }
 
   // 一覧データの取得と表示
   async function loadData() {
@@ -77,33 +113,47 @@
       tbody.innerHTML = "";
 
       if (!data || data.length === 0) {
-        tbody.innerHTML = "<tr><td colspan='5'>まだ登録がありません</td></tr>";
+        tbody.innerHTML = "<tr><td colspan='6'>まだ登録がありません</td></tr>";
         return;
       }
 
-      // 降順（最新の投稿が上）で表示
       data.reverse().forEach(item => {
         const tr = document.createElement("tr");
+
+        let xCellHtml = "-";
+        if (item.xId && typeof item.xId === 'string' && item.xId.trim() !== "") {
+          const cleanXId = item.xId.trim().replace(/^@/, '').replace(/[^a-zA-Z0-9_]/g, '');
+          if (cleanXId !== "") {
+            xCellHtml = `<a class="x-link" href="https://x.com/${escapeHtml(cleanXId)}" target="_blank" rel="noopener noreferrer">@${escapeHtml(cleanXId)}</a>`;
+          }
+        }
+
         tr.innerHTML = `
+          <td class="time-cell">${escapeHtml(item.time)}</td>
           <td>${escapeHtml(item.name)}</td>
           <td><b>${escapeHtml(item.slot)}</b></td>
-          <td><a class="x-link" href="https://x.com/${escapeHtml(item.xId)}" target="_blank">@${escapeHtml(item.xId)}</a></td>
+          <td>${xCellHtml}</td>
           <td>${escapeHtml(item.comment)}</td>
           <td>
-            <button class="delete-btn" onclick="deleteRow(${item.rowIndex}, '${escapeHtml(item.name)}')">削除</button>
+            <button class="delete-btn" onclick="deleteRow(${parseInt(item.rowIndex, 10)}, '${escapeJsString(item.name)}')">削除</button>
           </td>
         `;
         tbody.appendChild(tr);
       });
     } catch (e) {
       console.error(e);
-      document.getElementById("listBody").innerHTML = "<tr><td colspan='5'>データの読み込みに失敗しました</td></tr>";
+      document.getElementById("listBody").innerHTML = "<tr><td colspan='6'>データの読み込みに失敗しました</td></tr>";
     }
   }
 
   // 登録処理
   document.getElementById("registerForm").addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    if (document.getElementById("website").value !== "") {
+      return;
+    }
+
     const btn = document.getElementById("submitBtn");
     btn.disabled = true;
     btn.innerText = "登録中...";
@@ -112,18 +162,27 @@
       name: document.getElementById("name").value,
       xId: document.getElementById("xId").value,
       slot: document.getElementById("slot").value,
-      comment: document.getElementById("comment").value
+      comment: document.getElementById("comment").value,
+      password: document.getElementById("password").value,
+      clientToken: clientToken
     };
 
     try {
-      await fetch(GAS_URL, {
+      const res = await fetch(GAS_URL, {
         method: "POST",
         body: JSON.stringify(payload)
       });
+      const result = await res.json();
 
-      alert("登録が完了しました。");
-      document.getElementById("registerForm").reset();
-      loadData();
+      if (result.status === "rate_limited") {
+        alert(result.message);
+      } else if (result.status === "success") {
+        alert("登録が完了しました。");
+        document.getElementById("registerForm").reset();
+        loadData();
+      } else {
+        alert(result.message || "登録に失敗しました。");
+      }
     } catch (err) {
       alert("送信に失敗しました");
     } finally {
@@ -134,7 +193,13 @@
 
   // 削除処理
   async function deleteRow(rowIndex, name) {
-    if (!confirm(`「${name}」さんの登録情報を削除しますか？\n（チームが決まった場合や間違えて登録した場合にご利用ください）`)) {
+    if (!rowIndex || isNaN(rowIndex)) return;
+
+    const inputPass = prompt(`「${name}」さんの登録情報を削除します。\n登録時に設定したパスワードを入力してください：`);
+    if (inputPass === null) return;
+    
+    if (inputPass.trim() === "") {
+      alert("パスワードを入力してください。");
       return;
     }
 
@@ -143,19 +208,39 @@
         method: "POST",
         body: JSON.stringify({
           action: "delete",
-          rowIndex: rowIndex
+          rowIndex: rowIndex,
+          password: inputPass
         })
       });
 
-      alert("削除が完了しました。");
-      loadData();
+      const result = await res.json();
+
+      if (result.status === "deleted") {
+        alert("削除が完了しました。");
+        loadData();
+      } else if (result.status === "invalid_password") {
+        alert("パスワードが正しくありません。");
+      } else {
+        alert("削除に失敗しました。");
+      }
     } catch (err) {
-      alert("削除処理に失敗しました。");
+      alert("通信エラーが発生しました。");
     }
   }
 
   function escapeHtml(str) {
-    return (str || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/'/g, "&#39;").replace(/"/g, "&quot;");
+    if (typeof str !== 'string') return "";
+    return str
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/'/g, "&#39;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function escapeJsString(str) {
+    if (typeof str !== 'string') return "";
+    return str.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '\\"');
   }
 
   loadData();
