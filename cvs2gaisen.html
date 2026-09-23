@@ -3,22 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>格ゲー 3on3 チーム斡旋リスト</title>
+  <title>ローリンピック2026年 3on3 チーム斡旋リスト</title>
   <style>
-    body { font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 15px; background: #f9f9f9; }
-    h1 { font-size: 1.2rem; text-align: center; }
+    body { font-family: sans-serif; max-width: 650px; margin: 0 auto; padding: 15px; background: #f9f9f9; color: #333; }
+    h1 { font-size: 1.2rem; text-align: center; margin-bottom: 20px; }
     .card { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; }
     input, select, textarea, button { width: 100%; margin-top: 8px; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
-    button { background: #1da1f2; color: #fff; font-weight: bold; border: none; cursor: pointer; margin-top: 15px; }
+    button.submit-btn { background: #28a745; color: #fff; font-weight: bold; border: none; cursor: pointer; margin-top: 15px; font-size: 1rem; }
+    button.submit-btn:disabled { background: #888; }
     table { width: 100%; border-collapse: collapse; background: #fff; }
-    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; font-size: 0.9rem; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; font-size: 0.85rem; }
     th { background: #eee; }
     .x-link { color: #1da1f2; text-decoration: none; font-weight: bold; }
+    .delete-btn { background: #dc3545; color: #fff; border: none; padding: 5px 8px; border-radius: 4px; cursor: pointer; font-size: 0.75rem; width: auto; margin: 0; }
+    .delete-btn:hover { background: #bd2130; }
   </style>
 </head>
 <body>
 
-  <h1>🏆 格ゲー 3on3 チーム斡旋リスト</h1>
+  <h1>🏆 ローリンピック2026年 3on3 チーム斡旋リスト</h1>
 
   <!-- 登録フォーム -->
   <div class="card">
@@ -36,10 +39,10 @@
           <option value="@1人募集（すでに2人）">@1人募集（すでに2人）</option>
         </select>
       </label>
-      <label>一言（使用キャラ・時間帯など）
-        <textarea id="comment" rows="2" placeholder="例: リュウ使ってます！夜なら対戦可能"></textarea>
+      <label>一言（使用キャラ・チーム状況など）
+        <textarea id="comment" rows="2" placeholder="例: Aさん、Bさんで決まっています。楽しめる方なら誰でも！"></textarea>
       </label>
-      <button type="submit" id="submitBtn">登録してXでシェア</button>
+      <button type="submit" id="submitBtn" class="submit-btn">登録</button>
     </form>
   </div>
 
@@ -53,16 +56,17 @@
           <th>希望</th>
           <th>X連絡先</th>
           <th>一言</th>
+          <th>操作</th>
         </tr>
       </thead>
       <tbody id="listBody">
-        <tr><td colspan="4">読み込み中...</td></tr>
+        <tr><td colspan="5">読み込み中...</td></tr>
       </tbody>
     </table>
   </div>
 
 <script>
-  const GAS_URL = "https://script.google.com/macros/s/AKfycbwymDMnmx_8-y1Xy446xWlBBiRTBP2aiXcY17dSO6kECUHMaI2D35heelfMPb8QAnBOyQ/exec"; // GASのURLを設定
+  const GAS_URL = "https://script.google.com/macros/s/AKfycbwymDMnmx_8-y1Xy446xWlBBiRTBP2aiXcY17dSO6kECUHMaI2D35heelfMPb8QAnBOyQ/exec"; // ご自身のGASのURLを設定
 
   // 一覧データの取得と表示
   async function loadData() {
@@ -72,11 +76,12 @@
       const tbody = document.getElementById("listBody");
       tbody.innerHTML = "";
 
-      if (data.length === 0) {
-        tbody.innerHTML = "<tr><td colspan='4'>まだ登録がありません</td></tr>";
+      if (!data || data.length === 0) {
+        tbody.innerHTML = "<tr><td colspan='5'>まだ登録がありません</td></tr>";
         return;
       }
 
+      // 降順（最新の投稿が上）で表示
       data.reverse().forEach(item => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
@@ -84,20 +89,24 @@
           <td><b>${escapeHtml(item.slot)}</b></td>
           <td><a class="x-link" href="https://x.com/${escapeHtml(item.xId)}" target="_blank">@${escapeHtml(item.xId)}</a></td>
           <td>${escapeHtml(item.comment)}</td>
+          <td>
+            <button class="delete-btn" onclick="deleteRow(${item.rowIndex}, '${escapeHtml(item.name)}')">削除</button>
+          </td>
         `;
         tbody.appendChild(tr);
       });
     } catch (e) {
       console.error(e);
+      document.getElementById("listBody").innerHTML = "<tr><td colspan='5'>データの読み込みに失敗しました</td></tr>";
     }
   }
 
-  // フォーム送信処理
+  // 登録処理
   document.getElementById("registerForm").addEventListener("submit", async (e) => {
     e.preventDefault();
     const btn = document.getElementById("submitBtn");
     btn.disabled = true;
-    btn.innerText = "送信中...";
+    btn.innerText = "登録中...";
 
     const payload = {
       name: document.getElementById("name").value,
@@ -112,28 +121,41 @@
         body: JSON.stringify(payload)
       });
 
-      // Xでの投稿画面（Web Intent）を生成して開く
-      const shareText = encodeURIComponent(
-        `【格ゲー3on3 チーム募集】\n` +
-        `状況：${payload.slot}\n` +
-        `名前：${payload.name} (@${payload.xId})\n` +
-        `コメント：${payload.comment}\n` +
-        `現在の参加希望一覧はこちら↓\n` +
-        `${window.location.href}\n` +
-        `#格ゲー3on3募集`
-      );
-      
-      window.open(`https://x.com/intent/tweet?text=${shareText}`, '_blank');
-      location.reload();
+      alert("登録が完了しました。");
+      document.getElementById("registerForm").reset();
+      loadData();
     } catch (err) {
       alert("送信に失敗しました");
+    } finally {
       btn.disabled = false;
-      btn.innerText = "登録してXでシェア";
+      btn.innerText = "登録";
     }
   });
 
+  // 削除処理
+  async function deleteRow(rowIndex, name) {
+    if (!confirm(`「${name}」さんの登録情報を削除しますか？\n（チームが決まった場合や間違えて登録した場合にご利用ください）`)) {
+      return;
+    }
+
+    try {
+      const res = await fetch(GAS_URL, {
+        method: "POST",
+        body: JSON.stringify({
+          action: "delete",
+          rowIndex: rowIndex
+        })
+      });
+
+      alert("削除が完了しました。");
+      loadData();
+    } catch (err) {
+      alert("削除処理に失敗しました。");
+    }
+  }
+
   function escapeHtml(str) {
-    return (str || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    return (str || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/'/g, "&#39;").replace(/"/g, "&quot;");
   }
 
   loadData();
