@@ -14,6 +14,8 @@
     
     input, select, textarea, button { width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; font-size: 0.95rem; }
     .note { font-size: 0.8rem; color: #666; margin-top: 4px; display: block; font-weight: normal; }
+    .warning-note { font-size: 0.8rem; color: #d9534f; margin-top: 6px; margin-bottom: 12px; font-weight: normal; line-height: 1.4; }
+    
     button.submit-btn { background: #28a745; color: #fff; font-weight: bold; border: none; cursor: pointer; margin-top: 10px; font-size: 1rem; }
     button.submit-btn:disabled { background: #888; }
     table { width: 100%; border-collapse: collapse; background: #fff; }
@@ -66,9 +68,9 @@
       </div>
 
       <div class="form-group">
-        <label for="password">削除用パスワード（必須）</label>
-        <input type="password" id="password" required maxlength="20" placeholder="例: 1234">
-        <span class="note">※登録情報を削除する際に使用する任意の数字・英字</span>
+        <label for="password">削除用パスワード（必須・数字4桁）</label>
+        <input type="password" id="password" required maxlength="4" pattern="\d{4}" inputmode="numeric" placeholder="例: 1234">
+        <span class="note">※登録情報を削除する際に使用する半角数字4桁</span>
       </div>
 
       <button type="submit" id="submitBtn" class="submit-btn">登録</button>
@@ -77,7 +79,9 @@
 
   <!-- 一覧表示 -->
   <div class="card">
-    <h3 style="margin-top: 0; margin-bottom: 15px;">現在の登録者一覧</h3>
+    <h3 style="margin-top: 0; margin-bottom: 5px;">現在の登録者一覧</h3>
+    <div class="warning-note">※データの読み込みに時間がかかったり失敗した場合は、少し時間を空けてから再度アクセス（再読み込み）してみてください。</div>
+    
     <table>
       <thead>
         <tr>
@@ -96,7 +100,7 @@
   </div>
 
 <script>
-  const GAS_URL = "https://script.google.com/macros/s/AKfycbx89mOoXLp4Z65mNjep0c7IQt1DI7iU6wY3Hut3YUJ6eJun-2VZDCYSPsnDQkb1sHS6EA/exec"; // ご自身のGASのURLを設定
+  const GAS_URL = "https://script.google.com/macros/s/AKfycbyq3eaesSuNlPZeCsAaUw2MH1V5lmy-Mfctztb4t80ccvxSSq8mVGg_SEGZm8_ABcpsUw/exec"; // ご自身のGASのURLを設定
 
   let clientToken = localStorage.getItem("app_client_token");
   if (!clientToken) {
@@ -142,7 +146,7 @@
       });
     } catch (e) {
       console.error(e);
-      document.getElementById("listBody").innerHTML = "<tr><td colspan='6'>データの読み込みに失敗しました</td></tr>";
+      document.getElementById("listBody").innerHTML = "<tr><td colspan='6'>データの読み込みに失敗しました。少し時間を空けて再読み込みしてください。</td></tr>";
     }
   }
 
@@ -151,6 +155,12 @@
     e.preventDefault();
 
     if (document.getElementById("website").value !== "") {
+      return;
+    }
+
+    const passVal = document.getElementById("password").value;
+    if (!/^\d{4}$/.test(passVal)) {
+      alert("パスワードは半角数字4桁で入力してください。");
       return;
     }
 
@@ -163,7 +173,7 @@
       xId: document.getElementById("xId").value,
       slot: document.getElementById("slot").value,
       comment: document.getElementById("comment").value,
-      password: document.getElementById("password").value,
+      password: passVal,
       clientToken: clientToken
     };
 
@@ -184,7 +194,7 @@
         alert(result.message || "登録に失敗しました。");
       }
     } catch (err) {
-      alert("送信に失敗しました");
+      alert("送信に失敗しました。デプロイ設定をご確認ください。");
     } finally {
       btn.disabled = false;
       btn.innerText = "登録";
@@ -195,11 +205,11 @@
   async function deleteRow(rowIndex, name) {
     if (!rowIndex || isNaN(rowIndex)) return;
 
-    const inputPass = prompt(`「${name}」さんの登録情報を削除します。\n登録時に設定したパスワードを入力してください：`);
+    const inputPass = prompt(`「${name}」さんの登録情報を削除します。\n登録時に設定した数字4桁のパスワードを入力してください：`);
     if (inputPass === null) return;
     
-    if (inputPass.trim() === "") {
-      alert("パスワードを入力してください。");
+    if (!/^\d{4}$/.test(inputPass.trim())) {
+      alert("パスワードは数字4桁です。");
       return;
     }
 
@@ -209,7 +219,7 @@
         body: JSON.stringify({
           action: "delete",
           rowIndex: rowIndex,
-          password: inputPass
+          password: inputPass.trim()
         })
       });
 
