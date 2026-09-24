@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【個人戦】ルール詳細 - Rollin' Picture 2026</title>
+    <style>
+        :root {
+            --bg-overlay: rgba(15, 18, 28, 0.82);
+            --card-bg: rgba(26, 32, 48, 0.85);
+            --card-border: rgba(255, 255, 255, 0.12);
+            --text-main: #f0f4f8;
+            --text-sub: #b0b8c8;
+            --accent-gold: #ffd700;
+            --accent-silver: #c0c0c0;
+            --accent-bronze: #cd7f32;
+            --accent-cyan: #00d2ff;
+            --accent-red: #ff5252;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--text-main);
+            background-color: #0b0d12;
+            /* 背景画像および明度の設定 */
+            background-image: 
+                linear-gradient(var(--bg-overlay), var(--bg-overlay)),
+                url('https://sakurai19830203-jpg.github.io/rollinpic_rai/rollinpic2026.html');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            line-height: 1.7;
+            padding: 20px 15px 60px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 35px;
+            padding: 20px 0;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 2rem;
+            letter-spacing: 1.5px;
+            color: #ffffff;
+            text-shadow: 0 0 12px rgba(0, 210, 255, 0.5);
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            color: var(--accent-cyan);
+            font-weight: bold;
+        }
+
+        section {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(6px);
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            color: #fff;
+            border-left: 4px solid var(--accent-cyan);
+            padding-left: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            color: #ffffff;
+            margin: 18px 0 10px;
+        }
+
+        p {
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .note {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            background: rgba(0, 0, 0, 0.25);
+            padding: 10px 14px;
+            border-radius: 6px;
+            border-left: 3px solid #6c757d;
+            margin-top: 10px;
+        }
+
+        .note-warning {
+            border-left-color: var(--accent-red);
+            color: #ffcccc;
+            background: rgba(255, 82, 82, 0.1);
+        }
+
+        /* 予選ブロック */
+        .qualifier-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .qualifier-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        .badge-cyan { background: rgba(0, 210, 255, 0.2); color: var(--accent-cyan); border: 1px solid var(--accent-cyan); }
+
+        /* Tier カードデザイン */
+        .tier-card {
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .tier-1 {
+            border-color: rgba(255, 215, 0, 0.5);
+            box-shadow: inset 0 0 15px rgba(255, 215, 0, 0.08);
+        }
+        .tier-1 h3 { color: var(--accent-gold); }
+
+        .tier-2 {
+            border-color: rgba(192, 192, 192, 0.5);
+            box-shadow: inset 0 0 15px rgba(192, 192, 192, 0.08);
+        }
+        .tier-2 h3 { color: var(--accent-silver); }
+
+        .tier-3 {
+            border-color: rgba(205, 127, 50, 0.5);
+            box-shadow: inset 0 0 15px rgba(205, 127, 50, 0.08);
+        }
+        .tier-3 h3 { color: var(--accent-bronze); }
+
+        .tier-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+        }
+
+        .tier-header h3 {
+            margin: 0;
+            font-size: 1.25rem;
+        }
+
+        .slot-count {
+            font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-weight: bold;
+        }
+
+        .player-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 10px 0 15px;
+        }
+
+        .player-list li {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .feature-list {
+            list-style-type: square;
+            padding-left: 20px;
+            color: var(--text-main);
+        }
+
+        .feature-list li {
+            margin-bottom: 6px;
+        }
+
+        /* 手順リスト */
+        .step-list {
+            list-style: none;
+            counter-reset: step-counter;
+            padding-left: 0;
+        }
+
+        .step-list li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 45px;
+            margin-bottom: 18px;
+        }
+
+        .step-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background: var(--accent-cyan);
+            color: #000;
+            font-weight: bold;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-size: 0.95rem;
+        }
+
+        .nav-back {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .nav-back a {
+            color: var(--text-main);
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 24px;
+            border-radius: 20px;
+            border: 1px solid var(--card-border);
+            transition: all 0.3s ease;
+        }
+
+        .nav-back a:hover {
+            background: var(--accent-cyan);
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>【個人戦】ルール詳細</h1>
+        <div class="subtitle">Rollin' Picture 2026</div>
+    </header>
+
+    <!-- 当日予選概要 -->
+    <section>
+        <h2>■ 当日予選概要（11/21開催）</h2>
+        <p>当日予選では、例年通り2回のシングルイリミネーショントーナメントを実施し、<strong>合計7名</strong>が決勝トーナメントへ進出します。</p>
+        <p>なお、くじ引きは前回個人戦覇者の「<strong>ライ</strong>」が行います。</p>
+
+        <div class="qualifier-grid">
+            <div class="qualifier-card">
+                <h3>第1トーナメント <span class="badge badge-cyan">進出枠：4名</span></h3>
+                <p>参加者を4つのブロックに分け、各ブロックの優勝者4名が決勝トーナメントに進出します。</p>
+                <div class="note">
+                    <strong>対戦調整：</strong> 海外勢、北海道勢、九州勢は初戦で当たらないよう調整します。
+                </div>
+            </div>
+
+            <div class="qualifier-card">
+                <h3>第2トーナメント <span class="badge badge-cyan">進出枠：3名</span></h3>
+                <p>第1トーナメント通過者4名を除いた参加者を3つのブロックに分け、各ブロックの優勝者3名が決勝トーナメントに進出します。</p>
+                <div class="note">
+                    ※第2トーナメントでは地域等の対戦調整はありません。
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 決勝トーナメント概要 -->
+    <section>
+        <h2>■ 決勝トーナメント概要（16名）</h2>
+        <p>シード枠9名 ＋ 当日予選通過枠7名の<strong>計16名</strong>による<strong>ダブルイリミネーション方式</strong>で行います。</p>
+
+        <h3 style="margin-top: 25px; margin-bottom: 15px;">プレイヤー区分（Tier）と出場枠</h3>
+
+        <!-- Tier 1 -->
+        <div class="tier-card tier-1">
+            <div class="tier-header">
+                <h3>【Tier 1】</h3>
+                <span class="slot-count">4枠</span>
+            </div>
+            <p><strong>該当者：</strong> 前回優勝者 / ランバト総合優勝者</p>
+            <ul class="player-list">
+                <li>ライ</li>
+                <li>TBD（東京）</li>
+                <li>TBD（大阪）</li>
+                <li>TBD（名古屋）</li>
+            </ul>
+            <p><strong>Tier 1 特典・仕様：</strong></p>
+            <ul class="feature-list">
+                <li><strong>配置優遇：</strong> Winnersトーナメントでは各ブロックに均等に割り振られます（Tier 1同士の対戦は Winners Semi 以降となります）。</li>
+                <li><strong>席決め権利：</strong> Tier 2 / Tier 3 のプレイヤーと対戦する際、席の決定権を得ます（Tier 1同士の場合はじゃんけんで決定）。</li>
+                <li><strong>1回戦指名権：</strong> 1回戦の対戦相手を指名できる権利を持ちます（使用は任意・1回のみ）。</li>
+            </ul>
+            <div class="note note-warning">
+                ※Tier 2 プレイヤーを指名して拒否された場合、指名権は失われ、別のプレイヤーを再指名することはできません。
+            </div>
+        </div>
+
+        <!-- Tier 2 -->
+        <div class="tier-card tier-2">
+            <div class="tier-header">
+                <h3>【Tier 2】</h3>
+                <span class="slot-count">5枠</span>
+            </div>
+            <p><strong>該当者：</strong> 地域大会優勝者 / ランバトプレーオフ勝者</p>
+            <ul class="player-list">
+                <li>ワタリ（北海道）</li>
+                <li>Sophitia（埼玉）</li>
+                <li>TBD（東京プレーオフ）</li>
+                <li>TBD（大阪）</li>
+                <li>TBD（名古屋）</li>
+            </ul>
+            <p><strong>Tier 2 特典・仕様：</strong></p>
+            <ul class="feature-list">
+                <li><strong>席決め権利：</strong> Tier 3 のプレイヤーと対戦する際、席の決定権を得ます（Tier 2同士の場合はじゃんけんで決定）。</li>
+                <li><strong>指名拒否権：</strong> Tier 1 プレイヤーからの指名を1回のみ拒否できます。</li>
+            </ul>
+            <div class="note">
+                ※1度拒否した後、別のTier 1プレイヤーから再度指名された場合は拒否できません。
+            </div>
+        </div>
+
+        <!-- Tier 3 -->
+        <div class="tier-card tier-3">
+            <div class="tier-header">
+                <h3>【Tier 3】</h3>
+                <span class="slot-count">7枠</span>
+            </div>
+            <p><strong>該当者：</strong> 当日予選通過者 7名（第1トーナメント勝者4名、第2トーナメント勝者3名）</p>
+            <p style="margin-top: 10px;"><strong>仕様：</strong></p>
+            <ul class="feature-list">
+                <li><strong>席決め権利：</strong> なし（Tier 3同士の場合はじゃんけんで決定）。</li>
+                <li><strong>指名拒否権：</strong> Tier 1 プレイヤーからの指名を拒否することはできません。</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- くじ引きの手順 -->
+    <section>
+        <h2>■ トーナメントくじ引きの手順</h2>
+        <p>以下の順番でトーナメントの配置決定およびくじ引きを行います。</p>
+        
+        <ol class="step-list">
+            <li>
+                <strong>Tier 1 プレイヤー（4名）</strong>
+                <p>ブロック分けおよび1回戦の指名を行います。</p>
+            </li>
+            <li>
+                <strong>Tier 2 プレイヤー（5名）</strong>
+                <p>じゃんけんを行い、勝った人から順番にくじを引きます。</p>
+            </li>
+            <li>
+                <strong>Tier 3 プレイヤー（7名）</strong>
+                <p>じゃんけんを行い、勝った人から順番にくじを引きます。</p>
+            </li>
+        </ol>
+
+        <div class="note">
+            ※まず第1トーナメント勝者4名でじゃんけんをして勝った順にくじを引き、その後、第2トーナメント勝者3名でじゃんけんをして勝った順にくじを引きます。
+        </div>
+    </section>
+
+    <div class="nav-back">
+        <a href="rollinpic2026.html">&larr; メインページに戻る</a>
+    </div>
+</div>
+
+</body>
+</html>
