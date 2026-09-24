@@ -338,6 +338,12 @@
       letter-spacing: 0.5px;
     }
 
+    .rule-banner:hover {
+      background: linear-gradient(135deg, rgba(30, 30, 42, 0.95), rgba(10, 10, 18, 0.95));
+      border-color: var(--capcom-blue);
+      border-left-color: var(--capcom-blue);
+    }
+
     .rule-banner.disabled {
       background: rgba(15, 15, 22, 0.85);
       border: 1px dashed #444455;
@@ -402,6 +408,23 @@
       font-family: 'Noto Sans JP', sans-serif;
       font-weight: bold;
       box-shadow: none;
+    }
+
+    /* 斡旋希望リンク用スタイル */
+    .match-agent-link {
+      display: block;
+      text-align: center;
+      color: var(--accent-yellow);
+      font-size: 0.9rem;
+      font-weight: bold;
+      text-decoration: none;
+      margin-top: 8px;
+      transition: color 0.2s;
+    }
+
+    .match-agent-link:hover {
+      color: #fff;
+      text-decoration: underline;
     }
 
     /* --- FT10 SECRET MATCHUP DESIGN --- */
@@ -911,11 +934,12 @@
         <span class="date-badge">DAY 1 — 2026/11/21 (土)</span>
         <h2 class="card-heading">個人戦 (Singles)</h2>
         
-        <div class="rule-banner disabled">
+        <!-- 個人戦ルール詳細のリンク化 -->
+        <a href="singles_rule.html" class="rule-banner">
           <div class="rule-banner-inner">
-            🚧 個人戦 ルール詳細（近日公開）
+            📄 個人戦 ルール詳細を確認する
           </div>
-        </div>
+        </a>
 
         <table class="info-table">
           <tr><td>受付時間</td><td>未定</td></tr>
@@ -948,7 +972,9 @@
           <tr><td>大会開始</td><td>未定</td></tr>
           <tr><td>参加費</td><td>未定</td></tr>
         </table>
-        <a href="https://forms.gle/9MT6A1zSpe1Ny7AK7" target="_blank" class="entry-btn" style="margin-top: 85px;">3on3 エントリー（受付中）</a>
+        <a href="https://forms.gle/9MT6A1zSpe1Ny7AK7" target="_blank" class="entry-btn" style="margin-top: 60px;">3on3 エントリー（受付中）</a>
+        <!-- 斡旋希望リンクの追加 -->
+        <a href="cvs2gaisen.html" class="match-agent-link">▶ 斡旋希望の方はこちら</a>
       </div>
 
       <!-- DAY 3 -->
