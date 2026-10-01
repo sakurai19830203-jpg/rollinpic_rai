@@ -382,7 +382,7 @@
       margin-bottom: 15px;
     }
 
-    /* エントリーリスト用共通スタイル */
+    /* エントリーリスト用共通スタイル（スクロールなし・シンプル表示） */
     .entry-list-section {
       margin-top: 16px;
       margin-bottom: 10px;
@@ -401,18 +401,13 @@
       align-items: center;
     }
 
-    .entry-table-wrap {
-      max-height: 250px;
-      overflow-y: auto;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(6, 6, 10, 0.9);
-    }
-
     .entry-table {
       width: 100%;
       border-collapse: collapse;
       font-size: 0.78rem;
       text-align: left;
+      background: rgba(6, 6, 10, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .entry-table th {
@@ -420,9 +415,6 @@
       color: #fff;
       padding: 6px 6px;
       font-weight: bold;
-      position: sticky;
-      top: 0;
-      z-index: 2;
       border-bottom: 1px solid rgba(255, 255, 255, 0.15);
       white-space: nowrap;
     }
@@ -431,6 +423,7 @@
       padding: 6px 6px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       color: #d8d8e0;
+      word-break: break-all;
     }
 
     .entry-table tr:hover td {
@@ -444,25 +437,7 @@
       color: var(--accent-yellow);
       text-align: center;
       width: 32px;
-    }
-
-    /* 2行表示対応：セル内の改行を有効にし、文字途切れを防ぐ */
-    .wrap-cell {
-      white-space: normal;
-      word-break: break-all;
-      line-height: 1.3;
-    }
-
-    /* スクロールバー装飾 */
-    .entry-table-wrap::-webkit-scrollbar {
-      width: 4px;
-    }
-    .entry-table-wrap::-webkit-scrollbar-track {
-      background: #060608;
-    }
-    .entry-table-wrap::-webkit-scrollbar-thumb {
-      background: #333340;
-      border-radius: 2px;
+      white-space: nowrap !important;
     }
 
     /* エントリーボタン */
@@ -870,7 +845,7 @@
       font-weight: bold;
     }
 
-    /* ─── スマホ・レスポンシブ最適化 ─── */
+    /* ─── RESPONSIVE STYLES (スマホ・タブレット最適化) ─── */
     @media (max-width: 768px) {
       .qualifier-header {
         flex-direction: column;
@@ -1063,67 +1038,64 @@
         </div>
         <a href="https://forms.gle/b4JJ3ANQm8SZjEZF6" target="_blank" class="entry-btn">個人戦 エントリー（受付中）</a>
 
-        <!-- 個人戦エントリー状況テーブル -->
+        <!-- 個人戦エントリー状況テーブル（G列統合・スクロールなし） -->
         <div class="entry-list-section">
           <div class="entry-list-title">
             <span>エントリー状況一覧</span>
-            <span style="font-size:0.7rem; color:var(--text-muted); font-weight:normal;">10/1現在 (40名)</span>
+            <span style="font-size:0.75rem; color:var(--text-muted); font-weight:normal;">10/1現在 (40名)</span>
           </div>
-          <div class="entry-table-wrap">
-            <table class="entry-table">
-              <thead>
-                <tr>
-                  <th style="text-align:center; width:35px;">No.</th>
-                  <th style="width:75px;">名前</th>
-                  <th style="width:65px;">地域</th>
-                  <th style="width:35px;">G</th>
-                  <th>キャラクター</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td class="entry-num">1</td><td class="wrap-cell">ライ</td><td class="wrap-cell">関東</td><td>K</td><td class="wrap-cell">舞、響、サガット</td></tr>
-                <tr><td class="entry-num">2</td><td class="wrap-cell">喫音</td><td class="wrap-cell">近畿</td><td>K</td><td class="wrap-cell">響、ナコルル、サガット</td></tr>
-                <tr><td class="entry-num">3</td><td class="wrap-cell">D44</td><td class="wrap-cell">関東</td><td>A</td><td class="wrap-cell">山崎、ベガ、ブランカ</td></tr>
-                <tr><td class="entry-num">4</td><td class="wrap-cell">Silentscope88</td><td class="wrap-cell">海外</td><td>K</td><td class="wrap-cell">ルガール、チャン、モリガン</td></tr>
-                <tr><td class="entry-num">5</td><td class="wrap-cell">ysk</td><td class="wrap-cell">近畿</td><td>A</td><td class="wrap-cell">さくら、ベガ、ブランカ</td></tr>
-                <tr><td class="entry-num">6</td><td class="wrap-cell">ｱｲｾﾞﾔ-</td><td class="wrap-cell">海外</td><td>K</td><td class="wrap-cell">ロック、ケン、サガット</td></tr>
-                <tr><td class="entry-num">7</td><td class="wrap-cell">コダマ</td><td class="wrap-cell">中部</td><td>K</td><td class="wrap-cell">ベガ、バイソン、ブランカ</td></tr>
-                <tr><td class="entry-num">8</td><td class="wrap-cell">uwb</td><td class="wrap-cell">関東</td><td>C</td><td class="wrap-cell">春麗、サガット、庵</td></tr>
-                <tr><td class="entry-num">9</td><td class="wrap-cell">S-ZAWA</td><td class="wrap-cell">九州・沖縄</td><td>C</td><td class="wrap-cell">キャミィ、春麗、サガット</td></tr>
-                <tr><td class="entry-num">10</td><td class="wrap-cell">風神</td><td class="wrap-cell">関東</td><td>A</td><td class="wrap-cell">さくら、ベガ、ブランカ</td></tr>
-                <tr><td class="entry-num">11</td><td class="wrap-cell">イズミ</td><td class="wrap-cell">中国</td><td>P</td><td class="wrap-cell">マキ、サガット、ブランカ</td></tr>
-                <tr><td class="entry-num">12</td><td class="wrap-cell">らいと</td><td class="wrap-cell">関東</td><td>K</td><td class="wrap-cell">京、響、ロック</td></tr>
-                <tr><td class="entry-num">13</td><td class="wrap-cell">αοκι</td><td class="wrap-cell">中部</td><td>K</td><td class="wrap-cell">ブランカ、キャミィ、サガット</td></tr>
-                <tr><td class="entry-num">14</td><td class="wrap-cell">かまた</td><td class="wrap-cell">北海道</td><td>C</td><td class="wrap-cell">庵、春麗、サガット</td></tr>
-                <tr><td class="entry-num">15</td><td class="wrap-cell">コーサカ</td><td class="wrap-cell">関東</td><td>A</td><td class="wrap-cell">さくら、ベガ、ブランカ</td></tr>
-                <tr><td class="entry-num">16</td><td class="wrap-cell">うえい</td><td class="wrap-cell">関東</td><td>P</td><td class="wrap-cell">サガット、ブランカ、キャミィ</td></tr>
-                <tr><td class="entry-num">17</td><td class="wrap-cell">わとまん</td><td class="wrap-cell">関東</td><td>未定TBD</td><td class="wrap-cell">未定</td></tr>
-                <tr><td class="entry-num">18</td><td class="wrap-cell">GAN</td><td class="wrap-cell">近畿</td><td>A</td><td class="wrap-cell">庵、ブランカ、ベガ</td></tr>
-                <tr><td class="entry-num">19</td><td class="wrap-cell">群馬勢</td><td class="wrap-cell">関東</td><td>A</td><td class="wrap-cell">庵、バイス、響</td></tr>
-                <tr><td class="entry-num">20</td><td class="wrap-cell">Kazu</td><td class="wrap-cell">九州・沖縄</td><td>C</td><td class="wrap-cell">庵、リュウ、サガット</td></tr>
-                <tr><td class="entry-num">21</td><td class="wrap-cell">火澄</td><td class="wrap-cell">近畿</td><td>A</td><td class="wrap-cell">ブランカ、ベガ、バルログ</td></tr>
-                <tr><td class="entry-num">22</td><td class="wrap-cell">ビッグカツ</td><td class="wrap-cell">関東</td><td>未定TBD</td><td class="wrap-cell">未定</td></tr>
-                <tr><td class="entry-num">23</td><td class="wrap-cell">まさとぅー</td><td class="wrap-cell">関東</td><td>A</td><td class="wrap-cell">ユン、ユリ、キム</td></tr>
-                <tr><td class="entry-num">24</td><td class="wrap-cell">ぷ?たん</td><td class="wrap-cell">中部</td><td>A</td><td class="wrap-cell">ジョー東、バルログ、ブランカ</td></tr>
-                <tr><td class="entry-num">25</td><td class="wrap-cell">Aznmnky</td><td class="wrap-cell">海外</td><td>A</td><td class="wrap-cell">さくら、ベガ、ブランカ</td></tr>
-                <tr><td class="entry-num">26</td><td class="wrap-cell">Laugh ラフ</td><td class="wrap-cell">関東</td><td>A</td><td class="wrap-cell">バルログ、さくら、ブランカ</td></tr>
-                <tr><td class="entry-num">27</td><td class="wrap-cell">Victor</td><td class="wrap-cell">関東</td><td>N</td><td class="wrap-cell">庵、春麗、モリガン</td></tr>
-                <tr><td class="entry-num">28</td><td class="wrap-cell">GunterJPN</td><td class="wrap-cell">関東</td><td>A</td><td class="wrap-cell">ガイル、ベガ、ブランカ</td></tr>
-                <tr><td class="entry-num">29</td><td class="wrap-cell">Se?or Payaso</td><td class="wrap-cell">海外</td><td>K</td><td class="wrap-cell">未定</td></tr>
-                <tr><td class="entry-num">30</td><td class="wrap-cell">シャイニィー ソフィーティア</td><td class="wrap-cell">選択しない</td><td>A</td><td class="wrap-cell">アテナ、恭介、モリガン</td></tr>
-                <tr><td class="entry-num">31</td><td class="wrap-cell">流石</td><td class="wrap-cell">関東</td><td>N</td><td class="wrap-cell">ジョー、舞、山崎</td></tr>
-                <tr><td class="entry-num">32</td><td class="wrap-cell">ワタリ</td><td class="wrap-cell">北海道</td><td>A</td><td class="wrap-cell">ブランカ、庵、ベガ</td></tr>
-                <tr><td class="entry-num">33</td><td class="wrap-cell">ナギラ</td><td class="wrap-cell">関東</td><td>C</td><td class="wrap-cell">マキ、響、イーグル</td></tr>
-                <tr><td class="entry-num">34</td><td class="wrap-cell">GAO</td><td class="wrap-cell">関東</td><td>C</td><td class="wrap-cell">リュウ、ガイル、庵</td></tr>
-                <tr><td class="entry-num">35</td><td class="wrap-cell">ultracombo</td><td class="wrap-cell">海外</td><td>A</td><td class="wrap-cell">サガット、ブランカ、響</td></tr>
-                <tr><td class="entry-num">36</td><td class="wrap-cell">ヌメモンド本田☆</td><td class="wrap-cell">関東</td><td>未定TBD</td><td class="wrap-cell">エドモンド本田(他未定☆)</td></tr>
-                <tr><td class="entry-num">37</td><td class="wrap-cell">めろお</td><td class="wrap-cell">関東</td><td>C</td><td class="wrap-cell">庵/キャミィ/サガット</td></tr>
-                <tr><td class="entry-num">38</td><td class="wrap-cell">Tobari</td><td class="wrap-cell">関東</td><td>C</td><td class="wrap-cell">チャン ギース ロレント</td></tr>
-                <tr><td class="entry-num">39</td><td class="wrap-cell">しろぴす</td><td class="wrap-cell">近畿</td><td>C</td><td class="wrap-cell">キャミィ 春麗 サガット</td></tr>
-                <tr><td class="entry-num">40</td><td class="wrap-cell">屋根</td><td class="wrap-cell">関東</td><td>K</td><td class="wrap-cell">ギース、ブランカ、サガット</td></tr>
-              </tbody>
-            </table>
-          </div>
+          <table class="entry-table">
+            <thead>
+              <tr>
+                <th style="width:32px; text-align:center;">No.</th>
+                <th style="width:75px;">名前</th>
+                <th style="width:65px;">地域</th>
+                <th>キャラクター (G+名前)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="entry-num">1</td><td>ライ</td><td>関東</td><td>K舞、響、サガット</td></tr>
+              <tr><td class="entry-num">2</td><td>喫音</td><td>近畿</td><td>K響、ナコルル、サガット</td></tr>
+              <tr><td class="entry-num">3</td><td>D44</td><td>関東</td><td>A山崎、ベガ、ブランカ</td></tr>
+              <tr><td class="entry-num">4</td><td>Silentscope88</td><td>海外</td><td>Kルガール、チャン、モリガン</td></tr>
+              <tr><td class="entry-num">5</td><td>ysk</td><td>近畿</td><td>Aさくら、ベガ、ブランカ</td></tr>
+              <tr><td class="entry-num">6</td><td>ｱｲｾﾞﾔ-</td><td>海外</td><td>Kロック、ケン、サガット</td></tr>
+              <tr><td class="entry-num">7</td><td>コダマ</td><td>中部</td><td>Kベガ、バイソン、ブランカ</td></tr>
+              <tr><td class="entry-num">8</td><td>uwb</td><td>関東</td><td>C春麗、サガット、庵</td></tr>
+              <tr><td class="entry-num">9</td><td>S-ZAWA</td><td>九州・沖縄</td><td>Cキャミィ、春麗、サガット</td></tr>
+              <tr><td class="entry-num">10</td><td>風神</td><td>関東</td><td>Aさくら、ベガ、ブランカ</td></tr>
+              <tr><td class="entry-num">11</td><td>イズミ</td><td>中国</td><td>Pマキ、サガット、ブランカ</td></tr>
+              <tr><td class="entry-num">12</td><td>らいと</td><td>関東</td><td>K京、響、ロック</td></tr>
+              <tr><td class="entry-num">13</td><td>αοκι</td><td>中部</td><td>Kブランカ、キャミィ、サガット</td></tr>
+              <tr><td class="entry-num">14</td><td>かまた</td><td>北海道</td><td>C庵、春麗、サガット</td></tr>
+              <tr><td class="entry-num">15</td><td>コーサカ</td><td>関東</td><td>Aさくら、ベガ、ブランカ</td></tr>
+              <tr><td class="entry-num">16</td><td>うえい</td><td>関東</td><td>Pサガット、ブランカ、キャミィ</td></tr>
+              <tr><td class="entry-num">17</td><td>わとまん</td><td>関東</td><td>未定TBD未定</td></tr>
+              <tr><td class="entry-num">18</td><td>GAN</td><td>近畿</td><td>A庵、ブランカ、ベガ</td></tr>
+              <tr><td class="entry-num">19</td><td>群馬勢</td><td>関東</td><td>A庵、バイス、響</td></tr>
+              <tr><td class="entry-num">20</td><td>Kazu</td><td>九州・沖縄</td><td>C庵、リュウ、サガット</td></tr>
+              <tr><td class="entry-num">21</td><td>火澄</td><td>近畿</td><td>Aブランカ、ベガ、バルログ</td></tr>
+              <tr><td class="entry-num">22</td><td>ビッグカツ</td><td>関東</td><td>未定TBD未定</td></tr>
+              <tr><td class="entry-num">23</td><td>まさとぅー</td><td>関東</td><td>Aユン、ユリ、キム</td></tr>
+              <tr><td class="entry-num">24</td><td>ぷ?たん</td><td>中部</td><td>Aジョー東、バルログ、ブランカ</td></tr>
+              <tr><td class="entry-num">25</td><td>Aznmnky</td><td>海外</td><td>Aさくら、ベガ、ブランカ</td></tr>
+              <tr><td class="entry-num">26</td><td>Laugh ラフ</td><td>関東</td><td>Aバルログ、さくら、ブランカ</td></tr>
+              <tr><td class="entry-num">27</td><td>Victor</td><td>関東</td><td>N庵、春麗、モリガン</td></tr>
+              <tr><td class="entry-num">28</td><td>GunterJPN</td><td>関東</td><td>Aガイル、ベガ、ブランカ</td></tr>
+              <tr><td class="entry-num">29</td><td>Se?or Payaso</td><td>海外</td><td>K未定</td></tr>
+              <tr><td class="entry-num">30</td><td>シャイニィー ソフィーティア</td><td>選択しない</td><td>Aアテナ、恭介、モリガン</td></tr>
+              <tr><td class="entry-num">31</td><td>流石</td><td>関東</td><td>Nジョー、舞、山崎</td></tr>
+              <tr><td class="entry-num">32</td><td>ワタリ</td><td>北海道</td><td>Aブランカ、庵、ベガ</td></tr>
+              <tr><td class="entry-num">33</td><td>ナギラ</td><td>関東</td><td>Cマキ、響、イーグル</td></tr>
+              <tr><td class="entry-num">34</td><td>GAO</td><td>関東</td><td>Cリュウ、ガイル、庵</td></tr>
+              <tr><td class="entry-num">35</td><td>ultracombo</td><td>海外</td><td>Aサガット、ブランカ、響</td></tr>
+              <tr><td class="entry-num">36</td><td>ヌメモンド本田☆</td><td>関東</td><td>未定TBDエドモンド本田(他未定☆)</td></tr>
+              <tr><td class="entry-num">37</td><td>めろお</td><td>関東</td><td>C庵/キャミィ/サガット</td></tr>
+              <tr><td class="entry-num">38</td><td>Tobari</td><td>関東</td><td>Cチャン ギース ロレント</td></tr>
+              <tr><td class="entry-num">39</td><td>しろぴす</td><td>近畿</td><td>Cキャミィ 春麗 サガット</td></tr>
+              <tr><td class="entry-num">40</td><td>屋根</td><td>関東</td><td>Kギース、ブランカ、サガット</td></tr>
+            </tbody>
+          </table>
         </div>
 
       </div>
@@ -1148,73 +1120,71 @@
         <div class="play-fee-note">※野試合は1クレジット100yen</div>
 
         <a href="https://forms.gle/9MT6A1zSpe1Ny7AK7" target="_blank" class="entry-btn" style="margin-top: 25px;">3on3 エントリー（受付中）</a>
-        <!-- 赤色の目立つ斡旋希望リンク -->
+        <!-- 目立つ赤色の斡旋希望リンク -->
         <a href="cvs2gaisen.html" class="match-agent-link">▶ 斡旋希望の方はこちら</a>
 
-        <!-- 3on3エントリー状況テーブル -->
+        <!-- 3on3エントリー状況テーブル（スクロールなし・シンプル表示） -->
         <div class="entry-list-section">
           <div class="entry-list-title">
             <span>エントリー状況一覧</span>
-            <span style="font-size:0.7rem; color:var(--text-muted); font-weight:normal;">10/1現在 (9チーム)</span>
+            <span style="font-size:0.75rem; color:var(--text-muted); font-weight:normal;">10/1現在 (9チーム)</span>
           </div>
-          <div class="entry-table-wrap">
-            <table class="entry-table">
-              <thead>
-                <tr>
-                  <th style="text-align:center; width:32px;">No.</th>
-                  <th style="width:85px;">チーム名</th>
-                  <th>メンバー (名前 / G / キャラ)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="entry-num">1</td>
-                  <td class="wrap-cell" style="font-weight:bold;">Tier 1</td>
-                  <td class="wrap-cell">①ライ/K/舞響サガット<br>②kiku/C/キャミィ春麗サガット<br>③ラフ/A/バルログ桜ブランカ</td>
-                </tr>
-                <tr>
-                  <td class="entry-num">2</td>
-                  <td class="wrap-cell" style="font-weight:bold;">Hey guys</td>
-                  <td class="wrap-cell">①Hey Guys/A/ABC<br>②DEF/P/GHI<br>③KMN/K/OIU</td>
-                </tr>
-                <tr>
-                  <td class="entry-num">3</td>
-                  <td class="wrap-cell" style="font-weight:bold;">K Groove</td>
-                  <td class="wrap-cell">①ピノキオ/K/春麗キャミィサガット<br>②ＫＺＫ/K/ギースキャミィサガット<br>③喫音/K/響ナコルルサガット</td>
-                </tr>
-                <tr>
-                  <td class="entry-num">4</td>
-                  <td class="wrap-cell" style="font-weight:bold;">GUYs</td>
-                  <td class="wrap-cell">①GAO/K/ギースナコルルロック<br>②UWB/C/春麗サガット庵<br>③YSK/A/桜ベガブランカ</td>
-                </tr>
-                <tr>
-                  <td class="entry-num">5</td>
-                  <td class="wrap-cell" style="font-weight:bold;">風神・雷神…んー…魔神！</td>
-                  <td class="wrap-cell">①GAN/A/庵ベガブランカ<br>②風さんやで/A/さくらベガブランカ<br>③コーサカ/A/さくらベガブランカ</td>
-                </tr>
-                <tr>
-                  <td class="entry-num">6</td>
-                  <td class="wrap-cell" style="font-weight:bold;">America's Army</td>
-                  <td class="wrap-cell">①Gunter/A/響ベガブランカ<br>②Silentscope/K/チャンルガールモリガン<br>③Se?or Payaso/K/TBD</td>
-                </tr>
-                <tr>
-                  <td class="entry-num">7</td>
-                  <td class="wrap-cell" style="font-weight:bold;">北海道2D連合</td>
-                  <td class="wrap-cell">①ワタリ/A/ブランカ庵ベガ<br>②かまた/C/庵春麗サガット<br>③エミリオ/A/ブランカさくらベガ</td>
-                </tr>
-                <tr>
-                  <td class="entry-num">8</td>
-                  <td class="wrap-cell" style="font-weight:bold;">飲酒乱s</td>
-                  <td class="wrap-cell">①D44/A/山崎、ベガ、ブランカ<br>②うぇい/P/ブランカ、キャミィ、サガット<br>③FM/C/リュウ、チュンリ、サガット</td>
-                </tr>
-                <tr>
-                  <td class="entry-num">9</td>
-                  <td class="wrap-cell" style="font-weight:bold;">S-GROOVE</td>
-                  <td class="wrap-cell">①イズミ/S/ケン、キャミー、サガット<br>②Tobari/S/庵、キャミー、サガット<br>③屋根/S/テリー、チュンリー、サガット</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <table class="entry-table">
+            <thead>
+              <tr>
+                <th style="width:32px; text-align:center;">No.</th>
+                <th style="width:75px;">チーム名</th>
+                <th>メンバー (名前 / グルーヴ / キャラ)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="entry-num">1</td>
+                <td style="font-weight:bold;">Tier 1</td>
+                <td>①ライ / K / 舞、響、サガット<br>②kiku / C / キャミィ、春麗、サガット<br>③ラフ(Laugh) / A / バルログ、桜、ブランカ</td>
+              </tr>
+              <tr>
+                <td class="entry-num">2</td>
+                <td style="font-weight:bold;">Hey guys</td>
+                <td>①Hey Guys / A / ABC<br>②DEF / P / GHI<br>③KMN / K / OIU</td>
+              </tr>
+              <tr>
+                <td class="entry-num">3</td>
+                <td style="font-weight:bold;">K Groove</td>
+                <td>①ピノキオ / K / 春麗キャミィサガット<br>②ＫＺＫ / K / ギースキャミィサガット<br>③喫音 / K / 響ナコルルサガット</td>
+              </tr>
+              <tr>
+                <td class="entry-num">4</td>
+                <td style="font-weight:bold;">GUYs</td>
+                <td>①GAO / K / ギース、ナコルル、ロック<br>②UWB / C / 春麗、サガット、庵<br>③YSK / A / 桜、ベガ、ブランカ</td>
+              </tr>
+              <tr>
+                <td class="entry-num">5</td>
+                <td style="font-weight:bold;">風神・雷神…んー…魔神！</td>
+                <td>①GAN / A / 庵ベガブランカ<br>②風さんやで / A / さくらベガブランカ<br>③コーサカ / A / さくらベガブランカ</td>
+              </tr>
+              <tr>
+                <td class="entry-num">6</td>
+                <td style="font-weight:bold;">America's Army</td>
+                <td>①Gunter / A / 響 ベガ ブランカ<br>②Silentscope / K / チャン ルガール モリガン<br>③Se?or Payaso / K / TBD</td>
+              </tr>
+              <tr>
+                <td class="entry-num">7</td>
+                <td style="font-weight:bold;">北海道2D連合</td>
+                <td>①ワタリ / A / ブランカ庵ベガ<br>②かまた / C / 庵春麗サガット<br>③エミリオ / A / ブランカさくらベガ</td>
+              </tr>
+              <tr>
+                <td class="entry-num">8</td>
+                <td style="font-weight:bold;">飲酒乱s</td>
+                <td>①D44 / A / 山崎、ベガ、ブランカ<br>②うぇい / P / ブランカ、キャミィ、サガット<br>③FM / C / リュウ、チュンリ、サガット</td>
+              </tr>
+              <tr>
+                <td class="entry-num">9</td>
+                <td style="font-weight:bold;">S-GROOVE</td>
+                <td>①イズミ / S / ケン、キャミー、サガット<br>②Tobari / S / 庵、キャミー、サガット<br>③屋根 / S / テリー、チュンリー、サガット</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
       </div>
