@@ -1146,7 +1146,7 @@
               </tr>
               <tr>
                 <td class="entry-num">2</td>
-                <td style="font-weight:bold;">K Groove</td>
+                <td style="font-weight:bold;">流星街</td>
                 <td>①ピノキオ / K / 春麗キャミィサガット<br>②ＫＺＫ / K / ギースキャミィサガット<br>③喫音 / K / 響ナコルルサガット</td>
               </tr>
               <tr>
@@ -1226,12 +1226,12 @@
 
     </div>
 
-    <!-- DAY1個人戦シード予選日程(9枠) 9月28日現在 -->
+    <!-- DAY1個人戦シード予選日程(9枠) 10月4日現在 -->
     <div class="qualifier-section">
       <div class="qualifier-header">
         <div class="qualifier-title-wrap">
           <span class="qualifier-badge">ROAD TO DAY 1</span>
-          <h3 class="qualifier-title">個人戦 シード予選日程 (全9枠) <span style="font-size:0.85rem; color:var(--text-muted); font-weight:normal; margin-left:2px;">9月28日現在</span></h3>
+          <h3 class="qualifier-title">個人戦 シード予選日程 (全9枠) <span style="font-size:0.85rem; color:var(--text-muted); font-weight:normal; margin-left:2px;">10月4日現在</span></h3>
         </div>
         <div class="qualifier-sub">QUALIFIERS STAGE SELECT</div>
       </div>
@@ -1511,23 +1511,126 @@
         document.getElementById('cd-days').textContent = '00';
         document.getElementById('cd-hours').textContent = '00';
         document.getElementById('cd-mins').textContent = '00';
-        document.getElementById('cd-secs').textContent = '00';
-        return;
-      }
+        document.getElementById('cd-secs').textContent = '00';ご要望に合わせて、以下の2箇所を変更いたしました！
 
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const secs = Math.floor((diff % (1000 * 60)) / 1000);
+1. **3on3のチーム名変更**：「K Groove」を「**流星街**」に変更しました。
+2. **シード予選タイトルの日付更新**：「9月28日現在」を「**10月4日現在**」に変更しました。
 
-      document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
-      document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
-      document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
-      document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+以下が最新の完全版コードです。そのままコピーして上書き保存してお使いください。
+
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="[https://www.googletagmanager.com/gtag/js?id=G-0HDMHJFEG8](https://www.googletagmanager.com/gtag/js?id=G-0HDMHJFEG8)"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-0HDMHJFEG8');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rollin'pic 2026 | CAPCOM vs SNK 2 World Championship</title>
+  <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
+  <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+  <link href="[https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+JP:wght@800;900&family=Teko:wght@700;900&display=swap](https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+JP:wght@800;900&family=Teko:wght@700;900&display=swap)" rel="stylesheet">
+  <style>
+    :root {
+      --capcom-blue: #00e1ff;
+      --snk-red: #ff2a4b;
+      --accent-yellow: #ffcc00;
+      --bg-black: #060608;
+      --panel-bg: #101014;
+      --panel-border: #22222c;
+      --text: #f0f0f5;
+      --text-muted: #888899;
     }
 
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-  </script>
-</body>
-</html>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-black);
+      background-image: 
+        radial-gradient(ellipse at 50% 0%, rgba(255, 204, 0, 0.08), transparent 60%),
+        linear-gradient(180deg, rgba(6, 6, 8, 0.65) 0%, rgba(12, 12, 16, 0.75) 100%),
+        url('main_bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: var(--text);
+      font-family: 'Noto Sans JP', sans-serif;
+      line-height: 1.4;
+      overflow-x: hidden;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 15px 80px;
+    }
+
+    /* Hero Area */
+    .hero {
+      text-align: center;
+      position: relative;
+      padding: 10px 0 25px;
+      margin-bottom: 35px;
+      border-bottom: 1px solid var(--panel-border);
+    }
+
+    .main-logo-container {
+      position: relative;
+      z-index: 1;
+      max-width: 580px;
+      margin: 0 auto 5px;
+    }
+
+    .main-logo-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 10px 30px rgba(0,0,0,0.95));
+    }
+
+    /* 公式ロゴ表示エリア */
+    .official-logo-container {
+      max-width: 320px;
+      margin: 15px auto 10px;
+    }
+
+    .official-logo-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.8));
+    }
+
+    .world-title-wrap {
+      margin-top: 8px;
+    }
+
+    .world-main-txt {
+      display: inline-block;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: clamp(1.1rem, 3vw, 1.8rem);
+      font-weight: 900;
+      color: #d5d5e0;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-shadow: 2px 2px 0px #000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      padding-bottom: 2px;
+    }
+
+    /* キャッチフレーズ演出 */
+    .hero-catchphrase {
+      margin-top:
