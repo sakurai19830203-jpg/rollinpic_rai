@@ -534,12 +534,23 @@
     }
 
     .secret-match-row.match2-bg {
-      background-size: cover;
-      background-position: center;
-      padding: 95px 18px;
-      background-image: 
-        linear-gradient(135deg, rgba(8, 8, 14, 0.4) 0%, rgba(4, 4, 8, 0.5) 100%),
-        url('match2_bg.jpg');
+      background: #0d0d12;
+      padding: 0;
+    }
+
+    .match2-img-wrap {
+      position: relative;
+      width: 100%;
+      line-height: 0;
+    }
+
+    .match2-img-wrap img {
+      width: 100%;
+      max-width: 1680px;
+      height: auto;
+      aspect-ratio: 1680 / 936;
+      display: block;
+      object-fit: cover;
     }
 
     .secret-match-row.match3-bg {
@@ -1216,8 +1227,8 @@
 
           <!-- Match 2 -->
           <div class="secret-match-row match2-bg">
-            <div class="secret-header">
-              <span class="secret-label">MATCH 2</span>
+            <div class="match2-img-wrap">
+              <img src="match2_bg.jpg" alt="Match 2 Background" width="1680" height="936" onerror="this.style.display='none';">
             </div>
           </div>
 
