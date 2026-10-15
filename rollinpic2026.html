@@ -80,6 +80,19 @@
       filter: drop-shadow(0 10px 30px rgba(0,0,0,0.95));
     }
 
+    /* 追加ロゴ表示エリア (RollinPic2026logo.jpg) - 1.5倍に拡大 (420px -> 630px) */
+    .sub-logo-container {
+      max-width: 630px;
+      margin: 15px auto 10px;
+    }
+
+    .sub-logo-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 6px 16px rgba(0,0,0,0.85));
+    }
+
     /* 公式ロゴ表示エリア */
     .official-logo-container {
       max-width: 320px;
@@ -987,6 +1000,11 @@
       <div class="main-logo-container">
         <img src="RollinPic2025.png" alt="Rollin'Pic 2025" onerror="this.style.display='none'; document.getElementById('hero-fallback').style.display='block';">
         <h1 id="hero-fallback" style="display:none; font-family:'Anton'; font-size:4rem; color:var(--accent-yellow);">ROLLIN'PIC 2026</h1>
+      </div>
+
+      <!-- 追加ロゴ表示エリア (RollinPic2026logo.jpg) - 1.5倍サイズ (630px) -->
+      <div class="sub-logo-container">
+        <img src="RollinPic2026logo.jpg" alt="Rollin'Pic 2026 Logo" onerror="this.style.display='none';">
       </div>
 
       <!-- 公式ロゴ表示エリア -->
