@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rollin' Pic 2026 【団体戦】ルール詳細</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: #ffffff;
+      background-color: #0b0c10;
+      /* 背景画像と明度の指定（個人戦と同等設定） */
+      background-image: 
+        linear-gradient(135deg, rgba(11, 12, 16, 0.88), rgba(20, 10, 30, 0.92)),
+        url('https://sakurai19830203-jpg.github.io/rollinpic_rai/rollinpic2026.html');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 900px;
+      padding: 40px 20px 80px;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .subtitle {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      letter-spacing: 3px;
+      color: #e0a96d;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+      text-shadow: 0 0 10px rgba(224, 169, 109, 0.4);
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      background: linear-gradient(180deg, #ffffff 0%, #d1d5db 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #e0a96d;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+
+    /* Card Component */
+    .card {
+      background: rgba(22, 27, 34, 0.75);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      border-left: 4px solid #e0a96d;
+      padding-left: 12px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Subsection Header */
+    .sub-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffd700;
+      margin: 20px 0 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .sub-title::before {
+      content: "▶";
+      font-size: 0.8rem;
+      margin-right: 8px;
+      color: #e0a96d;
+    }
+
+    /* Badges */
+    .badge {
+      font-size: 0.85rem;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-weight: 700;
+      background-color: rgba(224, 169, 109, 0.2);
+      color: #e0a96d;
+      border: 1px solid rgba(224, 169, 109, 0.4);
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-right: 6px;
+    }
+    .status-1st { background: rgba(77, 255, 136, 0.2); color: #81c784; border: 1px solid rgba(77, 255, 136, 0.4); }
+    .status-2nd { background: rgba(77, 166, 255, 0.2); color: #64b5f6; border: 1px solid rgba(77, 166, 255, 0.4); }
+    .status-3rd { background: rgba(255, 77, 77, 0.2); color: #ff6b6b; border: 1px solid rgba(255, 77, 77, 0.4); }
+
+    /* Lists */
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 8px;
+      color: #dddddd;
+    }
+
+    li::before {
+      content: "•";
+      color: #e0a96d;
+      font-size: 1.2rem;
+      position: absolute;
+      left: 0;
+      top: -2px;
+    }
+
+    /* Note & Highlights */
+    .note {
+      font-size: 0.88rem;
+      color: #ffb74d;
+      margin-top: 8px;
+      padding-left: 10px;
+      border-left: 2px solid #ffb74d;
+    }
+
+    .highlight {
+      color: #e0a96d;
+      font-weight: bold;
+    }
+
+    /* Box Containers */
+    .rule-box {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 12px;
+      margin-bottom: 12px;
+    }
+
+    /* Back Link */
+    .back-btn {
+      display: inline-block;
+      margin-top: 10px;
+      color: #aaa;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .back-btn:hover {
+      color: #e0a96d;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #666;
+      font-size: 0.8rem;
+      margin-top: auto;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px 12px 40px;
+      }
+      .card {
+        padding: 18px;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="subtitle">Rollin' Pic 2026</div>
+      <h1>【団体戦】ルール詳細</h1>
+    </header>
+
+    <!-- 予選リーグ概要 -->
+    <div class="card">
+      <div class="card-title">
+        <span>予選リーグ概要</span>
+        <span class="badge">3on3 勝ち抜き戦</span>
+      </div>
+      <p style="margin-bottom: 12px;">
+        参加チーム数に応じ、可能な限り<span class="highlight">1リーグ3チームによる総当たり戦</span>を実施します。<br>
+        <span style="font-size: 0.9rem; color: #aaa;">（※4チーム構成のリーグになった場合は、ダブルイリミネーショントーナメント方式となります。）</span>
+      </p>
+
+      <div class="sub-title">基本対戦ルール</div>
+      <ul>
+        <li><strong>試合形式：</strong> 勝ち抜き戦（3on3）</li>
+        <li><strong>権利決定：</strong> 試合開始前に両チーム代表がじゃんけんを行い、勝ったチームが<span class="highlight">「席決め権利」</span>または<span class="highlight">「先鋒後出し権」</span>のどちらかを選択します。</li>
+      </ul>
+
+      <div class="sub-title">リーグ同率（3チーム並び）の決定方法</div>
+      <p style="font-size: 0.95rem; margin-bottom: 8px;">
+        リーグ戦で3チームが1勝1敗で並んだ場合、<span class="highlight">勝敗ポイントによる優劣は付けず、代表者戦を実施</span>します。
+      </p>
+      
+      <div class="rule-box">
+        <div style="font-weight: bold; color: #ffd700; margin-bottom: 6px;">【代表者戦の運用手順】</div>
+        <ul>
+          <li>各チーム代表者を選出し、審判に事前申告したうえで対戦を行います。</li>
+          <li>代表者戦を行ってもさらに1勝1敗で並んだ場合は<span class="highlight">「2周目」</span>に入ります。</li>
+          <li><strong>代表者交代ルール：</strong> 2周目に入る場合、各チームは1周目とは異なる別の代表者を選出します。<br>
+            <span style="font-size: 0.88rem; color: #bbb;">（例：A選手が代表で参加し1勝1敗で並び2周目に入る場合、次はB選手またはC選手から代表を選択）</span>
+          </li>
+          <li>万が一、3周しても並んだ場合は<span class="highlight">リセットのうえ最初からやり直し</span>となります。</li>
+        </ul>
+      </div>
+
+      <div class="sub-title">予選通過順位</div>
+      <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 8px;">
+        <div><span class="status-badge status-1st">1位抜け</span> ➔ <strong>決勝トーナメントへ進出</strong></div>
+        <div><span class="status-badge status-2nd">2位抜け</span> ➔ <strong>2位抜けトーナメントへ進出</strong></div>
+        <div><span class="status-badge status-3rd">3位</span> ➔ <strong>予選敗退</strong></div>
+      </div>
+    </div>
+
+    <!-- 2位抜けトーナメント -->
+    <div class="card">
+      <div class="card-title">
+        <span>2位抜けトーナメント</span>
+        <span class="badge">決勝T進出枠：2</span>
+      </div>
+      <p style="margin-bottom: 12px;">
+        各予選リーグの2位チームを2つのブロックに分割し、<span class="highlight">それぞれのブロック勝者が決勝トーナメント（2枠）へ進出</span>します。
+      </p>
+
+      <div class="rule-box">
+        <div style="font-weight: bold; color: #64b5f6; margin-bottom: 6px;">【リーグ形式（A・B・C 3チーム対戦）の場合の進行】</div>
+        <ul>
+          <li>最初に <strong>A 対 B</strong> が対戦します。</li>
+          <li>A 対 B の勝者が、続けて <strong>C</strong> と対戦します。</li>
+          <li>仮に A が B に勝ち、続けて C にも勝利した場合は、<span class="highlight">Aチームの決勝トーナメント進出が決定</span>します。（この場合、B 対 C の対戦は行いません）</li>
+        </ul>
+        <div class="note">※その他の細部ルールは予選ルールに準拠します。</div>
+      </div>
+    </div>
+
+    <!-- 決勝トーナメント -->
+    <div class="card">
+      <div class="card-title">
+        <span>決勝トーナメント</span>
+        <span class="badge">8チーム</span>
+      </div>
+      
+      <p style="margin-bottom: 15px;">
+        予選1位抜け <strong>6チーム</strong> ＋ 2位抜け <strong>2チーム</strong> の計8チームで実施します。<br>
+        <span style="font-size: 0.88rem; color: #aaa;">（※参加チーム数による通過枠内訳の一例です）</span>
+      </p>
+
+      <div class="sub-title">トーナメント配置・くじ引き手順</div>
+      <ul>
+        <li><span class="highlight">2位抜けチーム（2枠）：</span> トーナメント表の両端（端の位置）に固定配置されます。</li>
+        <li><span class="highlight">1位抜けチーム（6枠）：</span> くじ引きを行い、「1」を引いたチームから順番に希望の配置場所を指定していきます。</li>
+      </ul>
+
+      <div class="sub-title">対戦ルール（席決め・先鋒選択）</div>
+      <ul>
+        <li><strong>1位抜けチーム同士の対戦：</strong> 予選と同様に試合前にじゃんけんを行い、「席決め権利」または「先鋒後出し権」を選択します。</li>
+        <li><strong>2位抜けチームが含まれる対戦：</strong> <span class="highlight">2位抜けチームには席決め権利・先鋒後出し権はありません。</span>（対戦相手の1位抜けチームが自動的に権利を得ます）</li>
+      </ul>
+    </div>
+
+    <div style="text-align: center;">
+      <a href="rollinpic2026.html" class="back-btn">← 大会トップページへ戻る</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>© Rollin' Pic Tournament Committee / CAPCOM vs SNK 2 Community</p>
+  </footer>
+
+</body>
+</html>
