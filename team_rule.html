@@ -181,6 +181,26 @@
       margin-bottom: 12px;
     }
 
+    /* Alert Banner */
+    .notice-box {
+      background: rgba(224, 169, 109, 0.1);
+      border: 1px solid rgba(224, 169, 109, 0.3);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+      font-size: 0.92rem;
+      color: #f3d0a6;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .notice-box::before {
+      content: "※";
+      font-weight: bold;
+      color: #e0a96d;
+    }
+
     /* Back Link */
     .back-btn {
       display: inline-block;
@@ -231,6 +251,11 @@
         <span>予選リーグ概要</span>
         <span class="badge">3on3 勝ち抜き戦</span>
       </div>
+
+      <div class="notice-box">
+        <div>当日の参加チーム数により、<span class="highlight">2位抜けチーム数および決勝トーナメントの進出枠数が変更となる可能性</span>がございます。あらかじめご了承ください。</div>
+      </div>
+
       <p style="margin-bottom: 12px;">
         参加チーム数に応じ、可能な限り<span class="highlight">1リーグ3チームによる総当たり戦</span>を実施します。<br>
         <span style="font-size: 0.9rem; color: #aaa;">（※4チーム構成のリーグになった場合は、ダブルイリミネーショントーナメント方式となります。）</span>
@@ -271,10 +296,10 @@
     <div class="card">
       <div class="card-title">
         <span>2位抜けトーナメント</span>
-        <span class="badge">決勝T進出枠：2</span>
+        <span class="badge">決勝T進出枠：2（想定）</span>
       </div>
       <p style="margin-bottom: 12px;">
-        各予選リーグの2位チームを2つのブロックに分割し、<span class="highlight">それぞれのブロック勝者が決勝トーナメント（2枠）へ進出</span>します。
+        各予選リーグの2位チームを2つのブロックに分割し、<span class="highlight">それぞれのブロック勝者が決勝トーナメントへ進出</span>します。
       </p>
 
       <div class="rule-box">
@@ -292,7 +317,7 @@
     <div class="card">
       <div class="card-title">
         <span>決勝トーナメント</span>
-        <span class="badge">8チーム</span>
+        <span class="badge">8チーム（想定）</span>
       </div>
       
       <p style="margin-bottom: 15px;">
@@ -302,8 +327,8 @@
 
       <div class="sub-title">トーナメント配置・くじ引き手順</div>
       <ul>
-        <li><span class="highlight">2位抜けチーム（2枠）：</span> トーナメント表の両端（端の位置）に固定配置されます。</li>
-        <li><span class="highlight">1位抜けチーム（6枠）：</span> くじ引きを行い、「1」を引いたチームから順番に希望の配置場所を指定していきます。</li>
+        <li><span class="highlight">2位抜けチーム：</span> トーナメント表の両端（端の位置）に固定配置されます。</li>
+        <li><span class="highlight">1位抜けチーム：</span> くじ引きを行い、「1」を引いたチームから順番に希望の配置場所を指定していきます。</li>
       </ul>
 
       <div class="sub-title">対戦ルール（席決め・先鋒選択）</div>
