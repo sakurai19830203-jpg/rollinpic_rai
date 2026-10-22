@@ -567,12 +567,20 @@
     }
 
     .secret-match-row.match3-bg {
-      background-size: cover;
-      background-position: center;
-      padding: 95px 18px;
-      background-image: 
-        linear-gradient(135deg, rgba(8, 8, 14, 0.4) 0%, rgba(4, 4, 8, 0.5) 100%),
-        url('match3_bg.jpg');
+      background: #0d0d12;
+      padding: 0;
+    }
+
+    .match3-img-wrap {
+      position: relative;
+      width: 100%;
+      line-height: 0;
+    }
+
+    .match3-img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     .secret-match-row:hover {
@@ -1071,7 +1079,7 @@
         <div class="entry-list-section">
           <div class="entry-list-title">
             <span>エントリー状況一覧</span>
-            <span style="font-size:0.75rem; color:var(--text-muted); font-weight:normal;">10/20現在 (46名)</span>
+            <span style="font-size:0.75rem; color:var(--text-muted); font-weight:normal;">10/22現在 (48名)</span>
           </div>
           <table class="entry-table">
             <thead>
@@ -1129,6 +1137,8 @@
               <tr><td class="entry-num">44</td><td>ユリサカ仮面</td><td>関東</td><td>Cユリ、バイス、キャミィ</td></tr>
               <tr><td class="entry-num">45</td><td>きっと</td><td>東北</td><td>A庵、ベガ、ブランカ</td></tr>
               <tr><td class="entry-num">46</td><td>ムササビ</td><td>関東</td><td>Cリュウ、ダルシム、ガイル</td></tr>
+              <tr><td class="entry-num">47</td><td>KIKU</td><td>中部</td><td>Cキャミー春麗サガット</td></tr>
+              <tr><td class="entry-num">48</td><td>みさき</td><td>中部</td><td>K春麗サガット響</td></tr>
             </tbody>
           </table>
         </div>
@@ -1255,8 +1265,8 @@
 
           <!-- Match 3 -->
           <div class="secret-match-row match3-bg">
-            <div class="secret-header">
-              <span class="secret-label">MATCH 3</span>
+            <div class="match3-img-wrap">
+              <img src="match3_bg.jpg" alt="Match 3 Background" onerror="this.style.display='none';">
             </div>
           </div>
 
