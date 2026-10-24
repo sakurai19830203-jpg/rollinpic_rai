@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rollin'pic 2026 - 出場選手紹介</title>
+  <title>Rollin'pic 2026 - 出場選手紹介 ＆ 統計分布</title>
   
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Teko:wght@600;700&display=swap');
@@ -21,10 +21,10 @@
       position: relative;
       width: 100%;
       max-width: 100vw;
-      background: #060911;
-      background-image: 
-        radial-gradient(circle at 50% 0%, rgba(14, 116, 144, 0.25) 0%, transparent 60%),
-        radial-gradient(circle at 10% 90%, rgba(37, 99, 235, 0.15) 0%, transparent 50%);
+      /* 背景画像 main_bg.jpg の適用 */
+      background: linear-gradient(135deg, rgba(6, 9, 17, 0.9) 0%, rgba(11, 15, 25, 0.92) 100%), 
+                  url('main_bg.jpg') no-repeat center center fixed;
+      background-size: cover;
       padding: 50px 15px;
       overflow: hidden;
       box-sizing: border-box;
@@ -43,8 +43,8 @@
       right: 0;
       bottom: 0;
       background-image: 
-        linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+        linear-gradient(rgba(56, 189, 248, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.02) 1px, transparent 1px);
       background-size: 30px 30px;
       pointer-events: none;
     }
@@ -107,12 +107,137 @@
       box-shadow: 0 0 10px #38bdf8;
     }
 
+    /* --- 「Rollin'picとは？」紹介カード用スタイル --- */
+    .about-rollin-card {
+      position: relative;
+      width: 100%;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(11, 15, 25, 0.98) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      border-radius: 10px;
+      padding: 25px 20px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+      margin-bottom: 35px;
+    }
+
+    @media (min-width: 768px) {
+      .about-rollin-card {
+        padding: 35px 30px;
+      }
+    }
+
+    /* 3枚の画像をカッコよく並べるグリッドレイアウト */
+    .about-images-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 25px;
+    }
+
+    @media screen and (max-width: 600px) {
+      .about-images-grid {
+        grid-template-columns: 1fr; /* スマホでは縦並びにして見やすくする */
+      }
+    }
+
+    .about-image-frame {
+      position: relative;
+      width: 100%;
+      height: 160px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      background: #000;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+    }
+
+    @media (min-width: 768px) {
+      .about-image-frame {
+        height: 180px;
+      }
+    }
+
+    .about-image-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .about-image-frame:hover img {
+      transform: scale(1.05);
+    }
+
+    .about-lead-text {
+      font-size: 15px;
+      line-height: 1.85;
+      color: #cbd5e1;
+      margin: 0 0 24px 0;
+      word-break: break-all;
+    }
+
+    @media (min-width: 768px) {
+      .about-lead-text {
+        font-size: 16px;
+      }
+    }
+
+    .about-features-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #38bdf8;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+      border-left: 3px solid #38bdf8;
+      padding-left: 10px;
+    }
+
+    .feature-item {
+      background: rgba(6, 9, 17, 0.6);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .feature-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .feature-heading {
+      font-size: 15px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .feature-sublist {
+      margin: 0;
+      padding-left: 20px;
+      color: #cbd5e1;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .feature-sublist li {
+      margin-bottom: 6px;
+    }
+
+    .feature-sublist li:last-child {
+      margin-bottom: 0;
+    }
+
+
+    /* 選手カードリスト全体 */
     .players-list {
       display: flex;
       flex-direction: column;
       gap: 25px;
       width: 100%;
-      margin-bottom: 50px;
+      margin-bottom: 35px;
     }
 
     /* プレイヤーカード基本構造 */
@@ -318,7 +443,106 @@
       object-fit: cover;
     }
 
-    /* 戻るボタンエリアのデザイン */
+    /* 統計分布セクション用スタイル */
+    .stats-section {
+      position: relative;
+      width: 100%;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(11, 15, 25, 0.98) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 10px;
+      padding: 24px 20px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+      margin-bottom: 35px;
+    }
+
+    @media (min-width: 768px) {
+      .stats-section {
+        padding: 35px 30px;
+      }
+    }
+
+    .stats-main-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .stats-main-header .sub-tag {
+      display: inline-block;
+      font-family: 'Teko', sans-serif;
+      font-size: 16px;
+      letter-spacing: 2px;
+      color: #38bdf8;
+      font-weight: 700;
+      text-transform: uppercase;
+      background: rgba(56, 189, 248, 0.1);
+      padding: 2px 10px;
+      border-radius: 4px;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      margin-bottom: 6px;
+    }
+
+    .stats-main-header h2 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin: 0 0 10px 0;
+      color: #ffffff;
+    }
+
+    .stats-block {
+      margin-bottom: 30px;
+    }
+
+    .stats-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .stats-subtitle {
+      font-size: 16px;
+      font-weight: 700;
+      color: #38bdf8;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+      border-left: 3px solid #38bdf8;
+      padding-left: 10px;
+    }
+
+    .stats-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      background: rgba(6, 9, 17, 0.7);
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .stats-table th, .stats-table td {
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .stats-table th {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .stats-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .stats-table tr:hover {
+      background: rgba(56, 189, 248, 0.05);
+    }
+
+    .text-center { text-align: center; }
+    .text-right { text-align: right; }
+
+    /* 戻るボタン */
     .rollin-back-area {
       text-align: center;
       margin-top: 20px;
@@ -358,6 +582,12 @@
         font-size: 15px !important;
         line-height: 1.8 !important;
       }
+      .stats-table {
+        font-size: 13px;
+      }
+      .stats-table th, .stats-table td {
+        padding: 8px 10px;
+      }
     }
   </style>
 </head>
@@ -372,15 +602,73 @@
       <!-- 大会ロゴ＆セクションヘッダー -->
       <div class="rollin-section-header">
         <div class="tournament-logo-wrap">
-          <img src="RollinPic2026.png" alt="Rollin'pic 2026">
-        </div>
-        <div class="section-title-wrapper">
-          <span class="sub-tag">FEATURED PLAYERS</span>
-          <h2>注目の出場選手紹介</h2>
-          <div class="title-glow-line"></div>
+          <img src="RollinPic2025.png" alt="Rollin'pic 2026">
         </div>
       </div>
 
+      <!-- ▼ 「Rollin'picとは？」カテゴリ（3枚の画像並び配置版） ▼ -->
+      <div class="about-rollin-card">
+        <div class="card-corner-accent top-left"></div>
+        <div class="card-corner-accent bottom-right"></div>
+
+        <div class="stats-main-header" style="margin-bottom: 20px;">
+          <span class="sub-tag">ABOUT TOURNAMENT</span>
+          <h2>Rollin'picとは？</h2>
+          <div class="title-glow-line"></div>
+        </div>
+
+        <!-- 3つのイメージ画像横並びグリッド（ファイル名：about_bg1.jpg, about_bg2.jpg, about_bg3.jpg） -->
+        <div class="about-images-grid">
+          <div class="about-image-frame">
+            <img src="about_bg1.jpg" alt="Rollin'pic イメージ画像1">
+          </div>
+          <div class="about-image-frame">
+            <img src="about_bg2.jpg" alt="Rollin'pic イメージ画像2">
+          </div>
+          <div class="about-image-frame">
+            <img src="about_bg3.jpg" alt="Rollin'pic イメージ画像3">
+          </div>
+        </div>
+
+        <p class="about-lead-text">
+          「Rollin'pic（ローリンピック）」は、カプコンとSNKの人気キャラクターが夢の共演を果たした伝説的な対戦格闘ゲーム『CAPCOM VS. SNK 2 MILLIONAIRE FIGHTING 2001』（通称：カプエス2）の国内最大規模を誇るユーザージェット・全国大会です。<br>
+          プレイヤーとしても知られる D44 Bas氏 が中心となって主催しており、長年愛され続けるカプエス2コミュニティの熱量を象徴する一大イベントとなっています。
+        </p>
+
+        <div class="about-features-title">💡 「Rollin'pic」の主な特徴と見どころ</div>
+
+        <div class="feature-item">
+          <div class="feature-heading">1. カプエス2コミュニティにおける最大の祭典</div>
+          <ul class="feature-sublist">
+            <li>発売から長期間が経過した現在でも根強い人気を誇るカプエス2において、全国各地からトッププレイヤーや熟練のファンが集結するフラグシップ大会です。</li>
+          </ul>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-heading">2. 熱気溢れる開催形式（個人戦＆チーム戦）</div>
+          <ul class="feature-sublist">
+            <li>例年、数日間にわたる日程で開催され、個人でのガチンコトーナメント（個人戦）に加え、仲間との連携が試される3on3のチーム戦なども実施されます。</li>
+            <li>本戦の出場権を賭けて、事前の全国各地のゲームセンター等で予選が繰り広げられるほか、直前の当日予選枠も設けられるなど、全国の猛者に門戸が開かれています。</li>
+          </ul>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-heading">3. 聖地での熱いドラマ</div>
+          <ul class="feature-sublist">
+            <li>近年は埼玉県の「南浦和プレイスポットビッグワン（ビッグワン2nd）」などを主な会場として開催されることが多く、長年培われた独自のグルーヴ選択やキャラクター性能の駆け引き、数々の名勝負・ドラマが生まれています。</li>
+          </ul>
+        </div>
+      </div>
+
+
+      <!-- ▼ 注目の出場選手紹介セクション ▼ -->
+      <div class="stats-main-header" style="margin-bottom: 25px;">
+        <span class="sub-tag">FEATURED PLAYERS</span>
+        <h2>注目の出場選手紹介</h2>
+        <div class="title-glow-line"></div>
+      </div>
+
+      <!-- 選手リストエリア -->
       <div class="players-list">
 
         <!-- 1人目：さっちゃんさん (K始まり → 赤色: groove-k) -->
@@ -465,7 +753,7 @@
 
           <div class="player-description-box">
             <p class="player-description">
-              大人気「つぶらな瞳の和食屋」から飛び出した、生がきの赤ちゃん「ベビーなまがき」ちゃんです🦪🍼<br>
+              大人気「つぶらな瞳の和食屋」から飛び出した、生がきの赤ちゃん "ベビーなまがき" ちゃんです🦪🍼<br>
               むぎゅっとしたくなるもちもちの体と、なんとも言えない切なげな表情に癒やされる人が急増中。おうちでの癒やしタイムにはもちろん、一緒にお出かけして「ぬい撮り」したくなる、みんなに愛されるバブみ満点のキャラクターです。
             </p>
           </div>
@@ -481,6 +769,73 @@
         </div>
 
       </div>
+
+
+      <!-- ▼ 1on1 使用グルーヴ・キャラクター分布（外出しカードデザイン） ▼ -->
+      <div class="stats-section">
+        <div class="card-corner-accent top-left"></div>
+        <div class="card-corner-accent bottom-right"></div>
+
+        <div class="stats-main-header">
+          <span class="sub-tag">TOURNAMENT DATA</span>
+          <h2>1on1 使用グルーヴ・キャラクター分布</h2>
+          <div class="title-glow-line"></div>
+        </div>
+
+        <!-- 1. 使用グルーヴの統計 -->
+        <div class="stats-block">
+          <div class="stats-subtitle">1. 使用グルーヴの統計（降順）</div>
+          <table class="stats-table">
+            <thead>
+              <tr>
+                <th>グルーヴ選択</th>
+                <th class="text-center">使用回数</th>
+                <th class="text-right">割合</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>A (Aグルーヴ)</td><td class="text-center">16回</td><td class="text-right">32.0%</td></tr>
+              <tr><td>C (Cグルーヴ)</td><td class="text-center">14回</td><td class="text-right">28.0%</td></tr>
+              <tr><td>K (Kグルーヴ)</td><td class="text-center">13回</td><td class="text-right">26.0%</td></tr>
+              <tr><td>未定 (TBD等)</td><td class="text-center">3回</td><td class="text-right">6.0%</td></tr>
+              <tr><td>N (Nグルーヴ)</td><td class="text-center">2回</td><td class="text-right">4.0%</td></tr>
+              <tr><td>P (Pグルーヴ)</td><td class="text-center">2回</td><td class="text-right">4.0%</td></tr>
+              <tr style="font-weight: bold; background: rgba(56, 189, 248, 0.15); color: #38bdf8;">
+                <td>合計</td><td class="text-center">50回</td><td class="text-right">100%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 2. 使用キャラクターの統計 -->
+        <div class="stats-block">
+          <div class="stats-subtitle">2. 使用キャラクターの統計（降順）</div>
+          <table class="stats-table">
+            <thead>
+              <tr>
+                <th style="width: 15%;" class="text-center">順位</th>
+                <th style="width: 55%;">キャラクター名</th>
+                <th style="width: 30%;" class="text-right">使用回数</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="text-center">1</td><td>ブランカ</td><td class="text-right">19回</td></tr>
+              <tr><td class="text-center">2</td><td>サガット</td><td class="text-right">18回</td></tr>
+              <tr><td class="text-center">3</td><td>ベガ</td><td class="text-right">11回</td></tr>
+              <tr><td class="text-center">4</td><td>庵</td><td class="text-right">10回</td></tr>
+              <tr><td class="text-center">5</td><td>キャミィ</td><td class="text-right">9回</td></tr>
+              <tr><td class="text-center">6</td><td>響</td><td class="text-right">8回</td></tr>
+              <tr><td class="text-center">7</td><td>春麗</td><td class="text-right">7回</td></tr>
+              <tr><td class="text-center">8</td><td>さくら</td><td class="text-right">5回</td></tr>
+              <tr><td class="text-center">9</td><td>ガイル / ギース / チャン / バイソン / バルログ / マキ / モリガン / リュウ / 山崎</td><td class="text-right">各 3回</td></tr>
+              <tr><td class="text-center">17</td><td>ジョー / バイス / ユリ / ロック / 舞</td><td class="text-right">各 2回</td></tr>
+              <tr><td class="text-center">22</td><td>アテナ / イーグル / エドモンド本田 / キム / ケン / ダルシム / ナコルル / ユン / ルガール / ロレント / 京 / 恭介</td><td class="text-right">各 1回</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
 
       <!-- ▼ 大会ページに戻るリンク ▼ -->
       <div class="rollin-back-area">
