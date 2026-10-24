@@ -1,429 +1,469 @@
-<!-- ▼ 出場選手紹介セクション 開始 ▼ -->
-<section class="rollin-players-section">
-  <!-- 背景のサイバーグリッド・エフェクト -->
-  <div class="cyber-grid-overlay"></div>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rollin'pic 2026 - 出場選手紹介</title>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Teko:wght@600;700&display=swap');
 
-  <div class="rollin-container">
-    
-    <!-- 大会タイトル＆セクションヘッダー -->
-    <div class="rollin-section-header">
-      <div class="tournament-main-title">Rollin'pic 2026</div>
-      <div class="section-title-wrapper">
-        <span class="sub-tag">FEATURED PLAYERS</span>
-        <h2>注目の出場選手紹介</h2>
-        <div class="title-glow-line"></div>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #060911;
+      color: #f0f4f8;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .rollin-players-section {
+      position: relative;
+      width: 100%;
+      max-width: 100vw;
+      background: #060911;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(14, 116, 144, 0.25) 0%, transparent 60%),
+        radial-gradient(circle at 10% 90%, rgba(37, 99, 235, 0.15) 0%, transparent 50%);
+      padding: 50px 15px;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    .rollin-players-section *, 
+    .rollin-players-section *::before, 
+    .rollin-players-section *::after {
+      box-sizing: border-box;
+    }
+
+    .cyber-grid-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+      background-size: 30px 30px;
+      pointer-events: none;
+    }
+
+    .rollin-container {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      z-index: 1;
+    }
+
+    .rollin-section-header {
+      text-align: center;
+      margin-bottom: 40px;
+      width: 100%;
+    }
+
+    .tournament-main-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(28px, 7.5vw, 52px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #ffffff;
+      background: linear-gradient(180deg, #ffffff 30%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+      margin-bottom: 6px;
+      word-break: break-all;
+    }
+
+    .section-title-wrapper .sub-tag {
+      display: inline-block;
+      font-family: 'Teko', sans-serif;
+      font-size: 16px;
+      letter-spacing: 2px;
+      color: #38bdf8;
+      font-weight: 700;
+      text-transform: uppercase;
+      background: rgba(56, 189, 248, 0.1);
+      padding: 2px 10px;
+      border-radius: 4px;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      margin-bottom: 6px;
+    }
+
+    .section-title-wrapper h2 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin: 0 0 10px 0;
+      color: #ffffff;
+    }
+
+    .title-glow-line {
+      width: 70px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+      margin: 0 auto;
+      box-shadow: 0 0 10px #38bdf8;
+    }
+
+    .players-list {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      width: 100%;
+    }
+
+    /* プレイヤーカード基本構造 */
+    .player-profile-card {
+      position: relative;
+      width: 100%;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(11, 15, 25, 0.98) 100%);
+      border-radius: 10px;
+      padding: 18px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+      border: 1px solid var(--theme-color);
+    }
+
+    @media (min-width: 768px) {
+      .player-profile-card {
+        padding: 30px;
+      }
+    }
+
+    .card-corner-accent {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-color: var(--theme-color);
+      border-style: solid;
+      pointer-events: none;
+    }
+    .card-corner-accent.top-left {
+      top: -1px;
+      left: -1px;
+      border-width: 2px 0 0 2px;
+    }
+    .card-corner-accent.bottom-right {
+      bottom: -1px;
+      right: -1px;
+      border-width: 0 2px 2px 0;
+    }
+
+    /* --- グルーヴタイプ別のカラー定義 --- */
+    /* K：赤色 */
+    .player-profile-card.groove-k { --theme-color: #ef4444; }
+    /* C：黄緑色 */
+    .player-profile-card.groove-c { --theme-color: #84cc16; }
+    /* P：エメラルド色 */
+    .player-profile-card.groove-p { --theme-color: #10b981; }
+    /* A：水色 */
+    .player-profile-card.groove-a { --theme-color: #38bdf8; }
+    /* N：黄色 */
+    .player-profile-card.groove-n { --theme-color: #facc15; }
+    /* S：紫色 */
+    .player-profile-card.groove-s { --theme-color: #a855f7; }
+
+    .player-card-header {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 14px;
+      width: 100%;
+    }
+
+    .player-photo-frame {
+      position: relative;
+      flex-shrink: 0;
+      width: 90px;
+      height: 90px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 2px solid var(--theme-color);
+      background: #000;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+    }
+
+    @media (min-width: 768px) {
+      .player-photo-frame {
+        width: 120px;
+        height: 120px;
+      }
+    }
+
+    .player-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-overlay-tag {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--theme-color);
+      color: #060911;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 9px;
+      font-weight: 900;
+      text-align: center;
+      padding: 2px 0;
+      letter-spacing: 1px;
+    }
+
+    .player-title-area {
+      flex-grow: 1;
+      min-width: 0;
+    }
+
+    .player-title-name {
+      font-size: 20px;
+      font-weight: 800;
+      margin: 0 0 6px 0;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+      line-height: 1.2;
+      word-break: break-all;
+    }
+
+    @media (min-width: 768px) {
+      .player-title-name {
+        font-size: 24px;
+      }
+    }
+
+    .char-text-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--theme-color);
+      letter-spacing: 0.5px;
+      word-break: break-all;
+    }
+
+    @media (min-width: 768px) {
+      .char-text-name {
+        font-size: 15px;
+      }
+    }
+
+    .player-description-box {
+      background: rgba(6, 9, 17, 0.6);
+      border-left: 3px solid var(--theme-color);
+      padding: 10px 12px;
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 14px;
+      width: 100%;
+    }
+
+    .player-description {
+      font-size: 15px;
+      line-height: 1.8;
+      color: #e2e8f0;
+      margin: 0;
+      word-break: break-all;
+    }
+
+    @media (min-width: 768px) {
+      .player-description {
+        font-size: 16px;
+      }
+    }
+
+    .character-slot-area {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .label-heading {
+      font-family: 'Teko', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #94a3b8;
+    }
+
+    .character-frames-grid {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .char-frame {
+      position: relative;
+      flex: 1;
+      max-width: 85px;
+      height: 110px;
+      background: #090d16;
+      border: 1px solid var(--theme-color);
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
+    }
+
+    @media (min-width: 768px) {
+      .char-frame {
+        flex: none;
+        width: 75px;
+        height: 110px;
+      }
+    }
+
+    .char-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media screen and (max-width: 768px) {
+      html, body {
+        width: 100% !important;
+        overflow-x: hidden !important;
+      }
+      .tournament-main-title {
+        font-size: 28px !important;
+      }
+      .player-title-name {
+        font-size: 20px !important;
+      }
+      .player-description {
+        font-size: 15px !important;
+        line-height: 1.8 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ▼ 出場選手紹介セクション 開始 ▼ -->
+  <section class="rollin-players-section">
+    <div class="cyber-grid-overlay"></div>
+
+    <div class="rollin-container">
+      
+      <!-- 大会タイトル＆セクションヘッダー -->
+      <div class="rollin-section-header">
+        <div class="tournament-main-title">Rollin'pic 2026</div>
+        <div class="section-title-wrapper">
+          <span class="sub-tag">FEATURED PLAYERS</span>
+          <h2>注目の出場選手紹介</h2>
+          <div class="title-glow-line"></div>
+        </div>
+      </div>
+
+      <div class="players-list">
+
+        <!-- 1人目：さっちゃんさん (K始まり → 赤色: groove-k) -->
+        <div class="player-profile-card groove-k">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          
+          <div class="player-card-header">
+            <div class="player-photo-frame">
+              <img src="placeholder_player1.jpg" alt="さっちゃんさん">
+              <div class="photo-overlay-tag">PLAYER 01</div>
+            </div>
+            <div class="player-title-area">
+              <h3 class="player-title-name">さっちゃんさん</h3>
+              <div class="char-text-name">Kサガットキャミィブランカ</div>
+            </div>
+          </div>
+
+          <div class="player-description-box">
+            <p class="player-description">
+              名古屋のKグル使い。特にJD精度・確定反撃・差し返し・対空のレベルが高く。毎日Youtube配信を続けており、ファイコレのカプエス2大会では2度の優勝を誇る猛者。今回のローリンピックでも非常に注目の選手だ!
+            </p>
+          </div>
+
+          <div class="character-slot-area">
+            <span class="label-heading">BATTLE CHARACTERS</span>
+            <div class="character-frames-grid">
+              <div class="char-frame"><img src="placeholder_char1_1.jpg" alt="キャラ1"></div>
+              <div class="char-frame"><img src="placeholder_char1_2.jpg" alt="キャラ2"></div>
+              <div class="char-frame"><img src="placeholder_char1_3.jpg" alt="キャラ3"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2人目：しまえなが (A始まり → 水色: groove-a) ※キャラクター名変更反映 -->
+        <div class="player-profile-card groove-a">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+
+          <div class="player-card-header">
+            <div class="player-photo-frame">
+              <img src="placeholder_player2.jpg" alt="しまえなが">
+              <div class="photo-overlay-tag">PLAYER 02</div>
+            </div>
+            <div class="player-title-area">
+              <h3 class="player-title-name">しまえなが</h3>
+              <div class="char-text-name">Aいくらカニサーモン</div>
+            </div>
+          </div>
+
+          <div class="player-description-box">
+            <p class="player-description">
+              ユーラシア大陸に広く分布するエナガは20前後の亜種に区分され、日本では4亜種が生息するとされる。北海道に分布する亜種、シマエナガだけは顔が真っ白に見えるが、声や習性は他の亜種と変わらない。
+            </p>
+          </div>
+
+          <div class="character-slot-area">
+            <span class="label-heading">BATTLE CHARACTERS</span>
+            <div class="character-frames-grid">
+              <div class="char-frame"><img src="placeholder_char2_1.jpg" alt="キャラ1"></div>
+              <div class="char-frame"><img src="placeholder_char2_2.jpg" alt="キャラ2"></div>
+              <div class="char-frame"><img src="placeholder_char2_3.jpg" alt="キャラ3"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3人目：かきのあかちゃん (C始まり → 黄緑色: groove-c) -->
+        <div class="player-profile-card groove-c">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+
+          <div class="player-card-header">
+            <div class="player-photo-frame">
+              <img src="placeholder_player3.jpg" alt="かきのあかちゃん">
+              <div class="photo-overlay-tag">PLAYER 03</div>
+            </div>
+            <div class="player-title-area">
+              <h3 class="player-title-name">かきのあかちゃん</h3>
+              <div class="char-text-name">C睡眠寝るベッド</div>
+            </div>
+          </div>
+
+          <div class="player-description-box">
+            <p class="player-description">
+              大人気「つぶらな瞳の和食屋」から飛び出した、生がきの赤ちゃん「ベビーなまがき」ちゃんです🦪🍼<br>
+              むぎゅっとしたくなるもちもちの体と、なんとも言えない切なげな表情に癒やされる人が急増中。おうちでの癒やしタイムにはもちろん、一緒にお出かけして「ぬい撮り」したくなる、みんなに愛されるバブみ満点のキャラクターです。
+            </p>
+          </div>
+
+          <div class="character-slot-area">
+            <span class="label-heading">BATTLE CHARACTERS</span>
+            <div class="character-frames-grid">
+              <div class="char-frame"><img src="placeholder_char3_1.jpg" alt="キャラ1"></div>
+              <div class="char-frame"><img src="placeholder_char3_2.jpg" alt="キャラ2"></div>
+              <div class="char-frame"><img src="placeholder_char3_3.jpg" alt="キャラ3"></div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
+  </section>
+  <!-- ▲ 出場選手紹介セクション 終了 ▲ -->
 
-    <div class="players-list">
-
-      <!-- 1人目：さっちゃんさん -->
-      <div class="player-profile-card">
-        <div class="card-corner-accent top-left"></div>
-        <div class="card-corner-accent bottom-right"></div>
-        
-        <div class="player-card-header">
-          <div class="player-photo-frame">
-            <img src="placeholder_player1.jpg" alt="さっちゃんさん">
-            <div class="photo-overlay-tag">PLAYER 01</div>
-          </div>
-          <div class="player-title-area">
-            <h3 class="player-title-name">さっちゃんさん</h3>
-            <div class="char-text-name">Kサガットキャミィブランカ</div>
-          </div>
-        </div>
-
-        <div class="player-description-box">
-          <p class="player-description">
-            名古屋のKグル使い。特にJD精度・確定反撃・差し返し・対空のレベルが高く。毎日Youtube配信を続けており、ファイコレのカプエス2大会では2度の優勝を誇る猛者。今回のローリンピックでも非常に注目の選手だ!
-          </p>
-        </div>
-
-        <div class="character-slot-area">
-          <span class="label-heading">BATTLE CHARACTERS</span>
-          <div class="character-frames-grid">
-            <div class="char-frame"><img src="placeholder_char1_1.jpg" alt="キャラ1"></div>
-            <div class="char-frame"><img src="placeholder_char1_2.jpg" alt="キャラ2"></div>
-            <div class="char-frame"><img src="placeholder_char1_3.jpg" alt="キャラ3"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 2人目：しまえなが -->
-      <div class="player-profile-card">
-        <div class="card-corner-accent top-left"></div>
-        <div class="card-corner-accent bottom-right"></div>
-
-        <div class="player-card-header">
-          <div class="player-photo-frame">
-            <img src="placeholder_player2.jpg" alt="しまえなが">
-            <div class="photo-overlay-tag">PLAYER 02</div>
-          </div>
-          <div class="player-title-area">
-            <h3 class="player-title-name">しまえなが</h3>
-            <div class="char-text-name">Kいくらカニサーモン</div>
-          </div>
-        </div>
-
-        <div class="player-description-box">
-          <p class="player-description">
-            ユーラシア大陸に広く分布するエナガは20前後の亜種に区分され、日本では4亜種が生息するとされる。北海道に分布する亜種、シマエナガだけは顔が真っ白に見えるが、声や習性は他の亜種と変わらない。
-          </p>
-        </div>
-
-        <div class="character-slot-area">
-          <span class="label-heading">BATTLE CHARACTERS</span>
-          <div class="character-frames-grid">
-            <div class="char-frame"><img src="placeholder_char2_1.jpg" alt="キャラ1"></div>
-            <div class="char-frame"><img src="placeholder_char2_2.jpg" alt="キャラ2"></div>
-            <div class="char-frame"><img src="placeholder_char2_3.jpg" alt="キャラ3"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 3人目：かきのあかちゃん -->
-      <div class="player-profile-card">
-        <div class="card-corner-accent top-left"></div>
-        <div class="card-corner-accent bottom-right"></div>
-
-        <div class="player-card-header">
-          <div class="player-photo-frame">
-            <img src="placeholder_player3.jpg" alt="かきのあかちゃん">
-            <div class="photo-overlay-tag">PLAYER 03</div>
-          </div>
-          <div class="player-title-area">
-            <h3 class="player-title-name">かきのあかちゃん</h3>
-            <div class="char-text-name">C睡眠寝るベッド</div>
-          </div>
-        </div>
-
-        <div class="player-description-box">
-          <p class="player-description">
-            大人気「つぶらな瞳の和食屋」から飛び出した、生がきの赤ちゃん「ベビーなまがき」ちゃんです🦪🍼<br>
-            むぎゅっとしたくなるもちもちの体と、なんとも言えない切なげな表情に癒やされる人が急増中。おうちでの癒やしタイムにはもちろん、一緒にお出かけして「ぬい撮り」したくなる、みんなに愛されるバブみ満点のキャラクターです。
-          </p>
-        </div>
-
-        <div class="character-slot-area">
-          <span class="label-heading">BATTLE CHARACTERS</span>
-          <div class="character-frames-grid">
-            <div class="char-frame"><img src="placeholder_char3_1.jpg" alt="キャラ1"></div>
-            <div class="char-frame"><img src="placeholder_char3_2.jpg" alt="キャラ2"></div>
-            <div class="char-frame"><img src="placeholder_char3_3.jpg" alt="キャラ3"></div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-<!-- ▲ 出場選手紹介セクション 終了 ▲ -->
-
-
-<!-- ▼ スタイルシート（CSS） ▼ -->
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Teko:wght@600;700&display=swap');
-
-/* セクション全体がスマホの画面幅を超えないように絶対死守する設定 */
-.rollin-players-section {
-  position: relative;
-  width: 100%;
-  max-width: 100vw;
-  background: #060911;
-  background-image: 
-    radial-gradient(circle at 50% 0%, rgba(14, 116, 144, 0.25) 0%, transparent 60%),
-    radial-gradient(circle at 10% 90%, rgba(37, 99, 235, 0.15) 0%, transparent 50%);
-  color: #f0f4f8;
-  padding: 40px 12px;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-
-.rollin-players-section *, 
-.rollin-players-section *::before, 
-.rollin-players-section *::after {
-  box-sizing: border-box;
-}
-
-/* サイバーグリッド風の背景 */
-.cyber-grid-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
-  background-size: 30px 30px;
-  pointer-events: none;
-}
-
-.rollin-container {
-  position: relative;
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  z-index: 1;
-}
-
-/* ヘッダー */
-.rollin-section-header {
-  text-align: center;
-  margin-bottom: 35px;
-  width: 100%;
-}
-
-.tournament-main-title {
-  font-family: 'Orbitron', sans-serif;
-  font-size: clamp(26px, 7vw, 52px);
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #ffffff;
-  background: linear-gradient(180deg, #ffffff 30%, #38bdf8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
-  margin-bottom: 6px;
-  word-break: break-all;
-}
-
-.section-title-wrapper .sub-tag {
-  display: inline-block;
-  font-family: 'Teko', sans-serif;
-  font-size: 16px;
-  letter-spacing: 2px;
-  color: #38bdf8;
-  font-weight: 700;
-  text-transform: uppercase;
-  background: rgba(56, 189, 248, 0.1);
-  padding: 2px 10px;
-  border-radius: 4px;
-  border: 1px solid rgba(56, 189, 248, 0.3);
-  margin-bottom: 6px;
-}
-
-.section-title-wrapper h2 {
-  font-size: 21px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  margin: 0 0 10px 0;
-  color: #ffffff;
-}
-
-.title-glow-line {
-  width: 70px;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, #38bdf8, transparent);
-  margin: 0 auto;
-  box-shadow: 0 0 10px #38bdf8;
-}
-
-/* カードリスト */
-.players-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
-}
-
-/* 選手カード（横幅が画面を超えないよう強制） */
-.player-profile-card {
-  position: relative;
-  width: 100%;
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(11, 15, 25, 0.98) 100%);
-  border: 1px solid rgba(56, 189, 248, 0.35);
-  border-radius: 10px;
-  padding: 16px;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
-}
-
-@media (min-width: 768px) {
-  .player-profile-card {
-    padding: 30px;
-  }
-}
-
-.card-corner-accent {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border-color: #38bdf8;
-  border-style: solid;
-  pointer-events: none;
-}
-.card-corner-accent.top-left {
-  top: -1px;
-  left: -1px;
-  border-width: 2px 0 0 2px;
-}
-.card-corner-accent.bottom-right {
-  bottom: -1px;
-  right: -1px;
-  border-width: 0 2px 2px 0;
-}
-
-/* カード上部 */
-.player-card-header {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  margin-bottom: 12px;
-  width: 100%;
-}
-
-.player-photo-frame {
-  position: relative;
-  flex-shrink: 0;
-  width: 85px;
-  height: 85px;
-  border-radius: 6px;
-  overflow: hidden;
-  border: 2px solid #38bdf8;
-  background: #000;
-  box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
-}
-
-@media (min-width: 768px) {
-  .player-photo-frame {
-    width: 120px;
-    height: 120px;
-  }
-}
-
-.player-photo-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.photo-overlay-tag {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(90deg, #0284c7, #38bdf8);
-  color: #060911;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 9px;
-  font-weight: 900;
-  text-align: center;
-  padding: 2px 0;
-  letter-spacing: 1px;
-}
-
-.player-title-area {
-  flex-grow: 1;
-  min-width: 0; /* フレックスボックスでの文字あふれ・縮小バグを防ぐ */
-}
-
-.player-title-name {
-  font-size: 19px;
-  font-weight: 800;
-  margin: 0 0 4px 0;
-  color: #ffffff;
-  letter-spacing: 0.5px;
-  line-height: 1.2;
-  word-break: break-all;
-}
-
-@media (min-width: 768px) {
-  .player-title-name {
-    font-size: 24px;
-  }
-}
-
-.char-text-name {
-  font-size: 12px;
-  font-weight: 700;
-  color: #38bdf8;
-  letter-spacing: 0.5px;
-  word-break: break-all;
-}
-
-@media (min-width: 768px) {
-  .char-text-name {
-    font-size: 15px;
-  }
-}
-
-/* 紹介文ボックス */
-.player-description-box {
-  background: rgba(6, 9, 17, 0.6);
-  border-left: 3px solid #38bdf8;
-  padding: 10px 12px;
-  border-radius: 0 6px 6px 0;
-  margin-bottom: 12px;
-  width: 100%;
-}
-
-.player-description {
-  font-size: 14px;
-  line-height: 1.7;
-  color: #e2e8f0;
-  margin: 0;
-  word-break: break-all; /* スマホで長い英単語などがはみ出て画面が伸びるのを防ぐ */
-}
-
-@media (min-width: 768px) {
-  .player-description {
-    font-size: 15px;
-  }
-}
-
-/* キャラクター画像エリア */
-.character-slot-area {
-  border-top: 1px solid rgba(56, 189, 248, 0.15);
-  padding-top: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  width: 100%;
-}
-
-.label-heading {
-  font-family: 'Teko', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: #94a3b8;
-}
-
-.character-frames-grid {
-  display: flex;
-  gap: 8px;
-  width: 100%;
-}
-
-.char-frame {
-  position: relative;
-  flex: 1; /* スマホ画面の幅に合わせて均等に縮む・伸びるようにする */
-  max-width: 80px;
-  height: 95px;
-  background: #090d16;
-  border: 1px solid rgba(56, 189, 248, 0.35);
-  border-radius: 6px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
-}
-
-@media (min-width: 768px) {
-  .char-frame {
-    flex: none;
-    width: 75px;
-    height: 110px;
-  }
-}
-
-.char-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-</style>
+</body>
+</html>
