@@ -107,7 +107,7 @@
       box-shadow: 0 0 10px #38bdf8;
     }
 
-    /* --- 「Rollin'picとは？」紹介カード用スタイル --- */
+    /* --- 共通カード用スタイル（Rollin'picとは？ / 見どころ / 統計用） --- */
     .about-rollin-card {
       position: relative;
       width: 100%;
@@ -126,6 +126,25 @@
       }
     }
 
+    .card-corner-accent {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-color: #38bdf8;
+      border-style: solid;
+      pointer-events: none;
+    }
+    .card-corner-accent.top-left {
+      top: -1px;
+      left: -1px;
+      border-width: 2px 0 0 2px;
+    }
+    .card-corner-accent.bottom-right {
+      bottom: -1px;
+      right: -1px;
+      border-width: 0 2px 2px 0;
+    }
+
     /* 3枚の画像をカッコよく並べるグリッドレイアウト */
     .about-images-grid {
       display: grid;
@@ -136,7 +155,7 @@
 
     @media screen and (max-width: 600px) {
       .about-images-grid {
-        grid-template-columns: 1fr; /* スマホでは縦並びにして見やすくする */
+        grid-template-columns: 1fr;
       }
     }
 
@@ -256,25 +275,6 @@
       .player-profile-card {
         padding: 30px;
       }
-    }
-
-    .card-corner-accent {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      border-color: var(--theme-color);
-      border-style: solid;
-      pointer-events: none;
-    }
-    .card-corner-accent.top-left {
-      top: -1px;
-      left: -1px;
-      border-width: 2px 0 0 2px;
-    }
-    .card-corner-accent.bottom-right {
-      bottom: -1px;
-      right: -1px;
-      border-width: 0 2px 2px 0;
     }
 
     /* グルーヴタイプ別のカラー定義 */
@@ -606,7 +606,7 @@
         </div>
       </div>
 
-      <!-- ▼ 「Rollin'picとは？」カテゴリ（3枚の画像並び配置版） ▼ -->
+      <!-- ▼ 「Rollin'picとは？」カテゴリ ▼ -->
       <div class="about-rollin-card">
         <div class="card-corner-accent top-left"></div>
         <div class="card-corner-accent bottom-right"></div>
@@ -617,7 +617,7 @@
           <div class="title-glow-line"></div>
         </div>
 
-        <!-- 3つのイメージ画像横並びグリッド（ファイル名：about_bg1.jpg, about_bg2.jpg, about_bg3.jpg） -->
+        <!-- 3つのイメージ画像横並びグリッド -->
         <div class="about-images-grid">
           <div class="about-image-frame">
             <img src="about_bg1.jpg" alt="Rollin'pic イメージ画像1">
@@ -768,6 +768,43 @@
           </div>
         </div>
 
+      </div>
+
+
+      <!-- ▼ 初心者でも必見！Rollin'picの見どころ ▼ -->
+      <div class="about-rollin-card">
+        <div class="card-corner-accent top-left"></div>
+        <div class="card-corner-accent bottom-right"></div>
+
+        <div class="stats-main-header" style="margin-bottom: 20px;">
+          <span class="sub-tag">BEGINNER'S GUIDE</span>
+          <h2>初心者でも必見！Rollin'picの見どころ</h2>
+          <div class="title-glow-line"></div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-heading">1. 発売から長年経っても褪せない、最高峰の競技レベル</div>
+          <ul class="feature-sublist">
+            <li>2001年の稼働開始から長い年月が経っているにもかかわらず、国内・海外から集まるプレイヤーたちの熟練度が非常に高く、トップメタの駆け引きが極限まで洗練されています。</li>
+            <li>キャラクター性能の強弱だけでなく、対戦相手の心理やプレイスタイルを読み合うハイレベルな読み合いが毎試合繰り広げられます。</li>
+          </ul>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-heading">2. 奥深い「6つのグルーヴ」が生み出す多彩な戦術</div>
+          <ul class="feature-sublist">
+            <li>カプエス2最大の醍醐味である6種類の「グルーヴ（C、A、P、S、K、N）」の選択が、試合の展開を大きく左右します。</li>
+            <li>同じキャラクターであっても、どのグルーヴを選ぶかによって立ち回りやコンボが全く異なり、プレイヤーの個性やこだわりが色濃く反映されるため、組み合わせの妙を見ているだけでも引き込まれます。</li>
+          </ul>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-heading">3. 会場全体が一体となる圧倒的な熱気とライブ感</div>
+          <ul class="feature-sublist">
+            <li>会場には多くのプレイヤーやファンが集結し、好プレイが飛び出した際の歓声や、大熱戦のクライマックスで見せる一体感は、ゲームセンターを拠点としたコミュニティ大会ならではの熱量に満ちています。</li>
+            <li>長年カプエス2のシーンを支えてきたプレイヤーたちによる、ドラマチックな名勝負や因縁の対決が数多く生まれる舞台となっています。</li>
+          </ul>
+        </div>
       </div>
 
 
