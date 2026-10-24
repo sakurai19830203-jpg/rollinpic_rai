@@ -6,7 +6,7 @@
   <title>Rollin'pic 2026 - 出場選手紹介</title>
   
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Teko:wght@600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Teko:wght@600;700&display=swap');
 
     body {
       margin: 0;
@@ -57,25 +57,23 @@
       z-index: 1;
     }
 
+    /* ヘッダーエリア（ロゴ画像用） */
     .rollin-section-header {
       text-align: center;
       margin-bottom: 40px;
       width: 100%;
     }
 
-    .tournament-main-title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(28px, 7.5vw, 52px);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: #ffffff;
-      background: linear-gradient(180deg, #ffffff 30%, #38bdf8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
-      margin-bottom: 6px;
-      word-break: break-all;
+    .tournament-logo-wrap {
+      max-width: 320px; /* ロゴの最大幅（必要に応じて調整可能） */
+      margin: 0 auto 10px auto;
+    }
+
+    .tournament-logo-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.4));
     }
 
     .section-title-wrapper .sub-tag {
@@ -153,19 +151,13 @@
       border-width: 0 2px 2px 0;
     }
 
-    /* --- グルーヴタイプ別のカラー定義 --- */
-    /* K：赤色 */
-    .player-profile-card.groove-k { --theme-color: #ef4444; }
-    /* C：黄緑色 */
-    .player-profile-card.groove-c { --theme-color: #84cc16; }
-    /* P：エメラルド色 */
-    .player-profile-card.groove-p { --theme-color: #10b981; }
-    /* A：水色 */
-    .player-profile-card.groove-a { --theme-color: #38bdf8; }
-    /* N：黄色 */
-    .player-profile-card.groove-n { --theme-color: #facc15; }
-    /* S：紫色 */
-    .player-profile-card.groove-s { --theme-color: #a855f7; }
+    /* グルーヴタイプ別のカラー定義 */
+    .player-profile-card.groove-k { --theme-color: #ef4444; } /* K：赤色 */
+    .player-profile-card.groove-c { --theme-color: #84cc16; } /* C：黄緑色 */
+    .player-profile-card.groove-p { --theme-color: #10b981; } /* P：エメラルド色 */
+    .player-profile-card.groove-a { --theme-color: #38bdf8; } /* A：水色 */
+    .player-profile-card.groove-n { --theme-color: #facc15; } /* N：黄色 */
+    .player-profile-card.groove-s { --theme-color: #a855f7; } /* S：紫色 */
 
     .player-card-header {
       display: flex;
@@ -207,7 +199,7 @@
       right: 0;
       background: var(--theme-color);
       color: #060911;
-      font-family: 'Orbitron', sans-serif;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
       font-size: 9px;
       font-weight: 900;
       text-align: center;
@@ -330,9 +322,6 @@
         width: 100% !important;
         overflow-x: hidden !important;
       }
-      .tournament-main-title {
-        font-size: 28px !important;
-      }
       .player-title-name {
         font-size: 20px !important;
       }
@@ -351,9 +340,11 @@
 
     <div class="rollin-container">
       
-      <!-- 大会タイトル＆セクションヘッダー -->
+      <!-- 大会ロゴ＆セクションヘッダー -->
       <div class="rollin-section-header">
-        <div class="tournament-main-title">Rollin'pic 2026</div>
+        <div class="tournament-logo-wrap">
+          <img src="RollinPic2026.png" alt="Rollin'pic 2026">
+        </div>
         <div class="section-title-wrapper">
           <span class="sub-tag">FEATURED PLAYERS</span>
           <h2>注目の出場選手紹介</h2>
@@ -395,7 +386,7 @@
           </div>
         </div>
 
-        <!-- 2人目：しまえなが (A始まり → 水色: groove-a) ※キャラクター名変更反映 -->
+        <!-- 2人目：しまえなが (A始まり → 水色: groove-a) -->
         <div class="player-profile-card groove-a">
           <div class="card-corner-accent top-left"></div>
           <div class="card-corner-accent bottom-right"></div>
