@@ -65,7 +65,7 @@
     }
 
     .tournament-logo-wrap {
-      max-width: 320px; /* ロゴの最大幅（必要に応じて調整可能） */
+      max-width: 320px;
       margin: 0 auto 10px auto;
     }
 
@@ -112,6 +112,7 @@
       flex-direction: column;
       gap: 25px;
       width: 100%;
+      margin-bottom: 50px;
     }
 
     /* プレイヤーカード基本構造 */
@@ -317,6 +318,34 @@
       object-fit: cover;
     }
 
+    /* 戻るボタンエリアのデザイン */
+    .rollin-back-area {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .rollin-back-btn {
+      display: inline-block;
+      font-family: 'Teko', sans-serif;
+      font-size: 20px;
+      letter-spacing: 2px;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 10px 30px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
+    }
+
+    .rollin-back-btn:hover {
+      background: #38bdf8;
+      color: #060911;
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.5);
+      transform: translateY(-2px);
+    }
+
     @media screen and (max-width: 768px) {
       html, body {
         width: 100% !important;
@@ -452,6 +481,14 @@
         </div>
 
       </div>
+
+      <!-- ▼ 大会ページに戻るリンク ▼ -->
+      <div class="rollin-back-area">
+        <a href="https://sakurai19830203-jpg.github.io/rollinpic_rai/rollinpic2026.html" class="rollin-back-btn">
+          ◀ 大会トップページに戻る
+        </a>
+      </div>
+
     </div>
   </section>
   <!-- ▲ 出場選手紹介セクション 終了 ▲ -->
