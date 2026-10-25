@@ -523,7 +523,7 @@
     .ft10-container {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 16px;
       margin-top: 15px;
     }
 
@@ -534,12 +534,30 @@
       box-shadow: 4px 4px 0px #000;
       overflow: hidden;
       transition: all 0.3s ease;
+      background: #0d0d12;
+    }
+
+    /* 画像に重ならない、上部の独立したかっこいい見出しデザイン */
+    .match-top-label {
+      background: linear-gradient(90deg, rgba(255, 204, 0, 0.2) 0%, rgba(15, 15, 22, 0.95) 100%);
+      border-bottom: 1px solid rgba(255, 204, 0, 0.3);
+      padding: 6px 12px;
       display: flex;
       align-items: center;
+      justify-content: space-between;
+    }
+
+    .match-top-label span {
+      font-family: 'Teko', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--accent-yellow);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-shadow: 0 0 8px rgba(255, 204, 0, 0.4);
     }
 
     .secret-match-row.match1-bg {
-      background: #0d0d12;
       padding: 0;
     }
 
@@ -556,7 +574,6 @@
     }
 
     .secret-match-row.match2-bg {
-      background: #0d0d12;
       padding: 0;
     }
 
@@ -576,7 +593,6 @@
     }
 
     .secret-match-row.match3-bg {
-      background: #0d0d12;
       padding: 0;
     }
 
@@ -596,6 +612,16 @@
       border-color: var(--capcom-blue);
       border-left-color: var(--capcom-blue);
       box-shadow: 6px 6px 0px rgba(0, 225, 255, 0.2);
+    }
+
+    .secret-match-row:hover .match-top-label {
+      background: linear-gradient(90deg, rgba(0, 225, 255, 0.2) 0%, rgba(15, 15, 22, 0.95) 100%);
+      border-bottom-color: rgba(0, 225, 255, 0.4);
+    }
+
+    .secret-match-row:hover .match-top-label span {
+      color: var(--capcom-blue);
+      text-shadow: 0 0 8px rgba(0, 225, 255, 0.5);
     }
 
     .secret-header {
@@ -1089,7 +1115,7 @@
         <div class="entry-list-section">
           <div class="entry-list-title">
             <span>エントリー状況一覧</span>
-            <span style="font-size:0.75rem; color:var(--text-muted); font-weight:normal;">10/24現在 (50名)</span>
+            <span style="font-size:0.75rem; color:var(--text-muted); font-weight:normal;">10/25現在 (51名)</span>
           </div>
           <table class="entry-table">
             <thead>
@@ -1151,6 +1177,7 @@
               <tr><td class="entry-num">48</td><td>みさき</td><td>中部</td><td>K春麗サガット響</td></tr>
               <tr><td class="entry-num">49</td><td>酒寄ヤチヨ</td><td>選択しない</td><td>Cバイソンチャンギース</td></tr>
               <tr><td class="entry-num">50</td><td>坊ちゃん</td><td>近畿</td><td>Kブランカキャミィサガット</td></tr>
+              <tr><td class="entry-num">51</td><td>ピノキオ</td><td>関東</td><td>K春麗キャミィサガット</td></tr>
             </tbody>
           </table>
         </div>
@@ -1256,6 +1283,13 @@
         
         <table class="info-table">
           <tr><td>開店時間</td><td>10:00</td></tr>
+          <tr>
+            <td>開始時間</td>
+            <td>
+              12:00<br>
+              <span style="font-size: 0.78rem; color: var(--text-muted); font-weight: normal;">12時からMATCH1より順次実施予定</span>
+            </td>
+          </tr>
         </table>
         <div class="play-fee-note" style="margin-bottom: 25px;">※野試合は1クレジット50yen</div>
 
@@ -1263,6 +1297,9 @@
           
           <!-- Match 1 -->
           <div class="secret-match-row match1-bg">
+            <div class="match-top-label">
+              <span>MATCH 1</span>
+            </div>
             <div class="match1-img-wrap">
               <img src="match1_bg.jpg" alt="Match 1 Background" onerror="this.style.display='none';">
             </div>
@@ -1270,6 +1307,9 @@
 
           <!-- Match 2 -->
           <div class="secret-match-row match2-bg">
+            <div class="match-top-label">
+              <span>MATCH 2</span>
+            </div>
             <div class="match2-img-wrap">
               <img src="match2_bg.jpg" alt="Match 2 Background" width="1680" height="936" onerror="this.style.display='none';">
             </div>
@@ -1277,6 +1317,9 @@
 
           <!-- Match 3 -->
           <div class="secret-match-row match3-bg">
+            <div class="match-top-label">
+              <span>MATCH 3</span>
+            </div>
             <div class="match3-img-wrap">
               <img src="match3_bg.jpg" alt="Match 3 Background" onerror="this.style.display='none';">
             </div>
