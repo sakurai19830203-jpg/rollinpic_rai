@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rollin'pic 2026 - シード選手紹介 ＆ 統計分布</title>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Teko:wght@600;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #060911;
+      color: #f0f4f8;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .rollin-players-section {
+      position: relative;
+      width: 100%;
+      max-width: 100vw;
+      /* 背景画像 main_bg.jpg の適用 */
+      background: linear-gradient(135deg, rgba(6, 9, 17, 0.9) 0%, rgba(11, 15, 25, 0.92) 100%), 
+                  url('main_bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      padding: 50px 15px;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    .rollin-players-section *, 
+    .rollin-players-section *::before, 
+    .rollin-players-section *::after {
+      box-sizing: border-box;
+    }
+
+    .cyber-grid-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        linear-gradient(rgba(56, 189, 248, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.02) 1px, transparent 1px);
+      background-size: 30px 30px;
+      pointer-events: none;
+    }
+
+    .rollin-container {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      z-index: 1;
+    }
+
+    /* ヘッダーエリア（ロゴ画像用） */
+    .rollin-section-header {
+      text-align: center;
+      margin-bottom: 40px;
+      width: 100%;
+    }
+
+    .tournament-logo-wrap {
+      max-width: 320px;
+      margin: 0 auto 10px auto;
+    }
+
+    .tournament-logo-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.4));
+    }
+
+    .section-title-wrapper .sub-tag {
+      display: inline-block;
+      font-family: 'Teko', sans-serif;
+      font-size: 16px;
+      letter-spacing: 2px;
+      color: #38bdf8;
+      font-weight: 700;
+      text-transform: uppercase;
+      background: rgba(56, 189, 248, 0.1);
+      padding: 2px 10px;
+      border-radius: 4px;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      margin-bottom: 6px;
+    }
+
+    .section-title-wrapper h2 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin: 0 0 10px 0;
+      color: #ffffff;
+    }
+
+    .title-glow-line {
+      width: 70px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+      margin: 0 auto;
+      box-shadow: 0 0 10px #38bdf8;
+    }
+
+    /* --- 共通カード用スタイル --- */
+    .about-rollin-card {
+      position: relative;
+      width: 100%;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(11, 15, 25, 0.98) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      border-radius: 10px;
+      padding: 25px 20px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+      margin-bottom: 35px;
+    }
+
+    @media (min-width: 768px) {
+      .about-rollin-card {
+        padding: 35px 30px;
+      }
+    }
+
+    .card-corner-accent {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-color: #38bdf8;
+      border-style: solid;
+      pointer-events: none;
+    }
+    .card-corner-accent.top-left {
+      top: -1px;
+      left: -1px;
+      border-width: 2px 0 0 2px;
+    }
+    .card-corner-accent.bottom-right {
+      bottom: -1px;
+      right: -1px;
+      border-width: 0 2px 2px 0;
+    }
+
+    .about-images-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 25px;
+    }
+
+    @media screen and (max-width: 600px) {
+      .about-images-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .about-image-frame {
+      position: relative;
+      width: 100%;
+      height: 160px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      background: #000;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+    }
+
+    @media (min-width: 768px) {
+      .about-image-frame {
+        height: 180px;
+      }
+    }
+
+    .about-image-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .about-image-frame:hover img {
+      transform: scale(1.05);
+    }
+
+    .about-lead-text {
+      font-size: 15px;
+      line-height: 1.85;
+      color: #cbd5e1;
+      margin: 0 0 24px 0;
+      word-break: break-all;
+    }
+
+    @media (min-width: 768px) {
+      .about-lead-text {
+        font-size: 16px;
+      }
+    }
+
+    .about-features-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #38bdf8;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+      border-left: 3px solid #38bdf8;
+      padding-left: 10px;
+    }
+
+    .feature-item {
+      background: rgba(6, 9, 17, 0.6);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .feature-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .feature-heading {
+      font-size: 15px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .feature-sublist {
+      margin: 0;
+      padding-left: 20px;
+      color: #cbd5e1;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .feature-sublist li {
+      margin-bottom: 6px;
+    }
+
+    .feature-sublist li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* カッコいいシード階級別見出し（Tier用） */
+    .tier-category-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(90deg, rgba(56, 189, 248, 0.15) 0%, rgba(6, 9, 17, 0.8) 100%);
+      border-left: 4px solid #38bdf8;
+      border-top: 1px solid rgba(56, 189, 248, 0.3);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 10px 16px;
+      margin: 35px 0 20px 0;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .tier-category-banner.tier-1-banner {
+      background: linear-gradient(90deg, rgba(245, 158, 11, 0.2) 0%, rgba(6, 9, 17, 0.8) 100%);
+      border-left-color: #f59e0b;
+      border-top-color: rgba(245, 158, 11, 0.4);
+      border-bottom-color: rgba(245, 158, 11, 0.4);
+    }
+
+    /* Tier 2 バナー用のグレー調デザイン */
+    .tier-category-banner.tier-2-banner {
+      background: linear-gradient(90deg, rgba(148, 163, 184, 0.2) 0%, rgba(6, 9, 17, 0.8) 100%);
+      border-left-color: #94a3b8;
+      border-top-color: rgba(148, 163, 184, 0.4);
+      border-bottom-color: rgba(148, 163, 184, 0.4);
+    }
+
+    .tier-title-main {
+      font-family: 'Teko', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #ffffff;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .tier-title-sub {
+      font-family: 'Teko', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      color: #94a3b8;
+      text-transform: uppercase;
+    }
+
+    .tier-1-banner .tier-title-sub { color: #fcd34d; }
+    .tier-2-banner .tier-title-sub { color: #cbd5e1; }
+
+    /* 選手カードリスト全体 */
+    .players-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+      margin-bottom: 35px;
+    }
+
+    /* --- グルーヴ別のカラー変数定義（全選手共通でグルーヴ別カラーを適用） --- */
+    .player-profile-card.groove-k { 
+      --groove-color: #ef4444; 
+      --bg-tint: rgba(239, 68, 68, 0.12);
+    } /* K：赤 */
+    .player-profile-card.groove-c { 
+      --groove-color: #84cc16; 
+      --bg-tint: rgba(132, 204, 22, 0.12);
+    } /* C：黄緑 */
+    .player-profile-card.groove-p { 
+      --groove-color: #10b981; 
+      --bg-tint: rgba(16, 185, 129, 0.12);
+    } /* P：エメラルド */
+    .player-profile-card.groove-a { 
+      --groove-color: #38bdf8; 
+      --bg-tint: rgba(56, 189, 248, 0.12);
+    } /* A：水色 */
+    .player-profile-card.groove-n { 
+      --groove-color: #facc15; 
+      --bg-tint: rgba(250, 204, 21, 0.12);
+    } /* N：黄色 */
+    .player-profile-card.groove-s { 
+      --groove-color: #a855f7; 
+      --bg-tint: rgba(168, 85, 247, 0.12);
+    } /* S：紫 */
+
+    /* プレイヤーカード基本構造 */
+    .player-profile-card {
+      position: relative;
+      width: 100%;
+      background: linear-gradient(135deg, var(--bg-tint, rgba(15, 23, 42, 0.95)) 0%, rgba(11, 15, 25, 0.98) 100%);
+      border-radius: 10px;
+      padding: 18px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+      border: 2px solid var(--groove-color, #38bdf8);
+    }
+
+    @media (min-width: 768px) {
+      .player-profile-card {
+        padding: 25px 30px;
+      }
+    }
+
+    /* コーナーアクセント */
+    .player-profile-card .card-corner-accent {
+      border-color: var(--groove-color, #38bdf8);
+      width: 10px;
+      height: 10px;
+    }
+    .player-profile-card.tier-1 .card-corner-accent {
+      width: 12px;
+      height: 12px;
+    }
+
+    /* 写真のオーバーレイタグ（TIER 1 / TIER 2） */
+    .player-profile-card .photo-overlay-tag {
+      background: var(--groove-color, #38bdf8);
+      color: #060911;
+    }
+
+    /* 紹介文の左サイドの見出しバー */
+    .player-profile-card .player-description-box {
+      border-left: 3px solid var(--groove-color, #38bdf8);
+      background: rgba(6, 9, 17, 0.6);
+      padding: 10px 12px;
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 12px;
+      width: 100%;
+    }
+
+    .card-corner-accent {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-style: solid;
+      pointer-events: none;
+    }
+    .card-corner-accent.top-left {
+      top: -1px;
+      left: -1px;
+      border-width: 2px 0 0 2px;
+    }
+    .card-corner-accent.bottom-right {
+      bottom: -1px;
+      right: -1px;
+      border-width: 0 2px 2px 0;
+    }
+
+    .player-card-header {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+      width: 100%;
+    }
+
+    /* プレイヤー写真フレーム */
+    .player-photo-frame {
+      position: relative;
+      flex-shrink: 0;
+      width: 120px;
+      height: 120px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 2px solid var(--groove-color, #38bdf8);
+      background: #000;
+      box-shadow: 0 0 14px rgba(0, 0, 0, 0.6);
+    }
+
+    @media (min-width: 768px) {
+      .player-photo-frame {
+        width: 150px;
+        height: 150px;
+      }
+    }
+
+    .player-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-overlay-tag {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 900;
+      text-align: center;
+      padding: 3px 0;
+      letter-spacing: 1px;
+    }
+
+    .player-title-area {
+      flex-grow: 1;
+      min-width: 0;
+    }
+
+    .seed-badge-title {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: #94a3b8;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .player-title-name {
+      font-size: 22px;
+      font-weight: 800;
+      margin: 0 0 6px 0;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+      line-height: 1.2;
+      word-break: break-all;
+    }
+
+    @media (min-width: 768px) {
+      .player-title-name {
+        font-size: 26px;
+      }
+    }
+
+    .char-text-name {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      word-break: break-all;
+    }
+
+    @media (min-width: 768px) {
+      .char-text-name {
+        font-size: 15px;
+      }
+    }
+
+    .player-description {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #e2e8f0;
+      margin: 0;
+      word-break: break-all;
+    }
+
+    @media (min-width: 768px) {
+      .player-description {
+        font-size: 15px;
+      }
+    }
+
+    /* 3キャラクター分の画像フレーム用スタイル */
+    .character-slot-area {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      width: 100%;
+    }
+
+    .label-heading {
+      font-family: 'Teko', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #94a3b8;
+    }
+
+    .character-frames-grid {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .char-frame {
+      position: relative;
+      flex: 1;
+      max-width: 85px;
+      height: 100px;
+      background: #090d16;
+      border: 1px solid var(--groove-color, #38bdf8);
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
+    }
+
+    @media (min-width: 768px) {
+      .char-frame {
+        flex: none;
+        width: 75px;
+        height: 100px;
+      }
+    }
+
+    .char-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* 統計・共通ヘッダー用スタイル */
+    .stats-section {
+      position: relative;
+      width: 100%;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(11, 15, 25, 0.98) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 10px;
+      padding: 24px 20px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+      margin-bottom: 35px;
+    }
+
+    @media (min-width: 768px) {
+      .stats-section {
+        padding: 35px 30px;
+      }
+    }
+
+    .stats-main-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .stats-main-header .sub-tag {
+      display: inline-block;
+      font-family: 'Teko', sans-serif;
+      font-size: 16px;
+      letter-spacing: 2px;
+      color: #38bdf8;
+      font-weight: 700;
+      text-transform: uppercase;
+      background: rgba(56, 189, 248, 0.1);
+      padding: 2px 10px;
+      border-radius: 4px;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      margin-bottom: 6px;
+    }
+
+    .stats-main-header h2 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin: 0 0 10px 0;
+      color: #ffffff;
+    }
+
+    .stats-block {
+      margin-bottom: 30px;
+    }
+
+    .stats-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .stats-subtitle {
+      font-size: 16px;
+      font-weight: 700;
+      color: #38bdf8;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+      border-left: 3px solid #38bdf8;
+      padding-left: 10px;
+    }
+
+    .stats-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      background: rgba(6, 9, 17, 0.7);
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .stats-table th, .stats-table td {
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .stats-table th {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .stats-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .stats-table tr:hover {
+      background: rgba(56, 189, 248, 0.05);
+    }
+
+    .text-center { text-align: center; }
+    .text-right { text-align: right; }
+
+    /* 過去大会結果用スタイル */
+    .history-card-item {
+      background: rgba(6, 9, 17, 0.6);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .history-card-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .history-event-title {
+      font-family: 'Teko', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #38bdf8;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+      border-bottom: 1px dashed rgba(56, 189, 248, 0.3);
+      padding-bottom: 4px;
+    }
+
+    .history-day-row {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #e2e8f0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .history-day-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .day-label {
+      font-family: 'Teko', sans-serif;
+      font-size: 15px;
+      color: #94a3b8;
+      background: rgba(56, 189, 248, 0.1);
+      padding: 1px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      letter-spacing: 1px;
+    }
+
+    .result-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 1px 6px;
+      border-radius: 3px;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-win { background: #ef4444; color: #ffffff; }
+    .badge-runner { background: #3b82f6; color: #ffffff; }
+
+    /* グルーヴ文字色クラス定義 */
+    .g-k { color: #ef4444 !important; font-weight: bold; } /* 赤 */
+    .g-c { color: #84cc16 !important; font-weight: bold; } /* 黄緑 */
+    .g-p { color: #10b981 !important; font-weight: bold; } /* エメラルド */
+    .g-a { color: #38bdf8 !important; font-weight: bold; } /* 水色 */
+    .g-n { color: #facc15 !important; font-weight: bold; } /* 黄色 */
+    .g-s { color: #a855f7 !important; font-weight: bold; } /* 紫 */
+
+    /* 戻るボタン */
+    .rollin-back-area {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .rollin-back-btn {
+      display: inline-block;
+      font-family: 'Teko', sans-serif;
+      font-size: 20px;
+      letter-spacing: 2px;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 10px 30px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
+    }
+
+    .rollin-back-btn:hover {
+      background: #38bdf8;
+      color: #060911;
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.5);
+      transform: translateY(-2px);
+    }
+
+    @media screen and (max-width: 768px) {
+      html, body {
+        width: 100% !important;
+        overflow-x: hidden !important;
+      }
+      .player-title-name {
+        font-size: 20px !important;
+      }
+      .player-description {
+        font-size: 15px !important;
+        line-height: 1.8 !important;
+      }
+      .stats-table {
+        font-size: 13px;
+      }
+      .stats-table th, .stats-table td {
+        padding: 8px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ▼ シード選手紹介セクション 開始 ▼ -->
+  <section class="rollin-players-section">
+    <div class="cyber-grid-overlay"></div>
+
+    <div class="rollin-container">
+      
+      <!-- 大会ロゴ＆セクションヘッダー -->
+      <div class="rollin-section-header">
+        <div class="tournament-logo-wrap">
+          <img src="RollinPic2025.png" alt="Rollin'pic 2026">
+        </div>
+      </div>
+
+      <!-- ▼ 「Rollin'picとは？」カテゴリ ▼ -->
+      <div class="about-rollin-card">
+        <div class="card-corner-accent top-left"></div>
+        <div class="card-corner-accent bottom-right"></div>
+
+        <div class="stats-main-header" style="margin-bottom: 20px;">
+          <span class="sub-tag">ABOUT TOURNAMENT</span>
+          <h2>Rollin'picとは？</h2>
+          <div class="title-glow-line"></div>
+        </div>
+
+        <div class="about-images-grid">
+          <div class="about-image-frame">
+            <img src="about_bg1.jpg" alt="Rollin'pic イメージ画像1">
+          </div>
+          <div class="about-image-frame">
+            <img src="about_bg2.jpg" alt="Rollin'pic イメージ画像2">
+          </div>
+          <div class="about-image-frame">
+            <img src="about_bg3.jpg" alt="Rollin'pic イメージ画像3">
+          </div>
+        </div>
+
+        <p class="about-lead-text">
+          「Rollin'pic（ローリンピック）」は、カプコンとSNKの人気キャラクターが夢の共演を果たした伝説的な対戦格闘ゲーム『CAPCOM VS. SNK 2 MILLIONAIRE FIGHTING 2001』（通称：カプエス2）の国内最大規模を誇るユーザージェット・全国大会です。<br>
+          プレイヤーとしても知られる D44 Bas氏 が中心となって主催しており、長年愛され続けるカプエス2コミュニティの熱量を象徴する一大イベントとなっています。
+        </p>
+
+        <div class="about-features-title">💡 「Rollin'pic」の主な特徴と見どころ</div>
+
+        <div class="feature-item">
+          <div class="feature-heading">1. カプエス2コミュニティにおける最大の祭典</div>
+          <ul class="feature-sublist">
+            <li>発売から長期間が経過した現在でも根強い人気を誇るカプエス2において、全国各地からトッププレイヤーや熟練のファンが集結するフラグシップ大会です。</li>
+          </ul>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-heading">2. 熱気溢れる開催形式（個人戦＆チーム戦）</div>
+          <ul class="feature-sublist">
+            <li>例年、数日間にわたる日程で開催され、個人でのガチンコトーナメント（個人戦）に加え、仲間との連携が試される3on3のチーム戦なども実施されます。</li>
+            <li>本戦の出場権を賭けて、事前の全国各地のゲームセンター等で予選が繰り広げられるほか、直前の当日予選枠も設けられるなど、全国の猛者に門戸が開かれています。</li>
+          </ul>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-heading">3. 聖地での熱いドラマ</div>
+          <ul class="feature-sublist">
+            <li>近年は埼玉県の「南浦和プレイスポットビッグワン（ビッグワン2nd）」などを主な会場として開催されることが多く、長年培われた独自のグルーヴ選択やキャラクター性能の駆け引き、数々の名勝負・ドラマが生まれています。</li>
+          </ul>
+        </div>
+      </div>
+
+
+      <!-- ▼ シード選手紹介セクション見出し ▼ -->
+      <div class="stats-main-header" style="margin-bottom: 20px;">
+        <span class="sub-tag">SEEDED PLAYERS</span>
+        <h2>シード選手紹介</h2>
+        <div class="title-glow-line"></div>
+      </div>
+
+      <!-- 選手リストエリア -->
+      <div class="players-list">
+
+        <!-- ▼ Tier 1 シード (4名) ▼ -->
+        <div class="tier-category-banner tier-1-banner">
+          <span class="tier-title-main">Tier 1 Seeds</span>
+          <span class="tier-title-sub">Premier Seeds</span>
+        </div>
+
+        <!-- 1. ライ (K：赤) -->
+        <div class="player-profile-card tier-1 groove-k">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          
+          <div class="player-card-header">
+            <div class="player-photo-frame">
+              <img src="placeholder_player1.jpg" alt="ライ">
+              <div class="photo-overlay-tag">TIER 1</div>
+            </div>
+            <div class="player-title-area">
+              <span class="seed-badge-title">昨年シングル優勝者</span>
+              <h3 class="player-title-name">ライ</h3>
+              <div class="char-text-name"><span class="g-k">K</span>舞 響 サガット</div>
+            </div>
+          </div>
+
+          <div class="player-description-box">
+            <p class="player-description">ライテスト</p>
+          </div>
+
+          <div class="character-slot-area">
+            <span class="label-heading">BATTLE CHARACTERS</span>
+            <div class="character-frames-grid">
+              <div class="char-frame"><img src="placeholder_char1_1.jpg" alt="キャラ1"></div>
+              <div class="char-frame"><img src="placeholder_char1_2.jpg" alt="キャラ2"></div>
+              <div class="char-frame"><img src="placeholder_char1_3.jpg" alt="キャラ3"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. kiku (C：黄緑) -->
+        <div class="player-profile-card tier-1 groove-c">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          
+          <div class="player-card-header">
+            <div class="player-photo-frame">
+              <img src="placeholder_player2.jpg" alt="kiku">
+              <div class="photo-overlay-tag">TIER 1</div>
+            </div>
+            <div class="player-title-area">
+              <span class="seed-badge-title">名古屋ランバト総合一位</span>
+              <h3 class="player-title-name">kiku</h3>
+              <div class="char-text-name"><span class="g-c">C</span>キャミィ 春麗 サガット</div>
+            </div>
+          </div>
+
+          <div class="player-description-box">
+            <p class="player-description">kikuテスト</p>
+          </div>
+
+          <div class="character-slot-area">
+            <span class="label-heading">BATTLE CHARACTERS</span>
+            <div class="character-frames-grid">
+              <div class="char-frame"><img src="placeholder_char2_1.jpg" alt="キャラ1"></div>
+              <div class="char-frame"><img src="placeholder_char2_2.jpg" alt="キャラ2"></div>
+              <div class="char-frame"><img src="placeholder_char2_3.jpg" alt="キャラ3"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. GAN (A：水色) -->
+        <div class="player-profile-card tier-1 groove-a">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          
+          <div class="player-card-header">
+            <div class="player-photo-frame">
+              <img src="placeholder_player3.jpg" alt="GAN">
+              <div class="photo-overlay-tag">TIER 1</div>
+            </div>
+            <div class="player-title-area">
+              <span class="seed-badge-title">大阪ランバト総合一位</span>
+              <h3 class="player-title-name">GAN</h3>
+              <div class="char-text-name"><span class="g-a">A</span>庵 ブランカ ベガ</div>
+            </div>
+          </div>
+
+          <div class="player-description-box">
+            <p class="player-description">GANテスト</p>
+          </div>
+
+          <div class="character-slot-area">
+            <span class="label-heading">BATTLE CHARACTERS</span>
+            <div class="character-frames-grid">
+              <div class="char-frame"><img src="placeholder_char3_1.jpg" alt="キャラ1"></div>
+              <div class="char-frame"><img src="placeholder_char3_2.jpg" alt="キャラ2"></div>
+              <div class="char-frame"><img src="placeholder_char3_3.jpg" alt="キャラ3"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Laugh (A：水色) -->
+        <div class="player-profile-card tier-1 groove-a">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          
+          <div class="player-card-header">
+            <div class="player-photo-frame">
+              <img src="placeholder_player4.jpg" alt="Laugh">
+              <div class="photo-overlay-tag">TIER 1</div>
+            </div>
+            <div class="player-title-area">
+              <span class="seed-badge-title">東京、埼玉ランバト総合一位</span>
+              <h3 class="player-title-name">Laugh</h3>
+              <div class="char-text-name"><span class="g-a">A</span>ブランカ 桜 ベガ</div>
+            </div>
+          </div>
+
+          <div class="player-description-box">
+            <p class="player-description">Laughテスト</p>
+          </div>
+
+          <div class="character-slot-area">
+            <span class="label-heading">BATTLE CHARACTERS</span>
+            <div class="character-frames-grid">
+              <div class="char-frame"><img src="placeholder_char4_1.jpg" alt="キャラ1"></div>
+              <div class="char-frame"><img src="placeholder_char4_2.jpg" alt="キャラ2"></div>
+              <div class="char-frame"><img src="placeholder_char4_3.jpg" alt="キャラ3"></div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- ▼ Tier 2 シードバナー（ここだけグレー） ▼ -->
+        <div class="tier-category-banner tier-2-banner" style="margin-top: 30px;">
+          <span class="tier-title-main">Tier 2 Seeds</span>
+          <span class="tier-title-sub">Regional Seeds</span>
+        </div>
+
+        <!-- 5. ワタリ (A：水色) -->
+        <div class="player-profile-card tier-2 groove-a">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          
+          <div class="player-card-header">
+            <div class="player-photo-frame">
+              <img src="placeholder_player5.jpg" alt="ワタリ">
+              <div class="photo-overlay-tag">TIER 2</div>
+            </div>
+            <div class="player-title-area">
+              <span class="seed-badge-title">北海道シード争奪戦トーナメント</span>
+              <h3 class="player-title-name">ワタリ</h3>
+              <div class="char-text-name"><span class="g-a">A</span>庵 ブランカ ベガ</div>
+            </div>
+          </div>
+
+          <div class="player-description-box">
+            <p class="player-description">ワタリテスト</p>
+          </div>
+
+          <div class="character-slot-area">
+            <span class="label-heading">BATTLE CHARACTERS</span>
+            <div class="character-frames-grid">
+              <div class="char-frame"><img src="placeholder_char5_1.jpg" alt="キャラ1"></div>
+              <div class="char-frame"><img src="placeholder_char5_2.jpg" alt="キャラ2"></div>
+              <div class="char-frame"><img src="placeholder_char5_3.jpg" alt="キャラ3"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Sophitia (A：水色) -->
+        <div class="player-profile-card tier-2 groove-a">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          
+          <div class="player-card-header">
+            <div class="player-photo-frame">
+              <img src="placeholder_player6.jpg" alt="Sophitia">
+              <div class="photo-overlay-tag">TIER 2</div>
+            </div>
+            <div class="player-title-area">
+              <span class="seed-badge-title">埼玉シード争奪戦トーナメント</span>
+              <h3 class="player-title-name">Sophitia</h3>
+              <div class="char-text-name"><span class="g-a">A</span>恭介 アテナ モリガン</div>
+            </div>
+          </div>
+
+          <div class="player-description-box">
+            <p class="player-description">Sophitiaテスト</p>
+          </div>
+
+          <div class="character-slot-area">
+            <span class="label-heading">BATTLE CHARACTERS</span>
+            <div class="character-frames-grid">
+              <div class="char-frame"><img src="placeholder_char6_1.jpg" alt="キャラ1"></div>
+              <div class="char-frame"><img src="placeholder_char6_2.jpg" alt="キャラ2"></div>
+              <div class="char-frame"><img src="placeholder_char6_3.jpg" alt="キャラ3"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. GAO (C：黄緑) -->
+        <div class="player-profile-card tier-2 groove-c">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          
+          <div class="player-card-header">
+            <div class="player-photo-frame">
+              <img src="placeholder_player7.jpg" alt="GAO">
+              <div class="photo-overlay-tag">TIER 2</div>
+            </div>
+            <div class="player-title-area">
+              <span class="seed-badge-title">東京ランバトプレーオフ</span>
+              <h3 class="player-title-name">GAO</h3>
+              <div class="char-text-name"><span class="g-c">C</span>リュウ ガイル 庵</div>
+            </div>
+          </div>
+
+          <div class="player-description-box">
+            <p class="player-description">GAOテスト</p>
+          </div>
+
+          <div class="character-slot-area">
+            <span class="label-heading">BATTLE CHARACTERS</span>
+            <div class="character-frames-grid">
+              <div class="char-frame"><img src="placeholder_char7_1.jpg" alt="キャラ1"></div>
+              <div class="char-frame"><img src="placeholder_char7_2.jpg" alt="キャラ2"></div>
+              <div class="char-frame"><img src="placeholder_char7_3.jpg" alt="キャラ3"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. 坊っちゃん (K：赤) -->
+        <div class="player-profile-card tier-2 groove-k">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          
+          <div class="player-card-header">
+            <div class="player-photo-frame">
+              <img src="placeholder_player8.jpg" alt="坊っちゃん">
+              <div class="photo-overlay-tag">TIER 2</div>
+            </div>
+            <div class="player-title-area">
+              <span class="seed-badge-title">大阪シード争奪戦トーナメント</span>
+              <h3 class="player-title-name">坊っちゃん</h3>
+              <div class="char-text-name"><span class="g-k">K</span>サガット ブランカ キャミィ</div>
+            </div>
+          </div>
+
+          <div class="player-description-box">
+            <p class="player-description">坊っちゃんテスト</p>
+          </div>
+
+          <div class="character-slot-area">
+            <span class="label-heading">BATTLE CHARACTERS</span>
+            <div class="character-frames-grid">
+              <div class="char-frame"><img src="placeholder_char8_1.jpg" alt="キャラ1"></div>
+              <div class="char-frame"><img src="placeholder_char8_2.jpg" alt="キャラ2"></div>
+              <div class="char-frame"><img src="placeholder_char8_3.jpg" alt="キャラ3"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. izumi (P：エメラルド) -->
+        <div class="player-profile-card tier-2 groove-p">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          
+          <div class="player-card-header">
+            <div class="player-photo-frame">
+              <img src="placeholder_player9.jpg" alt="izumi">
+              <div class="photo-overlay-tag">TIER 2</div>
+            </div>
+            <div class="player-title-area">
+              <span class="seed-badge-title">名古屋シード争奪戦トーナメント</span>
+              <h3 class="player-title-name">izumi</h3>
+              <div class="char-text-name"><span class="g-p">P</span>マキ ブランカ サガット</div>
+            </div>
+          </div>
+
+          <div class="player-description-box">
+            <p class="player-description">izumiテスト</p>
+          </div>
+
+          <div class="character-slot-area">
+            <span class="label-heading">BATTLE CHARACTERS</span>
+            <div class="character-frames-grid">
+              <div class="char-frame"><img src="placeholder_char9_1.jpg" alt="キャラ1"></div>
+              <div class="char-frame"><img src="placeholder_char9_2.jpg" alt="キャラ2"></div>
+              <div class="char-frame"><img src="placeholder_char9_3.jpg" alt="キャラ3"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- ▼ 初心者でも必見！Rollin'picの見どころ ▼ -->
+      <div class="about-rollin-card">
+        <div class="card-corner-accent top-left"></div>
+        <div class="card-corner-accent bottom-right"></div>
+
+        <div class="stats-main-header" style="margin-bottom: 20px;">
+          <span class="sub-tag">BEGINNER'S GUIDE</span>
+          <h2>初心者でも必見！Rollin'picの見どころ</h2>
+          <div class="title-glow-line"></div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-heading">1. 発売から長年経っても褪せない、最高峰の競技レベル</div>
+          <ul class="feature-sublist">
+            <li>2001年の稼働開始から長い年月が経っているにもかかわらず、国内・海外から集まるプレイヤーたちの熟練度が非常に高く、トップメタの駆け引きが極限まで洗練されています。</li>
+            <li>キャラクター性能の強弱だけでなく、対戦相手の心理やプレイスタイルを読み合うハイレベルな読み合いが毎試合繰り広げられます。</li>
+          </ul>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-heading">2. 奥深い「6つのグルーヴ」が生み出す多彩な戦術</div>
+          <ul class="feature-sublist">
+            <li>カプエス2最大の醍醐味である6種類の「グルーヴ（C、A、P、S、K、N）」の選択が、試合の展開を大きく左右します。</li>
+            <li>同じキャラクターであっても、どのグルーヴを選ぶかによって立ち回りやコンボが全く異なり、プレイヤーの個性やこだわりが色濃く反映されるため、組み合わせの妙を見ているだけでも引き込まれます。</li>
+          </ul>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-heading">3. 会場全体が一体となる圧倒的な熱気とライブ感</div>
+          <ul class="feature-sublist">
+            <li>会場には多くのプレイヤーやファンが集結し、好プレイが飛び出した際の歓声や、大熱戦のクライマックスで見せる一体感は、ゲームセンターを拠点としたコミュニティ大会ならではの熱量に満ちています。</li>
+            <li>長年カプエス2のシーンを支えてきたプレイヤーたちによる、ドラマチックな名勝負や因縁の対決が数多く生まれる舞台となっています。</li>
+          </ul>
+        </div>
+      </div>
+
+
+      <!-- ▼ 1on1 使用グルーヴ・キャラクター分布 ▼ -->
+      <div class="stats-section">
+        <div class="card-corner-accent top-left"></div>
+        <div class="card-corner-accent bottom-right"></div>
+
+        <div class="stats-main-header">
+          <span class="sub-tag">TOURNAMENT DATA</span>
+          <h2>1on1 使用グルーヴ・キャラクター分布</h2>
+          <div class="title-glow-line"></div>
+        </div>
+
+        <!-- 1. 使用グルーヴの統計 -->
+        <div class="stats-block">
+          <div class="stats-subtitle">1. 使用グルーヴの統計（降順）</div>
+          <table class="stats-table">
+            <thead>
+              <tr>
+                <th>グルーヴ選択</th>
+                <th class="text-center">使用回数</th>
+                <th class="text-right">割合</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>A (Aグルーヴ)</td><td class="text-center">16回</td><td class="text-right">32.0%</td></tr>
+              <tr><td>C (Cグルーヴ)</td><td class="text-center">14回</td><td class="text-right">28.0%</td></tr>
+              <tr><td>K (Kグルーヴ)</td><td class="text-center">13回</td><td class="text-right">26.0%</td></tr>
+              <tr><td>未定 (TBD等)</td><td class="text-center">3回</td><td class="text-right">6.0%</td></tr>
+              <tr><td>N (Nグルーヴ)</td><td class="text-center">2回</td><td class="text-right">4.0%</td></tr>
+              <tr><td>P (Pグルーヴ)</td><td class="text-center">2回</td><td class="text-right">4.0%</td></tr>
+              <tr style="font-weight: bold; background: rgba(56, 189, 248, 0.15); color: #38bdf8;">
+                <td>合計</td><td class="text-center">50回</td><td class="text-right">100%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 2. 使用キャラクターの統計 -->
+        <div class="stats-block">
+          <div class="stats-subtitle">2. 使用キャラクターの統計（降順）</div>
+          <table class="stats-table">
+            <thead>
+              <tr>
+                <th style="width: 15%;" class="text-center">順位</th>
+                <th style="width: 55%;">キャラクター名</th>
+                <th style="width: 30%;" class="text-right">使用回数</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="text-center">1</td><td>ブランカ</td><td class="text-right">19回</td></tr>
+              <tr><td class="text-center">2</td><td>サガット</td><td class="text-right">18回</td></tr>
+              <tr><td class="text-center">3</td><td>ベガ</td><td class="text-right">11回</td></tr>
+              <tr><td class="text-center">4</td><td>庵</td><td class="text-right">10回</td></tr>
+              <tr><td class="text-center">5</td><td>キャミィ</td><td class="text-right">9回</td></tr>
+              <tr><td class="text-center">6</td><td>響</td><td class="text-right">8回</td></tr>
+              <tr><td class="text-center">7</td><td>春麗</td><td class="text-right">7回</td></tr>
+              <tr><td class="text-center">8</td><td>さくら</td><td class="text-right">5回</td></tr>
+              <tr><td class="text-center">9</td><td>ガイル / ギース / チャン / バイソン / バルログ / マキ / モリガン / リュウ / 山崎</td><td class="text-right">各 3回</td></tr>
+              <tr><td class="text-center">17</td><td>ジョー / バイス / ユリ / ロック / 舞</td><td class="text-right">各 2回</td></tr>
+              <tr><td class="text-center">22</td><td>アテナ / イーグル / エドモンド本田 / キム / ケン / ダルシム / ナコルル / ユン / ルガール / ロレント / 京 / 恭介</td><td class="text-right">各 1回</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+
+      <!-- ▼ 過去大会の結果（ARCHIVES） ▼ -->
+      <div class="stats-section">
+        <div class="card-corner-accent top-left"></div>
+        <div class="card-corner-accent bottom-right"></div>
+
+        <div class="stats-main-header">
+          <span class="sub-tag">ARCHIVES</span>
+          <h2>過去大会の結果・記録</h2>
+          <div class="title-glow-line"></div>
+        </div>
+
+        <!-- 2019 -->
+        <div class="history-card-item">
+          <div class="history-event-title">Rollin'pic Tokyo 2019</div>
+          <div class="history-day-row">
+            <span class="day-label">Day1 Singles</span>
+            <div><span class="result-badge badge-win">優勝</span> ライ [<span class="g-k">K</span>響/舞/サガット]</div>
+            <div><span class="result-badge badge-runner">準優勝</span> GAO [<span class="g-c">C</span>リュウ/ガイル/庵]</div>
+          </div>
+          <div class="history-day-row">
+            <span class="day-label">Day 2 3on3</span>
+            <div><span class="result-badge badge-win">優勝</span> Triathlon(コーサカ、YSK、D44)</div>
+            <div><span class="result-badge badge-runner">準優勝</span> ヒラタヒロタ(ヒラタ、uwb、ライ)</div>
+          </div>
+        </div>
+
+        <!-- 2020 -->
+        <div class="history-card-item">
+          <div class="history-event-title">Rollin'pic EXTRA 2020</div>
+          <div class="history-day-row">
+            <span class="day-label">Day1 Singles</span>
+            <div><span class="result-badge badge-win">優勝</span> uwb [<span class="g-c">C</span>庵/春麗/サガット]</div>
+            <div><span class="result-badge badge-runner">準優勝</span> ガン [<span class="g-a">A</span>庵/ベガ/ブランカ]</div>
+          </div>
+          <div class="history-day-row">
+            <span class="day-label">Day 2 FT10</span>
+            <div><span style="color:#fff; font-weight:bold;">"竜攘虎搏"</span> kiku(10) vs ガン(3) にて、<span style="color:#38bdf8; font-weight:bold;">勝者 kiku</span></div>
+          </div>
+        </div>
+
+        <!-- 2022 -->
+        <div class="history-card-item">
+          <div class="history-event-title">Rollin'pic Tokyo 2022</div>
+          <div class="history-day-row">
+            <span class="day-label">Day 1 Singles</span>
+            <div><span class="result-badge badge-win">優勝</span> YSK [<span class="g-a">A</span>さくら/ベガ/ブランカ]</div>
+            <div><span class="result-badge badge-runner">準優勝</span> 喫音 [<span class="g-k">K</span>響/ナコルル/サガット]</div>
+          </div>
+          <div class="history-day-row">
+            <span class="day-label">Day 2 3on3</span>
+            <div><span class="result-badge badge-win">優勝</span> Hey Guys(屋根、コーサカ、D44)</div>
+            <div><span class="result-badge badge-runner">準優勝</span> ピノキクうさじん(ピノ、kiku、かん)</div>
+          </div>
+        </div>
+
+        <!-- 2023 -->
+        <div class="history-card-item">
+          <div class="history-event-title">Rollin'Pic Tokyo 2023</div>
+          <div class="history-day-row">
+            <span class="day-label">Day1 Singles</span>
+            <div><span class="result-badge badge-win">優勝</span> kiku [<span class="g-c">C</span>キャミィ/春麗/サガット]</div>
+            <div><span class="result-badge badge-runner">準優勝</span> uwb [<span class="g-c">C</span>庵/春麗/サガット]</div>
+          </div>
+          <div class="history-day-row">
+            <span class="day-label">Day2 3on3</span>
+            <div><span class="result-badge badge-win">優勝</span> ピノキクうさじん(ピノ、kiku、KZK)</div>
+            <div><span class="result-badge badge-runner">準優勝</span> 心機前転勢(屋根、GAO、MoMo)</div>
+          </div>
+        </div>
+
+        <!-- 2024 -->
+        <div class="history-card-item">
+          <div class="history-event-title">Rollin'Pic Tokyo 2024</div>
+          <div class="history-day-row">
+            <span class="day-label">Day1 Singles</span>
+            <div><span class="result-badge badge-win">優勝</span> D44 [<span class="g-a">A</span>山崎/ベガ/ブランカ]</div>
+            <div><span class="result-badge badge-runner">準優勝</span> ライ [<span class="g-k">K</span>響/舞/サガット]</div>
+          </div>
+          <div class="history-day-row">
+            <span class="day-label">Day2 3on3</span>
+            <div><span class="result-badge badge-win">優勝</span> 他力本願(喫音、uwb、ライ)</div>
+            <div><span class="result-badge badge-runner">準優勝</span> 北海道2D連合(ワタリ、エミリオ、かまた)</div>
+          </div>
+        </div>
+
+        <!-- 2025 -->
+        <div class="history-card-item">
+          <div class="history-event-title">Rollin'Pic Tokyo 2025</div>
+          <div class="history-day-row">
+            <span class="day-label">Day1 Singles</span>
+            <div><span class="result-badge badge-win">優勝</span> ライ [<span class="g-k">K</span>響/舞/サガット]</div>
+            <div><span class="result-badge badge-runner">準優勝</span> YSK [さくら/ベガ/ブランカ]</div>
+          </div>
+          <div class="history-day-row">
+            <span class="day-label">Day2 3on3</span>
+            <div><span class="result-badge badge-win">優勝</span> ボーナスステージ(ガン、D44、ライ)</div>
+            <div><span class="result-badge badge-runner">準優勝</span> ピノキくうさじん(KZK、ピノキオ、kiku)</div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- ▼ 大会ページに戻るリンク ▼ -->
+      <div class="rollin-back-area">
+        <a href="https://sakurai19830203-jpg.github.io/rollinpic_rai/rollinpic2026.html" class="rollin-back-btn">
+          ◀ 大会トップページに戻る
+        </a>
+      </div>
+
+    </div>
+  </section>
+  <!-- ▲ シード選手紹介セクション 終了 ▲ -->
+
+</body>
+</html>
