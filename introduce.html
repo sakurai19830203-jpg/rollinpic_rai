@@ -308,7 +308,7 @@
       margin-bottom: 35px;
     }
 
-    /* --- グルーヴ別のカラー変数定義（全選手共通でグルーヴ別カラーを適用） --- */
+    /* --- グルーヴ別のカラー変数定義 --- */
     .player-profile-card.groove-k { 
       --groove-color: #ef4444; 
       --bg-tint: rgba(239, 68, 68, 0.12);
@@ -338,18 +338,65 @@
     .player-profile-card {
       position: relative;
       width: 100%;
-      background: linear-gradient(135deg, var(--bg-tint, rgba(15, 23, 42, 0.95)) 0%, rgba(11, 15, 25, 0.98) 100%);
+      background: linear-gradient(135deg, var(--bg-tint, rgba(15, 23, 42, 0.96)) 0%, rgba(11, 15, 25, 0.98) 100%);
       border-radius: 10px;
       padding: 18px;
       backdrop-filter: blur(12px);
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
       border: 2px solid var(--groove-color, #38bdf8);
+      overflow: hidden;
     }
 
     @media (min-width: 768px) {
       .player-profile-card {
         padding: 25px 30px;
       }
+    }
+
+    /* ▼ 背景に配置する3キャラクターのコンテナ（約1.5倍サイズ・スマホ最適化） ▼ */
+    .card-bg-characters {
+      position: absolute;
+      top: 6px;
+      right: 10px;
+      bottom: auto;
+      width: auto;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 4px;
+      opacity: 0.38;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .card-bg-characters img {
+      height: 85px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.95));
+    }
+
+    @media (min-width: 768px) {
+      .card-bg-characters {
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 70%;
+        gap: 4px;
+        padding-right: 15px;
+      }
+      .card-bg-characters img {
+        height: auto;
+        max-height: 220px;
+      }
+    }
+
+    /* カード内のコンテンツはすべて背景キャラより手前（z-index: 1）に配置 */
+    .player-card-header, 
+    .player-description-box, 
+    .card-corner-accent {
+      position: relative;
+      z-index: 1;
     }
 
     /* コーナーアクセント */
@@ -369,13 +416,13 @@
       color: #060911;
     }
 
-    /* 紹介文の左サイドの見出しバー */
+    /* 紹介文のボックス */
     .player-profile-card .player-description-box {
       border-left: 3px solid var(--groove-color, #38bdf8);
-      background: rgba(6, 9, 17, 0.6);
-      padding: 10px 12px;
+      background: rgba(6, 9, 17, 0.9);
+      padding: 12px 14px;
       border-radius: 0 6px 6px 0;
-      margin-bottom: 12px;
+      margin-bottom: 0;
       width: 100%;
     }
 
@@ -469,6 +516,7 @@
       letter-spacing: 0.5px;
       line-height: 1.2;
       word-break: break-all;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
     }
 
     @media (min-width: 768px) {
@@ -492,69 +540,17 @@
 
     .player-description {
       font-size: 14px;
-      line-height: 1.6;
-      color: #e2e8f0;
+      line-height: 1.65;
+      color: #f1f5f9;
       margin: 0;
       word-break: break-all;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95);
     }
 
     @media (min-width: 768px) {
       .player-description {
         font-size: 15px;
       }
-    }
-
-    /* 3キャラクター分の画像フレーム用スタイル */
-    .character-slot-area {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding-top: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      width: 100%;
-    }
-
-    .label-heading {
-      font-family: 'Teko', sans-serif;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      color: #94a3b8;
-    }
-
-    .character-frames-grid {
-      display: flex;
-      gap: 10px;
-      width: 100%;
-    }
-
-    .char-frame {
-      position: relative;
-      flex: 1;
-      max-width: 85px;
-      height: 100px;
-      background: #090d16;
-      border: 1px solid var(--groove-color, #38bdf8);
-      border-radius: 6px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
-    }
-
-    @media (min-width: 768px) {
-      .char-frame {
-        flex: none;
-        width: 75px;
-        height: 100px;
-      }
-    }
-
-    .char-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
     }
 
     /* 統計・共通ヘッダー用スタイル */
@@ -838,7 +834,7 @@
         <div class="feature-item">
           <div class="feature-heading">3. 聖地での熱いドラマ</div>
           <ul class="feature-sublist">
-            <li>近年は埼玉県の「南浦和プレイスポットビッグワン（ビッグワン2nd）」などを主な会場として開催されることが多く、長年培われた独自のグルーヴ選択やキャラクター性能の駆け引き、数々の名勝負・ドラマが生まれています。</li>
+            <li>近年は埼玉県の "南浦和プレイスポットビッグワン（ビッグワン2nd）" などを主な会場として開催されることが多く、長年培われた独自のグルーヴ選択やキャラクター性能の駆け引き、数々の名勝負・ドラマが生まれています。</li>
           </ul>
         </div>
       </div>
@@ -860,8 +856,13 @@
           <span class="tier-title-sub">Premier Seeds</span>
         </div>
 
-        <!-- 1. ライ (K：赤) -->
+        <!-- 1. ライ -->
         <div class="player-profile-card tier-1 groove-k">
+          <div class="card-bg-characters">
+            <img src="K舞.png" alt="">
+            <img src="K響.png" alt="">
+            <img src="Kサガット.png" alt="">
+          </div>
           <div class="card-corner-accent top-left"></div>
           <div class="card-corner-accent bottom-right"></div>
           
@@ -878,21 +879,20 @@
           </div>
 
           <div class="player-description-box">
-            <p class="player-description">ライテスト</p>
-          </div>
-
-          <div class="character-slot-area">
-            <span class="label-heading">BATTLE CHARACTERS</span>
-            <div class="character-frames-grid">
-              <div class="char-frame"><img src="placeholder_char1_1.jpg" alt="キャラ1"></div>
-              <div class="char-frame"><img src="placeholder_char1_2.jpg" alt="キャラ2"></div>
-              <div class="char-frame"><img src="placeholder_char1_3.jpg" alt="キャラ3"></div>
-            </div>
+            <p class="player-description">
+              前年度個人戦覇者ライ、魔王という名の元に近年は個人戦団体戦問わず優勝し続けている現カプエス界最強のKグラー。<br>
+              カプエスを稼働初期からプレイし続けた経験からくる迷いのない最速行動が最大の持ち味。
+            </p>
           </div>
         </div>
 
-        <!-- 2. kiku (C：黄緑) -->
+        <!-- 2. kiku -->
         <div class="player-profile-card tier-1 groove-c">
+          <div class="card-bg-characters">
+            <img src="Cキャミィ.png" alt="">
+            <img src="C春麗.png" alt="">
+            <img src="Cサガット.png" alt="">
+          </div>
           <div class="card-corner-accent top-left"></div>
           <div class="card-corner-accent bottom-right"></div>
           
@@ -909,21 +909,20 @@
           </div>
 
           <div class="player-description-box">
-            <p class="player-description">kikuテスト</p>
-          </div>
-
-          <div class="character-slot-area">
-            <span class="label-heading">BATTLE CHARACTERS</span>
-            <div class="character-frames-grid">
-              <div class="char-frame"><img src="placeholder_char2_1.jpg" alt="キャラ1"></div>
-              <div class="char-frame"><img src="placeholder_char2_2.jpg" alt="キャラ2"></div>
-              <div class="char-frame"><img src="placeholder_char2_3.jpg" alt="キャラ3"></div>
-            </div>
+            <p class="player-description">
+              名古屋が生んだ地上戦のスペシャリスト。<br>
+              グルーヴ的に苦手とされているKへの対策も穴はない。
+            </p>
           </div>
         </div>
 
-        <!-- 3. GAN (A：水色) -->
+        <!-- 3. GAN -->
         <div class="player-profile-card tier-1 groove-a">
+          <div class="card-bg-characters">
+            <img src="A庵.png" alt="">
+            <img src="Aブランカ.png" alt="">
+            <img src="Aベガ.png" alt="">
+          </div>
           <div class="card-corner-accent top-left"></div>
           <div class="card-corner-accent bottom-right"></div>
           
@@ -940,21 +939,20 @@
           </div>
 
           <div class="player-description-box">
-            <p class="player-description">GANテスト</p>
-          </div>
-
-          <div class="character-slot-area">
-            <span class="label-heading">BATTLE CHARACTERS</span>
-            <div class="character-frames-grid">
-              <div class="char-frame"><img src="placeholder_char3_1.jpg" alt="キャラ1"></div>
-              <div class="char-frame"><img src="placeholder_char3_2.jpg" alt="キャラ2"></div>
-              <div class="char-frame"><img src="placeholder_char3_3.jpg" alt="キャラ3"></div>
-            </div>
+            <p class="player-description">
+              Ａ庵というキャラを完全に昇華させた大阪のプレイヤー。<br>
+              大会前に名古屋に行き上記のkikuと100戦するなど気合は十分。
+            </p>
           </div>
         </div>
 
-        <!-- 4. Laugh (A：水色) -->
+        <!-- 4. Laugh -->
         <div class="player-profile-card tier-1 groove-a">
+          <div class="card-bg-characters">
+            <img src="Aブランカ.png" alt="">
+            <img src="A桜.png" alt="">
+            <img src="Aベガ.png" alt="">
+          </div>
           <div class="card-corner-accent top-left"></div>
           <div class="card-corner-accent bottom-right"></div>
           
@@ -971,28 +969,27 @@
           </div>
 
           <div class="player-description-box">
-            <p class="player-description">Laughテスト</p>
-          </div>
-
-          <div class="character-slot-area">
-            <span class="label-heading">BATTLE CHARACTERS</span>
-            <div class="character-frames-grid">
-              <div class="char-frame"><img src="placeholder_char4_1.jpg" alt="キャラ1"></div>
-              <div class="char-frame"><img src="placeholder_char4_2.jpg" alt="キャラ2"></div>
-              <div class="char-frame"><img src="placeholder_char4_3.jpg" alt="キャラ3"></div>
-            </div>
+            <p class="player-description">
+              現在関東のトップAグラーと名高いLaugh。<br>
+              リスクを極限まで減らした立ち回りと高い入力精度が最大の武器。
+            </p>
           </div>
         </div>
 
 
-        <!-- ▼ Tier 2 シードバナー（ここだけグレー） ▼ -->
+        <!-- ▼ Tier 2 シードバナー（グレー） ▼ -->
         <div class="tier-category-banner tier-2-banner" style="margin-top: 30px;">
           <span class="tier-title-main">Tier 2 Seeds</span>
           <span class="tier-title-sub">Regional Seeds</span>
         </div>
 
-        <!-- 5. ワタリ (A：水色) -->
+        <!-- 5. ワタリ -->
         <div class="player-profile-card tier-2 groove-a">
+          <div class="card-bg-characters">
+            <img src="A庵.png" alt="">
+            <img src="Aブランカ.png" alt="">
+            <img src="Aベガ.png" alt="">
+          </div>
           <div class="card-corner-accent top-left"></div>
           <div class="card-corner-accent bottom-right"></div>
           
@@ -1009,21 +1006,20 @@
           </div>
 
           <div class="player-description-box">
-            <p class="player-description">ワタリテスト</p>
-          </div>
-
-          <div class="character-slot-area">
-            <span class="label-heading">BATTLE CHARACTERS</span>
-            <div class="character-frames-grid">
-              <div class="char-frame"><img src="placeholder_char5_1.jpg" alt="キャラ1"></div>
-              <div class="char-frame"><img src="placeholder_char5_2.jpg" alt="キャラ2"></div>
-              <div class="char-frame"><img src="placeholder_char5_3.jpg" alt="キャラ3"></div>
-            </div>
+            <p class="player-description">
+              一発予選での北海道予選において遠征勢を全て返り討ちにし最後は同じ北海道勢との決勝戦を制しシード権を獲得。<br>
+              前回大会終了後も様々なオリコンを開発し本戦に挑む。
+            </p>
           </div>
         </div>
 
-        <!-- 6. Sophitia (A：水色) -->
+        <!-- 6. Sophitia -->
         <div class="player-profile-card tier-2 groove-a">
+          <div class="card-bg-characters">
+            <img src="A恭介.png" alt="">
+            <img src="Aアテナ.png" alt="">
+            <img src="Aモリガン.png" alt="">
+          </div>
           <div class="card-corner-accent top-left"></div>
           <div class="card-corner-accent bottom-right"></div>
           
@@ -1040,21 +1036,20 @@
           </div>
 
           <div class="player-description-box">
-            <p class="player-description">Sophitiaテスト</p>
-          </div>
-
-          <div class="character-slot-area">
-            <span class="label-heading">BATTLE CHARACTERS</span>
-            <div class="character-frames-grid">
-              <div class="char-frame"><img src="placeholder_char6_1.jpg" alt="キャラ1"></div>
-              <div class="char-frame"><img src="placeholder_char6_2.jpg" alt="キャラ2"></div>
-              <div class="char-frame"><img src="placeholder_char6_3.jpg" alt="キャラ3"></div>
-            </div>
+            <p class="player-description">
+              Ａ恭介アテナモリガンというお世辞にも強いとは言えないチーム編成で関東予選を勝ち抜いたプレイヤー。<br>
+              元々のプレイヤーとしての強さに加えて使用率の低いキャラゆえ対策されにくいという部分でも注目。
+            </p>
           </div>
         </div>
 
-        <!-- 7. GAO (C：黄緑) -->
+        <!-- 7. GAO -->
         <div class="player-profile-card tier-2 groove-c">
+          <div class="card-bg-characters">
+            <img src="Cリュウ.png" alt="">
+            <img src="Cガイル.png" alt="">
+            <img src="C庵.png" alt="">
+          </div>
           <div class="card-corner-accent top-left"></div>
           <div class="card-corner-accent bottom-right"></div>
           
@@ -1071,21 +1066,20 @@
           </div>
 
           <div class="player-description-box">
-            <p class="player-description">GAOテスト</p>
-          </div>
-
-          <div class="character-slot-area">
-            <span class="label-heading">BATTLE CHARACTERS</span>
-            <div class="character-frames-grid">
-              <div class="char-frame"><img src="placeholder_char7_1.jpg" alt="キャラ1"></div>
-              <div class="char-frame"><img src="placeholder_char7_2.jpg" alt="キャラ2"></div>
-              <div class="char-frame"><img src="placeholder_char7_3.jpg" alt="キャラ3"></div>
-            </div>
+            <p class="player-description">
+              CとKの２つのグルーヴをメインキャラとして使う二刀流のプレイヤーだが今回の個人戦はCグルーヴを使用。<br>
+              高いコンボ精度と対空精度、システム上カプエスにおいては重要視されにくい玉打ちの技術も超一流。
+            </p>
           </div>
         </div>
 
-        <!-- 8. 坊っちゃん (K：赤) -->
+        <!-- 8. 坊っちゃん -->
         <div class="player-profile-card tier-2 groove-k">
+          <div class="card-bg-characters">
+            <img src="Kサガット.png" alt="">
+            <img src="Kブランカ.png" alt="">
+            <img src="Kキャミィ.png" alt="">
+          </div>
           <div class="card-corner-accent top-left"></div>
           <div class="card-corner-accent bottom-right"></div>
           
@@ -1102,21 +1096,20 @@
           </div>
 
           <div class="player-description-box">
-            <p class="player-description">坊っちゃんテスト</p>
-          </div>
-
-          <div class="character-slot-area">
-            <span class="label-heading">BATTLE CHARACTERS</span>
-            <div class="character-frames-grid">
-              <div class="char-frame"><img src="placeholder_char8_1.jpg" alt="キャラ1"></div>
-              <div class="char-frame"><img src="placeholder_char8_2.jpg" alt="キャラ2"></div>
-              <div class="char-frame"><img src="placeholder_char8_3.jpg" alt="キャラ3"></div>
-            </div>
+            <p class="player-description">
+              過去に二回は単独で遠征しシード権利を獲得していたが今回は地元大阪の最終予選にてシード権を獲得。<br>
+              Kアレと呼ばれているKグルーヴのの最強チームを誰よりもやりこんだプレイヤー。
+            </p>
           </div>
         </div>
 
-        <!-- 9. izumi (P：エメラルド) -->
+        <!-- 9. izumi -->
         <div class="player-profile-card tier-2 groove-p">
+          <div class="card-bg-characters">
+            <img src="Pマキ.png" alt="">
+            <img src="Pブランカ.png" alt="">
+            <img src="Pサガット.png" alt="">
+          </div>
           <div class="card-corner-accent top-left"></div>
           <div class="card-corner-accent bottom-right"></div>
           
@@ -1133,16 +1126,9 @@
           </div>
 
           <div class="player-description-box">
-            <p class="player-description">izumiテスト</p>
-          </div>
-
-          <div class="character-slot-area">
-            <span class="label-heading">BATTLE CHARACTERS</span>
-            <div class="character-frames-grid">
-              <div class="char-frame"><img src="placeholder_char9_1.jpg" alt="キャラ1"></div>
-              <div class="char-frame"><img src="placeholder_char9_2.jpg" alt="キャラ2"></div>
-              <div class="char-frame"><img src="placeholder_char9_3.jpg" alt="キャラ3"></div>
-            </div>
+            <p class="player-description">
+              名古屋に遠征し全国的にも使用者の少ないPグルーヴを使用してシード権を獲得。
+            </p>
           </div>
         </div>
 
@@ -1171,7 +1157,7 @@
         <div class="feature-item">
           <div class="feature-heading">2. 奥深い「6つのグルーヴ」が生み出す多彩な戦術</div>
           <ul class="feature-sublist">
-            <li>カプエス2最大の醍醐味である6種類の「グルーヴ（C、A、P、S、K、N）」の選択が、試合の展開を大きく左右します。</li>
+            <li>カプエス2最大の醍醐味である6種類のグルーヴ（C、A、P、S、K、N）の選択が、試合の展開を大きく左右します。</li>
             <li>同じキャラクターであっても、どのグルーヴを選ぶかによって立ち回りやコンボが全く異なり、プレイヤーの個性やこだわりが色濃く反映されるため、組み合わせの妙を見ているだけでも引き込まれます。</li>
           </ul>
         </div>
