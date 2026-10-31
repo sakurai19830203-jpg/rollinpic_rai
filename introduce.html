@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rollin'pic 2026 - シード選手紹介 ＆ 統計分布</title>
+  <title>Rollin'picとは？</title>
   
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Teko:wght@600;700&display=swap');
@@ -682,42 +682,57 @@
     .text-center { text-align: center; }
     .text-right { text-align: right; }
 
-    /* 過去大会結果用スタイル */
-    .history-card-item {
-      background: rgba(6, 9, 17, 0.6);
-      border: 1px solid rgba(56, 189, 248, 0.25);
-      border-radius: 8px;
-      padding: 16px;
-      margin-bottom: 16px;
+    /* --- 過去大会結果用スタイル（PC2列グリッド・スマホ1列） --- */
+    .history-grid-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
     }
 
-    .history-card-item:last-child {
-      margin-bottom: 0;
+    @media (min-width: 768px) {
+      .history-grid-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .history-card-item {
+      background: rgba(6, 9, 17, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .history-card-item:hover {
+      border-color: rgba(56, 189, 248, 0.7);
+      transform: translateY(-3px);
     }
 
     .history-event-title {
       font-family: 'Teko', sans-serif;
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 700;
       color: #38bdf8;
       letter-spacing: 1.5px;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       border-bottom: 1px dashed rgba(56, 189, 248, 0.3);
-      padding-bottom: 4px;
+      padding-bottom: 6px;
+      text-align: center;
     }
 
-    .history-day-row {
-      font-size: 14px;
-      line-height: 1.7;
-      color: #e2e8f0;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 8px;
+    .history-day-block {
+      margin-bottom: 15px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(56, 189, 248, 0.15);
+      border-radius: 6px;
+      padding: 12px;
     }
 
-    .history-day-row:last-child {
+    .history-day-block:last-child {
       margin-bottom: 0;
     }
 
@@ -730,19 +745,80 @@
       border-radius: 4px;
       border: 1px solid rgba(56, 189, 248, 0.2);
       letter-spacing: 1px;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+
+    .history-result-row {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .result-item-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      background: rgba(15, 23, 42, 0.5);
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .result-info {
+      font-size: 13px;
+      line-height: 1.5;
+      color: #e2e8f0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
     }
 
     .result-badge {
       display: inline-block;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 800;
-      padding: 1px 6px;
+      padding: 1px 5px;
       border-radius: 3px;
       letter-spacing: 0.5px;
     }
 
     .badge-win { background: #ef4444; color: #ffffff; }
     .badge-runner { background: #3b82f6; color: #ffffff; }
+
+    /* 写真フレーム（ワイドサイズ） */
+    .history-photo-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      background: #000;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .history-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .history-photo-tag {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      font-family: 'Teko', sans-serif;
+      font-size: 13px;
+      letter-spacing: 1px;
+      font-weight: 700;
+      text-align: center;
+      background: rgba(6, 9, 17, 0.85);
+      color: #38bdf8;
+      padding: 2px 0;
+    }
 
     /* グルーヴ文字色クラス定義 */
     .g-k { color: #ef4444 !important; font-weight: bold; } /* 赤 */
@@ -1225,12 +1301,12 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td>A (Aグルーヴ)</td><td class="text-center">16回</td><td class="text-right">32.0%</td></tr>
-              <tr><td>C (Cグルーヴ)</td><td class="text-center">14回</td><td class="text-right">28.0%</td></tr>
-              <tr><td>K (Kグルーヴ)</td><td class="text-center">13回</td><td class="text-right">26.0%</td></tr>
+              <tr><td><span class="g-a">A (Aグルーヴ)</span></td><td class="text-center">16回</td><td class="text-right">32.0%</td></tr>
+              <tr><td><span class="g-c">C (Cグルーヴ)</span></td><td class="text-center">14回</td><td class="text-right">28.0%</td></tr>
+              <tr><td><span class="g-k">K (Kグルーヴ)</span></td><td class="text-center">13回</td><td class="text-right">26.0%</td></tr>
               <tr><td>未定 (TBD等)</td><td class="text-center">3回</td><td class="text-right">6.0%</td></tr>
-              <tr><td>N (Nグルーヴ)</td><td class="text-center">2回</td><td class="text-right">4.0%</td></tr>
-              <tr><td>P (Pグルーヴ)</td><td class="text-center">2回</td><td class="text-right">4.0%</td></tr>
+              <tr><td><span class="g-n">N (Nグルーヴ)</span></td><td class="text-center">2回</td><td class="text-right">4.0%</td></tr>
+              <tr><td><span class="g-p">P (Pグルーヴ)</span></td><td class="text-center">2回</td><td class="text-right">4.0%</td></tr>
               <tr style="font-weight: bold; background: rgba(56, 189, 248, 0.15); color: #38bdf8;">
                 <td>合計</td><td class="text-center">50回</td><td class="text-right">100%</td>
               </tr>
@@ -1279,95 +1355,323 @@
           <div class="title-glow-line"></div>
         </div>
 
-        <!-- 2019 -->
-        <div class="history-card-item">
-          <div class="history-event-title">Rollin'pic Tokyo 2019</div>
-          <div class="history-day-row">
-            <span class="day-label">Day1 Singles</span>
-            <div><span class="result-badge badge-win">優勝</span> ライ [<span class="g-k">K</span>響/舞/サガット]</div>
-            <div><span class="result-badge badge-runner">準優勝</span> GAO [<span class="g-c">C</span>リュウ/ガイル/庵]</div>
-          </div>
-          <div class="history-day-row">
-            <span class="day-label">Day 2 3on3</span>
-            <div><span class="result-badge badge-win">優勝</span> Triathlon(コーサカ、YSK、D44)</div>
-            <div><span class="result-badge badge-runner">準優勝</span> ヒラタヒロタ(ヒラタ、uwb、ライ)</div>
-          </div>
-        </div>
+        <div class="history-grid-container">
 
-        <!-- 2020 -->
-        <div class="history-card-item">
-          <div class="history-event-title">Rollin'pic EXTRA 2020</div>
-          <div class="history-day-row">
-            <span class="day-label">Day1 Singles</span>
-            <div><span class="result-badge badge-win">優勝</span> uwb [<span class="g-c">C</span>庵/春麗/サガット]</div>
-            <div><span class="result-badge badge-runner">準優勝</span> ガン [<span class="g-a">A</span>庵/ベガ/ブランカ]</div>
-          </div>
-          <div class="history-day-row">
-            <span class="day-label">Day 2 FT10</span>
-            <div><span style="color:#fff; font-weight:bold;">"竜攘虎搏"</span> kiku(10) vs ガン(3) にて、<span style="color:#38bdf8; font-weight:bold;">勝者 kiku</span></div>
-          </div>
-        </div>
+          <!-- 2019 -->
+          <div class="history-card-item">
+            <div class="history-event-title">Rollin'pic Tokyo 2019</div>
+            
+            <div class="history-day-block">
+              <span class="day-label">Day1 Singles</span>
+              <div class="history-result-row">
+                <div class="result-item-wrap">
+                  <div class="result-info">
+                    <span class="result-badge badge-win">優勝</span> ライ [<span class="g-k">K</span>響/舞/サガット]
+                  </div>
+                  <div class="history-photo-frame">
+                    <img src="history_2019_day1_win.jpg" alt="2019 Day1 優勝">
+                    <div class="history-photo-tag">ライ</div>
+                  </div>
+                </div>
+                
+                <div class="result-item-wrap">
+                  <div class="result-info">
+                    <span class="result-badge badge-runner">準優勝</span> GAO [<span class="g-c">C</span>リュウ/ガイル/庵]
+                  </div>
+                  <div class="history-photo-frame">
+                    <img src="history_2019_day1_runner.jpg" alt="2019 Day1 準優勝">
+                    <div class="history-photo-tag">GAO</div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-        <!-- 2022 -->
-        <div class="history-card-item">
-          <div class="history-event-title">Rollin'pic Tokyo 2022</div>
-          <div class="history-day-row">
-            <span class="day-label">Day 1 Singles</span>
-            <div><span class="result-badge badge-win">優勝</span> YSK [<span class="g-a">A</span>さくら/ベガ/ブランカ]</div>
-            <div><span class="result-badge badge-runner">準優勝</span> 喫音 [<span class="g-k">K</span>響/ナコルル/サガット]</div>
+            <div class="history-day-block">
+              <span class="day-label">Day 2 3on3</span>
+              <div class="history-result-row">
+                <div class="result-item-wrap">
+                  <div class="result-info">
+                    <span class="result-badge badge-win">優勝</span> Triathlon(コーサカ、YSK、D44)
+                  </div>
+                  <div class="history-photo-frame">
+                    <img src="history_2019_day2_win.jpg" alt="2019 Day2 優勝">
+                    <div class="history-photo-tag">Triathlon</div>
+                  </div>
+                </div>
+                
+                <div class="result-item-wrap">
+                  <div class="result-info">
+                    <span class="result-badge badge-runner">準優勝</span> ヒラタヒロタ(ヒラタ、uwb、ライ)
+                  </div>
+                  <div class="history-photo-frame">
+                    <img src="history_2019_day2_runner.jpg" alt="2019 Day2 準優勝">
+                    <div class="history-photo-tag">ヒラタヒロタ</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="history-day-row">
-            <span class="day-label">Day 2 3on3</span>
-            <div><span class="result-badge badge-win">優勝</span> Hey Guys(屋根、コーサカ、D44)</div>
-            <div><span class="result-badge badge-runner">準優勝</span> ピノキクうさじん(ピノ、kiku、かん)</div>
-          </div>
-        </div>
 
-        <!-- 2023 -->
-        <div class="history-card-item">
-          <div class="history-event-title">Rollin'Pic Tokyo 2023</div>
-          <div class="history-day-row">
-            <span class="day-label">Day1 Singles</span>
-            <div><span class="result-badge badge-win">優勝</span> kiku [<span class="g-c">C</span>キャミィ/春麗/サガット]</div>
-            <div><span class="result-badge badge-runner">準優勝</span> uwb [<span class="g-c">C</span>庵/春麗/サガット]</div>
-          </div>
-          <div class="history-day-row">
-            <span class="day-label">Day2 3on3</span>
-            <div><span class="result-badge badge-win">優勝</span> ピノキクうさじん(ピノ、kiku、KZK)</div>
-            <div><span class="result-badge badge-runner">準優勝</span> 心機前転勢(屋根、GAO、MoMo)</div>
-          </div>
-        </div>
+          <!-- 2020 -->
+          <div class="history-card-item">
+            <div class="history-event-title">Rollin'pic EXTRA 2020</div>
+            
+            <div class="history-day-block">
+              <span class="day-label">Day1 Singles</span>
+              <div class="history-result-row">
+                <div class="result-item-wrap">
+                  <div class="result-info">
+                    <span class="result-badge badge-win">優勝</span> uwb [<span class="g-c">C</span>庵/春麗/サガット]
+                  </div>
+                  <div class="history-photo-frame">
+                    <img src="history_2020_day1_win.jpg" alt="2020 Day1 優勝">
+                    <div class="history-photo-tag">uwb</div>
+                  </div>
+                </div>
+                
+                <div class="result-item-wrap">
+                  <div class="result-info">
+                    <span class="result-badge badge-runner">準優勝</span> ガン [<span class="g-a">A</span>庵/ベガ/ブランカ]
+                  </div>
+                  <div class="history-photo-frame">
+                    <img src="history_2020_day1_runner.jpg" alt="2020 Day1 準優勝">
+                    <div class="history-photo-tag">ガン</div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-        <!-- 2024 -->
-        <div class="history-card-item">
-          <div class="history-event-title">Rollin'Pic Tokyo 2024</div>
-          <div class="history-day-row">
-            <span class="day-label">Day1 Singles</span>
-            <div><span class="result-badge badge-win">優勝</span> D44 [<span class="g-a">A</span>山崎/ベガ/ブランカ]</div>
-            <div><span class="result-badge badge-runner">準優勝</span> ライ [<span class="g-k">K</span>響/舞/サガット]</div>
+            <div class="history-day-block">
+              <span class="day-label">Day 2 FT10</span>
+              <div class="history-result-row">
+                <div class="result-item-wrap">
+                  <div class="result-info">
+                    <span style="color:#fff; font-weight:bold;">"竜攘虎搏"</span> kiku(10) vs ガン(3) にて、<span style="color:#38bdf8; font-weight:bold;">勝者 kiku</span>
+                  </div>
+                  <div class="history-photo-frame">
+                    <img src="history_2020_day2_win.jpg" alt="2020 Day2 勝者">
+                    <div class="history-photo-tag">kiku</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="history-day-row">
-            <span class="day-label">Day2 3on3</span>
-            <div><span class="result-badge badge-win">優勝</span> 他力本願(喫音、uwb、ライ)</div>
-            <div><span class="result-badge badge-runner">準優勝</span> 北海道2D連合(ワタリ、エミリオ、かまた)</div>
-          </div>
-        </div>
 
-        <!-- 2025 -->
-        <div class="history-card-item">
-          <div class="history-event-title">Rollin'Pic Tokyo 2025</div>
-          <div class="history-day-row">
-            <span class="day-label">Day1 Singles</span>
-            <div><span class="result-badge badge-win">優勝</span> ライ [<span class="g-k">K</span>響/舞/サガット]</div>
-            <div><span class="result-badge badge-runner">準優勝</span> YSK [さくら/ベガ/ブランカ]</div>
-          </div>
-          <div class="history-day-row">
-            <span class="day-label">Day2 3on3</span>
-            <div><span class="result-badge badge-win">優勝</span> ボーナスステージ(ガン、D44、ライ)</div>
-            <div><span class="result-badge badge-runner">準優勝</span> ピノキくうさじん(KZK、ピノキオ、kiku)</div>
-          </div>
-        </div>
+          <!-- 2022 -->
+          <div class="history-card-item">
+            <div class="history-event-title">Rollin'pic Tokyo 2022</div>
+            
+            <div class="history-day-block">
+              <span class="day-label">Day 1 Singles</span>
+              <div class="history-result-row">
+                <div class="result-item-wrap">
+                  <div class="result-info">
+                    <span class="result-badge badge-win">優勝</span> YSK [<span class="g-a">A</span>さくら/ベガ/ブランカ]
+                  </div>
+                  <div class="history-photo-frame">
+                    <img src="history_2022_day1_win.jpg" alt="2022 Day1 優勝">
+                    <div class="history-photo-tag">YSK</div>
+                  </div>
+                </div>
+                
+                <div class="result-item-wrap">
+                  <div class="result-info">
+                    <span class="result-badge badge-runner">準優勝</span> 喫音 [<span class="g-k">K</span>響/ナコルル/サガット]
+                  </div>
+                  <div class="history-photo-frame">
+                    <img src="history_2022_day1_runner.jpg" alt="2022 Day1 準優勝">
+                    <div class="history-photo-tag">喫音</div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
+            <div class="history-day-block">
+              <span class="day-label">Day 2 3on3</span>
+              <div class="history-result-row">
+                <div class="result-item-wrap">
+                  <div class="result-info">
+                    <span class="result-badge badge-win">優勝</span> Hey Guys(屋根、コーサカ、D44)
+                  </div>
+                  <div class="history-photo-frame">
+                    <img src="history_2022_day2_win.jpg" alt="2022 Day2 優勝">
+                    <div class="history-photo-tag">Hey Guys</div>
+                  </div>
+                </div>
+                
+                <!-- ピノキクうさじん (画像なし) -->
+                <div class="result-item-wrap">
+                  <div class="result-info">
+                    <span class="result-badge badge-runner">準優勝</span> ピノキクうさじん(ピノ、kiku、かん)
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2023 -->
+          <div class="history-card-item">
+            <div class="history-event-title">Rollin'Pic Tokyo 2023</div>
+            
+            <div class="history-day-block">
+              <span class="day-label">Day1 Singles</span>
+              <div class="history-result-row">
+                <div class="result-item-wrap">
+                  <div class="result-info">
+                    <span class="result-badge badge-win">優勝</span> kiku [<span class="g-c">C</span>キャミィ/春麗/サガット]
+                  </div>
+                  <div class="history-photo-frame">
+                    <img src="history_2023_day1_win.jpg" alt="2023 Day1 優勝">
+                    <div class="history-photo-tag">kiku</div>
+                  </div>
+                </div>
+                
+                <div class="result-item-wrap">
+                  <div class="result-info">
+                    <span class="result-badge badge-runner">準優勝</span> uwb [<span class="g-c">C</span>庵/春麗/サガット]
+                  </div>
+                  <div class="history-photo-frame">
+                    <img src="history_2023_day1_runner.jpg" alt="2023 Day1 準優勝">
+                    <div class="history-photo-tag">uwb</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="history-day-block">
+              <span class="day-label">Day2 3on3</span>
+              <div class="history-result-row">
+                <div class="result-item-wrap">
+                  <div class="result-info">
+                    <span class="result-badge badge-win">優勝</span> ピノキクうさじん(ピノ、kiku、KZK)
+                  </div>
+                  <div class="history-photo-frame">
+                    <img src="history_2023_day2_win.jpg" alt="2023 Day2 優勝">
+                    <div class="history-photo-tag">ピノキクうさじん</div>
+                  </div>
+                </div>
+                
+                <!-- 心機前転勢 (画像なし) -->
+                <div class="result-item-wrap">
+                  <div class="result-info">
+                    <span class="result-badge badge-runner">準優勝</span> 心機前転勢(屋根、GAO、MoMo)
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2024 -->
+          <div class="history-card-item">
+            <div class="history-event-title">Rollin'Pic Tokyo 2024</div>
+            
+            <div class="history-day-block">
+              <span class="day-label">Day1 Singles</span>
+              <div class="history-result-row">
+                <div class="result-item-wrap">
+                  <div class="result-info">
+                    <span class="result-badge badge-win">優勝</span> D44 [<span class="g-a">A</span>山崎/ベガ/ブランカ]
+                  </div>
+                  <div class="history-photo-frame">
+                    <img src="history_2024_day1_win.jpg" alt="2024 Day1 優勝">
+                    <div class="history-photo-tag">D44</div>
+                  </div>
+                </div>
+                
+                <div class="result-item-wrap">
+                  <div class="result-info">
+                    <span class="result-badge badge-runner">準優勝</span> ライ [<span class="g-k">K</span>響/舞/サガット]
+                  </div>
+                  <div class="history-photo-frame">
+                    <img src="history_2024_day1_runner.jpg" alt="2024 Day1 準優勝">
+                    <div class="history-photo-tag">ライ</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="history-day-block">
+              <span class="day-label">Day2 3on3</span>
+              <div class="history-result-row">
+                <div class="result-item-wrap">
+                  <div class="result-info">
+                    <span class="result-badge badge-win">優勝</span> 他力本願(喫音、uwb、ライ)
+                  </div>
+                  <div class="history-photo-frame">
+                    <img src="history_2024_day2_win.jpg" alt="2024 Day2 優勝">
+                    <div class="history-photo-tag">他力本願</div>
+                  </div>
+                </div>
+                
+                <div class="result-item-wrap">
+                  <div class="result-info">
+                    <span class="result-badge badge-runner">準優勝</span> 北海道2D連合(ワタリ、エミリオ、かまた)
+                  </div>
+                  <div class="history-photo-frame">
+                    <img src="history_2024_day2_runner.jpg" alt="2024 Day2 準優勝">
+                    <div class="history-photo-tag">北海道2D連合</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2025 -->
+          <div class="history-card-item">
+            <div class="history-event-title">Rollin'Pic Tokyo 2025</div>
+            
+            <div class="history-day-block">
+              <span class="day-label">Day1 Singles</span>
+              <div class="history-result-row">
+                <div class="result-item-wrap">
+                  <div class="result-info">
+                    <span class="result-badge badge-win">優勝</span> ライ [<span class="g-k">K</span>響/舞/サガット]
+                  </div>
+                  <div class="history-photo-frame">
+                    <img src="history_2025_day1_win.jpg" alt="2025 Day1 優勝">
+                    <div class="history-photo-tag">ライ</div>
+                  </div>
+                </div>
+                
+                <div class="result-item-wrap">
+                  <div class="result-info">
+                    <span class="result-badge badge-runner">準優勝</span> YSK [<span class="g-a">A</span>さくら/ベガ/ブランカ]
+                  </div>
+                  <div class="history-photo-frame">
+                    <img src="history_2025_day1_runner.jpg" alt="2025 Day1 準優勝">
+                    <div class="history-photo-tag">YSK</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="history-day-block">
+              <span class="day-label">Day2 3on3</span>
+              <div class="history-result-row">
+                <div class="result-item-wrap">
+                  <div class="result-info">
+                    <span class="result-badge badge-win">優勝</span> ボーナスステージ(ガン、D44、ライ)
+                  </div>
+                  <div class="history-photo-frame">
+                    <img src="history_2025_day2_win.jpg" alt="2025 Day2 優勝">
+                    <div class="history-photo-tag">ボーナスステージ</div>
+                  </div>
+                </div>
+                
+                <div class="result-item-wrap">
+                  <div class="result-info">
+                    <span class="result-badge badge-runner">準優勝</span> ピノキくうさじん(KZK、ピノキオ、kiku)
+                  </div>
+                  <div class="history-photo-frame">
+                    <img src="history_2025_day2_runner.jpg" alt="2025 Day2 準優勝">
+                    <div class="history-photo-tag">ピノキくうさじん</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
 
 
