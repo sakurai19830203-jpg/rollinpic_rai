@@ -318,9 +318,9 @@
       --bg-tint: rgba(132, 204, 22, 0.12);
     } /* C：黄緑 */
     .player-profile-card.groove-p { 
-      --groove-color: #10b981; 
-      --bg-tint: rgba(16, 185, 129, 0.12);
-    } /* P：エメラルド */
+      --groove-color: #00f0ff; 
+      --bg-tint: rgba(0, 240, 255, 0.12);
+    } /* P：00f0ff指定 */
     .player-profile-card.groove-a { 
       --groove-color: #38bdf8; 
       --bg-tint: rgba(56, 189, 248, 0.12);
@@ -334,16 +334,29 @@
       --bg-tint: rgba(168, 85, 247, 0.12);
     } /* S：紫 */
 
+    /* --- Tier別の全体カラーオーバーライド --- */
+    .player-profile-card.tier-1 {
+      --tier-color: #f59e0b;
+      --tier-bg-tint: rgba(245, 158, 11, 0.12);
+      border: 2px solid var(--tier-color);
+      background: linear-gradient(135deg, var(--tier-bg-tint) 0%, rgba(11, 15, 25, 0.98) 100%);
+    }
+
+    .player-profile-card.tier-2 {
+      --tier-color: #94a3b8;
+      --tier-bg-tint: rgba(148, 163, 184, 0.12);
+      border: 2px solid var(--tier-color);
+      background: linear-gradient(135deg, var(--tier-bg-tint) 0%, rgba(11, 15, 25, 0.98) 100%);
+    }
+
     /* プレイヤーカード基本構造 */
     .player-profile-card {
       position: relative;
       width: 100%;
-      background: linear-gradient(135deg, var(--bg-tint, rgba(15, 23, 42, 0.96)) 0%, rgba(11, 15, 25, 0.98) 100%);
       border-radius: 10px;
       padding: 18px;
       backdrop-filter: blur(12px);
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
-      border: 2px solid var(--groove-color, #38bdf8);
       overflow: hidden;
     }
 
@@ -353,7 +366,7 @@
       }
     }
 
-    /* ▼ 背景に配置する3キャラクターのコンテナ（約1.5倍サイズ・スマホ最適化） ▼ */
+    /* ▼ 背景に配置する3キャラクターのコンテナ ▼ */
     .card-bg-characters {
       position: absolute;
       top: 6px;
@@ -391,7 +404,6 @@
       }
     }
 
-    /* カード内のコンテンツはすべて背景キャラより手前（z-index: 1）に配置 */
     .player-card-header, 
     .player-description-box, 
     .card-corner-accent {
@@ -400,25 +412,38 @@
     }
 
     /* コーナーアクセント */
-    .player-profile-card .card-corner-accent {
-      border-color: var(--groove-color, #38bdf8);
-      width: 10px;
-      height: 10px;
-    }
     .player-profile-card.tier-1 .card-corner-accent {
+      border-color: #f59e0b;
       width: 12px;
       height: 12px;
     }
+    .player-profile-card.tier-2 .card-corner-accent {
+      border-color: #94a3b8;
+      width: 10px;
+      height: 10px;
+    }
 
-    /* 写真のオーバーレイタグ（TIER 1 / TIER 2） */
-    .player-profile-card .photo-overlay-tag {
-      background: var(--groove-color, #38bdf8);
+    /* 写真のオーバーレイタグ */
+    .player-profile-card.tier-1 .photo-overlay-tag {
+      background: #f59e0b;
+      color: #060911;
+    }
+    .player-profile-card.tier-2 .photo-overlay-tag {
+      background: #94a3b8;
       color: #060911;
     }
 
     /* 紹介文のボックス */
-    .player-profile-card .player-description-box {
-      border-left: 3px solid var(--groove-color, #38bdf8);
+    .player-profile-card.tier-1 .player-description-box {
+      border-left: 3px solid #f59e0b;
+      background: rgba(6, 9, 17, 0.9);
+      padding: 12px 14px;
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 0;
+      width: 100%;
+    }
+    .player-profile-card.tier-2 .player-description-box {
+      border-left: 3px solid #94a3b8;
       background: rgba(6, 9, 17, 0.9);
       padding: 12px 14px;
       border-radius: 0 6px 6px 0;
@@ -452,7 +477,13 @@
       width: 100%;
     }
 
-    /* プレイヤー写真フレーム */
+    .player-profile-card.tier-1 .player-photo-frame {
+      border: 2px solid #f59e0b;
+    }
+    .player-profile-card.tier-2 .player-photo-frame {
+      border: 2px solid #94a3b8;
+    }
+
     .player-photo-frame {
       position: relative;
       flex-shrink: 0;
@@ -460,7 +491,6 @@
       height: 120px;
       border-radius: 6px;
       overflow: hidden;
-      border: 2px solid var(--groove-color, #38bdf8);
       background: #000;
       box-shadow: 0 0 14px rgba(0, 0, 0, 0.6);
     }
@@ -717,7 +747,7 @@
     /* グルーヴ文字色クラス定義 */
     .g-k { color: #ef4444 !important; font-weight: bold; } /* 赤 */
     .g-c { color: #84cc16 !important; font-weight: bold; } /* 黄緑 */
-    .g-p { color: #10b981 !important; font-weight: bold; } /* エメラルド */
+    .g-p { color: #00f0ff !important; font-weight: bold; } /* P: #00f0ff */
     .g-a { color: #38bdf8 !important; font-weight: bold; } /* 水色 */
     .g-n { color: #facc15 !important; font-weight: bold; } /* 黄色 */
     .g-s { color: #a855f7 !important; font-weight: bold; } /* 紫 */
@@ -1228,7 +1258,7 @@
               <tr><td class="text-center">6</td><td>響</td><td class="text-right">8回</td></tr>
               <tr><td class="text-center">7</td><td>春麗</td><td class="text-right">7回</td></tr>
               <tr><td class="text-center">8</td><td>さくら</td><td class="text-right">5回</td></tr>
-              <tr><td class="text-center">9</td><td>ガイル / ギース / チャン / バイソン / バルログ / 마키 / モリガン / リュウ / 山崎</td><td class="text-right">各 3回</td></tr>
+              <tr><td class="text-center">9</td><td>ガイル / ギース / チャン / バイソン / バルログ / マキ / モリガン / リュウ / 山崎</td><td class="text-right">各 3回</td></tr>
               <tr><td class="text-center">17</td><td>ジョー / バイス / ユリ / ロック / 舞</td><td class="text-right">各 2回</td></tr>
               <tr><td class="text-center">22</td><td>アテナ / イーグル / エドモンド本田 / キム / ケン / ダルシム / ナコルル / ユン / ルガール / ロレント / 京 / 恭介</td><td class="text-right">各 1回</td></tr>
             </tbody>
