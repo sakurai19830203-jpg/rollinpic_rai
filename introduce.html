@@ -269,7 +269,6 @@
       border-bottom-color: rgba(245, 158, 11, 0.4);
     }
 
-    /* Tier 2 バナー用のグレー調デザイン */
     .tier-category-banner.tier-2-banner {
       background: linear-gradient(90deg, rgba(148, 163, 184, 0.2) 0%, rgba(6, 9, 17, 0.8) 100%);
       border-left-color: #94a3b8;
@@ -312,29 +311,28 @@
     .player-profile-card.groove-k { 
       --groove-color: #ef4444; 
       --bg-tint: rgba(239, 68, 68, 0.12);
-    } /* K：赤 */
+    }
     .player-profile-card.groove-c { 
       --groove-color: #84cc16; 
       --bg-tint: rgba(132, 204, 22, 0.12);
-    } /* C：黄緑 */
+    }
     .player-profile-card.groove-p { 
       --groove-color: #00f0ff; 
       --bg-tint: rgba(0, 240, 255, 0.12);
-    } /* P：00f0ff指定 */
+    }
     .player-profile-card.groove-a { 
       --groove-color: #38bdf8; 
       --bg-tint: rgba(56, 189, 248, 0.12);
-    } /* A：水色 */
+    }
     .player-profile-card.groove-n { 
       --groove-color: #facc15; 
       --bg-tint: rgba(250, 204, 21, 0.12);
-    } /* N：黄色 */
+    }
     .player-profile-card.groove-s { 
       --groove-color: #a855f7; 
       --bg-tint: rgba(168, 85, 247, 0.12);
-    } /* S：紫 */
+    }
 
-    /* --- Tier別の全体カラーオーバーライド --- */
     .player-profile-card.tier-1 {
       --tier-color: #f59e0b;
       --tier-bg-tint: rgba(245, 158, 11, 0.12);
@@ -349,7 +347,6 @@
       background: linear-gradient(135deg, var(--tier-bg-tint) 0%, rgba(11, 15, 25, 0.98) 100%);
     }
 
-    /* プレイヤーカード基本構造 */
     .player-profile-card {
       position: relative;
       width: 100%;
@@ -366,7 +363,6 @@
       }
     }
 
-    /* ▼ 背景に配置する3キャラクターのコンテナ ▼ */
     .card-bg-characters {
       position: absolute;
       top: 6px;
@@ -411,7 +407,6 @@
       z-index: 1;
     }
 
-    /* コーナーアクセント */
     .player-profile-card.tier-1 .card-corner-accent {
       border-color: #f59e0b;
       width: 12px;
@@ -423,7 +418,6 @@
       height: 10px;
     }
 
-    /* 写真のオーバーレイタグ */
     .player-profile-card.tier-1 .photo-overlay-tag {
       background: #f59e0b;
       color: #060911;
@@ -433,7 +427,6 @@
       color: #060911;
     }
 
-    /* 紹介文のボックス */
     .player-profile-card.tier-1 .player-description-box {
       border-left: 3px solid #f59e0b;
       background: rgba(6, 9, 17, 0.9);
@@ -687,6 +680,7 @@
       display: grid;
       grid-template-columns: 1fr;
       gap: 20px;
+      align-items: start;
     }
 
     @media (min-width: 768px) {
@@ -702,7 +696,7 @@
       padding: 20px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
       transition: transform 0.3s ease, border-color 0.3s ease;
     }
@@ -718,10 +712,27 @@
       font-weight: 700;
       color: #38bdf8;
       letter-spacing: 1.5px;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
       border-bottom: 1px dashed rgba(56, 189, 248, 0.3);
       padding-bottom: 6px;
       text-align: center;
+    }
+
+    /* ▼ 各大会専用ロゴ画像枠用スタイル ▼ */
+    .history-logo-frame {
+      width: 100%;
+      max-width: 220px;
+      height: auto;
+      margin: 0 auto 15px auto;
+      text-align: center;
+    }
+
+    .history-logo-frame img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.3));
     }
 
     .history-day-block {
@@ -786,6 +797,17 @@
 
     .badge-win { background: #ef4444; color: #ffffff; }
     .badge-runner { background: #3b82f6; color: #ffffff; }
+    .badge-third { background: #10b981; color: #ffffff; }
+    .badge-other { background: #64748b; color: #ffffff; }
+
+    /* チームメンバー詳細用テキストスタイル */
+    .team-member-list {
+      margin: 4px 0 0 0;
+      padding-left: 18px;
+      font-size: 12px;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
 
     /* 写真フレーム（ワイドサイズ） */
     .history-photo-frame {
@@ -821,12 +843,12 @@
     }
 
     /* グルーヴ文字色クラス定義 */
-    .g-k { color: #ef4444 !important; font-weight: bold; } /* 赤 */
-    .g-c { color: #84cc16 !important; font-weight: bold; } /* 黄緑 */
-    .g-p { color: #00f0ff !important; font-weight: bold; } /* P: #00f0ff */
-    .g-a { color: #38bdf8 !important; font-weight: bold; } /* 水色 */
-    .g-n { color: #facc15 !important; font-weight: bold; } /* 黄色 */
-    .g-s { color: #a855f7 !important; font-weight: bold; } /* 紫 */
+    .g-k { color: #ef4444 !important; font-weight: bold; }
+    .g-c { color: #84cc16 !important; font-weight: bold; }
+    .g-p { color: #00f0ff !important; font-weight: bold; }
+    .g-a { color: #38bdf8 !important; font-weight: bold; }
+    .g-n { color: #facc15 !important; font-weight: bold; }
+    .g-s { color: #a855f7 !important; font-weight: bold; }
 
     /* 戻るボタン */
     .rollin-back-area {
@@ -986,8 +1008,10 @@
 
           <div class="player-description-box">
             <p class="player-description">
-              前年度個人戦覇者ライ、魔王という名の元に近年は個人戦団体戦問わず優勝し続けている現カプエス界最強のKグラー。<br>
-              カプエスを稼働初期からプレイし続けた経験からくる迷いのない最速行動が最大の持ち味。
+              前年度個人戦覇者。<br>
+              そのプレイスタイルや圧倒的な実績から、気付けば「魔王」の呼び名も定着し、近年は個人戦団体戦問わず優勝し続けている現カプエス界最強のKグラー。<br>
+              赤パンの悪魔と呼ばれるサガットがまずイメージされるが、K舞というキャラはライが居なければそこまで評価されることはないであろう真のトレードマーク。<br>
+              カプエスを稼働初期からプレイし続けた経験からくる、迷いのない最速行動が最大の持ち味。
             </p>
           </div>
         </div>
@@ -1017,6 +1041,10 @@
           <div class="player-description-box">
             <p class="player-description">
               名古屋が生んだ地上戦のスペシャリスト。<br>
+              名古屋ランバトでのポイントはぶっちぎりの1位。<br>
+              全国大会優勝等実績も十分で、関東のCグラーであるuwbと2人並んで現環境で最強のCグラーとの声も多い。<br>
+              C春麗をCグル最強クラスのキャラへ昇華させたと言っても過言ではない。<br>
+              対Aグル戦の仕上がりはまさに一級品！<br>
               グルーヴ的に苦手とされているKへの対策も穴はない。
             </p>
           </div>
@@ -1047,6 +1075,9 @@
           <div class="player-description-box">
             <p class="player-description">
               Ａ庵というキャラを完全に昇華させた大阪のプレイヤー。<br>
+              今年の関西ランバトでは圧倒的な優勝回数で差を見せつけた。<br>
+              Steam版のファイコレでは「雷神」の名前で活躍していることから、オンラインでの知名度も抜群だろう。<br>
+              展開の速さが持ち味で、常に相手に対応を強いて考える時間を与えないプレイスタイルが特徴。<br>
               大会前に名古屋に行き上記のkikuと100戦するなど気合は十分。
             </p>
           </div>
@@ -1076,8 +1107,9 @@
 
           <div class="player-description-box">
             <p class="player-description">
-              現在関東のトップAグラーと名高いLaugh。<br>
-              リスクを極限まで減らした立ち回りと高い入力精度が最大の武器。
+              韓国から日本に移り住み、数年であれよあれよという間に一気に関東のトップクラスのAグラーにまで上り詰めたプレイヤー。<br>
+              リスクを極限まで減らした立ち回りと、高い入力精度が最大の武器。<br>
+              今では使用しているプレイヤーがほとんどいないAバルログ使いとして認知されているが、難易度が高いが火力が高いさくらの中咲桜拳連発でのオリコンの使い手としても注目したい。
             </p>
           </div>
         </div>
@@ -1113,7 +1145,10 @@
 
           <div class="player-description-box">
             <p class="player-description">
-              一発予選での北海道予選において遠征勢を全て返り討ちにし最後は同じ北海道勢との決勝戦を制しシード権を獲得。<br>
+              一発予選での北海道予選において遠征勢を全て返り討ちにし、最後は同じ北海道勢との決勝戦を制しシード権を獲得。<br>
+              実は今、全国で最もカプエスが熱い地域と言っても過言ではない北海道。<br>
+              少数精鋭だが、日常的に確実にハイレベルな対戦が繰り広げられている北海道の代表ということもあり気合は十分。<br>
+              相当な動画勢でもあり、あまり対戦したことのないプレイヤーへの研究や対策もかなりしている様子。<br>
               前回大会終了後も様々なオリコンを開発し本戦に挑む。
             </p>
           </div>
@@ -1143,8 +1178,9 @@
 
           <div class="player-description-box">
             <p class="player-description">
-              Ａ恭介アテナモリガンというお世辞にも強いとは言えないチーム編成で関東予選を勝ち抜いたプレイヤー。<br>
-              元々のプレイヤーとしての強さに加えて使用率の低いキャラゆえ対策されにくいという部分でも注目。
+              Ａ恭介アテナモリガンという、お世辞にも強いとは言えないチーム編成で関東予選を勝ち抜いたプレイヤー。<br>
+              かつてはNグル使いとしても超有名プレイヤーだったが、方向性を変えてAグルのレアキャラをやり込み続け、見事にシード予選を通過した。<br>
+              元々のプレイヤーとしての強さに加えて使用率の低いキャラゆえ対策されにくいという部分もあり、個人的には今回最も注目したい選手だ。
             </p>
           </div>
         </div>
@@ -1174,7 +1210,8 @@
           <div class="player-description-box">
             <p class="player-description">
               CとKの２つのグルーヴをメインキャラとして使う二刀流のプレイヤーだが今回の個人戦はCグルーヴを使用。<br>
-              高いコンボ精度と対空精度、システム上カプエスにおいては重要視されにくい玉打ちの技術も超一流。
+              一見すると何も考えていないハチャメチャなプレイに見えることもあるが、かなり緻密に計算されたハチャメチャプレイであるGAOワールドに今年も注目！<br>
+              高いコンボ精度と対空精度、システム上カプエスにおいては重要視されにくい弾撃ちの技術も超一流。
             </p>
           </div>
         </div>
@@ -1203,8 +1240,10 @@
 
           <div class="player-description-box">
             <p class="player-description">
-              過去に二回は単独で遠征しシード権利を獲得していたが今回は地元大阪の最終予選にてシード権を獲得。<br>
-              Kアレと呼ばれているKグルーヴのの最強チームを誰よりもやりこんだプレイヤー。
+              過去に二回は単独で遠征しシード権利を獲得していたが、今回は地元大阪の最終予選にてシード権を獲得。<br>
+              Kアレと呼ばれているKグルーヴの最強チームを誰よりもやりこんだプレイヤー。<br>
+              実は練習はもっぱらアーケードのCPU戦で、家庭用はゲームスピードや環境の違いを意識して絶対に触らない拘りよう。<br>
+              今年も野生の勘で次々と相手を薙ぎ倒す！
             </p>
           </div>
         </div>
@@ -1233,7 +1272,9 @@
 
           <div class="player-description-box">
             <p class="player-description">
-              名古屋に遠征し全国的にも使用者の少ないPグルーヴを使用してシード権を獲得。
+              元々は超貴重なSグル使いとして有名なプレイヤーだが、近年はこれまた全国的にも使用者の少ないPグルーヴをやり込み、Pグルーヴでも勝てるという事を証明するために独自の理論と研究を重ね続けた。<br>
+              特にPマキに関しては秘めたポテンシャルを熱弁しており、選手写真からもそれが伺える。<br>
+              グルーヴ相性的にかなり厳しいと思われるAグル対策を特に練っており、大会での対Aグル戦のカードは確実に見ものだろう。
             </p>
           </div>
         </div>
@@ -1323,6 +1364,9 @@
           <!-- 2019 -->
           <div class="history-card-item">
             <div class="history-event-title">Rollin'pic Tokyo 2019</div>
+            <div class="history-logo-frame">
+              <img src="history_logo_2019.png" alt="Rollin'pic Tokyo 2019 Logo">
+            </div>
             
             <div class="history-day-block">
               <span class="day-label">Day1 Singles</span>
@@ -1378,6 +1422,9 @@
           <!-- 2020 -->
           <div class="history-card-item">
             <div class="history-event-title">Rollin'pic EXTRA 2020</div>
+            <div class="history-logo-frame">
+              <img src="history_logo_2020.png" alt="Rollin'pic EXTRA 2020 Logo">
+            </div>
             
             <div class="history-day-block">
               <span class="day-label">Day1 Singles</span>
@@ -1423,6 +1470,9 @@
           <!-- 2022 -->
           <div class="history-card-item">
             <div class="history-event-title">Rollin'pic Tokyo 2022</div>
+            <div class="history-logo-frame">
+              <img src="history_logo_2022.png" alt="Rollin'pic Tokyo 2022 Logo">
+            </div>
             
             <div class="history-day-block">
               <span class="day-label">Day 1 Singles</span>
@@ -1462,7 +1512,6 @@
                   </div>
                 </div>
                 
-                <!-- ピノキクうさじん (画像なし) -->
                 <div class="result-item-wrap">
                   <div class="result-info">
                     <span class="result-badge badge-runner">準優勝</span> ピノキクうさじん(ピノ、kiku、かん)
@@ -1472,9 +1521,135 @@
             </div>
           </div>
 
+          <!-- 6 Groove 6 Spirits 5on5 -->
+          <div class="history-card-item">
+            <div class="history-event-title">cvs2 6 Groove 6 Spirits 5on5</div>
+            <div class="history-logo-frame">
+              <img src="history_logo_6groove.png" alt="cvs2 6 Groove 6 Spirits 5on5 Logo">
+            </div>
+            
+            <div class="history-day-block">
+              <span class="day-label">5on5 Tournament Results</span>
+              <div class="history-result-row">
+                
+                <!-- 1位 -->
+                <div class="result-item-wrap">
+                  <div class="result-info">
+                    <span class="result-badge badge-win">1位</span> <span class="g-k">K Grooveチーム</span>
+                  </div>
+                  <ul class="team-member-list">
+                    <li>KZK / ギース キャミィ サガット</li>
+                    <li>ライ / 舞 響 サガット</li>
+                    <li>喫音 / ナコルル 響 サガット</li>
+                    <li>ナコルル / 春麗 サガット キャミィ</li>
+                    <li>屋根 / 庵 ギース サガット</li>
+                  </ul>
+                  <div class="history-photo-frame">
+                    <img src="history_6groove_1st.jpg" alt="6Groove 1位 K Grooveチーム">
+                    <div class="history-photo-tag">K Grooveチーム</div>
+                  </div>
+                </div>
+
+                <!-- 2位 -->
+                <div class="result-item-wrap">
+                  <div class="result-info">
+                    <span class="result-badge badge-runner">2位</span> <span class="g-a">A Grooveチーム</span>
+                  </div>
+                  <ul class="team-member-list">
+                    <li>まさとぅ / キム ユリ ユン</li>
+                    <li>KOH / 桜 ベガ ブランカ</li>
+                    <li>コーサカ / 桜 ベガ ブランカ</li>
+                    <li>GAN / 庵 ベガ ブランカ</li>
+                    <li>Bas / 山崎 ベガ ブランカ</li>
+                  </ul>
+                  <div class="history-photo-frame">
+                    <img src="history_6groove_2nd.jpg" alt="6Groove 2位 A Grooveチーム">
+                    <div class="history-photo-tag">A Grooveチーム</div>
+                  </div>
+                </div>
+
+                <!-- 3位 -->
+                <div class="result-item-wrap">
+                  <div class="result-info">
+                    <span class="result-badge badge-third">3位</span> <span class="g-c">C Grooveチーム</span>
+                  </div>
+                  <ul class="team-member-list">
+                    <li>ナカニシ / ケン ガイル サガット</li>
+                    <li>オーハラ / キャミィ 春麗 サガット</li>
+                    <li>kiku / キャミィ 春麗 サガット</li>
+                    <li>タオル / リュウ キム サガット</li>
+                    <li>GAO / リュウ ガイル 庵</li>
+                  </ul>
+                  <div class="history-photo-frame">
+                    <img src="history_6groove_3rd.jpg" alt="6Groove 3位 C Grooveチーム">
+                    <div class="history-photo-tag">C Grooveチーム</div>
+                  </div>
+                </div>
+
+                <!-- 4位 -->
+                <div class="result-item-wrap">
+                  <div class="result-info">
+                    <span class="result-badge badge-other">4位</span> <span class="g-p">P Grooveチーム</span>
+                  </div>
+                  <ul class="team-member-list">
+                    <li>トバリ / ザンギエフ ギース ロレント</li>
+                    <li>S沢 / ブランカ サガット キャミィ</li>
+                    <li>うぇい / ブランカ サガット キャミィ</li>
+                    <li>イズミ / 庵 マキ ブランカ</li>
+                    <li>Pルガ / バイス 山崎 ルガール</li>
+                  </ul>
+                  <div class="history-photo-frame">
+                    <img src="history_6groove_4th.jpg" alt="6Groove 4位 P Grooveチーム">
+                    <div class="history-photo-tag">P Grooveチーム</div>
+                  </div>
+                </div>
+
+                <!-- 5位 -->
+                <div class="result-item-wrap">
+                  <div class="result-info">
+                    <span class="result-badge badge-other">5位</span> <span class="g-n">N Grooveチーム</span>
+                  </div>
+                  <ul class="team-member-list">
+                    <li>178 / テリー サガット ギース</li>
+                    <li>でそら / ライデン サガット ブランカ</li>
+                    <li>MoMo / 庵 サガット ロレント</li>
+                    <li>Tsugunosuke / アテナ ロック モリガン</li>
+                    <li>トツカ / 庵 春麗 サガット</li>
+                  </ul>
+                  <div class="history-photo-frame">
+                    <img src="history_6groove_5th.jpg" alt="6Groove 5位 N Grooveチーム">
+                    <div class="history-photo-tag">N Grooveチーム</div>
+                  </div>
+                </div>
+
+                <!-- 6位 (画像枠追加) -->
+                <div class="result-item-wrap">
+                  <div class="result-info">
+                    <span class="result-badge badge-other" style="background:#475569;">6位</span> <span class="g-s">S Grooveチーム</span>
+                  </div>
+                  <ul class="team-member-list">
+                    <li>みさき / 春麗 サガット 響</li>
+                    <li>Kyohei / ケン ブランカ サガット</li>
+                    <li>コダマ神 / ブランカ ベガ バイソン</li>
+                    <li>しろぴす / キャミィ 春麗 サガット</li>
+                    <li>かん / ギース 春麗 サガット</li>
+                  </ul>
+                  <div class="history-photo-frame">
+                    <img src="history_6groove_6th.jpg" alt="6Groove 6位 S Grooveチーム">
+                    <div class="history-photo-tag">S Grooveチーム</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
           <!-- 2023 -->
           <div class="history-card-item">
             <div class="history-event-title">Rollin'Pic Tokyo 2023</div>
+            <div class="history-logo-frame">
+              <img src="history_logo_2023.png" alt="Rollin'Pic Tokyo 2023 Logo">
+            </div>
             
             <div class="history-day-block">
               <span class="day-label">Day1 Singles</span>
@@ -1514,7 +1689,6 @@
                   </div>
                 </div>
                 
-                <!-- 心機前転勢 (画像なし) -->
                 <div class="result-item-wrap">
                   <div class="result-info">
                     <span class="result-badge badge-runner">準優勝</span> 心機前転勢(屋根、GAO、MoMo)
@@ -1527,6 +1701,9 @@
           <!-- 2024 -->
           <div class="history-card-item">
             <div class="history-event-title">Rollin'Pic Tokyo 2024</div>
+            <div class="history-logo-frame">
+              <img src="history_logo_2024.png" alt="Rollin'Pic Tokyo 2024 Logo">
+            </div>
             
             <div class="history-day-block">
               <span class="day-label">Day1 Singles</span>
@@ -1582,6 +1759,9 @@
           <!-- 2025 -->
           <div class="history-card-item">
             <div class="history-event-title">Rollin'Pic Tokyo 2025</div>
+            <div class="history-logo-frame">
+              <img src="history_logo_2025.png" alt="Rollin'Pic Tokyo 2025 Logo">
+            </div>
             
             <div class="history-day-block">
               <span class="day-label">Day1 Singles</span>
