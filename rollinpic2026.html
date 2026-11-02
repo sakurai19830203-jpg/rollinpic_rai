@@ -686,24 +686,37 @@
       color: var(--accent-yellow);
     }
 
-    /* ─── QUALIFIER STAGE SELECT SECTION ─── */
+    /* ─── QUALIFIER STAGE SELECT SECTION (アコーディオン対応) ─── */
     .qualifier-section {
       margin-bottom: 50px;
       background: linear-gradient(180deg, rgba(18, 18, 26, 0.95) 0%, rgba(8, 8, 12, 0.98) 100%);
       border: 1px solid rgba(255, 204, 0, 0.4);
       border-top: 4px solid var(--accent-yellow);
-      padding: 22px 20px;
       box-shadow: 0 0 25px rgba(255, 204, 0, 0.12), 8px 8px 0px #000;
       position: relative;
+    }
+
+    .qualifier-acc-btn {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 22px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .qualifier-acc-btn:hover {
+      background: rgba(255, 204, 0, 0.04);
     }
 
     .qualifier-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      border-bottom: 2px solid rgba(255, 204, 0, 0.25);
-      padding-bottom: 10px;
-      margin-bottom: 16px;
+      width: 100%;
     }
 
     .qualifier-title-wrap {
@@ -733,6 +746,12 @@
       text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
     }
 
+    .qualifier-sub-wrap {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
     .qualifier-sub {
       font-family: 'Teko', sans-serif;
       font-size: 1.1rem;
@@ -742,7 +761,22 @@
       opacity: 0.8;
     }
 
+    .qualifier-acc-icon {
+      font-family: 'Teko', sans-serif;
+      font-size: 1.5rem;
+      color: var(--accent-yellow);
+      font-weight: bold;
+      transition: transform 0.3s ease;
+    }
+
+    .qualifier-acc-body {
+      display: none;
+      padding: 0 20px 22px 20px;
+      border-top: 2px solid rgba(255, 204, 0, 0.25);
+    }
+
     .qualifier-table-wrapper {
+      margin-top: 16px;
       border: 1px solid rgba(255, 255, 255, 0.1);
       background: rgba(0, 0, 0, 0.6);
     }
@@ -1396,113 +1430,120 @@
 
     </div>
 
-    <!-- DAY1個人戦シード予選日程(9枠) -->
+    <!-- DAY1個人戦シード予選日程(9枠) - 折り畳み式アコーディオン -->
     <div class="qualifier-section">
-      <div class="qualifier-header">
-        <div class="qualifier-title-wrap">
-          <span class="qualifier-badge">ROAD TO DAY 1</span>
-          <h3 class="qualifier-title">個人戦 シード予選日程 (全9枠 - 全日程終了) <span style="font-size:0.85rem; color:var(--text-muted); font-weight:normal; margin-left:2px;">11月1日現在</span></h3>
+      <button class="qualifier-acc-btn" onclick="toggleQualifierAcc(this)">
+        <div class="qualifier-header">
+          <div class="qualifier-title-wrap">
+            <span class="qualifier-badge">ROAD TO DAY 1</span>
+            <h3 class="qualifier-title">個人戦 シード予選日程 (全9枠 - 全日程終了) <span style="font-size:0.85rem; color:var(--text-muted); font-weight:normal; margin-left:2px;">11月1日現在</span></h3>
+          </div>
+          <div class="qualifier-sub-wrap">
+            <span class="qualifier-sub">QUALIFIERS STAGE SELECT</span>
+            <span class="qualifier-acc-icon" id="qualifier-icon">▼</span>
+          </div>
         </div>
-        <div class="qualifier-sub">QUALIFIERS STAGE SELECT</div>
-      </div>
+      </button>
 
-      <div class="qualifier-table-wrapper">
-        <table class="qualifier-table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>日時</th>
-              <th>都道府県</th>
-              <th>予選実施店舗</th>
-              <th>選抜形式</th>
-              <th>通過選手（主なキャラクター）</th>
-              <th>関連動画</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="seeded-row">
-              <td class="num-col">01</td>
-              <td>終了</td>
-              <td>全国</td>
-              <td>-</td>
-              <td>昨年シングル優勝者</td>
-              <td><div><span class="pass-tag">SEED</span><strong>ライ</strong>(K舞 響 サガット)</div></td>
-              <td><a href="https://youtu.be/togWvV1lRd8?si=Yv-PShWTJwc1em_W" target="_blank" class="video-link">▶ 動画視聴</a></td>
-            </tr>
-            <tr class="seeded-row">
-              <td class="num-col">02</td>
-              <td>終了</td>
-              <td>愛知</td>
-              <td>名古屋GAME BOX Q3</td>
-              <td>ランバト総合一位</td>
-              <td><div><span class="pass-tag">SEED</span><strong>kiku</strong>(Cキャミィ 春麗 サガット)</div></td>
-              <td><a href="https://www.youtube.com/live/ZIjMwMNBgJQ?si=rIqqbWs9DlapFA-H&t=2531" target="_blank" class="video-link">▶ 動画視聴</a></td>
-            </tr>
-            <tr class="seeded-row">
-              <td class="num-col">03</td>
-              <td>終了</td>
-              <td>大阪</td>
-              <td>アミューズファクトリーAXE</td>
-              <td>ランバト総合一位</td>
-              <td><div><span class="pass-tag">SEED</span><strong>GAN</strong>(A庵 ブランカ ベガ)</div></td>
-              <td><a href="https://www.youtube.com/live/sI2SlWJ9E2A?si=JKhma9WL59JbEA50" target="_blank" class="video-link">▶ 動画視聴</a></td>
-            </tr>
-            <tr class="seeded-row">
-              <td class="num-col">04</td>
-              <td>終了</td>
-              <td>東京</td>
-              <td>西日暮里バーサス・南浦和ビックワンセカンド</td>
-              <td>ランバト総合一位</td>
-              <td><div><span class="pass-tag">SEED</span><strong>Laugh</strong>(Aバルログ 桜 ブランカ)</div></td>
-              <td><a href="https://www.youtube.com/live/qsY847yWamY?si=k9wMTlcO8VXlbAag&t=4214" target="_blank" class="video-link">▶ 動画視聴</a></td>
-            </tr>
-            <tr class="seeded-row">
-              <td class="num-col">05</td>
-              <td>終了</td>
-              <td>東京</td>
-              <td>西日暮里バーサス・南浦和ビックワンセカンド</td>
-              <td>ランバトプレーオフ</td>
-              <td><div><span class="pass-tag">SEED</span><strong>GAO</strong>(Cリュウ ガイル 庵)</div></td>
-              <td><a href="https://www.youtube.com/live/qsY847yWamY?si=dC92FCvstSJh90EX&t=13006" target="_blank" class="video-link">▶ 動画視聴</a></td>
-            </tr>
-            <tr class="seeded-row">
-              <td class="num-col">06</td>
-              <td>終了（9/18）</td>
-              <td>北海道</td>
-              <td>GIGO札幌駅西口</td>
-              <td>シード争奪戦トーナメント</td>
-              <td><div><span class="pass-tag">SEED</span><strong>ワタリ</strong>(A庵 ブランカ ベガ)</div></td>
-              <td><a href="https://www.youtube.com/live/5pwLEjyuZ9E?si=A60QVb0OZ2d_dct9&t=18769" target="_blank" class="video-link">▶ 動画視聴</a></td>
-            </tr>
-            <tr class="seeded-row">
-              <td class="num-col">07</td>
-              <td>終了（9/21）</td>
-              <td>東京</td>
-              <td>南浦和ビックワンセカンド</td>
-              <td>シード争奪戦トーナメント</td>
-              <td><div><span class="pass-tag">SEED</span><strong>Sophitia</strong>(A恭介 アテナ モリガン)</div></td>
-              <td><a href="https://youtu.be/nyLB72lKoBo?si=1xYWoWg1P47tWdO5" target="_blank" class="video-link">▶ 動画視聴</a></td>
-            </tr>
-            <tr class="seeded-row">
-              <td class="num-col">08</td>
-              <td>終了（10/3）</td>
-              <td>愛知</td>
-              <td>名古屋GAME BOX Q3</td>
-              <td>シード争奪戦トーナメント</td>
-              <td><div><span class="pass-tag">SEED</span><strong>izumi</strong>(Pマキ ブランカ サガット)</div></td>
-              <td><a href="https://www.youtube.com/live/tuP9DIxPOq0?si=2b8WoD69rJ8pnvfD&t=4866" target="_blank" class="video-link">▶ 動画視聴</a></td>
-            </tr>
-            <tr class="seeded-row">
-              <td class="num-col">09</td>
-              <td>終了（10/17）</td>
-              <td>大阪</td>
-              <td>アミューズファクトリーAXE</td>
-              <td>シード争奪戦トーナメント</td>
-              <td><div><span class="pass-tag">SEED</span><strong>坊っちゃん</strong>(Kサガット ブランカ キャミィ)</div></td>
-              <td><a href="https://www.youtube.com/live/97FqfY0ftsY?si=Nw7S50e0vrMgGvv5" target="_blank" class="video-link">▶ 動画視聴</a></td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="qualifier-acc-body" id="qualifier-body">
+        <div class="qualifier-table-wrapper">
+          <table class="qualifier-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>日時</th>
+                <th>都道府県</th>
+                <th>予選実施店舗</th>
+                <th>選抜形式</th>
+                <th>通過選手（主なキャラクター）</th>
+                <th>関連動画</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="seeded-row">
+                <td class="num-col">01</td>
+                <td>終了</td>
+                <td>全国</td>
+                <td>-</td>
+                <td>昨年シングル優勝者</td>
+                <td><div><span class="pass-tag">SEED</span><strong>ライ</strong>(K舞 響 サガット)</div></td>
+                <td><a href="https://youtu.be/togWvV1lRd8?si=Yv-PShWTJwc1em_W" target="_blank" class="video-link">▶ 動画視聴</a></td>
+              </tr>
+              <tr class="seeded-row">
+                <td class="num-col">02</td>
+                <td>終了</td>
+                <td>愛知</td>
+                <td>名古屋GAME BOX Q3</td>
+                <td>ランバト総合一位</td>
+                <td><div><span class="pass-tag">SEED</span><strong>kiku</strong>(Cキャミィ 春麗 サガット)</div></td>
+                <td><a href="https://www.youtube.com/live/ZIjMwMNBgJQ?si=rIqqbWs9DlapFA-H&t=2531" target="_blank" class="video-link">▶ 動画視聴</a></td>
+              </tr>
+              <tr class="seeded-row">
+                <td class="num-col">03</td>
+                <td>終了</td>
+                <td>大阪</td>
+                <td>アミューズファクトリーAXE</td>
+                <td>ランバト総合一位</td>
+                <td><div><span class="pass-tag">SEED</span><strong>GAN</strong>(A庵 ブランカ ベガ)</div></td>
+                <td><a href="https://www.youtube.com/live/sI2SlWJ9E2A?si=JKhma9WL59JbEA50" target="_blank" class="video-link">▶ 動画視聴</a></td>
+              </tr>
+              <tr class="seeded-row">
+                <td class="num-col">04</td>
+                <td>終了</td>
+                <td>東京</td>
+                <td>西日暮里バーサス・南浦和ビックワンセカンド</td>
+                <td>ランバト総合一位</td>
+                <td><div><span class="pass-tag">SEED</span><strong>Laugh</strong>(Aバルログ 桜 ブランカ)</div></td>
+                <td><a href="https://www.youtube.com/live/qsY847yWamY?si=k9wMTlcO8VXlbAag&t=4214" target="_blank" class="video-link">▶ 動画視聴</a></td>
+              </tr>
+              <tr class="seeded-row">
+                <td class="num-col">05</td>
+                <td>終了</td>
+                <td>東京</td>
+                <td>西日暮里バーサス・南浦和ビックワンセカンド</td>
+                <td>ランバトプレーオフ</td>
+                <td><div><span class="pass-tag">SEED</span><strong>GAO</strong>(Cリュウ ガイル 庵)</div></td>
+                <td><a href="https://www.youtube.com/live/qsY847yWamY?si=dC92FCvstSJh90EX&t=13006" target="_blank" class="video-link">▶ 動画視聴</a></td>
+              </tr>
+              <tr class="seeded-row">
+                <td class="num-col">06</td>
+                <td>終了（9/18）</td>
+                <td>北海道</td>
+                <td>GIGO札幌駅西口</td>
+                <td>シード争奪戦トーナメント</td>
+                <td><div><span class="pass-tag">SEED</span><strong>ワタリ</strong>(A庵 ブランカ ベガ)</div></td>
+                <td><a href="https://www.youtube.com/live/5pwLEjyuZ9E?si=A60QVb0OZ2d_dct9&t=18769" target="_blank" class="video-link">▶ 動画視聴</a></td>
+              </tr>
+              <tr class="seeded-row">
+                <td class="num-col">07</td>
+                <td>終了（9/21）</td>
+                <td>東京</td>
+                <td>南浦和ビックワンセカンド</td>
+                <td>シード争奪戦トーナメント</td>
+                <td><div><span class="pass-tag">SEED</span><strong>シャイニィー ソフィーティア</strong>(A恭介 アテナ モリガン)</div></td>
+                <td><a href="https://youtu.be/nyLB72lKoBo?si=1xYWoWg1P47tWdO5" target="_blank" class="video-link">▶ 動画視聴</a></td>
+              </tr>
+              <tr class="seeded-row">
+                <td class="num-col">08</td>
+                <td>終了（10/3）</td>
+                <td>愛知</td>
+                <td>名古屋GAME BOX Q3</td>
+                <td>シード争奪戦トーナメント</td>
+                <td><div><span class="pass-tag">SEED</span><strong>izumi</strong>(Pマキ ブランカ サガット)</div></td>
+                <td><a href="https://www.youtube.com/live/tuP9DIxPOq0?si=2b8WoD69rJ8pnvfD&t=4866" target="_blank" class="video-link">▶ 動画視聴</a></td>
+              </tr>
+              <tr class="seeded-row">
+                <td class="num-col">09</td>
+                <td>終了（10/17）</td>
+                <td>大阪</td>
+                <td>アミューズファクトリーAXE</td>
+                <td>シード争奪戦トーナメント</td>
+                <td><div><span class="pass-tag">SEED</span><strong>坊っちゃん</strong>(Kサガット ブランカ キャミィ)</div></td>
+                <td><a href="https://www.youtube.com/live/97FqfY0ftsY?si=Nw7S50e0vrMgGvv5" target="_blank" class="video-link">▶ 動画視聴</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
 
@@ -1669,6 +1710,16 @@
       
       document.querySelectorAll('.acc-body').forEach(b => b.style.display = 'none');
       body.style.display = isOpen ? 'none' : 'block';
+    }
+
+    // シード予選セクション用の折り畳みトグル
+    function toggleQualifierAcc(btn) {
+      const body = document.getElementById('qualifier-body');
+      const icon = document.getElementById('qualifier-icon');
+      const isOpen = body.style.display === 'block';
+      
+      body.style.display = isOpen ? 'none' : 'block';
+      icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
     }
 
     // カウントダウン処理
