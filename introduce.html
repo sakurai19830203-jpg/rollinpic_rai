@@ -548,6 +548,16 @@
       }
     }
 
+    /* ▼ 長い名前（シャイニィー ソフィーティア等）用の文字サイズ調整クラス ▼ */
+    .player-title-name.long-name {
+      font-size: 18px;
+    }
+    @media (min-width: 768px) {
+      .player-title-name.long-name {
+        font-size: 22px;
+      }
+    }
+
     .char-text-name {
       font-size: 13px;
       font-weight: 700;
@@ -725,7 +735,6 @@
       color: #ffffff;
     }
 
-    /* アコーディオンの開閉矢印アイコン演出 */
     .history-accordion summary::-webkit-details-marker {
       display: none;
     }
@@ -759,19 +768,6 @@
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     }
 
-    .history-event-title {
-      font-family: 'Teko', sans-serif;
-      font-size: 22px;
-      font-weight: 700;
-      color: #38bdf8;
-      letter-spacing: 1.5px;
-      margin-bottom: 12px;
-      border-bottom: 1px dashed rgba(56, 189, 248, 0.3);
-      padding-bottom: 6px;
-      text-align: center;
-    }
-
-    /* 各大会専用ロゴ画像枠用スタイル */
     .history-logo-frame {
       width: 100%;
       max-width: 220px;
@@ -853,7 +849,6 @@
     .badge-third { background: #10b981; color: #ffffff; }
     .badge-other { background: #64748b; color: #ffffff; }
 
-    /* チームメンバー詳細用テキストスタイル */
     .team-member-list {
       margin: 4px 0 0 0;
       padding-left: 18px;
@@ -862,7 +857,6 @@
       line-height: 1.6;
     }
 
-    /* 写真フレーム（ワイドサイズ） */
     .history-photo-frame {
       position: relative;
       width: 100%;
@@ -895,7 +889,6 @@
       padding: 2px 0;
     }
 
-    /* グルーヴ文字色クラス定義 */
     .g-k { color: #ef4444 !important; font-weight: bold; }
     .g-c { color: #84cc16 !important; font-weight: bold; }
     .g-p { color: #00f0ff !important; font-weight: bold; }
@@ -903,7 +896,6 @@
     .g-n { color: #facc15 !important; font-weight: bold; }
     .g-s { color: #a855f7 !important; font-weight: bold; }
 
-    /* 戻るボタン */
     .rollin-back-area {
       text-align: center;
       margin-top: 20px;
@@ -938,6 +930,9 @@
       }
       .player-title-name {
         font-size: 20px !important;
+      }
+      .player-title-name.long-name {
+        font-size: 16px !important;
       }
       .player-description {
         font-size: 15px !important;
@@ -1207,7 +1202,7 @@
           </div>
         </div>
 
-        <!-- 6. Sophitia -->
+        <!-- 6. シャイニィー ソフィーティア -->
         <div class="player-profile-card tier-2 groove-a">
           <div class="card-bg-characters">
             <img src="A恭介.png" alt="">
@@ -1219,12 +1214,12 @@
           
           <div class="player-card-header">
             <div class="player-photo-frame">
-              <img src="placeholder_player6.jpg" alt="Sophitia">
+              <img src="placeholder_player6.jpg" alt="シャイニィー ソフィーティア">
               <div class="photo-overlay-tag">TIER 2</div>
             </div>
             <div class="player-title-area">
               <span class="seed-badge-title">埼玉シード争奪戦トーナメント</span>
-              <h3 class="player-title-name">Sophitia</h3>
+              <h3 class="player-title-name long-name">シャイニィー ソフィーティア</h3>
               <div class="char-text-name"><span class="g-a">A</span>恭介 アテナ モリガン</div>
             </div>
           </div>
@@ -1391,7 +1386,7 @@
               <tr><td class="text-center">6</td><td>響</td><td class="text-right">8回</td></tr>
               <tr><td class="text-center">7</td><td>春麗</td><td class="text-right">7回</td></tr>
               <tr><td class="text-center">8</td><td>さくら</td><td class="text-right">5回</td></tr>
-              <tr><td class="text-center">9</td><td>ガイル / ギース / チャン / バイソン / バルログ / 마キ / モリガン / リュウ / 山崎</td><td class="text-right">各 3回</td></tr>
+              <tr><td class="text-center">9</td><td>ガイル / ギース / チャン / バイソン / バルログ / マキ / モリガン / リュウ / 山崎</td><td class="text-right">各 3回</td></tr>
               <tr><td class="text-center">17</td><td>ジョー / バイス / ユリ / ロック / 舞</td><td class="text-right">各 2回</td></tr>
               <tr><td class="text-center">22</td><td>アテナ / イーグル / エドモンド本田 / キム / ケン / ダルシム / ナコルル / ユン / ルガール / ロレント / 京 / 恭介</td><td class="text-right">各 1回</td></tr>
             </tbody>
@@ -1414,7 +1409,7 @@
 
         <div class="history-grid-container">
 
-          <!-- 2025 (直近の大会のため、open属性で最初から開いた状態にしています) -->
+          <!-- 2025 -->
           <details class="history-accordion" open>
             <summary>Rollin'Pic Tokyo 2025</summary>
             <div class="history-accordion-content">
@@ -1476,7 +1471,7 @@
             </div>
           </details>
 
-          <!-- 2024 (ここから下は閉じられた状態でスッキリ表示されます) -->
+          <!-- 2024 -->
           <details class="history-accordion">
             <summary>Rollin'Pic Tokyo 2024</summary>
             <div class="history-accordion-content">
