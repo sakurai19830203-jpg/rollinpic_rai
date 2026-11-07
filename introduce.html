@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rollin'picとは？</title>
+  <title>Rollin'pic 個人戦注目選手3キャラ背景追加版</title>
   
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Teko:wght@600;700&display=swap');
@@ -21,7 +21,6 @@
       position: relative;
       width: 100%;
       max-width: 100vw;
-      /* 背景画像 main_bg.jpg の適用 */
       background: linear-gradient(135deg, rgba(6, 9, 17, 0.9) 0%, rgba(11, 15, 25, 0.92) 100%), 
                   url('main_bg.jpg') no-repeat center center fixed;
       background-size: cover;
@@ -74,29 +73,6 @@
       height: auto;
       display: block;
       filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.4));
-    }
-
-    .section-title-wrapper .sub-tag {
-      display: inline-block;
-      font-family: 'Teko', sans-serif;
-      font-size: 16px;
-      letter-spacing: 2px;
-      color: #38bdf8;
-      font-weight: 700;
-      text-transform: uppercase;
-      background: rgba(56, 189, 248, 0.1);
-      padding: 2px 10px;
-      border-radius: 4px;
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      margin-bottom: 6px;
-    }
-
-    .section-title-wrapper h2 {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      margin: 0 0 10px 0;
-      color: #ffffff;
     }
 
     .title-glow-line {
@@ -248,7 +224,7 @@
       margin-bottom: 0;
     }
 
-    /* カッコいいシード階級別見出し（Tier用） */
+    /* カッコいいシード階級別見出し（Tier / 注目用） */
     .tier-category-banner {
       display: flex;
       align-items: center;
@@ -276,6 +252,13 @@
       border-bottom-color: rgba(148, 163, 184, 0.4);
     }
 
+    .tier-category-banner.featured-banner {
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.15) 0%, rgba(6, 9, 17, 0.8) 100%);
+      border-left-color: #ffffff;
+      border-top-color: rgba(255, 255, 255, 0.4);
+      border-bottom-color: rgba(255, 255, 255, 0.4);
+    }
+
     .tier-title-main {
       font-family: 'Teko', sans-serif;
       font-size: 22px;
@@ -297,6 +280,7 @@
 
     .tier-1-banner .tier-title-sub { color: #fcd34d; }
     .tier-2-banner .tier-title-sub { color: #cbd5e1; }
+    .featured-banner .tier-title-sub { color: #ffffff; }
 
     /* 選手カードリスト全体 */
     .players-list {
@@ -345,6 +329,13 @@
       --tier-bg-tint: rgba(148, 163, 184, 0.12);
       border: 2px solid var(--tier-color);
       background: linear-gradient(135deg, var(--tier-bg-tint) 0%, rgba(11, 15, 25, 0.98) 100%);
+    }
+
+    /* 注目選手用（白枠線） */
+    .player-profile-card.featured-player {
+      --tier-color: #ffffff;
+      border: 2px solid #ffffff;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(11, 15, 25, 0.98) 100%);
     }
 
     .player-profile-card {
@@ -407,25 +398,13 @@
       z-index: 1;
     }
 
-    .player-profile-card.tier-1 .card-corner-accent {
-      border-color: #f59e0b;
-      width: 12px;
-      height: 12px;
-    }
-    .player-profile-card.tier-2 .card-corner-accent {
-      border-color: #94a3b8;
-      width: 10px;
-      height: 10px;
-    }
+    .player-profile-card.tier-1 .card-corner-accent { border-color: #f59e0b; width: 12px; height: 12px; }
+    .player-profile-card.tier-2 .card-corner-accent { border-color: #94a3b8; width: 10px; height: 10px; }
+    .player-profile-card.featured-player .card-corner-accent { border-color: #ffffff; width: 10px; height: 10px; }
 
-    .player-profile-card.tier-1 .photo-overlay-tag {
-      background: #f59e0b;
-      color: #060911;
-    }
-    .player-profile-card.tier-2 .photo-overlay-tag {
-      background: #94a3b8;
-      color: #060911;
-    }
+    .player-profile-card.tier-1 .photo-overlay-tag { background: #f59e0b; color: #060911; }
+    .player-profile-card.tier-2 .photo-overlay-tag { background: #94a3b8; color: #060911; }
+    .player-profile-card.featured-player .photo-overlay-tag { background: #ffffff; color: #060911; font-weight: 900; }
 
     .player-profile-card.tier-1 .player-description-box {
       border-left: 3px solid #f59e0b;
@@ -437,6 +416,14 @@
     }
     .player-profile-card.tier-2 .player-description-box {
       border-left: 3px solid #94a3b8;
+      background: rgba(6, 9, 17, 0.9);
+      padding: 12px 14px;
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 0;
+      width: 100%;
+    }
+    .player-profile-card.featured-player .player-description-box {
+      border-left: 3px solid #ffffff;
       background: rgba(6, 9, 17, 0.9);
       padding: 12px 14px;
       border-radius: 0 6px 6px 0;
@@ -470,12 +457,9 @@
       width: 100%;
     }
 
-    .player-profile-card.tier-1 .player-photo-frame {
-      border: 2px solid #f59e0b;
-    }
-    .player-profile-card.tier-2 .player-photo-frame {
-      border: 2px solid #94a3b8;
-    }
+    .player-profile-card.tier-1 .player-photo-frame { border: 2px solid #f59e0b; }
+    .player-profile-card.tier-2 .player-photo-frame { border: 2px solid #94a3b8; }
+    .player-profile-card.featured-player .player-photo-frame { border: 2px solid #ffffff; }
 
     .player-photo-frame {
       position: relative;
@@ -585,6 +569,98 @@
       }
     }
 
+    /* --- 注目チーム用カードスタイル（白枠・コメント欄付き） --- */
+    .teams-grid-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-bottom: 35px;
+    }
+
+    @media (min-width: 768px) {
+      .teams-grid-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .team-card-item {
+      position: relative;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(11, 15, 25, 0.98) 100%);
+      border: 2px solid #ffffff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(12px);
+      overflow: hidden;
+    }
+
+    .team-card-item .card-corner-accent {
+      border-color: #ffffff;
+      width: 8px;
+      height: 8px;
+    }
+
+    .team-name-header {
+      font-size: 18px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      word-break: break-all;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+    }
+
+    .team-members-list {
+      list-style: none;
+      margin: 0 0 14px 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .team-members-list li {
+      font-size: 14px;
+      font-weight: 700;
+      color: #cbd5e1;
+      background: rgba(6, 9, 17, 0.7);
+      padding: 8px 12px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .team-members-list li::before {
+      content: '■';
+      font-size: 10px;
+      color: #ffffff;
+    }
+
+    .team-description-box {
+      border-left: 3px solid #ffffff;
+      background: rgba(6, 9, 17, 0.9);
+      padding: 12px 14px;
+      border-radius: 0 6px 6px 0;
+      width: 100%;
+    }
+
+    .team-description {
+      font-size: 13px;
+      line-height: 1.6;
+      color: #f1f5f9;
+      margin: 0;
+      word-break: break-all;
+    }
+
+    @media (min-width: 768px) {
+      .team-description {
+        font-size: 14px;
+      }
+    }
+
     /* 統計・共通ヘッダー用スタイル */
     .stats-section {
       position: relative;
@@ -673,13 +749,8 @@
       letter-spacing: 1px;
     }
 
-    .stats-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .stats-table tr:hover {
-      background: rgba(56, 189, 248, 0.05);
-    }
+    .stats-table tr:last-child td { border-bottom: none; }
+    .stats-table tr:hover { background: rgba(56, 189, 248, 0.05); }
 
     .text-center { text-align: center; }
     .text-right { text-align: right; }
@@ -698,7 +769,7 @@
       }
     }
 
-    /* --- 折り畳みアコーディオン（details / summary）用スタイル --- */
+    /* --- 折り畳みアコーディオン用スタイル --- */
     .history-accordion {
       background: rgba(6, 9, 17, 0.85);
       border: 1px solid rgba(56, 189, 248, 0.4);
@@ -709,9 +780,7 @@
       transition: border-color 0.3s ease;
     }
 
-    .history-accordion:hover {
-      border-color: rgba(56, 189, 248, 0.8);
-    }
+    .history-accordion:hover { border-color: rgba(56, 189, 248, 0.8); }
 
     .history-accordion summary {
       font-family: 'Teko', sans-serif;
@@ -734,16 +803,13 @@
       color: #ffffff;
     }
 
-    .history-accordion summary::-webkit-details-marker {
-      display: none;
-    }
+    .history-accordion summary::-webkit-details-marker { display: none; }
     .history-accordion summary::after {
       content: '＋';
       font-family: 'Helvetica Neue', Arial, sans-serif;
       font-size: 18px;
       color: #38bdf8;
       font-weight: bold;
-      transition: transform 0.3s ease;
     }
     .history-accordion[open] summary::after {
       content: '－';
@@ -791,9 +857,7 @@
       padding: 12px;
     }
 
-    .history-day-block:last-child {
-      margin-bottom: 0;
-    }
+    .history-day-block:last-child { margin-bottom: 0; }
 
     .day-label {
       font-family: 'Teko', sans-serif;
@@ -927,22 +991,11 @@
         width: 100% !important;
         overflow-x: hidden !important;
       }
-      .player-title-name {
-        font-size: 20px !important;
-      }
-      .player-title-name.long-name {
-        font-size: 16px !important;
-      }
-      .player-description {
-        font-size: 15px !important;
-        line-height: 1.8 !important;
-      }
-      .stats-table {
-        font-size: 13px;
-      }
-      .stats-table th, .stats-table td {
-        padding: 8px 10px;
-      }
+      .player-title-name { font-size: 20px !important; }
+      .player-title-name.long-name { font-size: 16px !important; }
+      .player-description { font-size: 15px !important; line-height: 1.8 !important; }
+      .stats-table { font-size: 13px; }
+      .stats-table th, .stats-table td { padding: 8px 10px; }
     }
   </style>
 </head>
@@ -1324,6 +1377,445 @@
               特にPマキに関しては秘めたポテンシャルを熱弁しており、選手写真からもそれが伺える。<br>
               グルーヴ相性的にかなり厳しいと思われるAグル対策を特に練っており、大会での対Aグル戦のカードは確実に見ものだろう。
             </p>
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- ▼ 個人戦当日予選の注目選手セクション見出し ▼ -->
+      <div class="stats-main-header" style="margin-bottom: 20px;">
+        <span class="sub-tag">QUALIFIER PLAYERS</span>
+        <h2>個人戦当日予選の注目選手</h2>
+        <div class="title-glow-line"></div>
+      </div>
+
+      <div class="players-list">
+
+        <!-- 1. D44 -->
+        <div class="player-profile-card featured-player groove-a">
+          <div class="card-bg-characters">
+            <img src="A山崎.png" alt="">
+            <img src="Aベガ.png" alt="">
+            <img src="Aブランカ.png" alt="">
+          </div>
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          
+          <div class="player-card-header">
+            <div class="player-photo-frame">
+              <img src="placeholder_featured_d44.jpg" alt="D44">
+              <div class="photo-overlay-tag">QUALIFIER</div>
+            </div>
+            <div class="player-title-area">
+              <h3 class="player-title-name">D44</h3>
+              <div class="char-text-name"><span class="g-a">A</span>山崎 ベガ ブランカ</div>
+            </div>
+          </div>
+
+          <div class="player-description-box">
+            <p class="player-description">
+              Rollin'pic主催を務めつつ、自身もトッププレイヤーとして第一線で戦い続ける実力者。<br>
+              A山崎・ベガ・ブランカを駆り、大会の運営と競技の両面でシーンを牽引する中心人物。
+            </p>
+          </div>
+        </div>
+
+        <!-- 2. ysk -->
+        <div class="player-profile-card featured-player groove-a">
+          <div class="card-bg-characters">
+            <img src="Aさくら.png" alt="">
+            <img src="Aベガ.png" alt="">
+            <img src="Aブランカ.png" alt="">
+          </div>
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          
+          <div class="player-card-header">
+            <div class="player-photo-frame">
+              <img src="placeholder_featured_ysk.jpg" alt="ysk">
+              <div class="photo-overlay-tag">QUALIFIER</div>
+            </div>
+            <div class="player-title-area">
+              <h3 class="player-title-name">ysk</h3>
+              <div class="char-text-name"><span class="g-a">A</span>さくら ベガ ブランカ</div>
+            </div>
+          </div>
+
+          <div class="player-description-box">
+            <p class="player-description">
+              過去のRollin'picシングルスでも優勝や上位入賞を果たすなど、圧倒的な勝負強さを誇るAグラー。<br>
+              高い解析力と鋭い攻めで大会の優勝候補筆頭に常に名を連ねる。
+            </p>
+          </div>
+        </div>
+
+        <!-- 3. uwb -->
+        <div class="player-profile-card featured-player groove-c">
+          <div class="card-bg-characters">
+            <img src="C春麗.png" alt="">
+            <img src="Cサガット.png" alt="">
+            <img src="C庵.png" alt="">
+          </div>
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          
+          <div class="player-card-header">
+            <div class="player-photo-frame">
+              <img src="placeholder_featured_uwb.jpg" alt="uwb">
+              <div class="photo-overlay-tag">QUALIFIER</div>
+            </div>
+            <div class="player-title-area">
+              <h3 class="player-title-name">uwb</h3>
+              <div class="char-text-name"><span class="g-c">C</span>春麗 サガット 庵</div>
+            </div>
+          </div>
+
+          <div class="player-description-box">
+            <p class="player-description">
+              名古屋のkiku選手と並び、現環境における最強のCグラーと称される関東の重鎮。<br>
+              C春麗やサガット、庵を自在に操り、堅実かつ的確な立ち回りで相手を圧倒する。
+            </p>
+          </div>
+        </div>
+
+        <!-- 4. かまた -->
+        <div class="player-profile-card featured-player groove-c">
+          <div class="card-bg-characters">
+            <img src="C庵.png" alt="">
+            <img src="C春麗.png" alt="">
+            <img src="Cサガット.png" alt="">
+          </div>
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          
+          <div class="player-card-header">
+            <div class="player-photo-frame">
+              <img src="placeholder_featured_kamata.jpg" alt="かまた">
+              <div class="photo-overlay-tag">QUALIFIER</div>
+            </div>
+            <div class="player-title-area">
+              <h3 class="player-title-name">かまた</h3>
+              <div class="char-text-name"><span class="g-c">C</span>庵 春麗 サガット</div>
+            </div>
+          </div>
+
+          <div class="player-description-box">
+            <p class="player-description">
+              熱気高まる北海道勢の一角として、チーム戦や個人戦で数々の好成績を残している実力派プレイヤー。<br>
+              Cグルーヴ特有の爆発力と勝負強さで本戦での大暴れが期待される。
+            </p>
+          </div>
+        </div>
+
+        <!-- 5. ピノキオ -->
+        <div class="player-profile-card featured-player groove-k">
+          <div class="card-bg-characters">
+            <img src="K春麗.png" alt="">
+            <img src="Kキャミィ.png" alt="">
+            <img src="Kサガット.png" alt="">
+          </div>
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          
+          <div class="player-card-header">
+            <div class="player-photo-frame">
+              <img src="placeholder_featured_pinokio.jpg" alt="ピノキオ">
+              <div class="photo-overlay-tag">QUALIFIER</div>
+            </div>
+            <div class="player-title-area">
+              <h3 class="player-title-name">ピノキオ</h3>
+              <div class="char-text-name"><span class="g-k">K</span>春麗 キャミィ サガット</div>
+            </div>
+          </div>
+
+          <div class="player-description-box">
+            <p class="player-description">
+              各種大会のチーム戦や個人戦で常に上位に食い込む、カプエス界を代表するトッププレイヤー。<br>
+              Kグルーヴの春麗・キャミィ・サガットを巧みに操り、驚異的な対応力を見せつける。
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- ▼ 団体戦全チーム紹介セクション見出し ▼ -->
+      <div class="stats-main-header" style="margin-bottom: 20px;">
+        <span class="sub-tag">TEAM TOURNAMENT</span>
+        <h2>団体戦全チーム紹介</h2>
+        <div class="title-glow-line"></div>
+      </div>
+
+      <div class="teams-grid-container">
+
+        <!-- Team 1 -->
+        <div class="team-card-item">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          <div class="team-name-header">Tier 1</div>
+          <ul class="team-members-list">
+            <li>ライ</li>
+            <li>kiku</li>
+            <li>ラフ(Laugh)</li>
+          </ul>
+          <div class="team-description-box">
+            <p class="team-description">各部門のトッププレイヤーが集結した超優勝候補チーム。圧倒的な個々の練度と勝負強さが光る。</p>
+          </div>
+        </div>
+
+        <!-- Team 2 -->
+        <div class="team-card-item">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          <div class="team-name-header">流星街</div>
+          <ul class="team-members-list">
+            <li>ピノキオ</li>
+            <li>ＫＺＫ</li>
+            <li>喫音</li>
+          </ul>
+          <div class="team-description-box">
+            <p class="team-description">長年シーンの第一線で戦い続けるベテラン勢によるチーム。抜群のチームワークと抜群の対応力が持ち味。</p>
+          </div>
+        </div>
+
+        <!-- Team 3 -->
+        <div class="team-card-item">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          <div class="team-name-header">GUYs</div>
+          <ul class="team-members-list">
+            <li>GAO</li>
+            <li>UWB</li>
+            <li>YSK</li>
+          </ul>
+          <div class="team-description-box">
+            <p class="team-description">関東の猛者たちが集結した強力布陣。個々の爆発力がかみ合った時の破壊力は計り知れない。</p>
+          </div>
+        </div>
+
+        <!-- Team 4 -->
+        <div class="team-card-item">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          <div class="team-name-header">風神・雷神…んー…魔神！</div>
+          <ul class="team-members-list">
+            <li>GAN</li>
+            <li>風さんやで</li>
+            <li>コーサカ</li>
+          </ul>
+          <div class="team-description-box">
+            <p class="team-description">関西と関東の強豪が融合した注目チーム。独特のコンビネーションで会場を沸かせる。</p>
+          </div>
+        </div>
+
+        <!-- Team 5 -->
+        <div class="team-card-item">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          <div class="team-name-header">America's Army</div>
+          <ul class="team-members-list">
+            <li>Gunter</li>
+            <li>Silentscope</li>
+            <li>Señor Payaso</li>
+          </ul>
+          <div class="team-description-box">
+            <p class="team-description">海外からの参戦となる国際色豊かなチーム。独自の立ち回りで日本勢の度肝を抜くか。</p>
+          </div>
+        </div>
+
+        <!-- Team 6 -->
+        <div class="team-card-item">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          <div class="team-name-header">北海道2D連合</div>
+          <ul class="team-members-list">
+            <li>ワタリ</li>
+            <li>かまた</li>
+            <li>エミリオ</li>
+          </ul>
+          <div class="team-description-box">
+            <p class="team-description">北の大地で熱い切磋琢磨を重ねてきた北海道勢の精鋭たち。一丸となって上位を狙う。</p>
+          </div>
+        </div>
+
+        <!-- Team 7 -->
+        <div class="team-card-item">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          <div class="team-name-header">飲酒乱s</div>
+          <ul class="team-members-list">
+            <li>D44</li>
+            <li>うぇい</li>
+            <li>FM</li>
+          </ul>
+          <div class="team-description-box">
+            <p class="team-description">大会主催のD44選手を含む実力者チーム。プレッシャーを跳ね返し、トリッキーな連携を見せる。</p>
+          </div>
+        </div>
+
+        <!-- Team 8 -->
+        <div class="team-card-item">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          <div class="team-name-header">S-GROOVE</div>
+          <ul class="team-members-list">
+            <li>イズミ</li>
+            <li>Tobari</li>
+            <li>屋根</li>
+          </ul>
+          <div class="team-description-box">
+            <p class="team-description">深いキャラ愛と独自のグルーヴ研究が光る職人集団。玄人好みの熱い試合を展開する。</p>
+          </div>
+        </div>
+
+        <!-- Team 9 -->
+        <div class="team-card-item">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          <div class="team-name-header">あいさロロエヴィクター</div>
+          <ul class="team-members-list">
+            <li>あいさ</li>
+            <li>ロロ</li>
+            <li>ヴィクター</li>
+          </ul>
+          <div class="team-description-box">
+            <p class="team-description">大会に新たな風を吹き込む注目のプレイヤーが集まったチーム。大会を盛り上げる活躍に期待。</p>
+          </div>
+        </div>
+
+        <!-- Team 10 -->
+        <div class="team-card-item">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          <div class="team-name-header">勝ちゃよかろうもん</div>
+          <ul class="team-members-list">
+            <li>S-ZAWA</li>
+            <li>KAZU</li>
+            <li>未定</li>
+          </ul>
+          <div class="team-description-box">
+            <p class="team-description">勝利への執念を燃やすアグレッシブなチーム。3人目の動向を含めてダークホース的存在。</p>
+          </div>
+        </div>
+
+        <!-- Team 11 -->
+        <div class="team-card-item">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          <div class="team-name-header">横道 ダブルアッパー</div>
+          <ul class="team-members-list">
+            <li>ナギラ</li>
+            <li>まさとぅー</li>
+            <li>まこつ</li>
+          </ul>
+          <div class="team-description-box">
+            <p class="team-description">鋭い攻めと意外性のある戦術で相手を翻弄するチーム。ジャイアントキリングを狙う。</p>
+          </div>
+        </div>
+
+        <!-- Team 12 -->
+        <div class="team-card-item">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          <div class="team-name-header">ゼノサイドカッター・お荷物検査</div>
+          <ul class="team-members-list">
+            <li>ゼノ</li>
+            <li>坊ちゃん</li>
+            <li>のび太</li>
+          </ul>
+          <div class="team-description-box">
+            <p class="team-description">関西勢の実力者・坊ちゃん選手を擁する不敵なチーム名。お墨付きの堅実な強さを発揮する。</p>
+          </div>
+        </div>
+
+        <!-- Team 13 -->
+        <div class="team-card-item">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          <div class="team-name-header">【転生したらオラオラ系男子のハーレムだった件】</div>
+          <ul class="team-members-list">
+            <li>つじ</li>
+            <li>みさき</li>
+            <li>ぷ〜たん</li>
+          </ul>
+          <div class="team-description-box">
+            <p class="team-description">ユニークなチーム名とは裏腹に、確かな技術を持つ実力者メンバーが揃った要警戒チーム。</p>
+          </div>
+        </div>
+
+        <!-- Team 14 -->
+        <div class="team-card-item">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          <div class="team-name-header">スーパーよちよちシャイニィーにゅ〜めろースンスンランドだ！ばぶー！！</div>
+          <ul class="team-members-list">
+            <li>めろお</li>
+            <li>シャイニィー ソフィーティア</li>
+            <li>ヌメモンド本田☆</li>
+          </ul>
+          <div class="team-description-box">
+            <p class="team-description">シャイニィー ソフィーティア選手らが集結した話題性抜群のチーム。独自の団結力で勝利を掴む。</p>
+          </div>
+        </div>
+
+        <!-- Team 15 -->
+        <div class="team-card-item">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          <div class="team-name-header">steam勢</div>
+          <ul class="team-members-list">
+            <li>sachansan</li>
+            <li>ほんだ</li>
+            <li>nekonoc</li>
+          </ul>
+          <div class="team-description-box">
+            <p class="team-description">オンライン環境やSteam版で腕を磨き上げてきたプレイヤーたちによるトレンドチーム。</p>
+          </div>
+        </div>
+
+        <!-- Team 16 -->
+        <div class="team-card-item">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          <div class="team-name-header">見せてやる、草薙のレシオ2を！</div>
+          <ul class="team-members-list">
+            <li>イタクラ</li>
+            <li>かおるだ</li>
+            <li>ヤマモト</li>
+          </ul>
+          <div class="team-description-box">
+            <p class="team-description">ベテランのイタクラ選手を中心に、高いキャラ理解度とぶれない戦術眼が光る実力派チーム。</p>
+          </div>
+        </div>
+
+        <!-- Team 17 -->
+        <div class="team-card-item">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          <div class="team-name-header">新春走ろう会</div>
+          <ul class="team-members-list">
+            <li>火澄</li>
+            <li>みたむ</li>
+            <li>ぱーかー</li>
+          </ul>
+          <div class="team-description-box">
+            <p class="team-description">機動力を活かしたスピード感あふれる試合運びを持ち味とする、気心の知れたメンバーのチーム。</p>
+          </div>
+        </div>
+
+        <!-- Team 18 (ゆうごうさじん) -->
+        <div class="team-card-item">
+          <div class="card-corner-accent top-left"></div>
+          <div class="card-corner-accent bottom-right"></div>
+          <div class="team-name-header">ゆうごうさじん</div>
+          <ul class="team-members-list">
+            <li>ゴウ</li>
+            <li>Towelman X</li>
+            <li>MoMo</li>
+          </ul>
+          <div class="team-description-box">
+            <p class="team-description">各々の個性が融合した強力な3人組。大会の波乱を巻き起こすキーチームとなるか。</p>
           </div>
         </div>
 
@@ -1880,7 +2372,7 @@
                         <span class="result-badge badge-runner">準優勝</span> ヒラタヒロタ(ヒラタ、uwb、ライ)
                       </div>
                       <div class="history-photo-frame">
-                        <img src="history_2019_day2_runner.jpg" alt="2019 Day2 準優勝">
+                        <img src="history_2024_day2_runner.jpg" alt="2024 Day2 準優勝">
                         <div class="history-photo-tag">ヒラタヒロタ</div>
                       </div>
                     </div>
