@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rollin'pic 個人戦注目選手3キャラ背景追加版</title>
+  <title>Rollin'pic 団体戦背景カラー対応版</title>
   
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Teko:wght@600;700&display=swap');
@@ -617,21 +617,30 @@
       padding: 0;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 8px;
     }
 
     .team-members-list li {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
-      color: #cbd5e1;
-      background: rgba(6, 9, 17, 0.7);
+      color: #ffffff;
       padding: 8px 12px;
       border-radius: 4px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
+
+    /* 団体戦メンバー用グルーヴ背景色（視認性を高めた約25%の半透明） */
+    .team-members-list li.bg-k { background: rgba(239, 68, 68, 0.25); }
+    .team-members-list li.bg-c { background: rgba(132, 204, 22, 0.25); }
+    .team-members-list li.bg-a { background: rgba(56, 189, 248, 0.25); }
+    .team-members-list li.bg-p { background: rgba(0, 240, 255, 0.25); }
+    .team-members-list li.bg-n { background: rgba(250, 204, 21, 0.25); }
+    .team-members-list li.bg-s { background: rgba(168, 85, 247, 0.25); }
+    .team-members-list li.bg-tbd { background: rgba(100, 116, 139, 0.25); }
 
     .team-members-list li::before {
       content: '■';
@@ -1438,7 +1447,7 @@
             </div>
             <div class="player-title-area">
               <h3 class="player-title-name">ysk</h3>
-              <div class="char-text-name"><span class="g-a">A</span>さくら ベガ ブランカ</div>
+              <div class="char-text-name"><span class="g-a">A</span>桜 ベガ ブランカ</div>
             </div>
           </div>
 
@@ -1555,9 +1564,9 @@
           <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">Tier 1</div>
           <ul class="team-members-list">
-            <li>ライ</li>
-            <li>kiku</li>
-            <li>ラフ(Laugh)</li>
+            <li class="bg-k">ライ ／ <span class="g-k">K</span> 舞、響、サガット</li>
+            <li class="bg-c">kiku ／ <span class="g-c">C</span> キャミィ、春麗、サガット</li>
+            <li class="bg-a">ラフ(Laugh) ／ <span class="g-a">A</span> バルログ、桜、ブランカ</li>
           </ul>
           <div class="team-description-box">
             <p class="team-description">各部門のトッププレイヤーが集結した超優勝候補チーム。圧倒的な個々の練度と勝負強さが光る。</p>
@@ -1570,9 +1579,9 @@
           <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">流星街</div>
           <ul class="team-members-list">
-            <li>ピノキオ</li>
-            <li>ＫＺＫ</li>
-            <li>喫音</li>
+            <li class="bg-k">ピノキオ ／ <span class="g-k">K</span> 春麗キャミィサガット</li>
+            <li class="bg-k">ＫＺＫ ／ <span class="g-k">K</span> ギースキャミィサガット</li>
+            <li class="bg-k">喫音 ／ <span class="g-k">K</span> 響ナコルルサガット</li>
           </ul>
           <div class="team-description-box">
             <p class="team-description">長年シーンの第一線で戦い続けるベテラン勢によるチーム。抜群のチームワークと抜群の対応力が持ち味。</p>
@@ -1585,9 +1594,9 @@
           <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">GUYs</div>
           <ul class="team-members-list">
-            <li>GAO</li>
-            <li>UWB</li>
-            <li>YSK</li>
+            <li class="bg-k">GAO ／ <span class="g-k">K</span> ギース、ナコルル、ロック</li>
+            <li class="bg-c">UWB ／ <span class="g-c">C</span> 春麗、サガット、庵</li>
+            <li class="bg-a">YSK ／ <span class="g-a">A</span> 桜、ベガ、ブランカ</li>
           </ul>
           <div class="team-description-box">
             <p class="team-description">関東の猛者たちが集結した強力布陣。個々の爆発力がかみ合った時の破壊力は計り知れない。</p>
@@ -1600,9 +1609,9 @@
           <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">風神・雷神…んー…魔神！</div>
           <ul class="team-members-list">
-            <li>GAN</li>
-            <li>風さんやで</li>
-            <li>コーサカ</li>
+            <li class="bg-a">GAN ／ <span class="g-a">A</span> 庵ベガブランカ</li>
+            <li class="bg-a">風さんやで ／ <span class="g-a">A</span> さくらベガブランカ</li>
+            <li class="bg-a">コーサカ ／ <span class="g-a">A</span> さくらベガブランカ</li>
           </ul>
           <div class="team-description-box">
             <p class="team-description">関西と関東の強豪が融合した注目チーム。独特のコンビネーションで会場を沸かせる。</p>
@@ -1615,9 +1624,9 @@
           <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">America's Army</div>
           <ul class="team-members-list">
-            <li>Gunter</li>
-            <li>Silentscope</li>
-            <li>Señor Payaso</li>
+            <li class="bg-a">Gunter ／ <span class="g-a">A</span> 響 ベガ ブランカ</li>
+            <li class="bg-k">Silentscope ／ <span class="g-k">K</span> チャン ルガール モリガン</li>
+            <li class="bg-k">Señor Payaso ／ <span class="g-k">K</span> TBD</li>
           </ul>
           <div class="team-description-box">
             <p class="team-description">海外からの参戦となる国際色豊かなチーム。独自の立ち回りで日本勢の度肝を抜くか。</p>
@@ -1630,9 +1639,9 @@
           <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">北海道2D連合</div>
           <ul class="team-members-list">
-            <li>ワタリ</li>
-            <li>かまた</li>
-            <li>エミリオ</li>
+            <li class="bg-a">ワタリ ／ <span class="g-a">A</span> ブランカ庵ベガ</li>
+            <li class="bg-c">かまた ／ <span class="g-c">C</span> 庵春麗サガット</li>
+            <li class="bg-a">エミリオ ／ <span class="g-a">A</span> ブランカさくらベガ</li>
           </ul>
           <div class="team-description-box">
             <p class="team-description">北の大地で熱い切磋琢磨を重ねてきた北海道勢の精鋭たち。一丸となって上位を狙う。</p>
@@ -1645,9 +1654,9 @@
           <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">飲酒乱s</div>
           <ul class="team-members-list">
-            <li>D44</li>
-            <li>うぇい</li>
-            <li>FM</li>
+            <li class="bg-a">D44 ／ <span class="g-a">A</span> 山崎、ベガ、ブランカ</li>
+            <li class="bg-p">うぇい ／ <span class="g-p">P</span> ブランカ、キャミィ、サガット</li>
+            <li class="bg-c">FM ／ <span class="g-c">C</span> リュウ、チュンリ、サガット</li>
           </ul>
           <div class="team-description-box">
             <p class="team-description">大会主催のD44選手を含む実力者チーム。プレッシャーを跳ね返し、トリッキーな連携を見せる。</p>
@@ -1660,9 +1669,9 @@
           <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">S-GROOVE</div>
           <ul class="team-members-list">
-            <li>イズミ</li>
-            <li>Tobari</li>
-            <li>屋根</li>
+            <li class="bg-s">イズミ ／ <span class="g-s">S</span> ケン、キャミー、サガット</li>
+            <li class="bg-s">Tobari ／ <span class="g-s">S</span> 庵、キャミー、サガット</li>
+            <li class="bg-s">屋根 ／ <span class="g-s">S</span> テリー、チュンリー、サガット</li>
           </ul>
           <div class="team-description-box">
             <p class="team-description">深いキャラ愛と独自のグルーヴ研究が光る職人集団。玄人好みの熱い試合を展開する。</p>
@@ -1675,9 +1684,9 @@
           <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">あいさロロエヴィクター</div>
           <ul class="team-members-list">
-            <li>あいさ</li>
-            <li>ロロ</li>
-            <li>ヴィクター</li>
+            <li class="bg-k">あいさ ／ <span class="g-k">K</span> 山崎、バイソン、京</li>
+            <li class="bg-c">ロロ ／ <span class="g-c">C</span> ケン</li>
+            <li class="bg-n">ヴィクター ／ <span class="g-n">N</span> 庵、春麗、モリガン</li>
           </ul>
           <div class="team-description-box">
             <p class="team-description">大会に新たな風を吹き込む注目のプレイヤーが集まったチーム。大会を盛り上げる活躍に期待。</p>
@@ -1690,9 +1699,9 @@
           <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">勝ちゃよかろうもん</div>
           <ul class="team-members-list">
-            <li>S-ZAWA</li>
-            <li>KAZU</li>
-            <li>未定</li>
+            <li class="bg-c">S-ZAWA ／ <span class="g-c">C</span> キャミィ春麗サガット</li>
+            <li class="bg-a">KAZU ／ <span class="g-a">A</span> 京桜庵</li>
+            <li class="bg-tbd">未定 ／ 未定 TBD</li>
           </ul>
           <div class="team-description-box">
             <p class="team-description">勝利への執念を燃やすアグレッシブなチーム。3人目の動向を含めてダークホース的存在。</p>
@@ -1705,9 +1714,9 @@
           <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">横道 ダブルアッパー</div>
           <ul class="team-members-list">
-            <li>ナギラ</li>
-            <li>まさとぅー</li>
-            <li>まこつ</li>
+            <li class="bg-c">ナギラ ／ <span class="g-c">C</span> マキ 響 イーグル</li>
+            <li class="bg-a">まさとぅー ／ <span class="g-a">A</span> ユン ユリ キム</li>
+            <li class="bg-k">まこつ ／ <span class="g-k">K</span> ライデン キャミィ サガット</li>
           </ul>
           <div class="team-description-box">
             <p class="team-description">鋭い攻めと意外性のある戦術で相手を翻弄するチーム。ジャイアントキリングを狙う。</p>
@@ -1720,9 +1729,9 @@
           <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">ゼノサイドカッター・お荷物検査</div>
           <ul class="team-members-list">
-            <li>ゼノ</li>
-            <li>坊ちゃん</li>
-            <li>のび太</li>
+            <li class="bg-a">ゼノ ／ <span class="g-a">A</span> ブランカ、サクラ、ベガ</li>
+            <li class="bg-k">坊ちゃん ／ <span class="g-k">K</span> ブランカ キャミィ サガット</li>
+            <li class="bg-c">のび太 ／ <span class="g-c">C</span> ケン サクラ ルガール</li>
           </ul>
           <div class="team-description-box">
             <p class="team-description">関西勢の実力者・坊ちゃん選手を擁する不敵なチーム名。お墨付きの堅実な強さを発揮する。</p>
@@ -1735,9 +1744,9 @@
           <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">【転生したらオラオラ系男子のハーレムだった件】</div>
           <ul class="team-members-list">
-            <li>つじ</li>
-            <li>みさき</li>
-            <li>ぷ〜たん</li>
+            <li class="bg-n">つじ ／ <span class="g-n">N</span> さくら、ジョー東、ブランカ</li>
+            <li class="bg-k">みさき ／ <span class="g-k">K</span> 春麗、サガット、響</li>
+            <li class="bg-a">ぷ〜たん ／ <span class="g-a">A</span> バルログ、ジョー東、ブランカ</li>
           </ul>
           <div class="team-description-box">
             <p class="team-description">ユニークなチーム名とは裏腹に、確かな技術を持つ実力者メンバーが揃った要警戒チーム。</p>
@@ -1750,9 +1759,9 @@
           <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">スーパーよちよちシャイニィーにゅ〜めろースンスンランドだ！ばぶー！！</div>
           <ul class="team-members-list">
-            <li>めろお</li>
-            <li>シャイニィー ソフィーティア</li>
-            <li>ヌメモンド本田☆</li>
+            <li class="bg-c">めろお ／ <span class="g-c">C</span> 庵、キャミィ、サガット</li>
+            <li class="bg-a">シャイニィー ソフィーティア ／ <span class="g-a">A</span> アテナ、恭介、モリガン</li>
+            <li class="bg-n">ヌメモンド本田☆ ／ <span class="g-n">N</span> エドモンド本田</li>
           </ul>
           <div class="team-description-box">
             <p class="team-description">シャイニィー ソフィーティア選手らが集結した話題性抜群のチーム。独自の団結力で勝利を掴む。</p>
@@ -1765,9 +1774,9 @@
           <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">steam勢</div>
           <ul class="team-members-list">
-            <li>sachansan</li>
-            <li>ほんだ</li>
-            <li>nekonoc</li>
+            <li class="bg-k">sachansan ／ <span class="g-k">K</span> キャミィ、ブランカ、サガット</li>
+            <li class="bg-c">ほんだ ／ <span class="g-c">C</span> リュウ、キャミィ、春麗</li>
+            <li class="bg-n">nekonoc ／ <span class="g-n">N</span> 庵、ケン、サガット</li>
           </ul>
           <div class="team-description-box">
             <p class="team-description">オンライン環境やSteam版で腕を磨き上げてきたプレイヤーたちによるトレンドチーム。</p>
@@ -1780,9 +1789,9 @@
           <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">見せてやる、草薙のレシオ2を！</div>
           <ul class="team-members-list">
-            <li>イタクラ</li>
-            <li>かおるだ</li>
-            <li>ヤマモト</li>
+            <li class="bg-a">イタクラ ／ <span class="g-a">A</span> ベガ ブランカ 響</li>
+            <li class="bg-c">かおるだ ／ <span class="g-c">C</span> 藤堂 ロレント サガット</li>
+            <li class="bg-a">ヤマモト ／ <span class="g-a">A</span> 桜 マキ 京</li>
           </ul>
           <div class="team-description-box">
             <p class="team-description">ベテランのイタクラ選手を中心に、高いキャラ理解度とぶれない戦術眼が光る実力派チーム。</p>
@@ -1795,9 +1804,9 @@
           <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">新春走ろう会</div>
           <ul class="team-members-list">
-            <li>火澄</li>
-            <li>みたむ</li>
-            <li>ぱーかー</li>
+            <li class="bg-a">火澄 ／ <span class="g-a">A</span> ブランカ、ベガ、バルログ</li>
+            <li class="bg-n">みたむ ／ <span class="g-n">N</span> サガット、ブランカ、庵</li>
+            <li class="bg-c">ぱーかー ／ <span class="g-c">C</span> サガット、ブランカ、庵</li>
           </ul>
           <div class="team-description-box">
             <p class="team-description">機動力を活かしたスピード感あふれる試合運びを持ち味とする、気心の知れたメンバーのチーム。</p>
@@ -1810,9 +1819,9 @@
           <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">ゆうごうさじん</div>
           <ul class="team-members-list">
-            <li>ゴウ</li>
-            <li>Towelman X</li>
-            <li>MoMo</li>
+            <li class="bg-k">ゴウ ／ <span class="g-k">K</span> サガット ブランカ ザンギエフ</li>
+            <li class="bg-c">Towelman X ／ <span class="g-c">C</span> リュウ キム サガット</li>
+            <li class="bg-n">MoMo ／ <span class="g-n">N</span> 庵 サガット ロレント</li>
           </ul>
           <div class="team-description-box">
             <p class="team-description">各々の個性が融合した強力な3人組。大会の波乱を巻き起こすキーチームとなるか。</p>
