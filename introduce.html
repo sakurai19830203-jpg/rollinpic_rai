@@ -717,53 +717,6 @@
       color: #ffffff;
     }
 
-    .stats-block {
-      margin-bottom: 30px;
-    }
-
-    .stats-block:last-child {
-      margin-bottom: 0;
-    }
-
-    .stats-subtitle {
-      font-size: 16px;
-      font-weight: 700;
-      color: #38bdf8;
-      margin-bottom: 12px;
-      letter-spacing: 0.5px;
-      border-left: 3px solid #38bdf8;
-      padding-left: 10px;
-    }
-
-    .stats-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 14px;
-      background: rgba(6, 9, 17, 0.7);
-      border-radius: 6px;
-      overflow: hidden;
-      border: 1px solid rgba(56, 189, 248, 0.2);
-    }
-
-    .stats-table th, .stats-table td {
-      padding: 10px 14px;
-      text-align: left;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .stats-table th {
-      background: rgba(56, 189, 248, 0.15);
-      color: #38bdf8;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-
-    .stats-table tr:last-child td { border-bottom: none; }
-    .stats-table tr:hover { background: rgba(56, 189, 248, 0.05); }
-
-    .text-center { text-align: center; }
-    .text-right { text-align: right; }
-
     /* --- 過去大会結果用スタイル（PC2列グリッド・スマホ1列） --- */
     .history-grid-container {
       display: grid;
@@ -1003,8 +956,6 @@
       .player-title-name { font-size: 20px !important; }
       .player-title-name.long-name { font-size: 16px !important; }
       .player-description { font-size: 15px !important; line-height: 1.8 !important; }
-      .stats-table { font-size: 13px; }
-      .stats-table th, .stats-table td { padding: 8px 10px; }
     }
   </style>
 </head>
@@ -1433,7 +1384,7 @@
         <!-- 2. ysk -->
         <div class="player-profile-card featured-player groove-a">
           <div class="card-bg-characters">
-            <img src="Aさくら.png" alt="">
+            <img src="A桜.png" alt="">
             <img src="Aベガ.png" alt="">
             <img src="Aブランカ.png" alt="">
           </div>
@@ -1826,72 +1777,6 @@
           <div class="team-description-box">
             <p class="team-description">各々の個性が融合した強力な3人組。大会の波乱を巻き起こすキーチームとなるか。</p>
           </div>
-        </div>
-
-      </div>
-
-
-      <!-- ▼ 1on1 使用グルーヴ・キャラクター分布 ▼ -->
-      <div class="stats-section">
-        <div class="card-corner-accent top-left"></div>
-        <div class="card-corner-accent bottom-right"></div>
-
-        <div class="stats-main-header">
-          <span class="sub-tag">TOURNAMENT DATA</span>
-          <h2>1on1 使用グルーヴ・キャラクター分布</h2>
-          <div class="title-glow-line"></div>
-        </div>
-
-        <!-- 1. 使用グルーヴの統計 -->
-        <div class="stats-block">
-          <div class="stats-subtitle">1. 使用グルーヴの統計（降順）</div>
-          <table class="stats-table">
-            <thead>
-              <tr>
-                <th>グルーヴ選択</th>
-                <th class="text-center">使用回数</th>
-                <th class="text-right">割合</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td><span class="g-a">A (Aグルーヴ)</span></td><td class="text-center">16回</td><td class="text-right">32.0%</td></tr>
-              <tr><td><span class="g-c">C (Cグルーヴ)</span></td><td class="text-center">14回</td><td class="text-right">28.0%</td></tr>
-              <tr><td><span class="g-k">K (Kグルーヴ)</span></td><td class="text-center">13回</td><td class="text-right">26.0%</td></tr>
-              <tr><td>未定 (TBD等)</td><td class="text-center">3回</td><td class="text-right">6.0%</td></tr>
-              <tr><td><span class="g-n">N (Nグルーヴ)</span></td><td class="text-center">2回</td><td class="text-right">4.0%</td></tr>
-              <tr><td><span class="g-p">P (Pグルーヴ)</span></td><td class="text-center">2回</td><td class="text-right">4.0%</td></tr>
-              <tr style="font-weight: bold; background: rgba(56, 189, 248, 0.15); color: #38bdf8;">
-                <td>合計</td><td class="text-center">50回</td><td class="text-right">100%</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <!-- 2. 使用キャラクターの統計 -->
-        <div class="stats-block">
-          <div class="stats-subtitle">2. 使用キャラクターの統計（降順）</div>
-          <table class="stats-table">
-            <thead>
-              <tr>
-                <th style="width: 15%;" class="text-center">順位</th>
-                <th style="width: 55%;">キャラクター名</th>
-                <th style="width: 30%;" class="text-right">使用回数</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td class="text-center">1</td><td>ブランカ</td><td class="text-right">19回</td></tr>
-              <tr><td class="text-center">2</td><td>サガット</td><td class="text-right">18回</td></tr>
-              <tr><td class="text-center">3</td><td>ベガ</td><td class="text-right">11回</td></tr>
-              <tr><td class="text-center">4</td><td>庵</td><td class="text-right">10回</td></tr>
-              <tr><td class="text-center">5</td><td>キャミィ</td><td class="text-right">9回</td></tr>
-              <tr><td class="text-center">6</td><td>響</td><td class="text-right">8回</td></tr>
-              <tr><td class="text-center">7</td><td>春麗</td><td class="text-right">7回</td></tr>
-              <tr><td class="text-center">8</td><td>さくら</td><td class="text-right">5回</td></tr>
-              <tr><td class="text-center">9</td><td>ガイル / ギース / チャン / バイソン / バルログ / マキ / モリガン / リュウ / 山崎</td><td class="text-right">各 3回</td></tr>
-              <tr><td class="text-center">17</td><td>ジョー / バイス / ユリ / ロック / 舞</td><td class="text-right">各 2回</td></tr>
-              <tr><td class="text-center">22</td><td>アテナ / イーグル / エドモンド本田 / キム / ケン / ダルシム / ナコルル / ユン / ルガール / ロレント / 京 / 恭介</td><td class="text-right">各 1回</td></tr>
-            </tbody>
-          </table>
         </div>
 
       </div>
