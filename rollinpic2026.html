@@ -115,6 +115,28 @@
       filter: drop-shadow(0 4px 12px rgba(0,0,0,0.8));
     }
 
+    /* ── YouTube埋め込みエリア（幅・高さを他コンテンツと統一） ── */
+    .hero-youtube-wrapper {
+      max-width: 842px;
+      margin: 15px auto 20px;
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border: 1px solid var(--panel-border);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.8);
+    }
+
+    .hero-youtube-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
     .world-title-wrap {
       margin-top: 8px;
     }
@@ -1127,6 +1149,17 @@
         <img src="official_logo.png" alt="CAPCOM vs SNK 2 Official Logo" onerror="this.style.display='none';">
       </div>
 
+      <!-- YouTube埋め込みエリア（指定の動画リンク・属性を反映） -->
+      <div class="hero-youtube-wrapper">
+        <iframe 
+          src="https://www.youtube.com/embed/4lcCv781qjo?rel=0" 
+          title="Rollin'pic YouTube Video" 
+          loading="lazy" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen>
+        </iframe>
+      </div>
+
       <div class="world-title-wrap">
         <span class="world-main-txt">CAPCOM vs SNK 2 世界大会</span>
         <!-- キャッチフレーズ -->
@@ -1729,17 +1762,6 @@
             <a target="_blank" href="https://www.youtube.com/watch?v=OBJSLhjR-4Q">Rollin'pic Tokyo 2022 Day 2 3on3 TOP 8</a>
             <a target="_blank" href="http://cvs2.web.fc2.com/6Grooves_5on5/6Grooves_5on5.xhtml" class="hp-link" style="margin-top:10px;">--6 Grooves 6 Spirits 5on5 Showdown 2022 HP --</a>
             <a target="_blank" href="http://cvs2.web.fc2.com/6Grooves_5on5/6Gooves_result.xhtml">6 Grooves 6 Spirits 5on5 Showdown 2022</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="acc-item">
-        <button class="acc-btn" onclick="toggleAcc(this)">
-          <span>Rollin'pic EXTRA 2020 / Tokyo 2019</span>
-          <span>▼</span>
-        </button>
-        <div class="acc-body">
-          <div class="video-list">
             <a target="_blank" href="https://www.youtube.com/watch?v=2nxzjdoZp-Y">Rollin'pic EXTRA 2020 Day1 Singles Top8</a>
             <a target="_blank" href="https://www.youtube.com/watch?v=0zJthU6z2iQ">Rollin'pic EXTRA 2020 Day2 FT10 "竜攘虎搏"</a>
             <a target="_blank" href="https://www.youtube.com/watch?v=y0W3HNV_VjI">Rollin'pic EXTRA 2020 Day2 Special FT5 Exhibition</a>
