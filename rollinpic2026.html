@@ -497,11 +497,22 @@
       font-weight: 900;
       text-transform: uppercase;
       text-decoration: none;
-      padding: 6px;
+      padding: 8px 10px;
       margin-top: 15px;
       transition: all 0.2s;
       letter-spacing: 1px;
       box-shadow: 4px 4px 0px #000;
+      line-height: 1.1;
+    }
+
+    .entry-btn-sub {
+      display: block;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.75rem;
+      font-weight: bold;
+      color: #222;
+      margin-top: 2px;
+      letter-spacing: 0px;
     }
 
     .entry-btn:hover {
@@ -520,6 +531,15 @@
       font-family: 'Noto Sans JP', sans-serif;
       font-weight: bold;
       box-shadow: none;
+    }
+
+    /* エントリーボタン下の注意事項テキスト */
+    .entry-note {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+      margin-bottom: 15px;
+      line-height: 1.35;
     }
 
     /* 斡旋希望リンク用スタイル */
@@ -1155,6 +1175,7 @@
           src="https://www.youtube.com/embed/4lcCv781qjo?rel=0" 
           title="Rollin'pic YouTube Video" 
           loading="lazy" 
+          referrerpolicy="strict-origin-when-cross-origin"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
           allowfullscreen>
         </iframe>
@@ -1220,7 +1241,13 @@
           ・2027当日予選くじ引き担当<br>
           ・オリジナルイベント開催権 (1年間)
         </div>
-        <a href="https://forms.gle/b4JJ3ANQm8SZjEZF6" target="_blank" class="entry-btn">個人戦 エントリー（受付中）</a>
+        
+        <!-- 個人戦エントリーボタン（文言追加） -->
+        <a href="https://forms.gle/b4JJ3ANQm8SZjEZF6" target="_blank" class="entry-btn">
+          個人戦 エントリー（受付中）
+          <span class="entry-btn-sub">11/19までのエントリーで「オリジナル大会バッチ」をプレゼント！</span>
+        </a>
+        <div class="entry-note">※11/20以降はエントリー状況がHPへ反映がなくても把握しております。当日現地で受け付けください。</div>
 
         <!-- 個人戦エントリー状況テーブル（G列統合・スクロールなし） -->
         <div class="entry-list-section">
@@ -1337,7 +1364,13 @@
         </table>
         <div class="play-fee-note">※野試合は1クレジット100yen</div>
 
-        <a href="https://forms.gle/9MT6A1zSpe1Ny7AK7" target="_blank" class="entry-btn" style="margin-top: 25px;">3on3 エントリー（受付中）</a>
+        <!-- 3on3エントリーボタン（文言追加） -->
+        <a href="https://forms.gle/9MT6A1zSpe1Ny7AK7" target="_blank" class="entry-btn" style="margin-top: 25px;">
+          3on3 エントリー（受付中）
+          <span class="entry-btn-sub">11/19までのエントリーで「オリジナル大会バッチ」をプレゼント！</span>
+        </a>
+        <div class="entry-note">※11/20以降はエントリー状況がHPへ反映がなくても把握しております。当日現地で受け付けください。</div>
+
         <!-- 目立つ赤色の斡旋希望リンク -->
         <a href="cvs2gaisen.html" class="match-agent-link">▶ 斡旋希望の方はこちら</a>
 
