@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rollin'pic 過去戦績ファイル名修正版</title>
+  <title>Rollin'pic D44氏コメント＆写真枠追加版</title>
   
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Teko:wght@600;700&display=swap');
@@ -176,52 +176,103 @@
       }
     }
 
-    .about-features-title {
-      font-size: 17px;
-      font-weight: 700;
+    /* 歴史・始まり・一言セクション用の共通見出し */
+    .history-section-title {
+      font-size: 18px;
+      font-weight: 800;
       color: #38bdf8;
-      margin-bottom: 16px;
+      margin: 28px 0 12px 0;
       letter-spacing: 0.5px;
       border-left: 3px solid #38bdf8;
       padding-left: 10px;
     }
 
-    .feature-item {
-      background: rgba(6, 9, 17, 0.6);
-      border: 1px solid rgba(56, 189, 248, 0.2);
-      border-radius: 8px;
-      padding: 16px;
-      margin-bottom: 14px;
+    .history-section-title:first-of-type {
+      margin-top: 0;
     }
 
-    .feature-item:last-child {
-      margin-bottom: 0;
-    }
-
-    .feature-heading {
-      font-size: 15px;
-      font-weight: 800;
-      color: #ffffff;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .feature-sublist {
-      margin: 0;
-      padding-left: 20px;
-      color: #cbd5e1;
+    .history-section-text {
       font-size: 14px;
-      line-height: 1.7;
+      line-height: 1.85;
+      color: #cbd5e1;
+      margin: 0 0 16px 0;
+      word-break: break-all;
     }
 
-    .feature-sublist li {
-      margin-bottom: 6px;
+    @media (min-width: 768px) {
+      .history-section-text {
+        font-size: 15px;
+      }
     }
 
-    .feature-sublist li:last-child {
-      margin-bottom: 0;
+    /* 主催者D44氏の写真＋コメント用レイアウト */
+    .organizer-message-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      background: rgba(6, 9, 17, 0.6);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 25px;
+    }
+
+    @media (min-width: 768px) {
+      .organizer-message-container {
+        flex-direction: row;
+        align-items: center;
+        padding: 24px;
+      }
+    }
+
+    .organizer-photo-frame {
+      position: relative;
+      width: 100%;
+      max-width: 200px;
+      height: 200px;
+      margin: 0 auto;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 2px solid #38bdf8;
+      background: #000;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+      flex-shrink: 0;
+    }
+
+    .organizer-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .organizer-photo-tag {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      font-family: 'Teko', sans-serif;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      text-align: center;
+      background: rgba(6, 9, 17, 0.85);
+      color: #38bdf8;
+      padding: 2px 0;
+    }
+
+    .organizer-comment-content {
+      flex-grow: 1;
+      font-size: 14px;
+      line-height: 1.85;
+      color: #cbd5e1;
+      margin: 0;
+      word-break: break-all;
+    }
+
+    @media (min-width: 768px) {
+      .organizer-comment-content {
+        font-size: 15px;
+      }
     }
 
     /* カッコいいシード階級別見出し（Tier / 注目用） */
@@ -997,34 +1048,36 @@
           </div>
         </div>
 
-        <p class="about-lead-text">
-          「Rollin'pic（ローリンピック）」は、カプコンとSNKの人気キャラクターが夢の共演を果たした伝説的な対戦格闘ゲーム『CAPCOM VS. SNK 2 MILLIONAIRE FIGHTING 2001』（通称：カプエス2）の世界最大規模を誇るアーケード版の大会です。<br>
-          プレイヤーとしても知られる D44 Bas氏 が中心となって主催しており、長年愛され続けるカプエス2コミュニティの熱量を象徴する一大イベントとなっています。
+        <!-- CAPCOM VS. SNK2の大会の歴史 -->
+        <h3 class="history-section-title">CAPCOM VS. SNK2の大会の歴史</h3>
+        <p class="history-section-text">
+          オフィシャル全国大会(2002年)、闘劇(2003年)、闘劇'04(2004年)と、公式の場でのカプエス2の全国規模の大会が終わり、そこからは有志による大規模大会へと移り変わりました。
+        </p>
+        <p class="history-section-text">
+          スポット規模での大会は数々行われてきましたが、毎年通例となる大規模大会は京都河原町のゲームセンターa-choでの「カプエス男祭り2009」から始まります。<br>
+          男祭りと冠した大会は2010年で終わりますが、その後全国大会と銘打って2017年まで継続して開催されました。
         </p>
 
-        <div class="about-features-title">💡 「Rollin'pic」の主な特徴と見どころ</div>
+        <!-- Rollin'picの始まり -->
+        <h3 class="history-section-title">Rollin'picの始まり</h3>
+        <p class="history-section-text">
+          諸々の事情で惜しまれつつも一旦は通年大会は幕を閉じますが、2019年に今大会主催でもあるD44氏による「Rollin'pic 2019 Tokyo」が開催され、南浦和のゲームセンタービッグワン2ndへ場所を移して、大規模大会の再開の一歩が始まります。
+        </p>
+        <p class="history-section-text">
+          その後、コロナ禍での感染症拡大の影響でのゲームセンターの営業自粛・大人数が集まるイベント開催の自粛などを乗り越え、第二回となる「Rollin'pic 2022 Tokyo」を開催。<br>
+          それ以降は、毎年11月頃に開催が定着して、今のRollin'picの姿があります。
+        </p>
 
-        <div class="feature-item">
-          <div class="feature-heading">1. カプエス2コミュニティにおける最大の祭典</div>
-          <ul class="feature-sublist">
-            <li>発売から長期間が経過した現在でも根強い人気を誇るカプエス2において、海外、全国各地からトッププレイヤーや熟練のファンが集結するフラグシップ大会です。</li>
-          </ul>
-        </div>
-
-        <div class="feature-item">
-          <div class="feature-heading">2. 熱気溢れる開催形式（個人戦＆チーム戦）</div>
-          <ul class="feature-sublist">
-            <li>例年、数日間にわたる日程で開催され、個人でのガチンコトーナメント（個人戦）に加え、仲間との連携が試される3on3のチーム戦なども実施されます。</li>
-            <li>個人戦では事前に全国各地のゲームセンターで選出された予選9名と当日予選トーナメントから7名が抜け、合計16名による決勝トーナメントが見ものです。AやKグルーヴが強いと言われているが近年どのグルーヴも研究が進んでおり、どのグルーヴ、プレイヤーが優勝するのか全く予想がつかない展開になっています。</li>
-            <li>3on3では毎年恒例店長デシカワさんのくじ引きによるデスブロックを勝ち抜くチームが見ものです。個人戦とは違い、1発勝負となっているため非常に一戦一戦が見逃せないスリリングで熱い展開です。</li>
-          </ul>
-        </div>
-
-        <div class="feature-item">
-          <div class="feature-heading">3. 聖地での熱いドラマ</div>
-          <ul class="feature-sublist">
-            <li>近年は埼玉県の "南浦和プレイスポットビッグワン（ビッグワン2nd）" などを主な会場として開催されることが多く、長年培われた独自のグルーヴ選択やキャラクター性能の駆け引き、数々の名勝負・ドラマが生まれています。この1年に1回の大会のために全世界のプレイヤーが凌ぎを削って準備して挑む大会です。</li>
-          </ul>
+        <!-- 主催者D44氏から一言 -->
+        <h3 class="history-section-title">今大会主催でもあるD44氏から一言</h3>
+        <div class="organizer-message-container">
+          <div class="organizer-photo-frame">
+            <img src="d44_message_photo.jpg" alt="D44氏">
+            <div class="organizer-photo-tag">ORGANIZER : D44</div>
+          </div>
+          <p class="organizer-comment-content">
+            テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト
+          </p>
         </div>
       </div>
 
@@ -2350,7 +2403,7 @@
                         <span class="result-badge badge-win">優勝</span> Triathlon(コーサカ、YSK、D44)
                       </div>
                       <div class="history-photo-frame">
-                        <img src="history_2019_day2_win.jpg" alt="2019 Day2 優勝">
+                        <img src="history_2019_day2_win.jpg" alt="2025 Day2 優勝">
                         <div class="history-photo-tag">Triathlon</div>
                       </div>
                     </div>
