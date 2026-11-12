@@ -589,7 +589,7 @@
       justify-content: space-between;
     }
 
-    .match-top-label span {
+    .match-top-label .match-title {
       font-family: 'Teko', sans-serif;
       font-size: 1.4rem;
       font-weight: 900;
@@ -597,6 +597,14 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       text-shadow: 0 0 8px rgba(255, 204, 0, 0.4);
+    }
+
+    .match-top-label .match-caster {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #e0e0e8;
+      letter-spacing: 0.5px;
     }
 
     .secret-match-row.match1-bg {
@@ -661,7 +669,7 @@
       border-bottom-color: rgba(0, 225, 255, 0.4);
     }
 
-    .secret-match-row:hover .match-top-label span {
+    .secret-match-row:hover .match-top-label .match-title {
       color: var(--capcom-blue);
       text-shadow: 0 0 8px rgba(0, 225, 255, 0.5);
     }
@@ -1509,7 +1517,8 @@
           <!-- Match 1 -->
           <div class="secret-match-row match1-bg">
             <div class="match-top-label">
-              <span>MATCH 1</span>
+              <span class="match-title">MATCH 1</span>
+              <span class="match-caster">実況：火澄・かまた</span>
             </div>
             <div class="match1-img-wrap">
               <img src="match1_bg.jpg" alt="Match 1 Background" onerror="this.style.display='none';">
@@ -1519,7 +1528,8 @@
           <!-- Match 2 -->
           <div class="secret-match-row match2-bg">
             <div class="match-top-label">
-              <span>MATCH 2</span>
+              <span class="match-title">MATCH 2</span>
+              <span class="match-caster">実況：火澄・うえい</span>
             </div>
             <div class="match2-img-wrap">
               <img src="match2_bg.jpg" alt="Match 2 Background" width="1680" height="936" onerror="this.style.display='none';">
@@ -1529,7 +1539,8 @@
           <!-- Match 3 -->
           <div class="secret-match-row match3-bg">
             <div class="match-top-label">
-              <span>MATCH 3</span>
+              <span class="match-title">MATCH 3</span>
+              <span class="match-caster">実況：火澄・GAN</span>
             </div>
             <div class="match3-img-wrap">
               <img src="match3_bg.jpg" alt="Match 3 Background" onerror="this.style.display='none';">
