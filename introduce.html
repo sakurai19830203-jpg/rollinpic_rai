@@ -972,6 +972,91 @@
     .g-n { color: #facc15 !important; font-weight: bold; }
     .g-s { color: #a855f7 !important; font-weight: bold; }
 
+    /* --- スポンサーセクション --- */
+    .sponsors-section {
+      position: relative;
+      width: 100%;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(11, 15, 25, 0.98) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 10px;
+      padding: 28px 20px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+      margin-bottom: 35px;
+    }
+
+    @media (min-width: 768px) {
+      .sponsors-section {
+        padding: 35px 30px;
+      }
+    }
+
+    .sponsors-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    @media (min-width: 600px) {
+      .sponsors-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .sponsor-card-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      background: rgba(6, 9, 17, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 8px;
+      padding: 20px 16px 16px 16px;
+      transition: all 0.25s ease;
+    }
+
+    .sponsor-card-link:hover {
+      border-color: #38bdf8;
+      background: rgba(15, 23, 42, 0.95);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .sponsor-logo-box {
+      width: 100%;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+
+    .sponsor-logo-box img {
+      max-width: 100%;
+      max-height: 116px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .sponsor-company-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #e2e8f0;
+      text-align: center;
+      line-height: 1.4;
+      word-break: keep-all;
+    }
+
+    .sponsor-card-link:hover .sponsor-company-name {
+      color: #38bdf8;
+    }
+
     .rollin-back-area {
       text-align: center;
       margin-top: 20px;
@@ -1688,7 +1773,7 @@
             <li class="bg-a">ラフ(Laugh) ／ <span class="g-a">A</span> バルログ、桜、ブランカ</li>
           </ul>
           <div class="team-description-box">
-            <p class="team-description">各部門のトッププレイヤーが集結した超優勝候補チーム。圧倒的な個々の練度と勝負強さが光る。</p>
+            <p class="team-description">実力も実績も最強クラスのKグル使い＆Cグル使いに加え、関東トップレベルにまで完全に仕上がったAグル使いによる、グルーヴバランスも良いまさにTier 1と呼べるチームだ！</p>
           </div>
         </div>
 
@@ -1703,7 +1788,7 @@
             <li class="bg-k">喫音 ／ <span class="g-k">K</span> 響ナコルルサガット</li>
           </ul>
           <div class="team-description-box">
-            <p class="team-description">長年シーンの第一線で戦い続けるベテラン勢によるチーム。抜群のチームワークと抜群の対応力が持ち味。</p>
+            <p class="team-description">各地域のKグルスペシャリストが集まった超絶攻め攻めチーム。3人のジャストディフェンスによる体力回復分だけで2キャラ分くらいありそうだ！<br>Aグルーヴが多いチームが鬼門となりそうだが、そこは長年のやり込みで乗り切ることだろう。</p>
           </div>
         </div>
 
@@ -1718,7 +1803,7 @@
             <li class="bg-a">YSK ／ <span class="g-a">A</span> 桜、ベガ、ブランカ</li>
           </ul>
           <div class="team-description-box">
-            <p class="team-description">関東の猛者たちが集結した強力布陣。個々の爆発力がかみ合った時の破壊力は計り知れない。</p>
+            <p class="team-description">こちらも実績十分なK・C・Aグル使い達によるスペシャリストチーム。<br>勢いのあるプレイ、無駄を省いた徹底したプレイ、そのどちらにも対応できないとこのチームには勝てないだろう。</p>
           </div>
         </div>
 
@@ -1733,7 +1818,7 @@
             <li class="bg-a">コーサカ ／ <span class="g-a">A</span> さくらベガブランカ</li>
           </ul>
           <div class="team-description-box">
-            <p class="team-description">関西と関東の強豪が融合した注目チーム。独特のコンビネーションで会場を沸かせる。</p>
+            <p class="team-description">Aグル使い3人による、Aアレ×3のドリームチーム。<br>Steam版ファイコレで絶対的な強さやポイントを誇る風神雷神に加え、関東の完璧主義Aグラーがチームを支える。</p>
           </div>
         </div>
 
@@ -1748,7 +1833,7 @@
             <li class="bg-k">Señor Payaso ／ <span class="g-k">K</span> TBD</li>
           </ul>
           <div class="team-description-box">
-            <p class="team-description">海外からの参戦となる国際色豊かなチーム。独自の立ち回りで日本勢の度肝を抜くか。</p>
+            <p class="team-description">最早海外枠ではなく完全な日本枠のGunter率いる、海外プレイヤーによるチーム。<br>Aグル＋Kグル2人による攻撃的な編成かつ、対策をしていないと厄介なキャラクターや独特な立ち回りが注目のチームだ。</p>
           </div>
         </div>
 
@@ -1763,7 +1848,7 @@
             <li class="bg-a">エミリオ ／ <span class="g-a">A</span> ブランカさくらベガ</li>
           </ul>
           <div class="team-description-box">
-            <p class="team-description">北の大地で熱い切磋琢磨を重ねてきた北海道勢の精鋭たち。一丸となって上位を狙う。</p>
+            <p class="team-description">お馴染みとなった北海道勢によるチーム。<br>Aグル2人に加え、鉄壁のCグルとバランスも良い。<br>平日から熱い対戦を繰り広げて、常に研究し続けている彼らの躍進劇は無視できないだろう。</p>
           </div>
         </div>
 
@@ -1778,7 +1863,7 @@
             <li class="bg-c">FM ／ <span class="g-c">C</span> リュウ、チュンリ、サガット</li>
           </ul>
           <div class="team-description-box">
-            <p class="team-description">大会主催のD44選手を含む実力者チーム。プレッシャーを跳ね返し、トリッキーな連携を見せる。</p>
+            <p class="team-description">主催者D44が率いるチーム。<br>お馴染みPグルーヴガイに加え、基本に忠実な立ち回りに定評のあるCグラーによる、バランスとやりづらさを兼ね揃えたチームだ。</p>
           </div>
         </div>
 
@@ -1793,7 +1878,7 @@
             <li class="bg-s">屋根 ／ <span class="g-s">S</span> テリー、チュンリー、サガット</li>
           </ul>
           <div class="team-description-box">
-            <p class="team-description">深いキャラ愛と独自のグルーヴ研究が光る職人集団。玄人好みの熱い試合を展開する。</p>
+            <p class="team-description">まさかのSグル使い3人によるチーム。<br>なかなか対戦する機会がない故に対策がしづらいSグルなのに、スペシャリストと呼べる3人が手を組んだ非常に厄介なチーム。<br>筆者個人的に最も注目のチーム。</p>
           </div>
         </div>
 
@@ -1808,7 +1893,7 @@
             <li class="bg-n">ヴィクター ／ <span class="g-n">N</span> 庵、春麗、モリガン</li>
           </ul>
           <div class="team-description-box">
-            <p class="team-description">大会に新たな風を吹き込む注目のプレイヤーが集まったチーム。大会を盛り上げる活躍に期待。</p>
+            <p class="team-description">大会に新たな風を吹き込む注目のプレイヤーが集まったチーム。<br>グルーヴもバランスよく組まれており、キャラクター構成もやや珍しかったり、レシオ4！？と思わせるエントリー内容から未知数な活躍が見込まれる。</p>
           </div>
         </div>
 
@@ -1823,7 +1908,7 @@
             <li class="bg-tbd">未定 ／ 未定 TBD</li>
           </ul>
           <div class="team-description-box">
-            <p class="team-description">勝利への執念を燃やすアグレッシブなチーム。3人目の動向を含めてダークホース的存在。</p>
+            <p class="team-description">記載中</p>
           </div>
         </div>
 
@@ -1831,14 +1916,14 @@
         <div class="team-card-item">
           <div class="card-corner-accent top-left"></div>
           <div class="card-corner-accent bottom-right"></div>
-          <div class="team-name-header">横道 ダブルアッパー</div>
+          <div class="team-name-header">横道ダブルアッパー</div>
           <ul class="team-members-list">
             <li class="bg-c">ナギラ ／ <span class="g-c">C</span> マキ 響 イーグル</li>
             <li class="bg-a">まさとぅー ／ <span class="g-a">A</span> ユン ユリ キム</li>
             <li class="bg-k">まこつ ／ <span class="g-k">K</span> ライデン キャミィ サガット</li>
           </ul>
           <div class="team-description-box">
-            <p class="team-description">鋭い攻めと意外性のある戦術で相手を翻弄するチーム。ジャイアントキリングを狙う。</p>
+            <p class="team-description">関東勢による、レアキャラ使いチーム。<br>鋭い攻めと意外性のある戦術で相手を翻弄する、キャラパワーだけでは語れない試合を展開するだろう。</p>
           </div>
         </div>
 
@@ -1853,7 +1938,7 @@
             <li class="bg-c">のび太 ／ <span class="g-c">C</span> ケン サクラ ルガール</li>
           </ul>
           <div class="team-description-box">
-            <p class="team-description">関西勢の実力者・坊ちゃん選手を擁する不敵なチーム名。お墨付きの堅実な強さを発揮する。</p>
+            <p class="team-description">関西でよくチームを組んでいた坊っちゃんゼノのチームに、関東勢ののび太が参戦。<br>KアレAアレの鉄壁の布陣に、独特な立ち回りやビタ目押しコンボを実戦で決めてくるCグルが加わった非常に危険なチーム。</p>
           </div>
         </div>
 
@@ -1868,7 +1953,7 @@
             <li class="bg-a">ぷ〜たん ／ <span class="g-a">A</span> バルログ、ジョー東、ブランカ</li>
           </ul>
           <div class="team-description-box">
-            <p class="team-description">ユニークなチーム名とは裏腹に、確かな技術を持つ実力者メンバーが揃った要警戒チーム。</p>
+            <p class="team-description">名古屋Q3勢によるチーム。<br>対策必須の超絶器用系Nグルジョー使いに加え、これまたレアなAグルジョー使いと超反応の通常技対空の光るKグル使いによるオラオラチーム。</p>
           </div>
         </div>
 
@@ -1883,7 +1968,7 @@
             <li class="bg-n">ヌメモンド本田☆ ／ <span class="g-n">N</span> エドモンド本田</li>
           </ul>
           <div class="team-description-box">
-            <p class="team-description">シャイニィー ソフィーティア選手らが集結した話題性抜群のチーム。独自の団結力で勝利を掴む。</p>
+            <p class="team-description">かなりのレアキャラで個人戦シード権を制した記憶が新しいソフィーティアに加え、ファイコレでもお馴染みの堅実派CグラーとN本田レシオ4という危険な香りが漂うチーム。</p>
           </div>
         </div>
 
@@ -1891,14 +1976,14 @@
         <div class="team-card-item">
           <div class="card-corner-accent top-left"></div>
           <div class="card-corner-accent bottom-right"></div>
-          <div class="team-name-header">steam勢</div>
+          <div class="team-name-header">Steam勢</div>
           <ul class="team-members-list">
             <li class="bg-k">sachansan ／ <span class="g-k">K</span> キャミィ、ブランカ、サガット</li>
             <li class="bg-c">ほんだ ／ <span class="g-c">C</span> リュウ、キャミィ、春麗</li>
             <li class="bg-n">nekonoc ／ <span class="g-n">N</span> 庵、ケン、サガット</li>
           </ul>
           <div class="team-description-box">
-            <p class="team-description">オンライン環境やSteam版で腕を磨き上げてきたプレイヤーたちによるトレンドチーム。</p>
+            <p class="team-description">ファイコレ配信でお馴染みのさっちゃんさんや、闘劇選手とZERO3の有名プレイヤーによる、Steam版ファイコレの実力者が揃ったチーム。<br>地上戦に重きを置いた、どっしりとした立ち回りが注目のチーム。</p>
           </div>
         </div>
 
@@ -1913,7 +1998,7 @@
             <li class="bg-a">ヤマモト ／ <span class="g-a">A</span> 桜 マキ 京</li>
           </ul>
           <div class="team-description-box">
-            <p class="team-description">ベテランのイタクラ選手を中心に、高いキャラ理解度とぶれない戦術眼が光る実力派チーム。</p>
+            <p class="team-description">お馴染みとなった名古屋勢3人によるチーム。<br>安定感のあるキャラ編成のイタクラ、独特なキャラと戦術のかおるだに加え、マキへ完全にキャラ変えをしたヤマモトによるトリッキーな攻めに注目。</p>
           </div>
         </div>
 
@@ -1928,7 +2013,7 @@
             <li class="bg-c">ぱーかー ／ <span class="g-c">C</span> サガット、ブランカ、庵</li>
           </ul>
           <div class="team-description-box">
-            <p class="team-description">機動力を活かしたスピード感あふれる試合運びを持ち味とする、気心の知れたメンバーのチーム。</p>
+            <p class="team-description">関西勢3人によるチーム。<br>対応型Aグラーと、機動力を活かしたスピード感溢れる嵐を巻き起こすNグルと硬派なCグルによる、懐かしくも新しいチームだ。</p>
           </div>
         </div>
 
@@ -1943,7 +2028,7 @@
             <li class="bg-n">MoMo ／ <span class="g-n">N</span> 庵 サガット ロレント</li>
           </ul>
           <div class="team-description-box">
-            <p class="team-description">各々の個性が融合した強力な3人組。大会の波乱を巻き起こすキーチームとなるか。</p>
+            <p class="team-description">各々の個性が融合した富士見台でお馴染みの強力な3人組。<br>対応しづらいKグルNグルの攻めと、油断すると永久コンボに持ち込まれてしまうCキムの恐怖に刮目せよ！</p>
           </div>
         </div>
 
@@ -1958,7 +2043,7 @@
             <li class="bg-c">チャパ ／ <span class="g-c">C</span> ケン ブランカ サガット</li>
           </ul>
           <div class="team-description-box">
-            <p class="team-description">Cグルーヴの精鋭たちが集結した注目のチーム。堅実かつ多彩な攻めで上位進出を狙う。</p>
+            <p class="team-description">地上戦のスペシャリストとも言うべきCグルーヴの精鋭たちが集結した注目のチーム。<br>Cグル×3と言うとスタンダードな印象だが、違うキャラクターはかなりトリッキーなキャラが多いため、かなり面白い試合が見れるぞ！</p>
           </div>
         </div>
 
@@ -1973,7 +2058,7 @@
             <li class="bg-k">コダマ ／ <span class="g-k">K</span> ベガ バイソン ブランカ</li>
           </ul>
           <div class="team-description-box">
-            <p class="team-description">圧倒的なパワーと爆発力を秘めた重量級・高火力編成の注目チーム。一撃の重みと怒涛の攻めで相手をねじ伏せる。</p>
+            <p class="team-description">圧倒的なパワーと爆発力を秘めた重量級・高火力編成の注目チーム。<br>バイソン2人に加え、モリガンやチャンと言った一度攻めに転じたらそのまま相手を倒し切るような非常に破壊的な編成だ！</p>
           </div>
         </div>
 
@@ -1988,7 +2073,7 @@
             <li class="bg-c">ゆきお ／ <span class="g-c">C</span> ロレント サガット バイソン</li>
           </ul>
           <div class="team-description-box">
-            <p class="team-description">個性豊かなCグルーヴ使いが揃った曲者揃いの実力派チーム。相手のペースを乱す巧みな立ち回りで勝利をもぎ取る。</p>
+            <p class="team-description">個性豊かなCグルーヴ使いが揃った曲者揃い。<br>ファイコレからカプエス2を始めた者や、復帰者による、ファイコレ効果とも言える注目チームだ。<br>相手のペースを乱す巧みな立ち回りで勝利をもぎ取る。</p>
           </div>
         </div>
 
@@ -2519,6 +2604,53 @@
             </div>
           </details>
 
+        </div>
+      </div>
+
+
+      <!-- ▼ スポンサー・協力企業セクション ▼ -->
+      <div class="sponsors-section">
+        <div class="card-corner-accent top-left"></div>
+        <div class="card-corner-accent bottom-right"></div>
+
+        <div class="stats-main-header" style="margin-bottom: 24px;">
+          <span class="sub-tag">SPONSORS &amp; PARTNERS</span>
+          <h2>協賛・協力</h2>
+          <div class="title-glow-line"></div>
+        </div>
+
+        <div class="sponsors-grid">
+          <!-- ① 株式会社ＡＴＫ -->
+          <a href="https://share.google/ay62bNLY57oKCp22L" target="_blank" rel="noopener noreferrer" class="sponsor-card-link">
+            <div class="sponsor-logo-box">
+              <img src="ATK Logo.png" alt="株式会社ＡＴＫ「こころをつなぐテクノロジー」" width="363" height="164">
+            </div>
+            <span class="sponsor-company-name">株式会社ＡＴＫ「こころをつなぐテクノロジー」</span>
+          </a>
+
+          <!-- ② Qanba -->
+          <a href="https://attasa.shop/" target="_blank" rel="noopener noreferrer" class="sponsor-card-link">
+            <div class="sponsor-logo-box">
+              <img src="Qanba Logo.png" alt="Qanba" width="394" height="253">
+            </div>
+            <span class="sponsor-company-name">Qanba</span>
+          </a>
+
+          <!-- ③ 無敵時間 -->
+          <a href="https://mutekijikan.base.shop/" target="_blank" rel="noopener noreferrer" class="sponsor-card-link">
+            <div class="sponsor-logo-box">
+              <img src="mutekijikan Logo.png" alt="無敵時間" width="281" height="324">
+            </div>
+            <span class="sponsor-company-name">無敵時間</span>
+          </a>
+
+          <!-- ④ プレイスポットビッグワンセカンド -->
+          <a href="https://x.com/public_bigone" target="_blank" rel="noopener noreferrer" class="sponsor-card-link">
+            <div class="sponsor-logo-box">
+              <img src="bigone Logo.png" alt="プレイスポットビッグワンセカンド" width="285" height="86">
+            </div>
+            <span class="sponsor-company-name">プレイスポットビッグワンセカンド</span>
+          </a>
         </div>
       </div>
 

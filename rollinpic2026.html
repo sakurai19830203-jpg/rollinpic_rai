@@ -958,6 +958,7 @@
       border: 1px solid var(--panel-border);
       padding: 24px;
       box-shadow: 8px 8px 0px #000;
+      margin-bottom: 60px;
     }
 
     .acc-item {
@@ -1016,6 +1017,90 @@
       font-weight: 900;
       font-size: 1rem;
       margin-bottom: 4px;
+    }
+
+    /* Sponsors Section */
+    .sponsor-section {
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-top: 4px solid var(--accent-yellow);
+      padding: 32px 24px;
+      box-shadow: 8px 8px 0px #000;
+      text-align: center;
+    }
+
+    .sponsor-heading {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      color: #fff;
+      letter-spacing: 3px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .sponsor-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      letter-spacing: 1px;
+    }
+
+    .sponsor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .sponsor-card {
+      background: #08080c;
+      border: 1px solid #22222c;
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      text-decoration: none;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .sponsor-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-yellow);
+      box-shadow: 0 8px 20px rgba(255, 204, 0, 0.15);
+    }
+
+    .sponsor-logo-box {
+      width: 100%;
+      min-height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 4px;
+    }
+
+    .sponsor-logo-box img {
+      max-width: 100%;
+      max-height: 120px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .sponsor-name {
+      font-size: 0.88rem;
+      font-weight: 900;
+      color: #e0e0e8;
+      line-height: 1.35;
+      transition: color 0.2s;
+    }
+
+    .sponsor-card:hover .sponsor-name {
+      color: var(--accent-yellow);
     }
 
     /* Footer */
@@ -1389,7 +1474,7 @@
         <div class="entry-list-section">
           <div class="entry-list-title">
             <span>エントリー状況一覧</span>
-            <span style="font-size:0.75rem; color:var(--text-muted); font-weight:normal;">11/17現在 (22チーム)</span>
+            <span style="font-size:0.75rem; color:var(--text-muted); font-weight:normal;">11/17現在 (23チーム)</span>
           </div>
           <table class="entry-table">
             <thead>
@@ -1447,68 +1532,73 @@
               </tr>
               <tr>
                 <td class="entry-num">10</td>
+                <td style="font-weight:bold;">勝ちゃよかろうもん</td>
+                <td>①S-ZAWA / Cキャミィ 春麗 サガット<br>②KAZU / A京 桜 庵<br>③未定 / 未定TBD</td>
+              </tr>
+              <tr>
+                <td class="entry-num">11</td>
                 <td style="font-weight:bold;">横道 ダブルアッパー</td>
                 <td>①ナギラ / Cマキ 響 イーグル<br>②まさとぅー / Aユン ユリ キム<br>③まこつ / Kライデン キャミィ サガット</td>
               </tr>
               <tr>
-                <td class="entry-num">11</td>
+                <td class="entry-num">12</td>
                 <td style="font-weight:bold;">ゼノサイドカッター・お荷物検査</td>
                 <td>①ゼノ / Aブランカ サクラ ベガ<br>②坊ちゃん / Kブランカ キャミィ サガット<br>③のび太 / Cケン サクラ ルガール</td>
               </tr>
               <tr>
-                <td class="entry-num">12</td>
+                <td class="entry-num">13</td>
                 <td style="font-weight:bold;">転生したらオラオラ系男子のハーレムだった件</td>
                 <td>①つじ / Nさくら、ジョー東、ブランカ<br>②みさき / K春麗、サガット、響<br>③ぷ～たん / Aバルログ、ジョー東、ブランカ</td>
               </tr>
               <tr>
-                <td class="entry-num">13</td>
+                <td class="entry-num">14</td>
                 <td style="font-weight:bold;">スーパーよちよちシャイニィーにゅ〜めろースンスンランドだ！ばぶー！！</td>
                 <td>①めろお / C庵 キャミィ サガット<br>②シャイニィー ソフィーティア / Aアテナ 恭介 モリガン<br>③ヌメモンド本田☆ / Nエドモンド本田</td>
               </tr>
               <tr>
-                <td class="entry-num">14</td>
+                <td class="entry-num">15</td>
                 <td style="font-weight:bold;">steam勢</td>
                 <td>①sachansan / Kキャミィ、ブランカ、サガット<br>②ほんだ / Cリュウ、キャミィ、春麗<br>③nekonoc / N庵、ケン、サガット</td>
               </tr>
               <tr>
-                <td class="entry-num">15</td>
+                <td class="entry-num">16</td>
                 <td style="font-weight:bold;">見せてやる、草薙のレシオ2を！</td>
                 <td>①イタクラ / Aベガ、ブランカ、響<br>②かおるだ / C藤堂、ロレント、サガット<br>③ヤマモト / A桜、マキ、京</td>
               </tr>
               <tr>
-                <td class="entry-num">16</td>
+                <td class="entry-num">17</td>
                 <td style="font-weight:bold;">新春走ろう会</td>
                 <td>①火澄 / Aブランカ、ベガ、バルログ<br>②みたむ / Nサガット、ブランカ、庵<br>③ぱーかー / Cサガット、ブランカ、庵</td>
               </tr>
               <tr>
-                <td class="entry-num">17</td>
+                <td class="entry-num">18</td>
                 <td style="font-weight:bold;">ゆうごうさじん</td>
                 <td>①ゴウ / Kサガット、ブランカ、ザンギエフ<br>②Towelman X / Cリュウ、キム、サガット<br>③MoMo / N庵、サガット、ロレント</td>
               </tr>
               <tr>
-                <td class="entry-num">18</td>
+                <td class="entry-num">19</td>
                 <td style="font-weight:bold;">3ねんCぐみ☆</td>
                 <td>①ムササビ / Cケン、ダルシム、ガイル<br>②ピロシキ / Cキム、キャミィ、サガット<br>③チャパ / Cケン、ブランカ、サガット</td>
               </tr>
               <tr>
-                <td class="entry-num">19</td>
+                <td class="entry-num">20</td>
                 <td style="font-weight:bold;">八千年ぶん溜めたタンパがあるんだいいかな</td>
                 <td>①酒寄ヤチヨ / Cチャン バイソン ギース<br>②カイ / Kギース 京 モリガン<br>③コダマ / Kベガ バイソン ブランカ</td>
               </tr>
               <tr>
-                <td class="entry-num">20</td>
+                <td class="entry-num">21</td>
                 <td style="font-weight:bold;">最後に悪は勝つ</td>
                 <td>①どろはじ / Cマキ キャミィ サガット<br>②大谷 / Cバルログ バイソン ベガ<br>③ゆきお / Cロレント サガット バイソン</td>
               </tr>
               <tr>
-                <td class="entry-num">21</td>
+                <td class="entry-num">22</td>
                 <td style="font-weight:bold;">未定(仮)</td>
                 <td>①ももてん(仮) / 未定<br>②エステス(仮) / 未定<br>③アイハラマキ(仮) / 未定</td>
               </tr>
               <tr>
-                <td class="entry-num">22</td>
-                <td style="font-weight:bold;">未定</td>
-                <td>①Aznmnky / Aベガ ブランカ 桜<br>②Ultracombo / Aサガット 響 ブランカ<br>③ChrisG / キャラ未定</td>
+                <td class="entry-num">23</td>
+                <td style="font-weight:bold;">CTU LA</td>
+                <td>①Aznmnky / Aベガ ブランカ 桜<br>②Ultracombo / Aサガット 響 ブランカ<br>③NYChrisG / キャラ未定</td>
               </tr>
             </tbody>
           </table>
@@ -1839,6 +1929,41 @@
       </div>
 
     </div>
+
+    <!-- Sponsors Section -->
+    <section class="sponsor-section">
+      <h3 class="sponsor-heading">SPONSORS</h3>
+      <div class="sponsor-sub">協賛企業・団体</div>
+      <div class="sponsor-grid">
+        <a href="https://share.google/ay62bNLY57oKCp22L" target="_blank" rel="noopener noreferrer" class="sponsor-card">
+          <div class="sponsor-logo-box">
+            <img src="ATK Logo.png" alt="株式会社ＡＴＫ「こころをつなぐテクノロジー」" width="363" height="164">
+          </div>
+          <div class="sponsor-name">株式会社ＡＴＫ<br>「こころをつなぐテクノロジー」</div>
+        </a>
+
+        <a href="https://attasa.shop/" target="_blank" rel="noopener noreferrer" class="sponsor-card">
+          <div class="sponsor-logo-box">
+            <img src="Qanba Logo.png" alt="Qanba" width="394" height="253">
+          </div>
+          <div class="sponsor-name">Qanba</div>
+        </a>
+
+        <a href="https://mutekijikan.base.shop/" target="_blank" rel="noopener noreferrer" class="sponsor-card">
+          <div class="sponsor-logo-box">
+            <img src="mutekijikan Logo.png" alt="無敵時間" width="281" height="324">
+          </div>
+          <div class="sponsor-name">無敵時間</div>
+        </a>
+
+        <a href="https://x.com/public_bigone" target="_blank" rel="noopener noreferrer" class="sponsor-card">
+          <div class="sponsor-logo-box">
+            <img src="bigone Logo.png" alt="プレイスポットビッグワンセカンド" width="285" height="86">
+          </div>
+          <div class="sponsor-name">プレイスポットビッグワンセカンド</div>
+        </a>
+      </div>
+    </section>
 
   </div>
 
