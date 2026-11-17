@@ -8,6 +8,10 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Teko:wght@600;700&display=swap');
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       padding: 0;
@@ -59,7 +63,7 @@
     /* ヘッダーエリア（ロゴ画像用） */
     .rollin-section-header {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 28px;
       width: 100%;
     }
 
@@ -81,6 +85,127 @@
       background: linear-gradient(90deg, transparent, #38bdf8, transparent);
       margin: 0 auto;
       box-shadow: 0 0 10px #38bdf8;
+    }
+
+    /* --- クイックジャンプ（目次ナビゲーション） --- */
+    .quick-nav-box {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(11, 15, 25, 0.98) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      border-radius: 10px;
+      padding: 18px 16px;
+      margin-bottom: 35px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(12px);
+    }
+
+    @media (min-width: 768px) {
+      .quick-nav-box {
+        padding: 22px 24px;
+      }
+    }
+
+    .quick-nav-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .quick-nav-header-en {
+      font-family: 'Teko', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #38bdf8;
+      text-transform: uppercase;
+    }
+
+    .quick-nav-header-jp {
+      font-size: 12px;
+      font-weight: 700;
+      color: #94a3b8;
+    }
+
+    .quick-nav-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    @media (min-width: 768px) {
+      .quick-nav-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+    }
+
+    .quick-nav-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: rgba(6, 9, 17, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-left: 3px solid #38bdf8;
+      border-radius: 6px;
+      padding: 10px 12px;
+      text-decoration: none;
+      color: #f1f5f9;
+      transition: all 0.22s ease;
+    }
+
+    .quick-nav-item:hover {
+      background: rgba(56, 189, 248, 0.16);
+      border-color: #38bdf8;
+      transform: translateY(-2px);
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.25);
+    }
+
+    .quick-nav-text {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .quick-nav-en {
+      font-family: 'Teko', sans-serif;
+      font-size: 12px;
+      letter-spacing: 1.2px;
+      color: #38bdf8;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .quick-nav-jp {
+      font-size: 12px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.35;
+      margin-top: 2px;
+    }
+
+    @media (min-width: 768px) {
+      .quick-nav-jp {
+        font-size: 13px;
+      }
+    }
+
+    .quick-nav-arrow {
+      font-size: 11px;
+      color: #38bdf8;
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
+
+    .quick-nav-item:hover .quick-nav-arrow {
+      transform: translateY(2px);
+      color: #ffffff;
+    }
+
+    /* アンカー移動時の上部余白調整 */
+    .scroll-anchor {
+      scroll-margin-top: 20px;
     }
 
     /* --- 共通カード用スタイル --- */
@@ -1250,8 +1375,67 @@
         </div>
       </div>
 
+      <!-- ▼ クイックジャンプ（目次ナビゲーション） ▼ -->
+      <nav class="quick-nav-box" aria-label="ページ内目次">
+        <div class="quick-nav-header">
+          <span class="quick-nav-header-en">CONTENTS</span>
+          <span class="quick-nav-header-jp">／ カテゴリへ移動</span>
+        </div>
+        <div class="quick-nav-grid">
+          <a href="#sec-about" class="quick-nav-item">
+            <div class="quick-nav-text">
+              <span class="quick-nav-en">ABOUT TOURNAMENT</span>
+              <span class="quick-nav-jp">Rollin'picとは？</span>
+            </div>
+            <span class="quick-nav-arrow">▼</span>
+          </a>
+          <a href="#sec-seeded" class="quick-nav-item">
+            <div class="quick-nav-text">
+              <span class="quick-nav-en">SEEDED PLAYERS</span>
+              <span class="quick-nav-jp">シード選手紹介</span>
+            </div>
+            <span class="quick-nav-arrow">▼</span>
+          </a>
+          <a href="#sec-qualifier" class="quick-nav-item">
+            <div class="quick-nav-text">
+              <span class="quick-nav-en">QUALIFIER PLAYERS</span>
+              <span class="quick-nav-jp">個人戦当日予選の注目選手</span>
+            </div>
+            <span class="quick-nav-arrow">▼</span>
+          </a>
+          <a href="#sec-teams" class="quick-nav-item">
+            <div class="quick-nav-text">
+              <span class="quick-nav-en">TEAM TOURNAMENT</span>
+              <span class="quick-nav-jp">団体戦全チーム紹介</span>
+            </div>
+            <span class="quick-nav-arrow">▼</span>
+          </a>
+          <a href="#sec-analytics" class="quick-nav-item">
+            <div class="quick-nav-text">
+              <span class="quick-nav-en">ENTRY ANALYTICS</span>
+              <span class="quick-nav-jp">個人戦グルーヴ・キャラ分析</span>
+            </div>
+            <span class="quick-nav-arrow">▼</span>
+          </a>
+          <a href="#sec-archives" class="quick-nav-item">
+            <div class="quick-nav-text">
+              <span class="quick-nav-en">ARCHIVES</span>
+              <span class="quick-nav-jp">過去大会の結果・記録</span>
+            </div>
+            <span class="quick-nav-arrow">▼</span>
+          </a>
+          <a href="#sec-sponsors" class="quick-nav-item">
+            <div class="quick-nav-text">
+              <span class="quick-nav-en">SPONSORS &amp; PARTNERS</span>
+              <span class="quick-nav-jp">協賛・協力</span>
+            </div>
+            <span class="quick-nav-arrow">▼</span>
+          </a>
+        </div>
+      </nav>
+
       <!-- ▼ 「Rollin'picとは？」カテゴリ ▼ -->
-      <div class="about-rollin-card">
+      <div id="sec-about" class="about-rollin-card scroll-anchor">
         <div class="stats-main-header" style="margin-bottom: 20px;">
           <span class="sub-tag">ABOUT TOURNAMENT</span>
           <h2>Rollin'picとは？</h2>
@@ -1320,7 +1504,7 @@
 
 
       <!-- ▼ シード選手紹介セクション見出し ▼ -->
-      <div class="stats-main-header" style="margin-bottom: 20px;">
+      <div id="sec-seeded" class="stats-main-header scroll-anchor" style="margin-bottom: 20px;">
         <span class="sub-tag">SEEDED PLAYERS</span>
         <h2>シード選手紹介</h2>
         <div class="title-glow-line"></div>
@@ -1616,7 +1800,7 @@
 
 
       <!-- ▼ 個人戦当日予選の注目選手セクション見出し ▼ -->
-      <div class="stats-main-header" style="margin-bottom: 20px;">
+      <div id="sec-qualifier" class="stats-main-header scroll-anchor" style="margin-bottom: 20px;">
         <span class="sub-tag">QUALIFIER PLAYERS</span>
         <h2>個人戦当日予選の注目選手</h2>
         <div class="title-glow-line"></div>
@@ -1857,7 +2041,7 @@
 
 
       <!-- ▼ 団体戦全チーム紹介セクション見出し ▼ -->
-      <div class="stats-main-header" style="margin-bottom: 20px;">
+      <div id="sec-teams" class="stats-main-header scroll-anchor" style="margin-bottom: 20px;">
         <span class="sub-tag">TEAM TOURNAMENT</span>
         <h2>団体戦全チーム紹介</h2>
         <div class="title-glow-line"></div>
@@ -1999,9 +2183,9 @@
         <div class="team-card-item">
           <div class="team-name-header">横道ダブルアッパー</div>
           <ul class="team-members-list">
-            <li class="bg-c">ナギラ ／ <span class="g-c">C</span> マキ 響 イーグル</li>
-            <li class="bg-a">まさとぅー ／ <span class="g-a">A</span> ユン ユリ キム</li>
-            <li class="bg-k">まこつ ／ <span class="g-k">K</span> ライデン キャミィ サガット</li>
+            <li class="bg-c">ナギラ ／ <span class="g-c">C</span> マキ　響　イーグル</li>
+            <li class="bg-a">まさとぅー ／ <span class="g-a">A</span> ユン　ユリ　キム</li>
+            <li class="bg-k">まこつ ／ <span class="g-k">K</span> ライデン　キャミィ　サガット</li>
           </ul>
           <div class="team-description-box">
             <p class="team-description">関東勢による、レアキャラ使いチーム。<br>鋭い攻めと意外性のある戦術で相手を翻弄する、キャラパワーだけでは語れない試合を展開するだろう。</p>
@@ -2013,8 +2197,8 @@
           <div class="team-name-header">ゼノサイドカッター・お荷物検査</div>
           <ul class="team-members-list">
             <li class="bg-a">ゼノ ／ <span class="g-a">A</span> ブランカ、サクラ、ベガ</li>
-            <li class="bg-k">坊ちゃん ／ <span class="g-k">K</span> ブランカ キャミィ サガット</li>
-            <li class="bg-c">のび太 ／ <span class="g-c">C</span> ケン サクラ ルガール</li>
+            <li class="bg-k">坊ちゃん ／ <span class="g-k">K</span> ブランカ　キャミィ　サガット</li>
+            <li class="bg-c">のび太 ／ <span class="g-c">C</span> ケン　サクラ　ルガール</li>
           </ul>
           <div class="team-description-box">
             <p class="team-description">関西でよくチームを組んでいた坊っちゃんゼノのチームに、関東勢ののび太が参戦。<br>KアレAアレの鉄壁の布陣に、独特な立ち回りやビタ目押しコンボを実戦で決めてくるCグルが加わった非常に危険なチーム。</p>
@@ -2064,9 +2248,9 @@
         <div class="team-card-item">
           <div class="team-name-header">見せてやる、草薙のレシオ2を！</div>
           <ul class="team-members-list">
-            <li class="bg-a">イタクラ ／ <span class="g-a">A</span> ベガ ブランカ 響</li>
-            <li class="bg-c">かおるだ ／ <span class="g-c">C</span> 藤堂 ロレント サガット</li>
-            <li class="bg-a">ヤマモト ／ <span class="g-a">A</span> 桜 マキ 京</li>
+            <li class="bg-a">イタクラ ／ <span class="g-a">A</span> ベガ　ブランカ　響</li>
+            <li class="bg-c">かおるだ ／ <span class="g-c">C</span> 藤堂　ロレント　サガット</li>
+            <li class="bg-a">ヤマモト ／ <span class="g-a">A</span> 桜　マキ　京</li>
           </ul>
           <div class="team-description-box">
             <p class="team-description">お馴染みとなった名古屋勢3人によるチーム。<br>安定感のあるキャラ編成のイタクラ、独特なキャラと戦術のかおるだに加え、マキへ完全にキャラ変えをしたヤマモトによるトリッキーな攻めに注目。</p>
@@ -2138,16 +2322,16 @@
           </div>
         </div>
 
-        <!-- Team 22 (未定(仮)) -->
+        <!-- Team 22 (ストームで天雷破を使わざるをえない（仮）) -->
         <div class="team-card-item">
-          <div class="team-name-header">未定(仮)</div>
+          <div class="team-name-header">ストームで天雷破を使わざるをえない（仮）</div>
           <ul class="team-members-list">
-            <li class="bg-tbd">ももてん(仮) ／ 使用キャラ未定</li>
-            <li class="bg-tbd">エステス(仮) ／ 使用キャラ未定</li>
-            <li class="bg-tbd">アイハラマキ(仮) ／ 使用キャラ未定</li>
+            <li class="bg-k">ももてん ／ <span class="g-k">K</span> 響、キャミィ、サガット</li>
+            <li class="bg-k">エステス ／ <span class="g-k">K</span> 豪鬼、ナコルル、サガット</li>
+            <li class="bg-c">ユリサカ仮面 ／ <span class="g-c">C</span> ユリ、バイス、キャミィ</li>
           </ul>
           <div class="team-description-box">
-            <p class="team-description">チーム名・使用キャラクターともにベールに包まれた注目の3人組。本番に向けた編成の行方と当日の戦いに期待がかかる。</p>
+            <p class="team-description">Kグルーヴの強力な攻めを展開する2人に、トリッキーかつスピード感のあるCグルーヴ使いが加わった注目の3人組。爆発力のある編成で上位進出を狙う。</p>
           </div>
         </div>
 
@@ -2168,7 +2352,7 @@
 
 
       <!-- ▼ 個人戦 (Singles)の使用グルーヴおよびキャラクター分析 ▼ -->
-      <div class="stats-section">
+      <div id="sec-analytics" class="stats-section scroll-anchor">
         <div class="stats-main-header">
           <span class="sub-tag">SINGLES ENTRY ANALYTICS</span>
           <h2>個人戦 (Singles)の使用グルーヴおよびキャラクター分析</h2>
@@ -2272,7 +2456,7 @@
                 <tr class="top-rank-1">
                   <td class="rank-col"><span class="rank-medal gold">1</span></td>
                   <td class="char-name-col">サガット</td>
-                  <td class="num-col">28名</td>
+                  <td class="num-col">29名</td>
                 </tr>
                 <tr class="top-rank-2">
                   <td class="rank-col"><span class="rank-medal silver">2</span></td>
@@ -2290,17 +2474,17 @@
                   <td class="num-col">13名</td>
                 </tr>
                 <tr>
-                  <td class="rank-col">5</td>
+                  <td class="rank-col">4</td>
                   <td class="char-name-col">キャミィ</td>
-                  <td class="num-col">12名</td>
+                  <td class="num-col">13名</td>
                 </tr>
                 <tr>
                   <td class="rank-col">6</td>
                   <td class="char-name-col">響</td>
-                  <td class="num-col">10名</td>
+                  <td class="num-col">11名</td>
                 </tr>
                 <tr>
-                  <td class="rank-col">6</td>
+                  <td class="rank-col">7</td>
                   <td class="char-name-col">サクラ</td>
                   <td class="num-col">10名</td>
                 </tr>
@@ -2468,7 +2652,7 @@
 
 
       <!-- ▼ 過去大会の結果（ARCHIVES） ▼ -->
-      <div class="stats-section">
+      <div id="sec-archives" class="stats-section scroll-anchor">
         <div class="stats-main-header">
           <span class="sub-tag">ARCHIVES</span>
           <h2>過去大会の結果・記録</h2>
@@ -2963,7 +3147,7 @@
 
 
       <!-- ▼ スポンサー・協力企業セクション ▼ -->
-      <div class="sponsors-section">
+      <div id="sec-sponsors" class="sponsors-section scroll-anchor">
         <div class="stats-main-header" style="margin-bottom: 24px;">
           <span class="sub-tag">SPONSORS &amp; PARTNERS</span>
           <h2>協賛・協力</h2>
