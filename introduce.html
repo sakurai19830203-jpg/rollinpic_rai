@@ -102,25 +102,6 @@
       }
     }
 
-    .card-corner-accent {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      border-color: #38bdf8;
-      border-style: solid;
-      pointer-events: none;
-    }
-    .card-corner-accent.top-left {
-      top: -1px;
-      left: -1px;
-      border-width: 2px 0 0 2px;
-    }
-    .card-corner-accent.bottom-right {
-      bottom: -1px;
-      right: -1px;
-      border-width: 0 2px 2px 0;
-    }
-
     .about-images-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -443,15 +424,10 @@
     }
 
     .player-card-header, 
-    .player-description-box, 
-    .card-corner-accent {
+    .player-description-box {
       position: relative;
       z-index: 1;
     }
-
-    .player-profile-card.tier-1 .card-corner-accent { border-color: #f59e0b; width: 12px; height: 12px; }
-    .player-profile-card.tier-2 .card-corner-accent { border-color: #94a3b8; width: 10px; height: 10px; }
-    .player-profile-card.featured-player .card-corner-accent { border-color: #ffffff; width: 10px; height: 10px; }
 
     .player-profile-card.tier-1 .photo-overlay-tag { background: #f59e0b; color: #060911; }
     .player-profile-card.tier-2 .photo-overlay-tag { background: #94a3b8; color: #060911; }
@@ -480,24 +456,6 @@
       border-radius: 0 6px 6px 0;
       margin-bottom: 0;
       width: 100%;
-    }
-
-    .card-corner-accent {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      border-style: solid;
-      pointer-events: none;
-    }
-    .card-corner-accent.top-left {
-      top: -1px;
-      left: -1px;
-      border-width: 2px 0 0 2px;
-    }
-    .card-corner-accent.bottom-right {
-      bottom: -1px;
-      right: -1px;
-      border-width: 0 2px 2px 0;
     }
 
     .player-card-header {
@@ -645,12 +603,6 @@
       overflow: hidden;
     }
 
-    .team-card-item .card-corner-accent {
-      border-color: #ffffff;
-      width: 8px;
-      height: 8px;
-    }
-
     .team-name-header {
       font-size: 18px;
       font-weight: 800;
@@ -684,14 +636,14 @@
       gap: 6px;
     }
 
-    /* 団体戦メンバー用グルーヴ背景色（視認性を高めた約25%の半透明） */
-    .team-members-list li.bg-k { background: rgba(239, 68, 68, 0.25); }
-    .team-members-list li.bg-c { background: rgba(132, 204, 22, 0.25); }
-    .team-members-list li.bg-a { background: rgba(56, 189, 248, 0.25); }
-    .team-members-list li.bg-p { background: rgba(0, 240, 255, 0.25); }
-    .team-members-list li.bg-n { background: rgba(250, 204, 21, 0.25); }
-    .team-members-list li.bg-s { background: rgba(168, 85, 247, 0.25); }
-    .team-members-list li.bg-tbd { background: rgba(100, 116, 139, 0.25); }
+    /* 団体戦メンバー・分析用グルーヴ背景色 */
+    .bg-k { background: rgba(239, 68, 68, 0.25); }
+    .bg-c { background: rgba(132, 204, 22, 0.25); }
+    .bg-a { background: rgba(56, 189, 248, 0.25); }
+    .bg-p { background: rgba(0, 240, 255, 0.25); }
+    .bg-n { background: rgba(250, 204, 21, 0.25); }
+    .bg-s { background: rgba(168, 85, 247, 0.25); }
+    .bg-tbd { background: rgba(100, 116, 139, 0.25); }
 
     .team-members-list li::before {
       content: '■';
@@ -767,6 +719,193 @@
       margin: 0 0 10px 0;
       color: #ffffff;
     }
+
+    /* --- 個人戦 (Singles) 使用グルーヴ・キャラクター分析用スタイル --- */
+    .analysis-note-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      color: #94a3b8;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-top: 12px;
+    }
+
+    .analysis-grid-wrapper {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    @media (min-width: 768px) {
+      .analysis-grid-wrapper {
+        grid-template-columns: 1fr 1.15fr;
+      }
+    }
+
+    .analysis-box {
+      background: rgba(6, 9, 17, 0.75);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 8px;
+      padding: 18px 16px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.45);
+    }
+
+    .analysis-box-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #38bdf8;
+      margin: 0 0 14px 0;
+      padding-left: 10px;
+      border-left: 3px solid #38bdf8;
+      letter-spacing: 0.5px;
+    }
+
+    .analysis-table,
+    .char-rank-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 6px;
+      font-size: 13px;
+    }
+
+    .analysis-table th,
+    .char-rank-table th {
+      text-align: left;
+      font-size: 11px;
+      font-weight: 700;
+      color: #94a3b8;
+      padding: 4px 10px;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+      letter-spacing: 0.5px;
+    }
+
+    .analysis-table th.num-col,
+    .analysis-table td.num-col,
+    .char-rank-table th.num-col,
+    .char-rank-table td.num-col {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .analysis-table td {
+      padding: 9px 10px;
+      font-weight: 700;
+      color: #ffffff;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .analysis-table td:first-child {
+      border-left: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 5px 0 0 5px;
+    }
+
+    .analysis-table td:last-child {
+      border-right: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 0 5px 5px 0;
+    }
+
+    .groove-bar-track {
+      width: 100%;
+      height: 5px;
+      background: rgba(6, 9, 17, 0.65);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 5px;
+    }
+
+    .groove-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+    }
+
+    .analysis-table tr.total-row td {
+      background: rgba(56, 189, 248, 0.14);
+      border-color: rgba(56, 189, 248, 0.45);
+      color: #ffffff;
+      font-weight: 800;
+    }
+
+    .char-rank-table {
+      border-spacing: 0 4px;
+    }
+
+    .char-rank-table th.rank-col,
+    .char-rank-table td.rank-col {
+      text-align: center;
+      width: 48px;
+    }
+
+    .char-rank-table td {
+      padding: 7px 10px;
+      background: rgba(15, 23, 42, 0.65);
+      color: #e2e8f0;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .char-rank-table td:first-child {
+      border-left: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 4px 0 0 4px;
+      font-weight: 800;
+      color: #94a3b8;
+    }
+
+    .char-rank-table td:last-child {
+      border-right: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 0 4px 4px 0;
+      font-weight: 700;
+      color: #38bdf8;
+    }
+
+    .char-rank-table td.char-name-col {
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .char-rank-table tr.top-rank-1 td {
+      background: rgba(245, 158, 11, 0.18);
+      border-color: rgba(245, 158, 11, 0.45);
+    }
+    .char-rank-table tr.top-rank-1 td:first-child,
+    .char-rank-table tr.top-rank-1 td:last-child {
+      color: #fcd34d;
+    }
+
+    .char-rank-table tr.top-rank-2 td {
+      background: rgba(148, 163, 184, 0.16);
+      border-color: rgba(148, 163, 184, 0.4);
+    }
+    .char-rank-table tr.top-rank-2 td:first-child,
+    .char-rank-table tr.top-rank-2 td:last-child {
+      color: #e2e8f0;
+    }
+
+    .char-rank-table tr.top-rank-3 td {
+      background: rgba(217, 119, 6, 0.15);
+      border-color: rgba(217, 119, 6, 0.38);
+    }
+    .char-rank-table tr.top-rank-3 td:first-child,
+    .char-rank-table tr.top-rank-3 td:last-child {
+      color: #fdba74;
+    }
+
+    .rank-medal {
+      display: inline-block;
+      min-width: 22px;
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 900;
+      text-align: center;
+    }
+    .rank-medal.gold { background: #f59e0b; color: #060911; }
+    .rank-medal.silver { background: #cbd5e1; color: #060911; }
+    .rank-medal.bronze { background: #d97706; color: #ffffff; }
 
     /* --- 過去大会結果用スタイル（PC2列グリッド・スマホ1列） --- */
     .history-grid-container {
@@ -971,6 +1110,7 @@
     .g-a { color: #38bdf8 !important; font-weight: bold; }
     .g-n { color: #facc15 !important; font-weight: bold; }
     .g-s { color: #a855f7 !important; font-weight: bold; }
+    .g-tbd { color: #cbd5e1 !important; font-weight: bold; }
 
     /* --- スポンサーセクション --- */
     .sponsors-section {
@@ -1112,9 +1252,6 @@
 
       <!-- ▼ 「Rollin'picとは？」カテゴリ ▼ -->
       <div class="about-rollin-card">
-        <div class="card-corner-accent top-left"></div>
-        <div class="card-corner-accent bottom-right"></div>
-
         <div class="stats-main-header" style="margin-bottom: 20px;">
           <span class="sub-tag">ABOUT TOURNAMENT</span>
           <h2>Rollin'picとは？</h2>
@@ -1205,8 +1342,6 @@
             <img src="K響.png" alt="">
             <img src="Kサガット.png" alt="">
           </div>
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           
           <div class="player-card-header">
             <div class="player-photo-frame">
@@ -1237,8 +1372,6 @@
             <img src="C春麗.png" alt="">
             <img src="Cサガット.png" alt="">
           </div>
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           
           <div class="player-card-header">
             <div class="player-photo-frame">
@@ -1271,8 +1404,6 @@
             <img src="Aブランカ.png" alt="">
             <img src="Aベガ.png" alt="">
           </div>
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           
           <div class="player-card-header">
             <div class="player-photo-frame">
@@ -1304,8 +1435,6 @@
             <img src="A桜.png" alt="">
             <img src="Aブランカ.png" alt="">
           </div>
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           
           <div class="player-card-header">
             <div class="player-photo-frame">
@@ -1342,8 +1471,6 @@
             <img src="Aブランカ.png" alt="">
             <img src="Aベガ.png" alt="">
           </div>
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           
           <div class="player-card-header">
             <div class="player-photo-frame">
@@ -1375,8 +1502,6 @@
             <img src="A恭介.png" alt="">
             <img src="Aモリガン.png" alt="">
           </div>
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           
           <div class="player-card-header">
             <div class="player-photo-frame">
@@ -1406,8 +1531,6 @@
             <img src="Cガイル.png" alt="">
             <img src="C庵.png" alt="">
           </div>
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           
           <div class="player-card-header">
             <div class="player-photo-frame">
@@ -1437,8 +1560,6 @@
             <img src="Kブランカ.png" alt="">
             <img src="Kキャミィ.png" alt="">
           </div>
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           
           <div class="player-card-header">
             <div class="player-photo-frame">
@@ -1469,8 +1590,6 @@
             <img src="Pブランカ.png" alt="">
             <img src="Pサガット.png" alt="">
           </div>
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           
           <div class="player-card-header">
             <div class="player-photo-frame">
@@ -1515,8 +1634,6 @@
             <img src="Aベガ.png" alt="">
             <img src="Aブランカ.png" alt="">
           </div>
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           
           <div class="player-card-header">
             <div class="player-photo-frame">
@@ -1546,8 +1663,6 @@
             <img src="Kナコルル.png" alt="">
             <img src="Kサガット.png" alt="">
           </div>
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           
           <div class="player-card-header">
             <div class="player-photo-frame">
@@ -1576,8 +1691,6 @@
             <img src="Aベガ.png" alt="">
             <img src="Aブランカ.png" alt="">
           </div>
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           
           <div class="player-card-header">
             <div class="player-photo-frame">
@@ -1607,8 +1720,6 @@
             <img src="Kキャミィ.png" alt="">
             <img src="Kサガット.png" alt="">
           </div>
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           
           <div class="player-card-header">
             <div class="player-photo-frame">
@@ -1637,8 +1748,6 @@
             <img src="Aベガ.png" alt="">
             <img src="Aブランカ.png" alt="">
           </div>
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           
           <div class="player-card-header">
             <div class="player-photo-frame">
@@ -1667,8 +1776,6 @@
             <img src="Cサガット.png" alt="">
             <img src="C庵.png" alt="">
           </div>
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           
           <div class="player-card-header">
             <div class="player-photo-frame">
@@ -1697,8 +1804,6 @@
             <img src="Cギース.png" alt="">
             <img src="Cロレント.png" alt="">
           </div>
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           
           <div class="player-card-header">
             <div class="player-photo-frame">
@@ -1727,8 +1832,6 @@
             <img src="Cキム.png" alt="">
             <img src="Cサガット.png" alt="">
           </div>
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           
           <div class="player-card-header">
             <div class="player-photo-frame">
@@ -1764,8 +1867,6 @@
 
         <!-- Team 1 -->
         <div class="team-card-item">
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">Tier 1</div>
           <ul class="team-members-list">
             <li class="bg-k">ライ ／ <span class="g-k">K</span> 舞、響、サガット</li>
@@ -1779,8 +1880,6 @@
 
         <!-- Team 2 -->
         <div class="team-card-item">
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">流星街</div>
           <ul class="team-members-list">
             <li class="bg-k">ピノキオ ／ <span class="g-k">K</span> 春麗キャミィサガット</li>
@@ -1794,8 +1893,6 @@
 
         <!-- Team 3 -->
         <div class="team-card-item">
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">GUYs</div>
           <ul class="team-members-list">
             <li class="bg-k">GAO ／ <span class="g-k">K</span> ギース、ナコルル、ロック</li>
@@ -1809,8 +1906,6 @@
 
         <!-- Team 4 -->
         <div class="team-card-item">
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">風神・雷神…んー…魔神！</div>
           <ul class="team-members-list">
             <li class="bg-a">GAN ／ <span class="g-a">A</span> 庵ベガブランカ</li>
@@ -1824,8 +1919,6 @@
 
         <!-- Team 5 -->
         <div class="team-card-item">
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">America's Army</div>
           <ul class="team-members-list">
             <li class="bg-a">Gunter ／ <span class="g-a">A</span> 響 ベガ ブランカ</li>
@@ -1839,8 +1932,6 @@
 
         <!-- Team 6 -->
         <div class="team-card-item">
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">北海道2D連合</div>
           <ul class="team-members-list">
             <li class="bg-a">ワタリ ／ <span class="g-a">A</span> ブランカ庵ベガ</li>
@@ -1854,8 +1945,6 @@
 
         <!-- Team 7 -->
         <div class="team-card-item">
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">飲酒乱s</div>
           <ul class="team-members-list">
             <li class="bg-a">D44 ／ <span class="g-a">A</span> 山崎、ベガ、ブランカ</li>
@@ -1869,8 +1958,6 @@
 
         <!-- Team 8 -->
         <div class="team-card-item">
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">S-GROOVE</div>
           <ul class="team-members-list">
             <li class="bg-s">イズミ ／ <span class="g-s">S</span> ケン、キャミー、サガット</li>
@@ -1884,8 +1971,6 @@
 
         <!-- Team 9 -->
         <div class="team-card-item">
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">あいさロロエヴィクター</div>
           <ul class="team-members-list">
             <li class="bg-k">あいさ ／ <span class="g-k">K</span> 山崎、バイソン、京</li>
@@ -1899,8 +1984,6 @@
 
         <!-- Team 10 -->
         <div class="team-card-item">
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">勝ちゃよかろうもん</div>
           <ul class="team-members-list">
             <li class="bg-c">S-ZAWA ／ <span class="g-c">C</span> キャミィ春麗サガット</li>
@@ -1914,8 +1997,6 @@
 
         <!-- Team 11 -->
         <div class="team-card-item">
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">横道ダブルアッパー</div>
           <ul class="team-members-list">
             <li class="bg-c">ナギラ ／ <span class="g-c">C</span> マキ 響 イーグル</li>
@@ -1929,8 +2010,6 @@
 
         <!-- Team 12 -->
         <div class="team-card-item">
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">ゼノサイドカッター・お荷物検査</div>
           <ul class="team-members-list">
             <li class="bg-a">ゼノ ／ <span class="g-a">A</span> ブランカ、サクラ、ベガ</li>
@@ -1944,8 +2023,6 @@
 
         <!-- Team 13 -->
         <div class="team-card-item">
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">【転生したらオラオラ系男子のハーレムだった件】</div>
           <ul class="team-members-list">
             <li class="bg-n">つじ ／ <span class="g-n">N</span> さくら、ジョー東、ブランカ</li>
@@ -1959,8 +2036,6 @@
 
         <!-- Team 14 -->
         <div class="team-card-item">
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">スーパーよちよちシャイニィーにゅ〜めろースンスンランドだ！ばぶー！！</div>
           <ul class="team-members-list">
             <li class="bg-c">めろお ／ <span class="g-c">C</span> 庵、キャミィ、サガット</li>
@@ -1974,8 +2049,6 @@
 
         <!-- Team 15 -->
         <div class="team-card-item">
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">Steam勢</div>
           <ul class="team-members-list">
             <li class="bg-k">sachansan ／ <span class="g-k">K</span> キャミィ、ブランカ、サガット</li>
@@ -1989,8 +2062,6 @@
 
         <!-- Team 16 -->
         <div class="team-card-item">
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">見せてやる、草薙のレシオ2を！</div>
           <ul class="team-members-list">
             <li class="bg-a">イタクラ ／ <span class="g-a">A</span> ベガ ブランカ 響</li>
@@ -2004,8 +2075,6 @@
 
         <!-- Team 17 -->
         <div class="team-card-item">
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">新春走ろう会</div>
           <ul class="team-members-list">
             <li class="bg-a">火澄 ／ <span class="g-a">A</span> ブランカ、ベガ、バルログ</li>
@@ -2019,8 +2088,6 @@
 
         <!-- Team 18 (ゆうごうさじん) -->
         <div class="team-card-item">
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">ゆうごうさじん</div>
           <ul class="team-members-list">
             <li class="bg-k">ゴウ ／ <span class="g-k">K</span> サガット ブランカ ザンギエフ</li>
@@ -2034,8 +2101,6 @@
 
         <!-- Team 19 (3ねんCぐみ☆) -->
         <div class="team-card-item">
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">3ねんCぐみ☆</div>
           <ul class="team-members-list">
             <li class="bg-c">ムササビ ／ <span class="g-c">C</span> ケン ダルシム ガイル</li>
@@ -2049,8 +2114,6 @@
 
         <!-- Team 20 (八千年ぶん溜めたタンパがあるんだいいかな) -->
         <div class="team-card-item">
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">八千年ぶん溜めたタンパがあるんだいいかな</div>
           <ul class="team-members-list">
             <li class="bg-c">酒寄ヤチヨ ／ <span class="g-c">C</span> チャン バイソン ギース</li>
@@ -2064,8 +2127,6 @@
 
         <!-- Team 21 (最後に悪は勝つ) -->
         <div class="team-card-item">
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">最後に悪は勝つ</div>
           <ul class="team-members-list">
             <li class="bg-c">どろはじ ／ <span class="g-c">C</span> マキ キャミィ サガット</li>
@@ -2079,8 +2140,6 @@
 
         <!-- Team 22 (未定(仮)) -->
         <div class="team-card-item">
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">未定(仮)</div>
           <ul class="team-members-list">
             <li class="bg-tbd">ももてん(仮) ／ 使用キャラ未定</li>
@@ -2094,8 +2153,6 @@
 
         <!-- Team 23 (未定 - Aznmnky / Ultracombo / NYChrisG) -->
         <div class="team-card-item">
-          <div class="card-corner-accent top-left"></div>
-          <div class="card-corner-accent bottom-right"></div>
           <div class="team-name-header">未定</div>
           <ul class="team-members-list">
             <li class="bg-a">Aznmnky ／ <span class="g-a">A</span> ベガ ブランカ 桜</li>
@@ -2110,11 +2167,308 @@
       </div>
 
 
+      <!-- ▼ 個人戦 (Singles)の使用グルーヴおよびキャラクター分析 ▼ -->
+      <div class="stats-section">
+        <div class="stats-main-header">
+          <span class="sub-tag">SINGLES ENTRY ANALYTICS</span>
+          <h2>個人戦 (Singles)の使用グルーヴおよびキャラクター分析</h2>
+          <div class="title-glow-line"></div>
+          <div>
+            <span class="analysis-note-badge">※ 2026/11/17エントリー情報時点</span>
+          </div>
+        </div>
+
+        <div class="analysis-grid-wrapper">
+
+          <!-- 左カラム：グルーヴ分布 -->
+          <div class="analysis-box">
+            <h3 class="analysis-box-title">使用グルーヴ分布</h3>
+            <table class="analysis-table">
+              <thead>
+                <tr>
+                  <th>グルーヴ</th>
+                  <th class="num-col">人数</th>
+                  <th class="num-col">割合</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="bg-a">
+                    <span class="g-a">A</span>
+                    <div class="groove-bar-track"><div class="groove-bar-fill" style="width: 30.4%; background: #38bdf8;"></div></div>
+                  </td>
+                  <td class="bg-a num-col">21名</td>
+                  <td class="bg-a num-col">30.4%</td>
+                </tr>
+                <tr>
+                  <td class="bg-k">
+                    <span class="g-k">K</span>
+                    <div class="groove-bar-track"><div class="groove-bar-fill" style="width: 29.0%; background: #ef4444;"></div></div>
+                  </td>
+                  <td class="bg-k num-col">20名</td>
+                  <td class="bg-k num-col">29.0%</td>
+                </tr>
+                <tr>
+                  <td class="bg-c">
+                    <span class="g-c">C</span>
+                    <div class="groove-bar-track"><div class="groove-bar-fill" style="width: 26.1%; background: #84cc16;"></div></div>
+                  </td>
+                  <td class="bg-c num-col">18名</td>
+                  <td class="bg-c num-col">26.1%</td>
+                </tr>
+                <tr>
+                  <td class="bg-n">
+                    <span class="g-n">N</span>
+                    <div class="groove-bar-track"><div class="groove-bar-fill" style="width: 8.7%; background: #facc15;"></div></div>
+                  </td>
+                  <td class="bg-n num-col">6名</td>
+                  <td class="bg-n num-col">8.7%</td>
+                </tr>
+                <tr>
+                  <td class="bg-p">
+                    <span class="g-p">P</span>
+                    <div class="groove-bar-track"><div class="groove-bar-fill" style="width: 2.9%; background: #00f0ff;"></div></div>
+                  </td>
+                  <td class="bg-p num-col">2名</td>
+                  <td class="bg-p num-col">2.9%</td>
+                </tr>
+                <tr>
+                  <td class="bg-tbd">
+                    <span class="g-tbd">未定</span>
+                    <div class="groove-bar-track"><div class="groove-bar-fill" style="width: 2.9%; background: #94a3b8;"></div></div>
+                  </td>
+                  <td class="bg-tbd num-col">2名</td>
+                  <td class="bg-tbd num-col">2.9%</td>
+                </tr>
+                <tr>
+                  <td class="bg-s">
+                    <span class="g-s">S</span>
+                    <div class="groove-bar-track"><div class="groove-bar-fill" style="width: 0%; background: #a855f7;"></div></div>
+                  </td>
+                  <td class="bg-s num-col">0名</td>
+                  <td class="bg-s num-col">0.0%</td>
+                </tr>
+                <tr class="total-row">
+                  <td>合計</td>
+                  <td class="num-col">69名</td>
+                  <td class="num-col">100%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 右カラム：使用キャラクターランキング -->
+          <div class="analysis-box">
+            <h3 class="analysis-box-title">使用キャラクターランキング</h3>
+            <table class="char-rank-table">
+              <thead>
+                <tr>
+                  <th class="rank-col">順位</th>
+                  <th>キャラクター</th>
+                  <th class="num-col">使用人数</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="top-rank-1">
+                  <td class="rank-col"><span class="rank-medal gold">1</span></td>
+                  <td class="char-name-col">サガット</td>
+                  <td class="num-col">28名</td>
+                </tr>
+                <tr class="top-rank-2">
+                  <td class="rank-col"><span class="rank-medal silver">2</span></td>
+                  <td class="char-name-col">ブランカ</td>
+                  <td class="num-col">26名</td>
+                </tr>
+                <tr class="top-rank-3">
+                  <td class="rank-col"><span class="rank-medal bronze">3</span></td>
+                  <td class="char-name-col">ベガ</td>
+                  <td class="num-col">15名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">4</td>
+                  <td class="char-name-col">庵</td>
+                  <td class="num-col">13名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">5</td>
+                  <td class="char-name-col">キャミィ</td>
+                  <td class="num-col">12名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">6</td>
+                  <td class="char-name-col">響</td>
+                  <td class="num-col">10名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">6</td>
+                  <td class="char-name-col">サクラ</td>
+                  <td class="num-col">10名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">8</td>
+                  <td class="char-name-col">春麗</td>
+                  <td class="num-col">8名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">9</td>
+                  <td class="char-name-col">モリガン</td>
+                  <td class="num-col">6名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">10</td>
+                  <td class="char-name-col">リュウ</td>
+                  <td class="num-col">5名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">10</td>
+                  <td class="char-name-col">ギース</td>
+                  <td class="num-col">5名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">12</td>
+                  <td class="char-name-col">マキ</td>
+                  <td class="num-col">4名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">12</td>
+                  <td class="char-name-col">チャン</td>
+                  <td class="num-col">4名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">12</td>
+                  <td class="char-name-col">ケン</td>
+                  <td class="num-col">4名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">15</td>
+                  <td class="char-name-col">山崎</td>
+                  <td class="num-col">3名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">15</td>
+                  <td class="char-name-col">京</td>
+                  <td class="num-col">3名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">15</td>
+                  <td class="char-name-col">バルログ</td>
+                  <td class="num-col">3名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">15</td>
+                  <td class="char-name-col">ガイル</td>
+                  <td class="num-col">3名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">15</td>
+                  <td class="char-name-col">ロレント</td>
+                  <td class="num-col">3名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">15</td>
+                  <td class="char-name-col">ジョー</td>
+                  <td class="num-col">3名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">21</td>
+                  <td class="char-name-col">舞</td>
+                  <td class="num-col">2名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">21</td>
+                  <td class="char-name-col">ナコルル</td>
+                  <td class="num-col">2名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">21</td>
+                  <td class="char-name-col">ルガール</td>
+                  <td class="num-col">2名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">21</td>
+                  <td class="char-name-col">ロック</td>
+                  <td class="num-col">2名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">21</td>
+                  <td class="char-name-col">バイソン</td>
+                  <td class="num-col">2名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">21</td>
+                  <td class="char-name-col">バイス</td>
+                  <td class="num-col">2名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">21</td>
+                  <td class="char-name-col">ユリ</td>
+                  <td class="num-col">2名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">21</td>
+                  <td class="char-name-col">キム</td>
+                  <td class="num-col">2名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">21</td>
+                  <td class="char-name-col">イーグル</td>
+                  <td class="num-col">2名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">21</td>
+                  <td class="char-name-col">ザンギエフ</td>
+                  <td class="num-col">2名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">31</td>
+                  <td class="char-name-col">ユン</td>
+                  <td class="num-col">1名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">31</td>
+                  <td class="char-name-col">アテナ</td>
+                  <td class="num-col">1名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">31</td>
+                  <td class="char-name-col">恭介</td>
+                  <td class="num-col">1名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">31</td>
+                  <td class="char-name-col">エドモンド本田</td>
+                  <td class="num-col">1名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">31</td>
+                  <td class="char-name-col">ダルシム</td>
+                  <td class="num-col">1名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">31</td>
+                  <td class="char-name-col">ライデン</td>
+                  <td class="num-col">1名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">31</td>
+                  <td class="char-name-col">藤堂</td>
+                  <td class="num-col">1名</td>
+                </tr>
+                <tr>
+                  <td class="rank-col">31</td>
+                  <td class="char-name-col">豪鬼</td>
+                  <td class="num-col">1名</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+
       <!-- ▼ 過去大会の結果（ARCHIVES） ▼ -->
       <div class="stats-section">
-        <div class="card-corner-accent top-left"></div>
-        <div class="card-corner-accent bottom-right"></div>
-
         <div class="stats-main-header">
           <span class="sub-tag">ARCHIVES</span>
           <h2>過去大会の結果・記録</h2>
@@ -2610,9 +2964,6 @@
 
       <!-- ▼ スポンサー・協力企業セクション ▼ -->
       <div class="sponsors-section">
-        <div class="card-corner-accent top-left"></div>
-        <div class="card-corner-accent bottom-right"></div>
-
         <div class="stats-main-header" style="margin-bottom: 24px;">
           <span class="sub-tag">SPONSORS &amp; PARTNERS</span>
           <h2>協賛・協力</h2>
