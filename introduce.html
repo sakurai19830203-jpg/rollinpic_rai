@@ -1385,10 +1385,42 @@
       color: #38bdf8;
     }
 
+    .overview-day-event-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    @media (min-width: 600px) {
+      .overview-day-event-wrap {
+        align-items: flex-end;
+      }
+    }
+
     .overview-day-event {
       font-size: 15px;
       font-weight: 800;
       color: #ffffff;
+    }
+
+    .overview-rule-link {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      padding: 3px 10px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .overview-rule-link:hover {
+      background: #38bdf8;
+      color: #060911;
+      border-color: #38bdf8;
     }
 
     .overview-detail-cta {
@@ -1557,6 +1589,13 @@
             </div>
             <span class="quick-nav-arrow">▼</span>
           </a>
+          <a href="#sec-guide" class="quick-nav-item">
+            <div class="quick-nav-text">
+              <span class="quick-nav-en">SPECTATOR GUIDE</span>
+              <span class="quick-nav-jp">カプエス2 観戦ガイド</span>
+            </div>
+            <span class="quick-nav-arrow">▼</span>
+          </a>
           <a href="#sec-arcades" class="quick-nav-item">
             <div class="quick-nav-text">
               <span class="quick-nav-en">QUALIFIER VENUES</span>
@@ -1661,11 +1700,17 @@
         <div class="overview-schedule-list">
           <div class="overview-day-row">
             <span class="overview-day-date">DAY 1 — 2026/11/21 (土)</span>
-            <span class="overview-day-event">個人戦 (Singles)</span>
+            <div class="overview-day-event-wrap">
+              <span class="overview-day-event">個人戦 (Singles)</span>
+              <a href="https://sakurai19830203-jpg.github.io/rollinpic_rai/singles_rule.html" target="_blank" rel="noopener noreferrer" class="overview-rule-link">大会ルール ▶</a>
+            </div>
           </div>
           <div class="overview-day-row">
             <span class="overview-day-date">DAY 2 — 2026/11/22 (日)</span>
-            <span class="overview-day-event">チーム戦 (3on3)</span>
+            <div class="overview-day-event-wrap">
+              <span class="overview-day-event">チーム戦 (3on3)</span>
+              <a href="https://sakurai19830203-jpg.github.io/rollinpic_rai/team_rule.html" target="_blank" rel="noopener noreferrer" class="overview-rule-link">大会ルール ▶</a>
+            </div>
           </div>
           <div class="overview-day-row">
             <span class="overview-day-date">DAY 3 — 2026/11/23 (月)</span>
@@ -1675,7 +1720,7 @@
 
         <div class="overview-detail-cta">
           <a href="https://sakurai19830203-jpg.github.io/rollinpic_rai/rollinpic2026.html" target="_blank" rel="noopener noreferrer" class="overview-detail-btn">
-            大会詳細・タイムテーブルはホームページへ ▶
+            大会ホームページはこちらへ ▶
           </a>
         </div>
       </div>
@@ -2223,6 +2268,9 @@
         <span class="sub-tag">TEAM TOURNAMENT</span>
         <h2>団体戦全チーム紹介</h2>
         <div class="title-glow-line"></div>
+        <div>
+          <span class="analysis-note-badge">※ 2026/11/17エントリー時点の全23チームを紹介</span>
+        </div>
       </div>
 
       <div class="teams-grid-container">
@@ -2825,6 +2873,25 @@
             </table>
           </div>
 
+        </div>
+      </div>
+
+
+      <!-- ▼ カプエス2 観戦ガイド（SPECTATOR GUIDE） ▼ -->
+      <div id="sec-guide" class="about-rollin-card scroll-anchor">
+        <div class="stats-main-header" style="margin-bottom: 20px;">
+          <span class="sub-tag">SPECTATOR GUIDE</span>
+          <h2>カプエス2 観戦ガイド</h2>
+          <div class="title-glow-line"></div>
+          <p style="font-size: 14px; color: #cbd5e1; margin: 14px auto 0 auto; line-height: 1.7; max-width: 680px;">
+            カプエス2の特徴的なシステムをまとめました。
+          </p>
+        </div>
+
+        <div class="overview-detail-cta">
+          <a href="https://sakurai19830203-jpg.github.io/rollinpic_rai/cvs2_guide.html" target="_blank" rel="noopener noreferrer" class="overview-detail-btn">
+            カプエス2 観戦ガイドはこちらへ ▶
+          </a>
         </div>
       </div>
 
