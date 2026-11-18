@@ -79,6 +79,55 @@
       filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.4));
     }
 
+    .digital-pamphlet-badge-wrap {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .digital-pamphlet-badge {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 7px 24px;
+      background: linear-gradient(90deg, rgba(6, 9, 17, 0.4) 0%, rgba(56, 189, 248, 0.16) 50%, rgba(6, 9, 17, 0.4) 100%);
+      border-top: 1px solid rgba(56, 189, 248, 0.65);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.65);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.25), inset 0 0 12px rgba(56, 189, 248, 0.12);
+    }
+
+    .digital-pamphlet-badge::before,
+    .digital-pamphlet-badge::after {
+      content: '◆';
+      font-size: 10px;
+      color: #38bdf8;
+      text-shadow: 0 0 8px #38bdf8;
+    }
+
+    .digital-pamphlet-text {
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: 5px;
+      padding-left: 5px;
+      color: #ffffff;
+      text-shadow: 0 0 10px rgba(56, 189, 248, 0.85), 0 0 22px rgba(56, 189, 248, 0.45);
+    }
+
+    @media (min-width: 768px) {
+      .digital-pamphlet-badge {
+        padding: 8px 34px;
+        gap: 16px;
+      }
+      .digital-pamphlet-text {
+        font-size: 18px;
+        letter-spacing: 7px;
+        padding-left: 7px;
+      }
+    }
+
     .title-glow-line {
       width: 70px;
       height: 3px;
@@ -1537,6 +1586,12 @@
       <div class="rollin-section-header">
         <div class="tournament-logo-wrap">
           <img src="RollinPic2025.png" alt="Rollin'pic 2026">
+        </div>
+        <div class="digital-pamphlet-badge-wrap">
+          <div class="digital-pamphlet-badge">
+            <span class="digital-pamphlet-text">デジタルパンフレット</span>
+          </div>
+          <div class="title-glow-line"></div>
         </div>
       </div>
 
