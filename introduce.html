@@ -1349,6 +1349,139 @@
       transform: translateY(-2px);
     }
 
+    /* --- 大会概要（EVENT OVERVIEW）スタイル --- */
+    .overview-schedule-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .overview-day-row {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      background: rgba(6, 9, 17, 0.8);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-left: 4px solid #38bdf8;
+      border-radius: 6px;
+      padding: 12px 16px;
+    }
+
+    @media (min-width: 600px) {
+      .overview-day-row {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+    }
+
+    .overview-day-date {
+      font-family: 'Teko', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #38bdf8;
+    }
+
+    .overview-day-event {
+      font-size: 15px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .overview-detail-cta {
+      text-align: center;
+    }
+
+    .overview-detail-btn {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: #060911;
+      background: #38bdf8;
+      border: 1px solid #38bdf8;
+      padding: 11px 26px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+    }
+
+    .overview-detail-btn:hover {
+      background: #7dd3fc;
+      border-color: #7dd3fc;
+      box-shadow: 0 0 22px rgba(56, 189, 248, 0.55);
+      transform: translateY(-2px);
+    }
+
+    /* --- ゲームセンター紹介（QUALIFIER VENUES）スタイル --- */
+    .arcades-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    @media (min-width: 600px) {
+      .arcades-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .arcade-card {
+      background: rgba(6, 9, 17, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.45);
+    }
+
+    .arcade-photo-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+    }
+
+    .arcade-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .arcade-region-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(6, 9, 17, 0.9);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.6);
+      font-size: 12px;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .arcade-info-body {
+      padding: 14px 16px;
+    }
+
+    .arcade-venue-name {
+      font-size: 16px;
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0;
+      line-height: 1.4;
+    }
+
     @media screen and (max-width: 768px) {
       html, body {
         width: 100% !important;
@@ -1389,6 +1522,13 @@
             </div>
             <span class="quick-nav-arrow">▼</span>
           </a>
+          <a href="#sec-overview" class="quick-nav-item">
+            <div class="quick-nav-text">
+              <span class="quick-nav-en">EVENT OVERVIEW</span>
+              <span class="quick-nav-jp">大会概要</span>
+            </div>
+            <span class="quick-nav-arrow">▼</span>
+          </a>
           <a href="#sec-seeded" class="quick-nav-item">
             <div class="quick-nav-text">
               <span class="quick-nav-en">SEEDED PLAYERS</span>
@@ -1414,6 +1554,13 @@
             <div class="quick-nav-text">
               <span class="quick-nav-en">ENTRY ANALYTICS</span>
               <span class="quick-nav-jp">個人戦グルーヴ・キャラ分析</span>
+            </div>
+            <span class="quick-nav-arrow">▼</span>
+          </a>
+          <a href="#sec-arcades" class="quick-nav-item">
+            <div class="quick-nav-text">
+              <span class="quick-nav-en">QUALIFIER VENUES</span>
+              <span class="quick-nav-jp">ゲームセンター紹介</span>
             </div>
             <span class="quick-nav-arrow">▼</span>
           </a>
@@ -1499,6 +1646,37 @@
             <br>
             最高な週末になるよう今年も3日間よろしく！
           </p>
+        </div>
+      </div>
+
+
+      <!-- ▼ 大会概要セクション ▼ -->
+      <div id="sec-overview" class="about-rollin-card scroll-anchor">
+        <div class="stats-main-header" style="margin-bottom: 20px;">
+          <span class="sub-tag">EVENT OVERVIEW</span>
+          <h2>大会概要</h2>
+          <div class="title-glow-line"></div>
+        </div>
+
+        <div class="overview-schedule-list">
+          <div class="overview-day-row">
+            <span class="overview-day-date">DAY 1 — 2026/11/21 (土)</span>
+            <span class="overview-day-event">個人戦 (Singles)</span>
+          </div>
+          <div class="overview-day-row">
+            <span class="overview-day-date">DAY 2 — 2026/11/22 (日)</span>
+            <span class="overview-day-event">チーム戦 (3on3)</span>
+          </div>
+          <div class="overview-day-row">
+            <span class="overview-day-date">DAY 3 — 2026/11/23 (月)</span>
+            <span class="overview-day-event">SPECIAL FT10</span>
+          </div>
+        </div>
+
+        <div class="overview-detail-cta">
+          <a href="https://sakurai19830203-jpg.github.io/rollinpic_rai/rollinpic2026.html" target="_blank" rel="noopener noreferrer" class="overview-detail-btn">
+            大会詳細・タイムテーブルはホームページへ ▶
+          </a>
         </div>
       </div>
 
@@ -2175,7 +2353,7 @@
             <li class="bg-k">Big Kastu ／ <span class="g-k">K</span> ギース 庵 サガット</li>
           </ul>
           <div class="team-description-box">
-            <p class="team-description">記載中</p>
+            <p class="team-description">九州勢2人チームに、ファイコレからカプエスに参戦したビックカツを迎えたチーム。<br>削りオリコンとファイコレで培った勝負勘に、S-ZAWAの強気の攻めがチームを支える。</p>
           </div>
         </div>
 
@@ -2331,11 +2509,11 @@
             <li class="bg-c">ユリサカ仮面 ／ <span class="g-c">C</span> ユリ、バイス、キャミィ</li>
           </ul>
           <div class="team-description-box">
-            <p class="team-description">Kグルーヴの強力な攻めを展開する2人に、トリッキーかつスピード感のあるCグルーヴ使いが加わった注目の3人組。爆発力のある編成で上位進出を狙う。</p>
+            <p class="team-description">Xスト、セイヴァー、STGの有名どころが集まったドリームチーム！<br>筆者のリサーチ力が足りなく実力は未知数だが、キャラ愛はかなり強い様子。当日の試合に注目したい！</p>
           </div>
         </div>
 
-        <!-- Team 23 (未定 - Aznmnky / Ultracombo / NYChrisG) -->
+        <!-- Team 23 (CTU LA - Aznmnky / Ultracombo / NYChrisG) -->
         <div class="team-card-item">
           <div class="team-name-header">CTU LA</div>
           <ul class="team-members-list">
@@ -2344,7 +2522,7 @@
             <li class="bg-tbd">NYChrisG ／ キャラ未定</li>
           </ul>
           <div class="team-description-box">
-            <p class="team-description">世界的に名を馳せる海外強豪プレイヤーたちが集結した注目の国際チーム。圧倒的な実戦経験と爆発力で日本勢の前に立ちはだかる。</p>
+            <p class="team-description">海外のカプエス2大会で活躍しているプレイヤー達に加え、UMVC3の有名プレイヤーよる海外強豪チーム。<br>多彩なオリコンを完備し、舞台慣れもしている彼らは、情報が少ないこともありかなり危険なチームとなることだろう。</p>
           </div>
         </div>
 
@@ -2647,6 +2825,76 @@
             </table>
           </div>
 
+        </div>
+      </div>
+
+
+      <!-- ▼ ゲームセンター紹介（QUALIFIER VENUES） ▼ -->
+      <div id="sec-arcades" class="stats-section scroll-anchor">
+        <div class="stats-main-header">
+          <span class="sub-tag">QUALIFIER VENUES</span>
+          <h2>ゲームセンター紹介</h2>
+          <div class="title-glow-line"></div>
+          <p style="font-size: 14px; color: #cbd5e1; margin: 14px auto 0 auto; line-height: 1.6; max-width: 680px;">
+            Rollin'picのシード予選が開催された全国のゲームセンターをご紹介！
+          </p>
+        </div>
+
+        <div class="arcades-grid">
+          <!-- 1. 北海道 -->
+          <div class="arcade-card">
+            <div class="arcade-photo-frame">
+              <img src="arcade_hokkaido.jpg" alt="GIGO札幌駅西口">
+              <span class="arcade-region-badge">北海道</span>
+            </div>
+            <div class="arcade-info-body">
+              <h3 class="arcade-venue-name">GIGO札幌駅西口</h3>
+            </div>
+          </div>
+
+          <!-- 2. 東京 -->
+          <div class="arcade-card">
+            <div class="arcade-photo-frame">
+              <img src="arcade_tokyo.jpg" alt="西日暮里バーサス">
+              <span class="arcade-region-badge">東京</span>
+            </div>
+            <div class="arcade-info-body">
+              <h3 class="arcade-venue-name">西日暮里バーサス</h3>
+            </div>
+          </div>
+
+          <!-- 3. 埼玉 -->
+          <div class="arcade-card">
+            <div class="arcade-photo-frame">
+              <img src="arcade_saitama.jpg" alt="南浦和ビックワンセカンド">
+              <span class="arcade-region-badge">埼玉</span>
+            </div>
+            <div class="arcade-info-body">
+              <h3 class="arcade-venue-name">南浦和ビックワンセカンド</h3>
+            </div>
+          </div>
+
+          <!-- 4. 愛知 -->
+          <div class="arcade-card">
+            <div class="arcade-photo-frame">
+              <img src="arcade_aichi.jpg" alt="名古屋GAME BOX Q3">
+              <span class="arcade-region-badge">愛知</span>
+            </div>
+            <div class="arcade-info-body">
+              <h3 class="arcade-venue-name">名古屋GAME BOX Q3</h3>
+            </div>
+          </div>
+
+          <!-- 5. 大阪 -->
+          <div class="arcade-card">
+            <div class="arcade-photo-frame">
+              <img src="arcade_osaka.jpg" alt="アミューズファクトリーAXE">
+              <span class="arcade-region-badge">大阪</span>
+            </div>
+            <div class="arcade-info-body">
+              <h3 class="arcade-venue-name">アミューズファクトリーAXE</h3>
+            </div>
+          </div>
         </div>
       </div>
 
