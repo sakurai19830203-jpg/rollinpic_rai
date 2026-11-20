@@ -690,10 +690,17 @@
       line-height: 0;
     }
 
+    .match1-img-wrap a,
+    .match2-img-wrap a,
+    .match3-img-wrap a {
+      display: block;
+    }
+
     .match1-img-wrap img {
       width: 100%;
       height: auto;
       display: block;
+      transition: transform 0.25s ease, filter 0.25s ease;
     }
 
     .secret-match-row.match2-bg {
@@ -713,6 +720,7 @@
       aspect-ratio: 1680 / 936;
       display: block;
       object-fit: cover;
+      transition: transform 0.25s ease, filter 0.25s ease;
     }
 
     .secret-match-row.match3-bg {
@@ -729,6 +737,11 @@
       width: 100%;
       height: auto;
       display: block;
+      transition: transform 0.25s ease, filter 0.25s ease;
+    }
+
+    .secret-match-row:hover img {
+      filter: brightness(1.06);
     }
 
     .secret-match-row:hover {
@@ -1712,7 +1725,9 @@
               <span class="match-caster">実況：火澄・かまた</span>
             </div>
             <div class="match1-img-wrap">
-              <img src="match1_bg.jpg" alt="Match 1 Background" onerror="this.style.display='none';">
+              <a href="https://x.com/Ryo151/status/2123575556902109265?a=tl7bBl5uCqL2sas_K1I&s=20" target="_blank" rel="noopener noreferrer">
+                <img src="match1_bg.jpg" alt="Match 1 Background" onerror="this.style.display='none';">
+              </a>
             </div>
           </div>
 
@@ -1723,7 +1738,9 @@
               <span class="match-caster">実況：火澄・うえい</span>
             </div>
             <div class="match2-img-wrap">
-              <img src="match2_bg.jpg" alt="Match 2 Background" width="1680" height="936" onerror="this.style.display='none';">
+              <a href="https://x.com/Ryo151/status/2122899855375020206?a=zEBIW4YQQZYzEx0NixQ&s=20" target="_blank" rel="noopener noreferrer">
+                <img src="match2_bg.jpg" alt="Match 2 Background" width="1680" height="936" onerror="this.style.display='none';">
+              </a>
             </div>
           </div>
 
@@ -1734,7 +1751,9 @@
               <span class="match-caster">実況：火澄・GAN</span>
             </div>
             <div class="match3-img-wrap">
-              <img src="match3_bg.jpg" alt="Match 3 Background" onerror="this.style.display='none';">
+              <a href="https://x.com/Ryo151/status/2123705893238010301?a=0jCz_tVOahjPnSnXvOE&s=20" target="_blank" rel="noopener noreferrer">
+                <img src="match3_bg.jpg" alt="Match 3 Background" onerror="this.style.display='none';">
+              </a>
             </div>
           </div>
 
