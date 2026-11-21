@@ -168,50 +168,51 @@
       font-style: italic;
     }
 
-    /* カウントダウンタイマー */
-    .countdown-container {
+    /* 開催中ステータスバナー */
+    .live-status-banner {
       margin-top: 22px;
-      background: rgba(10, 10, 16, 0.75);
-      border: 1px solid var(--panel-border);
-      border-top: 2px solid var(--accent-yellow);
-      display: inline-block;
-      padding: 12px 24px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.8);
-    }
-
-    .countdown-label {
-      font-size: 0.8rem;
-      font-weight: bold;
-      color: var(--text-muted);
-      letter-spacing: 1px;
-      margin-bottom: 4px;
-    }
-
-    .countdown-timer {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
+      background: linear-gradient(135deg, rgba(0, 225, 255, 0.16) 0%, rgba(16, 16, 24, 0.92) 50%, rgba(255, 204, 0, 0.16) 100%);
+      border: 1px solid var(--capcom-blue);
+      border-top: 3px solid var(--accent-yellow);
+      display: inline-flex;
       align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 14px 32px;
+      box-shadow: 0 0 24px rgba(0, 225, 255, 0.25), 6px 6px 0px #000;
     }
 
-    .time-block {
-      text-align: center;
+    .live-pulse-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--snk-red);
+      box-shadow: 0 0 10px var(--snk-red);
+      flex-shrink: 0;
+      animation: livePulse 1.4s infinite ease-in-out;
     }
 
-    .time-val {
-      font-family: 'Teko', sans-serif;
-      font-size: 2.2rem;
-      font-weight: 700;
+    @keyframes livePulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.35);
+        opacity: 0.65;
+      }
+    }
+
+    .live-status-text {
+      font-size: clamp(1.15rem, 3.2vw, 1.65rem);
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: 1.5px;
+      text-shadow: 0 0 12px rgba(0, 225, 255, 0.55), 2px 2px 0px #000;
+    }
+
+    .live-status-text span {
       color: var(--accent-yellow);
-      line-height: 1;
-      display: block;
-      min-width: 42px;
-    }
-
-    .time-unit {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
     }
 
     /* Pamphlet Banner */
@@ -293,6 +294,10 @@
         bottom: 10px;
         font-size: 0.78rem;
         padding: 5px 12px;
+      }
+      .live-status-banner {
+        padding: 12px 20px;
+        gap: 10px;
       }
     }
 
@@ -1367,18 +1372,10 @@
         <p style="margin-top: 10px; font-size: 0.95rem; color: var(--text-muted); font-weight: bold;">＜大会概要＞ 開催場所 ： 南浦和プレイスポットビッグワンセカンド</p>
       </div>
 
-      <!-- カウントダウンタイマー -->
-      <div class="countdown-container">
-        <div class="countdown-label">DAY 1 開幕まで</div>
-        <div class="countdown-timer">
-          <div class="time-block"><span class="time-val" id="cd-days">--</span><span class="time-unit">DAYS</span></div>
-          <div style="font-family:'Teko'; font-size:2rem; color:var(--text-muted); align-self:flex-start;">:</div>
-          <div class="time-block"><span class="time-val" id="cd-hours">--</span><span class="time-unit">HOURS</span></div>
-          <div style="font-family:'Teko'; font-size:2rem; color:var(--text-muted); align-self:flex-start;">:</div>
-          <div class="time-block"><span class="time-val" id="cd-mins">--</span><span class="time-unit">MINS</span></div>
-          <div style="font-family:'Teko'; font-size:2rem; color:var(--text-muted); align-self:flex-start;">:</div>
-          <div class="time-block"><span class="time-val" id="cd-secs">--</span><span class="time-unit">SECS</span></div>
-        </div>
+      <!-- 開催中ステータスバナー -->
+      <div class="live-status-banner">
+        <span class="live-pulse-dot"></span>
+        <div class="live-status-text"><span>DAY 1（個人戦）</span>開幕中！</div>
       </div>
     </section>
 
@@ -2089,34 +2086,6 @@
       body.style.display = isOpen ? 'none' : 'block';
       icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
     }
-
-    // カウントダウン処理
-    function updateCountdown() {
-      const targetDate = new Date('2026-11-21T10:00:00+09:00').getTime();
-      const now = new Date().getTime();
-      const diff = targetDate - now;
-
-      if (diff <= 0) {
-        document.getElementById('cd-days').textContent = '00';
-        document.getElementById('cd-hours').textContent = '00';
-        document.getElementById('cd-mins').textContent = '00';
-        document.getElementById('cd-secs').textContent = '00';
-        return;
-      }
-
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const secs = Math.floor((diff % (1000 * 60)) / 1000);
-
-      document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
-      document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
-      document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
-      document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
-    }
-
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
   </script>
 </body>
 </html>
