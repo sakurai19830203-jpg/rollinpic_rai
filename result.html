@@ -378,7 +378,7 @@
       background: linear-gradient(135deg, rgba(217, 119, 6, 0.1) 0%, rgba(6, 9, 17, 0.94) 100%);
     }
 
-    /* 写真フレーム（16:9・1人/1チーム/1試合につき1枚） */
+    /* 写真フレーム（DAY1・DAY2用 16:9） */
     .result-photo-box {
       position: relative;
       width: 100%;
@@ -388,6 +388,14 @@
       background: #0b1120;
       border: 1px solid rgba(56, 189, 248, 0.45);
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+    }
+
+    /* DAY3 FT10用 縦長写真フレーム（300×398） */
+    .result-photo-box.ft10-portrait-box {
+      width: 100%;
+      max-width: 300px;
+      aspect-ratio: 300 / 398;
+      margin: 0 auto;
     }
 
     .champion-card .result-photo-box { border-color: #f59e0b; }
@@ -437,15 +445,15 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(6, 9, 17, 0.85);
+      background: rgba(6, 9, 17, 0.88);
       color: #e2e8f0;
-      font-family: 'Teko', sans-serif;
+      font-family: 'Teko', 'Helvetica Neue', Arial, sans-serif;
       font-size: 13px;
-      letter-spacing: 1.5px;
+      letter-spacing: 1.2px;
       text-align: center;
-      padding: 2px 8px;
+      padding: 4px 8px;
       z-index: 3;
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
     }
 
     .podium-info {
@@ -617,7 +625,7 @@
       justify-content: space-between;
       gap: 10px;
       padding-bottom: 14px;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     }
 
@@ -647,26 +655,49 @@
       color: #fbbf24;
     }
 
-    .ft10-hero-grid {
+    /* プレイヤー毎2枚の縦長写真グリッド（300×398） */
+    .ft10-players-photos-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 18px;
+      gap: 20px;
       margin-bottom: 20px;
-      align-items: center;
+      justify-items: center;
     }
 
-    @media (min-width: 768px) {
-      .ft10-hero-grid {
-        grid-template-columns: 300px 1fr;
-        gap: 22px;
+    @media (min-width: 680px) {
+      .ft10-players-photos-grid {
+        grid-template-columns: repeat(2, minmax(0, 300px));
+        justify-content: center;
+        gap: 32px;
       }
+    }
+
+    .ft10-player-photo-card {
+      width: 100%;
+      max-width: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .ft10-player-photo-card .result-photo-box.winner-photo-border {
+      border: 2px solid #fbbf24;
+      box-shadow: 0 0 18px rgba(251, 191, 36, 0.25);
     }
 
     /* スコアボード対決表示 */
     .ft10-scoreboard {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    @media (min-width: 600px) {
+      .ft10-scoreboard {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+      }
     }
 
     .ft10-player-row {
@@ -1158,44 +1189,59 @@
 
         <div class="ft10-matches-list">
 
-          <!-- MATCH 1 : ピノキオ vs ワタリ (2 - 10) -->
+          <!-- MATCH 1 : ワタリ vs ピノキオ (10 - 2) -->
           <article class="ft10-match-card">
             <div class="ft10-card-top">
-              <span class="ft10-match-num">MATCH 1</span>
+              <span class="ft10-match-num">MATCH 1 : ワタリ vs ピノキオ</span>
               <div class="ft10-winner-announcement">🏆 <span>10 - 2</span> で <span>ワタリ</span> の勝利</div>
             </div>
 
-            <div class="ft10-hero-grid">
-              <div class="result-photo-box">
-                <div class="photo-placeholder-guide">
-                  <span>FT10 MATCH 1 PHOTO</span>
-                  result_day3_match1.jpg
+            <!-- プレイヤー毎写真（計2枚・300×398縦長） -->
+            <div class="ft10-players-photos-grid">
+              <div class="ft10-player-photo-card">
+                <div class="result-photo-box ft10-portrait-box winner-photo-border">
+                  <div class="photo-placeholder-guide">
+                    <span>MATCH 1 PHOTO (300×398)</span>
+                    result_day3_match1_watari.jpg
+                  </div>
+                  <img src="result_day3_match1_watari.jpg" width="300" height="398" alt="DAY3 FT10 MATCH1 ワタリ" onerror="this.style.display='none';">
+                  <div class="photo-caption-strip">MATCH 1 : ワタリ vs ピノキオ（ワタリ）</div>
                 </div>
-                <img src="result_day3_match1.jpg" alt="DAY3 FT10 MATCH1 ピノキオ vs ワタリ" onerror="this.style.display='none';">
-                <div class="photo-caption-strip">MATCH 1 : ピノキオ vs ワタリ</div>
               </div>
 
-              <div class="ft10-scoreboard">
-                <div class="ft10-player-row bg-k">
-                  <div class="ft10-player-meta">
-                    <div class="ft10-player-name-line">
-                      <span class="ft10-player-name">ピノキオ</span>
-                    </div>
-                    <div class="ft10-player-chars"><span class="g-k">K</span> 春麗 / キャミィ / サガット</div>
+              <div class="ft10-player-photo-card">
+                <div class="result-photo-box ft10-portrait-box">
+                  <div class="photo-placeholder-guide">
+                    <span>MATCH 1 PHOTO (300×398)</span>
+                    result_day3_match1_pinokio.jpg
                   </div>
-                  <div class="ft10-score-box">2</div>
+                  <img src="result_day3_match1_pinokio.jpg" width="300" height="398" alt="DAY3 FT10 MATCH1 ピノキオ" onerror="this.style.display='none';">
+                  <div class="photo-caption-strip">MATCH 1 : ワタリ vs ピノキオ（ピノキオ）</div>
                 </div>
+              </div>
+            </div>
 
-                <div class="ft10-player-row bg-a is-winner">
-                  <div class="ft10-player-meta">
-                    <div class="ft10-player-name-line">
-                      <span class="ft10-player-name">ワタリ</span>
-                      <span class="win-pill">WINNER</span>
-                    </div>
-                    <div class="ft10-player-chars"><span class="g-a">A</span> 庵 / ベガ / ブランカ</div>
+            <!-- スコアボード -->
+            <div class="ft10-scoreboard">
+              <div class="ft10-player-row bg-a is-winner">
+                <div class="ft10-player-meta">
+                  <div class="ft10-player-name-line">
+                    <span class="ft10-player-name">ワタリ</span>
+                    <span class="win-pill">WINNER</span>
                   </div>
-                  <div class="ft10-score-box">10</div>
+                  <div class="ft10-player-chars"><span class="g-a">A</span> 庵 / ベガ / ブランカ</div>
                 </div>
+                <div class="ft10-score-box">10</div>
+              </div>
+
+              <div class="ft10-player-row bg-k">
+                <div class="ft10-player-meta">
+                  <div class="ft10-player-name-line">
+                    <span class="ft10-player-name">ピノキオ</span>
+                  </div>
+                  <div class="ft10-player-chars"><span class="g-k">K</span> 春麗 / キャミィ / サガット</div>
+                </div>
+                <div class="ft10-score-box">2</div>
               </div>
             </div>
 
@@ -1216,22 +1262,6 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td class="matrix-player-col">ピノキオ</td>
-                      <td><span class="mark-lose">×</span></td>
-                      <td><span class="mark-win">〇</span></td>
-                      <td><span class="mark-lose">×</span></td>
-                      <td><span class="mark-lose">×</span></td>
-                      <td><span class="mark-lose">×</span></td>
-                      <td><span class="mark-lose">×</span></td>
-                      <td><span class="mark-lose">×</span></td>
-                      <td><span class="mark-lose">×</span></td>
-                      <td><span class="mark-lose">×</span></td>
-                      <td><span class="mark-lose">×</span></td>
-                      <td><span class="mark-win">〇</span></td>
-                      <td><span class="mark-lose">×</span></td>
-                      <td class="matrix-total-col">2</td>
-                    </tr>
                     <tr class="winner-row">
                       <td class="matrix-player-col">ワタリ</td>
                       <td><span class="mark-win">〇</span></td>
@@ -1248,50 +1278,81 @@
                       <td><span class="mark-win">〇</span></td>
                       <td class="matrix-total-col">10</td>
                     </tr>
+                    <tr>
+                      <td class="matrix-player-col">ピノキオ</td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td class="matrix-total-col">2</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
             </div>
           </article>
 
-          <!-- MATCH 2 : 喫音 vs GAO (10 - 8) -->
+          <!-- MATCH 2 : GAO vs 喫音 (8 - 10) -->
           <article class="ft10-match-card">
             <div class="ft10-card-top">
-              <span class="ft10-match-num">MATCH 2</span>
+              <span class="ft10-match-num">MATCH 2 : GAO vs 喫音</span>
               <div class="ft10-winner-announcement">🏆 <span>10 - 8</span> で <span>喫音</span> の勝利</div>
             </div>
 
-            <div class="ft10-hero-grid">
-              <div class="result-photo-box">
-                <div class="photo-placeholder-guide">
-                  <span>FT10 MATCH 2 PHOTO</span>
-                  result_day3_match2.jpg
+            <!-- プレイヤー毎写真（計2枚・300×398縦長） -->
+            <div class="ft10-players-photos-grid">
+              <div class="ft10-player-photo-card">
+                <div class="result-photo-box ft10-portrait-box">
+                  <div class="photo-placeholder-guide">
+                    <span>MATCH 2 PHOTO (300×398)</span>
+                    result_day3_match2_gao.jpg
+                  </div>
+                  <img src="result_day3_match2_gao.jpg" width="300" height="398" alt="DAY3 FT10 MATCH2 GAO" onerror="this.style.display='none';">
+                  <div class="photo-caption-strip">MATCH 2 : GAO vs 喫音（GAO）</div>
                 </div>
-                <img src="result_day3_match2.jpg" alt="DAY3 FT10 MATCH2 喫音 vs GAO" onerror="this.style.display='none';">
-                <div class="photo-caption-strip">MATCH 2 : 喫音 vs GAO</div>
               </div>
 
-              <div class="ft10-scoreboard">
-                <div class="ft10-player-row bg-k is-winner">
-                  <div class="ft10-player-meta">
-                    <div class="ft10-player-name-line">
-                      <span class="ft10-player-name">喫音</span>
-                      <span class="win-pill">WINNER</span>
-                    </div>
-                    <div class="ft10-player-chars"><span class="g-k">K</span> 響 / ナコルル / サガット</div>
+              <div class="ft10-player-photo-card">
+                <div class="result-photo-box ft10-portrait-box winner-photo-border">
+                  <div class="photo-placeholder-guide">
+                    <span>MATCH 2 PHOTO (300×398)</span>
+                    result_day3_match2_kitsuon.jpg
                   </div>
-                  <div class="ft10-score-box">10</div>
+                  <img src="result_day3_match2_kitsuon.jpg" width="300" height="398" alt="DAY3 FT10 MATCH2 喫音" onerror="this.style.display='none';">
+                  <div class="photo-caption-strip">MATCH 2 : GAO vs 喫音（喫音）</div>
                 </div>
+              </div>
+            </div>
 
-                <div class="ft10-player-row bg-k">
-                  <div class="ft10-player-meta">
-                    <div class="ft10-player-name-line">
-                      <span class="ft10-player-name">GAO</span>
-                    </div>
-                    <div class="ft10-player-chars"><span class="g-k">K</span> ギース / ナコルル / ロック</div>
+            <!-- スコアボード -->
+            <div class="ft10-scoreboard">
+              <div class="ft10-player-row bg-k">
+                <div class="ft10-player-meta">
+                  <div class="ft10-player-name-line">
+                    <span class="ft10-player-name">GAO</span>
                   </div>
-                  <div class="ft10-score-box">8</div>
+                  <div class="ft10-player-chars"><span class="g-k">K</span> ギース / ナコルル / ロック</div>
                 </div>
+                <div class="ft10-score-box">8</div>
+              </div>
+
+              <div class="ft10-player-row bg-k is-winner">
+                <div class="ft10-player-meta">
+                  <div class="ft10-player-name-line">
+                    <span class="ft10-player-name">喫音</span>
+                    <span class="win-pill">WINNER</span>
+                  </div>
+                  <div class="ft10-player-chars"><span class="g-k">K</span> 響 / ナコルル / サガット</div>
+                </div>
+                <div class="ft10-score-box">10</div>
               </div>
             </div>
 
@@ -1313,28 +1374,6 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="winner-row">
-                      <td class="matrix-player-col">喫音</td>
-                      <td><span class="mark-lose">×</span></td>
-                      <td><span class="mark-win">〇</span></td>
-                      <td><span class="mark-lose">×</span></td>
-                      <td><span class="mark-lose">×</span></td>
-                      <td><span class="mark-win">〇</span></td>
-                      <td><span class="mark-lose">×</span></td>
-                      <td><span class="mark-win">〇</span></td>
-                      <td><span class="mark-win">〇</span></td>
-                      <td><span class="mark-lose">×</span></td>
-                      <td><span class="mark-lose">×</span></td>
-                      <td><span class="mark-win">〇</span></td>
-                      <td><span class="mark-win">〇</span></td>
-                      <td><span class="mark-win">〇</span></td>
-                      <td><span class="mark-lose">×</span></td>
-                      <td><span class="mark-win">〇</span></td>
-                      <td><span class="mark-lose">×</span></td>
-                      <td><span class="mark-win">〇</span></td>
-                      <td><span class="mark-win">〇</span></td>
-                      <td class="matrix-total-col">10</td>
-                    </tr>
                     <tr>
                       <td class="matrix-player-col">GAO</td>
                       <td><span class="mark-win">〇</span></td>
@@ -1357,50 +1396,87 @@
                       <td><span class="mark-lose">×</span></td>
                       <td class="matrix-total-col">8</td>
                     </tr>
+                    <tr class="winner-row">
+                      <td class="matrix-player-col">喫音</td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td class="matrix-total-col">10</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
             </div>
           </article>
 
-          <!-- MATCH 3 : D44 vs Kiku (7 - 10) -->
+          <!-- MATCH 3 : Kiku vs D44 (10 - 7) -->
           <article class="ft10-match-card">
             <div class="ft10-card-top">
-              <span class="ft10-match-num">MATCH 3</span>
+              <span class="ft10-match-num">MATCH 3 : Kiku vs D44</span>
               <div class="ft10-winner-announcement">🏆 <span>10 - 7</span> で <span>Kiku</span> の勝利</div>
             </div>
 
-            <div class="ft10-hero-grid">
-              <div class="result-photo-box">
-                <div class="photo-placeholder-guide">
-                  <span>FT10 MATCH 3 PHOTO</span>
-                  result_day3_match3.jpg
+            <!-- プレイヤー毎写真（計2枚・300×398縦長） -->
+            <div class="ft10-players-photos-grid">
+              <div class="ft10-player-photo-card">
+                <div class="result-photo-box ft10-portrait-box winner-photo-border">
+                  <div class="photo-placeholder-guide">
+                    <span>MATCH 3 PHOTO (300×398)</span>
+                    result_day3_match3_kiku.jpg
+                  </div>
+                  <img src="result_day3_match3_kiku.jpg" width="300" height="398" alt="DAY3 FT10 MATCH3 Kiku" onerror="this.style.display='none';">
+                  <div class="photo-caption-strip">MATCH 3 : Kiku vs D44（Kiku）</div>
                 </div>
-                <img src="result_day3_match3.jpg" alt="DAY3 FT10 MATCH3 D44 vs Kiku" onerror="this.style.display='none';">
-                <div class="photo-caption-strip">MATCH 3 : D44 vs Kiku</div>
               </div>
 
-              <div class="ft10-scoreboard">
-                <div class="ft10-player-row bg-a">
-                  <div class="ft10-player-meta">
-                    <div class="ft10-player-name-line">
-                      <span class="ft10-player-name">D44</span>
-                    </div>
-                    <div class="ft10-player-chars"><span class="g-a">A</span> 山崎 / ベガ / ブランカ</div>
+              <div class="ft10-player-photo-card">
+                <div class="result-photo-box ft10-portrait-box">
+                  <div class="photo-placeholder-guide">
+                    <span>MATCH 3 PHOTO (300×398)</span>
+                    result_day3_match3_d44.jpg
                   </div>
-                  <div class="ft10-score-box">7</div>
+                  <img src="result_day3_match3_d44.jpg" width="300" height="398" alt="DAY3 FT10 MATCH3 D44" onerror="this.style.display='none';">
+                  <div class="photo-caption-strip">MATCH 3 : Kiku vs D44（D44）</div>
                 </div>
+              </div>
+            </div>
 
-                <div class="ft10-player-row bg-c is-winner">
-                  <div class="ft10-player-meta">
-                    <div class="ft10-player-name-line">
-                      <span class="ft10-player-name">Kiku</span>
-                      <span class="win-pill">WINNER</span>
-                    </div>
-                    <div class="ft10-player-chars"><span class="g-c">C</span> キャミィ / 春麗 / サガット</div>
+            <!-- スコアボード -->
+            <div class="ft10-scoreboard">
+              <div class="ft10-player-row bg-c is-winner">
+                <div class="ft10-player-meta">
+                  <div class="ft10-player-name-line">
+                    <span class="ft10-player-name">Kiku</span>
+                    <span class="win-pill">WINNER</span>
                   </div>
-                  <div class="ft10-score-box">10</div>
+                  <div class="ft10-player-chars"><span class="g-c">C</span> キャミィ / 春麗 / サガット</div>
                 </div>
+                <div class="ft10-score-box">10</div>
+              </div>
+
+              <div class="ft10-player-row bg-a">
+                <div class="ft10-player-meta">
+                  <div class="ft10-player-name-line">
+                    <span class="ft10-player-name">D44</span>
+                  </div>
+                  <div class="ft10-player-chars"><span class="g-a">A</span> 山崎 / ベガ / ブランカ</div>
+                </div>
+                <div class="ft10-score-box">7</div>
               </div>
             </div>
 
@@ -1422,27 +1498,6 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td class="matrix-player-col">D44</td>
-                      <td><span class="mark-win">〇</span></td>
-                      <td><span class="mark-lose">×</span></td>
-                      <td><span class="mark-lose">×</span></td>
-                      <td><span class="mark-lose">×</span></td>
-                      <td><span class="mark-win">〇</span></td>
-                      <td><span class="mark-win">〇</span></td>
-                      <td><span class="mark-lose">×</span></td>
-                      <td><span class="mark-lose">×</span></td>
-                      <td><span class="mark-lose">×</span></td>
-                      <td><span class="mark-lose">×</span></td>
-                      <td><span class="mark-win">〇</span></td>
-                      <td><span class="mark-win">〇</span></td>
-                      <td><span class="mark-win">〇</span></td>
-                      <td><span class="mark-lose">×</span></td>
-                      <td><span class="mark-lose">×</span></td>
-                      <td><span class="mark-win">〇</span></td>
-                      <td><span class="mark-lose">×</span></td>
-                      <td class="matrix-total-col">7</td>
-                    </tr>
                     <tr class="winner-row">
                       <td class="matrix-player-col">Kiku</td>
                       <td><span class="mark-lose">×</span></td>
@@ -1463,6 +1518,27 @@
                       <td><span class="mark-lose">×</span></td>
                       <td><span class="mark-win">〇</span></td>
                       <td class="matrix-total-col">10</td>
+                    </tr>
+                    <tr>
+                      <td class="matrix-player-col">D44</td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td class="matrix-total-col">7</td>
                     </tr>
                   </tbody>
                 </table>
