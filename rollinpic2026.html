@@ -593,6 +593,16 @@
       line-height: 1.1;
     }
 
+    .entry-btn-sub {
+      display: block;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.75rem;
+      font-weight: bold;
+      color: #222;
+      margin-top: 2px;
+      letter-spacing: 0px;
+    }
+
     .entry-btn:hover {
       background: #fff;
       border-color: #fff;
@@ -695,17 +705,10 @@
       line-height: 0;
     }
 
-    .match1-img-wrap a,
-    .match2-img-wrap a,
-    .match3-img-wrap a {
-      display: block;
-    }
-
     .match1-img-wrap img {
       width: 100%;
       height: auto;
       display: block;
-      transition: transform 0.25s ease, filter 0.25s ease;
     }
 
     .secret-match-row.match2-bg {
@@ -725,7 +728,6 @@
       aspect-ratio: 1680 / 936;
       display: block;
       object-fit: cover;
-      transition: transform 0.25s ease, filter 0.25s ease;
     }
 
     .secret-match-row.match3-bg {
@@ -742,11 +744,6 @@
       width: 100%;
       height: auto;
       display: block;
-      transition: transform 0.25s ease, filter 0.25s ease;
-    }
-
-    .secret-match-row:hover img {
-      filter: brightness(1.06);
     }
 
     .secret-match-row:hover {
@@ -1426,12 +1423,18 @@
           ・オリジナルイベント開催権 (1年間)
         </div>
         
+        <!-- 個人戦エントリーボタン（文言追加） -->
+        <a href="https://forms.gle/b4JJ3ANQm8SZjEZF6" target="_blank" class="entry-btn">
+          個人戦 エントリー（受付中）
+          <span class="entry-btn-sub">11/19までのエントリーで「オリジナル大会バッチ」をプレゼント！</span>
+        </a>
+        <div class="entry-note">※11/20以降はエントリー状況がHPへ反映がなくても把握しております。当日現地で受け付けください。</div>
 
         <!-- 個人戦エントリー状況テーブル（G列統合・スクロールなし） -->
         <div class="entry-list-section">
           <div class="entry-list-title">
             <span>エントリー状況一覧</span>
-            <span style="font-size:0.75rem; color:var(--text-muted); font-weight:normal;">11/19現在 (71名)</span>
+            <span style="font-size:0.75rem; color:var(--text-muted); font-weight:normal;">11/18現在 (70名)</span>
           </div>
           <table class="entry-table">
             <thead>
@@ -1513,7 +1516,6 @@
               <tr><td class="entry-num">68</td><td>カイ</td><td>北海道</td><td>K京 ギース モリガン</td></tr>
               <tr><td class="entry-num">69</td><td>エステス</td><td>関東</td><td>Kサガット、ナコルル、豪鬼</td></tr>
               <tr><td class="entry-num">70</td><td>大谷</td><td>関東</td><td>C山崎 本田 バルログ</td></tr>
-              <tr><td class="entry-num">71</td><td>るまた</td><td>関東</td><td>Cリュウ 京 庵</td></tr>
             </tbody>
           </table>
         </div>
@@ -1547,6 +1549,15 @@
         </table>
         <div class="play-fee-note">※野試合は1クレジット100yen</div>
 
+        <!-- 3on3エントリーボタン（文言追加） -->
+        <a href="https://forms.gle/9MT6A1zSpe1Ny7AK7" target="_blank" class="entry-btn" style="margin-top: 25px;">
+          3on3 エントリー（受付中）
+          <span class="entry-btn-sub">11/19までのエントリーで「オリジナル大会バッチ」をプレゼント！</span>
+        </a>
+        <div class="entry-note">※11/20以降はエントリー状況がHPへ反映がなくても把握しております。当日現地で受け付けください。</div>
+
+        <!-- 目立つ赤色の斡旋希望リンク -->
+        <a href="cvs2gaisen.html" class="match-agent-link">▶ 斡旋希望の方はこちら</a>
 
         <!-- 3on3エントリー状況テーブル（スクロールなし・シンプル表示） -->
         <div class="entry-list-section">
@@ -1712,9 +1723,7 @@
               <span class="match-caster">実況：火澄・かまた</span>
             </div>
             <div class="match1-img-wrap">
-              <a href="https://x.com/Ryo151/status/2123575556902109265?a=tl7bBl5uCqL2sas_K1I&s=20" target="_blank" rel="noopener noreferrer">
-                <img src="match1_bg.jpg" alt="Match 1 Background" onerror="this.style.display='none';">
-              </a>
+              <img src="match1_bg.jpg" alt="Match 1 Background" onerror="this.style.display='none';">
             </div>
           </div>
 
@@ -1725,9 +1734,7 @@
               <span class="match-caster">実況：火澄・うえい</span>
             </div>
             <div class="match2-img-wrap">
-              <a href="https://x.com/Ryo151/status/2122899855375020206?a=zEBIW4YQQZYzEx0NixQ&s=20" target="_blank" rel="noopener noreferrer">
-                <img src="match2_bg.jpg" alt="Match 2 Background" width="1680" height="936" onerror="this.style.display='none';">
-              </a>
+              <img src="match2_bg.jpg" alt="Match 2 Background" width="1680" height="936" onerror="this.style.display='none';">
             </div>
           </div>
 
@@ -1738,9 +1745,7 @@
               <span class="match-caster">実況：火澄・GAN</span>
             </div>
             <div class="match3-img-wrap">
-              <a href="https://x.com/Ryo151/status/2123705893238010301?a=0jCz_tVOahjPnSnXvOE&s=20" target="_blank" rel="noopener noreferrer">
-                <img src="match3_bg.jpg" alt="Match 3 Background" onerror="this.style.display='none';">
-              </a>
+              <img src="match3_bg.jpg" alt="Match 3 Background" onerror="this.style.display='none';">
             </div>
           </div>
 
@@ -1754,6 +1759,7 @@
             <li><strong>台の選択:</strong> 初戦はジャンケン勝者が決定。以降は5試合ごとに交代</li>
             <li><strong>インターバル:</strong> 交代時は約3分間の休憩あり</li>
             <li><strong>セコンド:</strong> 希望者は1名まで帯同可能</li>
+            <li><strong>レシオ変更:</strong> 自身が負けた次の試合のみ可能</li>
           </ul>
         </div>
 
@@ -2076,6 +2082,7 @@
       body.style.display = isOpen ? 'none' : 'block';
       icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
     }
+
   </script>
 </body>
 </html>
