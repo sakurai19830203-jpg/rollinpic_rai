@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rollin'pic Tokyo 2026 大会結果 | CAPCOM vs SNK 2 World Championship</title>
+  <meta name="google-site-verification" content="google7995d1307ab69807" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Teko:wght@600;700&display=swap');
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #060911;
+      color: #f0f4f8;
+      font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .rollin-results-section {
+      position: relative;
+      width: 100%;
+      max-width: 100vw;
+      background: linear-gradient(135deg, rgba(6, 9, 17, 0.9) 0%, rgba(11, 15, 25, 0.94) 100%), 
+                  url('main_bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      padding: 50px 15px 70px;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    .rollin-results-section *, 
+    .rollin-results-section *::before, 
+    .rollin-results-section *::after {
+      box-sizing: border-box;
+    }
+
+    .cyber-grid-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        linear-gradient(rgba(56, 189, 248, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.025) 1px, transparent 1px);
+      background-size: 30px 30px;
+      pointer-events: none;
+    }
+
+    .rollin-container {
+      position: relative;
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      z-index: 1;
+    }
+
+    /* --- ヘッダーエリア --- */
+    .rollin-section-header {
+      text-align: center;
+      margin-bottom: 30px;
+      width: 100%;
+    }
+
+    .tournament-logo-wrap {
+      max-width: 340px;
+      margin: 0 auto 12px auto;
+    }
+
+    .tournament-logo-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 0 18px rgba(56, 189, 248, 0.45));
+    }
+
+    .result-badge-wrap {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .result-title-badge {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 26px;
+      background: linear-gradient(90deg, rgba(6, 9, 17, 0.4) 0%, rgba(245, 158, 11, 0.18) 50%, rgba(6, 9, 17, 0.4) 100%);
+      border-top: 1px solid rgba(245, 158, 11, 0.75);
+      border-bottom: 1px solid rgba(245, 158, 11, 0.75);
+      box-shadow: 0 0 22px rgba(245, 158, 11, 0.25), inset 0 0 12px rgba(245, 158, 11, 0.12);
+    }
+
+    .result-title-badge::before,
+    .result-title-badge::after {
+      content: '◆';
+      font-size: 10px;
+      color: #f59e0b;
+      text-shadow: 0 0 8px #f59e0b;
+    }
+
+    .result-title-text {
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 5px;
+      padding-left: 5px;
+      color: #ffffff;
+      text-shadow: 0 0 10px rgba(245, 158, 11, 0.85), 0 0 22px rgba(245, 158, 11, 0.45);
+    }
+
+    @media (min-width: 768px) {
+      .result-title-badge {
+        padding: 9px 38px;
+        gap: 16px;
+      }
+      .result-title-text {
+        font-size: 19px;
+        letter-spacing: 7px;
+        padding-left: 7px;
+      }
+    }
+
+    .title-glow-line {
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+      margin: 0 auto;
+      box-shadow: 0 0 10px #38bdf8;
+    }
+
+    .venue-sub-note {
+      font-size: 13px;
+      color: #94a3b8;
+      margin-top: 6px;
+      font-weight: 700;
+    }
+
+    /* --- クイックナビゲーション --- */
+    .quick-nav-box {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(11, 15, 25, 0.98) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 40px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(12px);
+    }
+
+    .quick-nav-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    @media (min-width: 768px) {
+      .quick-nav-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+    }
+
+    .quick-nav-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(6, 9, 17, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-left: 4px solid #38bdf8;
+      border-radius: 6px;
+      padding: 12px 14px;
+      text-decoration: none;
+      color: #f1f5f9;
+      transition: all 0.22s ease;
+    }
+
+    .quick-nav-item.nav-day2 { border-left-color: #ef4444; }
+    .quick-nav-item.nav-day3 { border-left-color: #f59e0b; }
+
+    .quick-nav-item:hover {
+      background: rgba(56, 189, 248, 0.14);
+      border-color: #38bdf8;
+      transform: translateY(-2px);
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.25);
+    }
+
+    .quick-nav-en {
+      font-family: 'Teko', sans-serif;
+      font-size: 14px;
+      letter-spacing: 1.5px;
+      color: #38bdf8;
+      line-height: 1.1;
+      display: block;
+    }
+    .nav-day2 .quick-nav-en { color: #f87171; }
+    .nav-day3 .quick-nav-en { color: #fbbf24; }
+
+    .quick-nav-jp {
+      font-size: 14px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-top: 2px;
+      display: block;
+    }
+
+    .quick-nav-arrow {
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    /* --- グルーヴカラー定義（introduce.html準拠） --- */
+    .g-k { color: #ef4444 !important; font-weight: 900; }
+    .g-c { color: #84cc16 !important; font-weight: 900; }
+    .g-p { color: #00f0ff !important; font-weight: 900; }
+    .g-a { color: #38bdf8 !important; font-weight: 900; }
+    .g-n { color: #facc15 !important; font-weight: 900; }
+    .g-s { color: #a855f7 !important; font-weight: 900; }
+
+    .bg-k { background: rgba(239, 68, 68, 0.16); border-left: 3px solid #ef4444; }
+    .bg-c { background: rgba(132, 204, 22, 0.16); border-left: 3px solid #84cc16; }
+    .bg-a { background: rgba(56, 189, 248, 0.16); border-left: 3px solid #38bdf8; }
+    .bg-p { background: rgba(0, 240, 255, 0.16); border-left: 3px solid #00f0ff; }
+    .bg-n { background: rgba(250, 204, 21, 0.16); border-left: 3px solid #facc15; }
+    .bg-s { background: rgba(168, 85, 247, 0.16); border-left: 3px solid #a855f7; }
+
+    /* --- セクション共通コンテナ --- */
+    .day-section {
+      position: relative;
+      width: 100%;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(11, 15, 25, 0.98) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 12px;
+      padding: 26px 18px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65);
+      margin-bottom: 42px;
+      scroll-margin-top: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .day-section {
+        padding: 36px 32px;
+      }
+    }
+
+    .day-section.day1-theme { border-top: 4px solid #38bdf8; }
+    .day-section.day2-theme { border-top: 4px solid #ef4444; }
+    .day-section.day3-theme { border-top: 4px solid #f59e0b; }
+
+    .day-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .day-date-tag {
+      display: inline-block;
+      font-family: 'Teko', sans-serif;
+      font-size: 18px;
+      letter-spacing: 2px;
+      color: #38bdf8;
+      font-weight: 700;
+      background: rgba(56, 189, 248, 0.1);
+      padding: 3px 14px;
+      border-radius: 4px;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      margin-bottom: 8px;
+    }
+    .day2-theme .day-date-tag {
+      color: #f87171;
+      background: rgba(239, 68, 68, 0.12);
+      border-color: rgba(239, 68, 68, 0.4);
+    }
+    .day3-theme .day-date-tag {
+      color: #fbbf24;
+      background: rgba(245, 158, 11, 0.12);
+      border-color: rgba(245, 158, 11, 0.4);
+    }
+
+    .day-header h2 {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      margin: 0 0 10px 0;
+      color: #ffffff;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    }
+
+    @media (min-width: 768px) {
+      .day-header h2 {
+        font-size: 28px;
+      }
+    }
+
+    /* --- 順位バッジ・カード共通 --- */
+    .rank-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Teko', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 17px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      padding: 3px 12px;
+      border-radius: 4px;
+      line-height: 1.2;
+    }
+
+    .rank-1 {
+      background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+      color: #060911;
+      box-shadow: 0 0 14px rgba(245, 158, 11, 0.45);
+    }
+
+    .rank-2 {
+      background: linear-gradient(135deg, #94a3b8 0%, #e2e8f0 100%);
+      color: #060911;
+      box-shadow: 0 0 12px rgba(148, 163, 184, 0.35);
+    }
+
+    .rank-3 {
+      background: linear-gradient(135deg, #b45309 0%, #d97706 100%);
+      color: #ffffff;
+      box-shadow: 0 0 12px rgba(217, 119, 6, 0.35);
+    }
+
+    /* --- DAY1 個人戦リザルトカード --- */
+    .singles-results-list {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .podium-card {
+      position: relative;
+      background: rgba(6, 9, 17, 0.88);
+      border-radius: 10px;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.55);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .podium-card {
+        grid-template-columns: 280px 1fr;
+        padding: 22px 24px;
+        gap: 24px;
+      }
+      .podium-card.champion-card {
+        grid-template-columns: 330px 1fr;
+      }
+    }
+
+    .podium-card.champion-card {
+      border: 2px solid #f59e0b;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(6, 9, 17, 0.94) 100%);
+      box-shadow: 0 0 25px rgba(245, 158, 11, 0.2), 0 10px 25px rgba(0, 0, 0, 0.7);
+    }
+
+    .podium-card.runner-card {
+      border: 2px solid #94a3b8;
+      background: linear-gradient(135deg, rgba(148, 163, 184, 0.1) 0%, rgba(6, 9, 17, 0.94) 100%);
+    }
+
+    .podium-card.third-card {
+      border: 2px solid #d97706;
+      background: linear-gradient(135deg, rgba(217, 119, 6, 0.1) 0%, rgba(6, 9, 17, 0.94) 100%);
+    }
+
+    /* 写真フレーム（16:9・1人/1チーム/1試合につき1枚） */
+    .result-photo-box {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #0b1120;
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+    }
+
+    .champion-card .result-photo-box { border-color: #f59e0b; }
+    .runner-card .result-photo-box { border-color: #94a3b8; }
+    .third-card .result-photo-box { border-color: #d97706; }
+
+    .result-photo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      position: relative;
+      z-index: 2;
+    }
+
+    .photo-placeholder-guide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 10px;
+      color: #64748b;
+      font-size: 12px;
+      font-weight: 700;
+      background: repeating-linear-gradient(
+        -45deg,
+        rgba(15, 23, 42, 0.9),
+        rgba(15, 23, 42, 0.9) 10px,
+        rgba(30, 41, 59, 0.7) 10px,
+        rgba(30, 41, 59, 0.7) 20px
+      );
+      z-index: 1;
+    }
+
+    .photo-placeholder-guide span {
+      font-family: 'Teko', sans-serif;
+      font-size: 18px;
+      letter-spacing: 1.5px;
+      color: #38bdf8;
+    }
+
+    .photo-caption-strip {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(6, 9, 17, 0.85);
+      color: #e2e8f0;
+      font-family: 'Teko', sans-serif;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-align: center;
+      padding: 2px 8px;
+      z-index: 3;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .podium-info {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .podium-name {
+      font-size: 26px;
+      font-weight: 900;
+      color: #ffffff;
+      margin: 0;
+      line-height: 1.2;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+    }
+
+    @media (min-width: 768px) {
+      .champion-card .podium-name {
+        font-size: 32px;
+      }
+    }
+
+    .char-loadout-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 15px;
+      font-weight: 800;
+      color: #f1f5f9;
+      background: rgba(15, 23, 42, 0.9);
+      padding: 8px 14px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      width: fit-content;
+    }
+
+    /* --- DAY2 団体戦リザルトカード --- */
+    .team-results-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+    }
+
+    @media (min-width: 768px) {
+      .team-results-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .team-podium-card.champion-card {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 360px 1fr;
+        gap: 24px;
+        align-items: center;
+      }
+    }
+
+    .team-podium-card {
+      background: rgba(6, 9, 17, 0.88);
+      border-radius: 10px;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.55);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .team-podium-card.champion-card {
+      border: 2px solid #f59e0b;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.13) 0%, rgba(6, 9, 17, 0.95) 100%);
+      box-shadow: 0 0 25px rgba(245, 158, 11, 0.22);
+    }
+
+    .team-podium-card.runner-card {
+      border: 2px solid #94a3b8;
+      background: linear-gradient(135deg, rgba(148, 163, 184, 0.1) 0%, rgba(6, 9, 17, 0.95) 100%);
+    }
+
+    .team-podium-card.third-card {
+      border: 2px solid #d97706;
+      background: linear-gradient(135deg, rgba(217, 119, 6, 0.1) 0%, rgba(6, 9, 17, 0.95) 100%);
+    }
+
+    .team-title-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .team-result-name {
+      font-size: 20px;
+      font-weight: 900;
+      color: #ffffff;
+      margin: 0;
+      line-height: 1.3;
+    }
+
+    @media (min-width: 768px) {
+      .champion-card .team-result-name {
+        font-size: 26px;
+      }
+    }
+
+    .team-roster-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .team-roster-list li {
+      font-size: 13px;
+      font-weight: 700;
+      color: #f8fafc;
+      padding: 8px 12px;
+      border-radius: 5px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .member-player-name {
+      font-weight: 900;
+      font-size: 14px;
+      color: #ffffff;
+    }
+
+    .member-char-spec {
+      font-size: 13px;
+      color: #e2e8f0;
+    }
+
+    /* --- DAY3 SPECIAL FT10 試合カード＆星取表 --- */
+    .ft10-matches-list {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .ft10-match-card {
+      background: rgba(6, 9, 17, 0.9);
+      border: 1px solid rgba(245, 158, 11, 0.45);
+      border-left: 5px solid #f59e0b;
+      border-radius: 10px;
+      padding: 20px 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.65);
+    }
+
+    @media (min-width: 768px) {
+      .ft10-match-card {
+        padding: 24px 26px;
+      }
+    }
+
+    .ft10-card-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .ft10-match-num {
+      font-family: 'Teko', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #fbbf24;
+      line-height: 1;
+    }
+
+    .ft10-winner-announcement {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(90deg, rgba(245, 158, 11, 0.22), rgba(239, 68, 68, 0.22));
+      border: 1px solid rgba(251, 191, 36, 0.6);
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 900;
+      color: #ffffff;
+    }
+
+    .ft10-winner-announcement span {
+      color: #fbbf24;
+    }
+
+    .ft10-hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-bottom: 20px;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .ft10-hero-grid {
+        grid-template-columns: 300px 1fr;
+        gap: 22px;
+      }
+    }
+
+    /* スコアボード対決表示 */
+    .ft10-scoreboard {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .ft10-player-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 8px;
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .ft10-player-row.is-winner {
+      border-color: rgba(251, 191, 36, 0.65);
+      box-shadow: 0 0 15px rgba(251, 191, 36, 0.15);
+    }
+
+    .ft10-player-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .ft10-player-name-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .ft10-player-name {
+      font-size: 18px;
+      font-weight: 900;
+      color: #ffffff;
+    }
+
+    .win-pill {
+      font-family: 'Teko', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      background: #fbbf24;
+      color: #060911;
+      padding: 1px 8px;
+      border-radius: 3px;
+    }
+
+    .ft10-player-chars {
+      font-size: 13px;
+      font-weight: 700;
+      color: #cbd5e1;
+    }
+
+    .ft10-score-box {
+      font-family: 'Teko', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1;
+      color: #64748b;
+      min-width: 44px;
+      text-align: right;
+    }
+
+    .is-winner .ft10-score-box {
+      color: #fbbf24;
+      text-shadow: 0 0 12px rgba(251, 191, 36, 0.5);
+    }
+
+    /* FT10 星取表（〇×テーブル） */
+    .ft10-matrix-wrap {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .ft10-matrix-label {
+      font-size: 12px;
+      font-weight: 800;
+      color: #94a3b8;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .ft10-table-scroll {
+      width: 100%;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .ft10-matrix-table {
+      width: 100%;
+      min-width: 560px;
+      border-collapse: collapse;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .ft10-matrix-table th,
+    .ft10-matrix-table td {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 6px 4px;
+    }
+
+    .ft10-matrix-table th {
+      background: rgba(6, 9, 17, 0.9);
+      color: #94a3b8;
+      font-family: 'Teko', sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+
+    .ft10-matrix-table td.matrix-player-col {
+      text-align: left;
+      padding: 6px 10px;
+      font-weight: 900;
+      color: #ffffff;
+      white-space: nowrap;
+      background: rgba(6, 9, 17, 0.92);
+      position: sticky;
+      left: 0;
+      z-index: 2;
+      min-width: 88px;
+    }
+
+    .ft10-matrix-table th.matrix-player-col {
+      text-align: left;
+      padding-left: 10px;
+      position: sticky;
+      left: 0;
+      z-index: 2;
+    }
+
+    .ft10-matrix-table td.matrix-total-col,
+    .ft10-matrix-table th.matrix-total-col {
+      font-family: 'Teko', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      background: rgba(6, 9, 17, 0.95);
+      min-width: 44px;
+      color: #cbd5e1;
+    }
+
+    .ft10-matrix-table tr.winner-row td.matrix-total-col {
+      color: #fbbf24;
+      background: rgba(245, 158, 11, 0.18);
+    }
+
+    .mark-win {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(56, 189, 248, 0.22);
+      border: 1px solid #38bdf8;
+      color: #38bdf8;
+      font-weight: 900;
+      font-size: 12px;
+    }
+
+    .winner-row .mark-win {
+      background: rgba(251, 191, 36, 0.22);
+      border-color: #fbbf24;
+      color: #fbbf24;
+    }
+
+    .mark-lose {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      color: #475569;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    /* --- フッターリンク --- */
+    .rollin-back-area {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 25px;
+    }
+
+    .rollin-back-btn {
+      display: inline-block;
+      font-family: 'Teko', sans-serif;
+      font-size: 20px;
+      letter-spacing: 2px;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 10px 28px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
+    }
+
+    .rollin-back-btn:hover {
+      background: #38bdf8;
+      color: #060911;
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.5);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+  <section class="rollin-results-section">
+    <div class="cyber-grid-overlay"></div>
+
+    <div class="rollin-container">
+
+      <!-- 大会ロゴ＆ヘッダー -->
+      <header class="rollin-section-header">
+        <div class="tournament-logo-wrap">
+          <img src="RollinPic2025.png" alt="Rollin'pic Tokyo 2026">
+        </div>
+        <div class="result-badge-wrap">
+          <div class="result-title-badge">
+            <span class="result-title-text">OFFICIAL RESULTS</span>
+          </div>
+          <div class="title-glow-line"></div>
+          <div class="venue-sub-note">CAPCOM vs SNK 2 世界大会 ／ 会場：南浦和プレイスポットビッグワンセカンド</div>
+        </div>
+      </header>
+
+      <!-- クイックジャンプナビ -->
+      <nav class="quick-nav-box" aria-label="日程別結果ジャンプ">
+        <div class="quick-nav-grid">
+          <a href="#sec-day1" class="quick-nav-item nav-day1">
+            <div>
+              <span class="quick-nav-en">DAY 1 — 2026/11/21 (SAT)</span>
+              <span class="quick-nav-jp">個人戦 (Singles) 結果</span>
+            </div>
+            <span class="quick-nav-arrow">▼</span>
+          </a>
+          <a href="#sec-day2" class="quick-nav-item nav-day2">
+            <div>
+              <span class="quick-nav-en">DAY 2 — 2026/11/22 (SUN)</span>
+              <span class="quick-nav-jp">団体戦 (3on3) 結果</span>
+            </div>
+            <span class="quick-nav-arrow">▼</span>
+          </a>
+          <a href="#sec-day3" class="quick-nav-item nav-day3">
+            <div>
+              <span class="quick-nav-en">DAY 3 — 2026/11/23 (MON)</span>
+              <span class="quick-nav-jp">SPECIAL FT10 結果</span>
+            </div>
+            <span class="quick-nav-arrow">▼</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- =========================================================
+           DAY 1 : 個人戦 (Singles)
+      ========================================================= -->
+      <section id="sec-day1" class="day-section day1-theme">
+        <div class="day-header">
+          <span class="day-date-tag">DAY 1 — 2026/11/21 (土) 開催</span>
+          <h2>個人戦 (Singles) 大会結果</h2>
+          <div class="title-glow-line"></div>
+        </div>
+
+        <div class="singles-results-list">
+
+          <!-- 優勝：Kiku -->
+          <article class="podium-card champion-card">
+            <div class="result-photo-box">
+              <div class="photo-placeholder-guide">
+                <span>CHAMPION PHOTO</span>
+                result_day1_1st.jpg
+              </div>
+              <img src="result_day1_1st.jpg" alt="DAY1 個人戦 優勝 Kiku" onerror="this.style.display='none';">
+              <div class="photo-caption-strip">DAY 1 CHAMPION : Kiku</div>
+            </div>
+            <div class="podium-info">
+              <div><span class="rank-badge rank-1">👑 優勝 / CHAMPION</span></div>
+              <h3 class="podium-name">Kiku</h3>
+              <div class="char-loadout-pill">
+                <span class="g-c">C</span> キャミィ / 春麗 / サガット
+              </div>
+            </div>
+          </article>
+
+          <!-- 2位：GAN -->
+          <article class="podium-card runner-card">
+            <div class="result-photo-box">
+              <div class="photo-placeholder-guide">
+                <span>2ND PLACE PHOTO</span>
+                result_day1_2nd.jpg
+              </div>
+              <img src="result_day1_2nd.jpg" alt="DAY1 個人戦 2位 GAN" onerror="this.style.display='none';">
+              <div class="photo-caption-strip">DAY 1 2ND PLACE : GAN</div>
+            </div>
+            <div class="podium-info">
+              <div><span class="rank-badge rank-2">🥈 2位 / RUNNER-UP</span></div>
+              <h3 class="podium-name">GAN</h3>
+              <div class="char-loadout-pill">
+                <span class="g-a">A</span> 庵 / ブランカ / ベガ
+              </div>
+            </div>
+          </article>
+
+          <!-- 3位：Laugh -->
+          <article class="podium-card third-card">
+            <div class="result-photo-box">
+              <div class="photo-placeholder-guide">
+                <span>3RD PLACE PHOTO</span>
+                result_day1_3rd.jpg
+              </div>
+              <img src="result_day1_3rd.jpg" alt="DAY1 個人戦 3位 Laugh" onerror="this.style.display='none';">
+              <div class="photo-caption-strip">DAY 1 3RD PLACE : Laugh</div>
+            </div>
+            <div class="podium-info">
+              <div><span class="rank-badge rank-3">🥉 3位 / 3RD PLACE</span></div>
+              <h3 class="podium-name">Laugh</h3>
+              <div class="char-loadout-pill">
+                <span class="g-a">A</span> バルログ / 桜 / ブランカ
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- =========================================================
+           DAY 2 : 団体戦 (3on3)
+      ========================================================= -->
+      <section id="sec-day2" class="day-section day2-theme">
+        <div class="day-header">
+          <span class="day-date-tag">DAY 2 — 2026/11/22 (日) 開催</span>
+          <h2>団体戦 (3on3) 大会結果</h2>
+          <div class="title-glow-line"></div>
+        </div>
+
+        <div class="team-results-grid">
+
+          <!-- 優勝：北海道2D連合 -->
+          <article class="team-podium-card champion-card">
+            <div class="result-photo-box">
+              <div class="photo-placeholder-guide">
+                <span>TEAM CHAMPION PHOTO</span>
+                result_day2_1st.jpg
+              </div>
+              <img src="result_day2_1st.jpg" alt="DAY2 団体戦 優勝 北海道2D連合" onerror="this.style.display='none';">
+              <div class="photo-caption-strip">DAY 2 CHAMPION : 北海道2D連合</div>
+            </div>
+            <div>
+              <div class="team-title-row">
+                <div><span class="rank-badge rank-1">👑 優勝 / CHAMPION</span></div>
+                <h3 class="team-result-name">北海道2D連合</h3>
+              </div>
+              <ul class="team-roster-list">
+                <li class="bg-c">
+                  <span class="member-player-name">かまた</span>
+                  <span class="member-char-spec"><span class="g-c">C</span> 庵 / 春麗 / サガット</span>
+                </li>
+                <li class="bg-a">
+                  <span class="member-player-name">ワタリ</span>
+                  <span class="member-char-spec"><span class="g-a">A</span> 庵 / ベガ / ブランカ</span>
+                </li>
+                <li class="bg-a">
+                  <span class="member-player-name">エミリオ</span>
+                  <span class="member-char-spec"><span class="g-a">A</span> 桜 / ベガ / ブランカ</span>
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 2位：GUYｓ -->
+          <article class="team-podium-card runner-card">
+            <div class="result-photo-box">
+              <div class="photo-placeholder-guide">
+                <span>2ND PLACE TEAM PHOTO</span>
+                result_day2_2nd.jpg
+              </div>
+              <img src="result_day2_2nd.jpg" alt="DAY2 団体戦 2位 GUYｓ" onerror="this.style.display='none';">
+              <div class="photo-caption-strip">DAY 2 2ND PLACE : GUYｓ</div>
+            </div>
+            <div>
+              <div class="team-title-row">
+                <div><span class="rank-badge rank-2">🥈 2位 / RUNNER-UP</span></div>
+                <h3 class="team-result-name">GUYｓ</h3>
+              </div>
+              <ul class="team-roster-list">
+                <li class="bg-k">
+                  <span class="member-player-name">GAO</span>
+                  <span class="member-char-spec"><span class="g-k">K</span> ギース / ナコルル / ロック</span>
+                </li>
+                <li class="bg-c">
+                  <span class="member-player-name">uwb</span>
+                  <span class="member-char-spec"><span class="g-c">C</span> 庵 / 春麗 / サガット</span>
+                </li>
+                <li class="bg-a">
+                  <span class="member-player-name">ysk</span>
+                  <span class="member-char-spec"><span class="g-a">A</span> 桜 / ベガ / ブランカ</span>
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 3位：風神・雷神…んー…魔神！ -->
+          <article class="team-podium-card third-card">
+            <div class="result-photo-box">
+              <div class="photo-placeholder-guide">
+                <span>3RD PLACE TEAM PHOTO</span>
+                result_day2_3rd_a.jpg
+              </div>
+              <img src="result_day2_3rd_a.jpg" alt="DAY2 団体戦 3位 風神・雷神…んー…魔神！" onerror="this.style.display='none';">
+              <div class="photo-caption-strip">DAY 2 3RD PLACE : 風神・雷神…んー…魔神！</div>
+            </div>
+            <div>
+              <div class="team-title-row">
+                <div><span class="rank-badge rank-3">🥉 3位 / 3RD PLACE</span></div>
+                <h3 class="team-result-name">風神・雷神…んー…魔神！</h3>
+              </div>
+              <ul class="team-roster-list">
+                <li class="bg-a">
+                  <span class="member-player-name">GAN</span>
+                  <span class="member-char-spec"><span class="g-a">A</span> 庵 / ブランカ / ベガ</span>
+                </li>
+                <li class="bg-a">
+                  <span class="member-player-name">風さんやで</span>
+                  <span class="member-char-spec"><span class="g-a">A</span> 桜 / ベガ / ブランカ</span>
+                </li>
+                <li class="bg-a">
+                  <span class="member-player-name">コーサカ</span>
+                  <span class="member-char-spec"><span class="g-a">A</span> 桜 / ベガ / ブランカ</span>
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 3位：Tier1 -->
+          <article class="team-podium-card third-card">
+            <div class="result-photo-box">
+              <div class="photo-placeholder-guide">
+                <span>3RD PLACE TEAM PHOTO</span>
+                result_day2_3rd_b.jpg
+              </div>
+              <img src="result_day2_3rd_b.jpg" alt="DAY2 団体戦 3位 Tier1" onerror="this.style.display='none';">
+              <div class="photo-caption-strip">DAY 2 3RD PLACE : Tier1</div>
+            </div>
+            <div>
+              <div class="team-title-row">
+                <div><span class="rank-badge rank-3">🥉 3位 / 3RD PLACE</span></div>
+                <h3 class="team-result-name">Tier1</h3>
+              </div>
+              <ul class="team-roster-list">
+                <li class="bg-k">
+                  <span class="member-player-name">ライ</span>
+                  <span class="member-char-spec"><span class="g-k">K</span> 舞 / 響 / サガット</span>
+                </li>
+                <li class="bg-c">
+                  <span class="member-player-name">Kiku</span>
+                  <span class="member-char-spec"><span class="g-c">C</span> キャミィ / 春麗 / サガット</span>
+                </li>
+                <li class="bg-a">
+                  <span class="member-player-name">Laugh</span>
+                  <span class="member-char-spec"><span class="g-a">A</span> バルログ / 桜 / ブランカ</span>
+                </li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- =========================================================
+           DAY 3 : SPECIAL FT10
+      ========================================================= -->
+      <section id="sec-day3" class="day-section day3-theme">
+        <div class="day-header">
+          <span class="day-date-tag">DAY 3 — 2026/11/23 (月) 開催</span>
+          <h2>SPECIAL FT10 試合結果</h2>
+          <div class="title-glow-line"></div>
+        </div>
+
+        <div class="ft10-matches-list">
+
+          <!-- MATCH 1 : ピノキオ vs ワタリ (2 - 10) -->
+          <article class="ft10-match-card">
+            <div class="ft10-card-top">
+              <span class="ft10-match-num">MATCH 1</span>
+              <div class="ft10-winner-announcement">🏆 <span>10 - 2</span> で <span>ワタリ</span> の勝利</div>
+            </div>
+
+            <div class="ft10-hero-grid">
+              <div class="result-photo-box">
+                <div class="photo-placeholder-guide">
+                  <span>FT10 MATCH 1 PHOTO</span>
+                  result_day3_match1.jpg
+                </div>
+                <img src="result_day3_match1.jpg" alt="DAY3 FT10 MATCH1 ピノキオ vs ワタリ" onerror="this.style.display='none';">
+                <div class="photo-caption-strip">MATCH 1 : ピノキオ vs ワタリ</div>
+              </div>
+
+              <div class="ft10-scoreboard">
+                <div class="ft10-player-row bg-k">
+                  <div class="ft10-player-meta">
+                    <div class="ft10-player-name-line">
+                      <span class="ft10-player-name">ピノキオ</span>
+                    </div>
+                    <div class="ft10-player-chars"><span class="g-k">K</span> 春麗 / キャミィ / サガット</div>
+                  </div>
+                  <div class="ft10-score-box">2</div>
+                </div>
+
+                <div class="ft10-player-row bg-a is-winner">
+                  <div class="ft10-player-meta">
+                    <div class="ft10-player-name-line">
+                      <span class="ft10-player-name">ワタリ</span>
+                      <span class="win-pill">WINNER</span>
+                    </div>
+                    <div class="ft10-player-chars"><span class="g-a">A</span> 庵 / ベガ / ブランカ</div>
+                  </div>
+                  <div class="ft10-score-box">10</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- MATCH 1 星取表 (12試合) -->
+            <div class="ft10-matrix-wrap">
+              <div class="ft10-matrix-label">
+                <span>GAME BY GAME RESULT（全12試合経過）</span>
+                <span>※ 横スクロール可能</span>
+              </div>
+              <div class="ft10-table-scroll">
+                <table class="ft10-matrix-table">
+                  <thead>
+                    <tr>
+                      <th class="matrix-player-col">PLAYER</th>
+                      <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th>
+                      <th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th>
+                      <th class="matrix-total-col">WIN</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="matrix-player-col">ピノキオ</td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td class="matrix-total-col">2</td>
+                    </tr>
+                    <tr class="winner-row">
+                      <td class="matrix-player-col">ワタリ</td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td class="matrix-total-col">10</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </article>
+
+          <!-- MATCH 2 : 喫音 vs GAO (10 - 8) -->
+          <article class="ft10-match-card">
+            <div class="ft10-card-top">
+              <span class="ft10-match-num">MATCH 2</span>
+              <div class="ft10-winner-announcement">🏆 <span>10 - 8</span> で <span>喫音</span> の勝利</div>
+            </div>
+
+            <div class="ft10-hero-grid">
+              <div class="result-photo-box">
+                <div class="photo-placeholder-guide">
+                  <span>FT10 MATCH 2 PHOTO</span>
+                  result_day3_match2.jpg
+                </div>
+                <img src="result_day3_match2.jpg" alt="DAY3 FT10 MATCH2 喫音 vs GAO" onerror="this.style.display='none';">
+                <div class="photo-caption-strip">MATCH 2 : 喫音 vs GAO</div>
+              </div>
+
+              <div class="ft10-scoreboard">
+                <div class="ft10-player-row bg-k is-winner">
+                  <div class="ft10-player-meta">
+                    <div class="ft10-player-name-line">
+                      <span class="ft10-player-name">喫音</span>
+                      <span class="win-pill">WINNER</span>
+                    </div>
+                    <div class="ft10-player-chars"><span class="g-k">K</span> 響 / ナコルル / サガット</div>
+                  </div>
+                  <div class="ft10-score-box">10</div>
+                </div>
+
+                <div class="ft10-player-row bg-k">
+                  <div class="ft10-player-meta">
+                    <div class="ft10-player-name-line">
+                      <span class="ft10-player-name">GAO</span>
+                    </div>
+                    <div class="ft10-player-chars"><span class="g-k">K</span> ギース / ナコルル / ロック</div>
+                  </div>
+                  <div class="ft10-score-box">8</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- MATCH 2 星取表 (18試合) -->
+            <div class="ft10-matrix-wrap">
+              <div class="ft10-matrix-label">
+                <span>GAME BY GAME RESULT（全18試合経過）</span>
+                <span>※ 横スクロール可能</span>
+              </div>
+              <div class="ft10-table-scroll">
+                <table class="ft10-matrix-table">
+                  <thead>
+                    <tr>
+                      <th class="matrix-player-col">PLAYER</th>
+                      <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th>
+                      <th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th>
+                      <th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th>
+                      <th class="matrix-total-col">WIN</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="winner-row">
+                      <td class="matrix-player-col">喫音</td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td class="matrix-total-col">10</td>
+                    </tr>
+                    <tr>
+                      <td class="matrix-player-col">GAO</td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td class="matrix-total-col">8</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </article>
+
+          <!-- MATCH 3 : D44 vs Kiku (7 - 10) -->
+          <article class="ft10-match-card">
+            <div class="ft10-card-top">
+              <span class="ft10-match-num">MATCH 3</span>
+              <div class="ft10-winner-announcement">🏆 <span>10 - 7</span> で <span>Kiku</span> の勝利</div>
+            </div>
+
+            <div class="ft10-hero-grid">
+              <div class="result-photo-box">
+                <div class="photo-placeholder-guide">
+                  <span>FT10 MATCH 3 PHOTO</span>
+                  result_day3_match3.jpg
+                </div>
+                <img src="result_day3_match3.jpg" alt="DAY3 FT10 MATCH3 D44 vs Kiku" onerror="this.style.display='none';">
+                <div class="photo-caption-strip">MATCH 3 : D44 vs Kiku</div>
+              </div>
+
+              <div class="ft10-scoreboard">
+                <div class="ft10-player-row bg-a">
+                  <div class="ft10-player-meta">
+                    <div class="ft10-player-name-line">
+                      <span class="ft10-player-name">D44</span>
+                    </div>
+                    <div class="ft10-player-chars"><span class="g-a">A</span> 山崎 / ベガ / ブランカ</div>
+                  </div>
+                  <div class="ft10-score-box">7</div>
+                </div>
+
+                <div class="ft10-player-row bg-c is-winner">
+                  <div class="ft10-player-meta">
+                    <div class="ft10-player-name-line">
+                      <span class="ft10-player-name">Kiku</span>
+                      <span class="win-pill">WINNER</span>
+                    </div>
+                    <div class="ft10-player-chars"><span class="g-c">C</span> キャミィ / 春麗 / サガット</div>
+                  </div>
+                  <div class="ft10-score-box">10</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- MATCH 3 星取表 (17試合) -->
+            <div class="ft10-matrix-wrap">
+              <div class="ft10-matrix-label">
+                <span>GAME BY GAME RESULT（全17試合経過）</span>
+                <span>※ 横スクロール可能</span>
+              </div>
+              <div class="ft10-table-scroll">
+                <table class="ft10-matrix-table">
+                  <thead>
+                    <tr>
+                      <th class="matrix-player-col">PLAYER</th>
+                      <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th>
+                      <th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th>
+                      <th>13</th><th>14</th><th>15</th><th>16</th><th>17</th>
+                      <th class="matrix-total-col">WIN</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="matrix-player-col">D44</td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td class="matrix-total-col">7</td>
+                    </tr>
+                    <tr class="winner-row">
+                      <td class="matrix-player-col">Kiku</td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td><span class="mark-lose">×</span></td>
+                      <td><span class="mark-win">〇</span></td>
+                      <td class="matrix-total-col">10</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- 大会トップ・パンフレットへの戻りリンク -->
+      <div class="rollin-back-area">
+        <a href="https://sakurai19830203-jpg.github.io/rollinpic_rai/rollinpic2026.html" class="rollin-back-btn">
+          ◀ 大会トップページへ戻る
+        </a>
+        <a href="https://sakurai19830203-jpg.github.io/rollinpic_rai/introduce.html" class="rollin-back-btn">
+          デジタルパンフレットを見る ▶
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>
