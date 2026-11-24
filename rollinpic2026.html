@@ -569,23 +569,91 @@
       margin-bottom: 15px;
     }
 
-    /* エントリーリスト用共通スタイル（スクロールなし・シンプル表示） */
+    /* エントリーリスト用アコーディオンスタイル */
     .entry-list-section {
       margin-top: 16px;
       margin-bottom: 10px;
-      background: rgba(0, 0, 0, 0.5);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 10px 8px;
+      background: rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(255, 204, 0, 0.35);
+      border-left: 4px solid var(--accent-yellow);
+      box-shadow: 4px 4px 0px #000;
+      overflow: hidden;
     }
 
-    .entry-list-title {
-      font-size: 0.88rem;
-      font-weight: bold;
-      color: var(--accent-yellow);
-      margin-bottom: 8px;
+    .entry-acc-btn {
+      width: 100%;
+      background: linear-gradient(90deg, rgba(255, 204, 0, 0.14) 0%, rgba(16, 16, 22, 0.9) 100%);
+      border: none;
+      padding: 12px 12px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.2s ease;
+    }
+
+    .entry-acc-btn:hover {
+      background: linear-gradient(90deg, rgba(255, 204, 0, 0.24) 0%, rgba(24, 24, 34, 0.95) 100%);
+    }
+
+    .entry-acc-title-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .entry-list-title {
+      font-size: 0.92rem;
+      font-weight: 900;
+      color: var(--accent-yellow);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .entry-list-count {
+      font-size: 0.76rem;
+      color: #d8d8e5;
+      font-weight: bold;
+    }
+
+    .entry-acc-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255, 204, 0, 0.16);
+      border: 1px solid rgba(255, 204, 0, 0.65);
+      color: var(--accent-yellow);
+      font-size: 0.75rem;
+      font-weight: 900;
+      padding: 4px 9px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .entry-acc-btn:hover .entry-acc-action {
+      background: var(--accent-yellow);
+      color: #000;
+    }
+
+    .entry-acc-icon {
+      display: inline-block;
+      font-size: 0.72rem;
+      transition: transform 0.25s ease;
+    }
+
+    .entry-acc-btn[aria-expanded="true"] .entry-acc-icon {
+      transform: rotate(180deg);
+    }
+
+    .entry-acc-body {
+      display: none;
+      padding: 10px 8px;
+      border-top: 1px solid rgba(255, 204, 0, 0.25);
     }
 
     .entry-table {
@@ -1491,12 +1559,16 @@
         </div>
         
 
-        <!-- 個人戦エントリー状況テーブル（G列統合・スクロールなし） -->
+        <!-- 個人戦エントリー状況テーブル（アコーディオン形式・初期折りたたみ） -->
         <div class="entry-list-section">
-          <div class="entry-list-title">
-            <span>エントリー状況一覧</span>
-            <span style="font-size:0.75rem; color:var(--text-muted); font-weight:normal;">11/18現在 (71名)</span>
-          </div>
+          <button type="button" class="entry-acc-btn" aria-expanded="false" onclick="toggleEntryAcc(this)">
+            <div class="entry-acc-title-wrap">
+              <span class="entry-list-title">エントリー状況一覧</span>
+              <span class="entry-list-count">11/18現在 (71名)</span>
+            </div>
+            <span class="entry-acc-action"><span class="entry-acc-label">タップして一覧を開く</span><span class="entry-acc-icon">▼</span></span>
+          </button>
+          <div class="entry-acc-body">
           <table class="entry-table">
             <thead>
               <tr>
@@ -1580,6 +1652,7 @@
               <tr><td class="entry-num">71</td><td>るまた</td><td>関東</td><td>Cリュウ 京 庵</td></tr>
             </tbody>
           </table>
+          </div>
         </div>
 
       </div>
@@ -1613,12 +1686,16 @@
 
 
 
-        <!-- 3on3エントリー状況テーブル（スクロールなし・シンプル表示） -->
+        <!-- 3on3エントリー状況テーブル（アコーディオン形式・初期折りたたみ） -->
         <div class="entry-list-section">
-          <div class="entry-list-title">
-            <span>エントリー状況一覧</span>
-            <span style="font-size:0.75rem; color:var(--text-muted); font-weight:normal;">11/18現在 (23チーム)</span>
-          </div>
+          <button type="button" class="entry-acc-btn" aria-expanded="false" onclick="toggleEntryAcc(this)">
+            <div class="entry-acc-title-wrap">
+              <span class="entry-list-title">エントリー状況一覧</span>
+              <span class="entry-list-count">11/18現在 (23チーム)</span>
+            </div>
+            <span class="entry-acc-action"><span class="entry-acc-label">タップして一覧を開く</span><span class="entry-acc-icon">▼</span></span>
+          </button>
+          <div class="entry-acc-body">
           <table class="entry-table">
             <thead>
               <tr>
@@ -1745,6 +1822,7 @@
               </tr>
             </tbody>
           </table>
+          </div>
         </div>
 
       </div>
@@ -2135,6 +2213,19 @@
       
       body.style.display = isOpen ? 'none' : 'block';
       icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+    }
+
+    // DAY1・DAY2エントリー状況一覧用の折り畳みトグル
+    function toggleEntryAcc(btn) {
+      const body = btn.nextElementSibling;
+      const label = btn.querySelector('.entry-acc-label');
+      const isOpen = body.style.display === 'block';
+
+      body.style.display = isOpen ? 'none' : 'block';
+      btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      if (label) {
+        label.textContent = isOpen ? 'タップして一覧を開く' : '閉じる';
+      }
     }
 
   </script>
