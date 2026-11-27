@@ -160,10 +160,17 @@
       gap: 10px;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 640px) {
       .quick-nav-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 14px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .quick-nav-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
       }
     }
 
@@ -183,6 +190,7 @@
 
     .quick-nav-item.nav-day2 { border-left-color: #ef4444; }
     .quick-nav-item.nav-day3 { border-left-color: #f59e0b; }
+    .quick-nav-item.nav-gallery { border-left-color: #a855f7; }
 
     .quick-nav-item:hover {
       background: rgba(56, 189, 248, 0.14);
@@ -201,6 +209,7 @@
     }
     .nav-day2 .quick-nav-en { color: #f87171; }
     .nav-day3 .quick-nav-en { color: #fbbf24; }
+    .nav-gallery .quick-nav-en { color: #c084fc; }
 
     .quick-nav-jp {
       font-size: 14px;
@@ -1001,6 +1010,221 @@
       }
     }
 
+    /* --- 大会フォトギャラリー（全162枚） --- */
+    .photo-gallery-section {
+      position: relative;
+      scroll-margin-top: 20px;
+      width: 100%;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(11, 15, 25, 0.98) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-top: 4px solid #38bdf8;
+      border-radius: 12px;
+      padding: 26px 16px 32px;
+      margin-bottom: 36px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65);
+    }
+
+    @media (min-width: 768px) {
+      .photo-gallery-section {
+        padding: 36px 28px 40px;
+      }
+    }
+
+    .gallery-sub-note {
+      text-align: center;
+      font-size: 13px;
+      color: #94a3b8;
+      margin: 12px 0 22px;
+      font-weight: 700;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    @media (min-width: 600px) {
+      .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .gallery-grid {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 12px;
+      }
+    }
+
+    .gallery-thumb-btn {
+      position: relative;
+      display: block;
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      padding: 0;
+      margin: 0;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 6px;
+      overflow: hidden;
+      background: #0b1120;
+      cursor: pointer;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .gallery-thumb-btn:hover,
+    .gallery-thumb-btn:focus-visible {
+      transform: translateY(-2px) scale(1.02);
+      border-color: #38bdf8;
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.45);
+      outline: none;
+      z-index: 2;
+    }
+
+    .gallery-thumb-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-thumb-num {
+      position: absolute;
+      bottom: 3px;
+      right: 4px;
+      background: rgba(6, 9, 17, 0.78);
+      color: #cbd5e1;
+      font-family: 'Teko', sans-serif;
+      font-size: 12px;
+      line-height: 1;
+      padding: 2px 5px;
+      border-radius: 3px;
+      pointer-events: none;
+    }
+
+    /* ライトボックスモーダル */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(3, 6, 12, 0.94);
+      backdrop-filter: blur(8px);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .lightbox-modal.is-open {
+      display: flex;
+    }
+
+    .lightbox-topbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      background: linear-gradient(180deg, rgba(6, 9, 17, 0.9) 0%, transparent 100%);
+      z-index: 10;
+    }
+
+    .lightbox-counter {
+      font-family: 'Teko', sans-serif;
+      font-size: 22px;
+      letter-spacing: 1.5px;
+      color: #38bdf8;
+    }
+
+    .lightbox-close-btn {
+      background: rgba(239, 68, 68, 0.2);
+      border: 1px solid rgba(239, 68, 68, 0.65);
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 800;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .lightbox-close-btn:hover {
+      background: #ef4444;
+    }
+
+    .lightbox-stage {
+      position: relative;
+      max-width: 94vw;
+      max-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-stage img {
+      max-width: 94vw;
+      max-height: 78vh;
+      width: auto;
+      height: auto;
+      border-radius: 8px;
+      border: 2px solid rgba(56, 189, 248, 0.55);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.85);
+      display: block;
+    }
+
+    .lightbox-nav-btn {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.55);
+      color: #ffffff;
+      font-size: 22px;
+      font-weight: 900;
+      width: 44px;
+      height: 56px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 11;
+      transition: background 0.2s ease, transform 0.2s ease;
+      user-select: none;
+    }
+
+    .lightbox-nav-btn:hover {
+      background: #38bdf8;
+      color: #060911;
+    }
+
+    .lightbox-prev { left: 12px; }
+    .lightbox-next { right: 12px; }
+
+    @media (min-width: 768px) {
+      .lightbox-nav-btn {
+        width: 52px;
+        height: 68px;
+        font-size: 26px;
+      }
+      .lightbox-prev { left: 24px; }
+      .lightbox-next { right: 24px; }
+    }
+
+    .lightbox-caption {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #cbd5e1;
+      font-weight: 700;
+      text-align: center;
+    }
+
     /* --- フッターリンク --- */
     .rollin-back-area {
       display: flex;
@@ -1075,6 +1299,13 @@
             <div>
               <span class="quick-nav-en">DAY 3 — 2026/11/23 (MON)</span>
               <span class="quick-nav-jp">SPECIAL FT10 結果</span>
+            </div>
+            <span class="quick-nav-arrow">▼</span>
+          </a>
+          <a href="#sec-gallery" class="quick-nav-item nav-gallery">
+            <div>
+              <span class="quick-nav-en">PHOTO GALLERY — ALL 162</span>
+              <span class="quick-nav-jp">大会フォトギャラリー</span>
             </div>
             <span class="quick-nav-arrow">▼</span>
           </a>
@@ -1671,6 +1902,184 @@
       </section>
 
       <!-- =========================================================
+           GALLERY : 大会フォトギャラリー（全162枚）
+      ========================================================= -->
+      <section id="sec-gallery" class="photo-gallery-section" aria-label="大会フォトギャラリー">
+        <div class="day-header" style="margin-bottom: 12px;">
+          <span class="day-date-tag">PHOTO GALLERY — ALL 162 SHOTS</span>
+          <h2>大会フォトギャラリー</h2>
+          <div class="title-glow-line"></div>
+          <div class="participant-count-tag">全162枚収録 ／ サムネイルクリックで高画質拡大表示</div>
+        </div>
+        <p class="gallery-sub-note">※ 拡大表示中は左右ボタン（またはキーボードの ← / → キー）で写真を切り替えられます</p>
+
+        <div class="gallery-grid" id="rollinGalleryGrid">
+          <button type="button" class="gallery-thumb-btn" data-index="0" data-full="rollinpic2026-1.jpg" aria-label="大会写真 1 を拡大表示"><img src="rollinpic2026-1 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 1" loading="lazy" decoding="async"><span class="gallery-thumb-num">#1</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="1" data-full="rollinpic2026-2.jpg" aria-label="大会写真 2 を拡大表示"><img src="rollinpic2026-2 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 2" loading="lazy" decoding="async"><span class="gallery-thumb-num">#2</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="2" data-full="rollinpic2026-3.jpg" aria-label="大会写真 3 を拡大表示"><img src="rollinpic2026-3 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 3" loading="lazy" decoding="async"><span class="gallery-thumb-num">#3</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="3" data-full="rollinpic2026-4.jpg" aria-label="大会写真 4 を拡大表示"><img src="rollinpic2026-4 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 4" loading="lazy" decoding="async"><span class="gallery-thumb-num">#4</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="4" data-full="rollinpic2026-5.jpg" aria-label="大会写真 5 を拡大表示"><img src="rollinpic2026-5 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 5" loading="lazy" decoding="async"><span class="gallery-thumb-num">#5</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="5" data-full="rollinpic2026-6.jpg" aria-label="大会写真 6 を拡大表示"><img src="rollinpic2026-6 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 6" loading="lazy" decoding="async"><span class="gallery-thumb-num">#6</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="6" data-full="rollinpic2026-7.jpg" aria-label="大会写真 7 を拡大表示"><img src="rollinpic2026-7 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 7" loading="lazy" decoding="async"><span class="gallery-thumb-num">#7</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="7" data-full="rollinpic2026-8.jpg" aria-label="大会写真 8 を拡大表示"><img src="rollinpic2026-8 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 8" loading="lazy" decoding="async"><span class="gallery-thumb-num">#8</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="8" data-full="rollinpic2026-9.jpg" aria-label="大会写真 9 を拡大表示"><img src="rollinpic2026-9 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 9" loading="lazy" decoding="async"><span class="gallery-thumb-num">#9</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="9" data-full="rollinpic2026-10.jpg" aria-label="大会写真 10 を拡大表示"><img src="rollinpic2026-10 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 10" loading="lazy" decoding="async"><span class="gallery-thumb-num">#10</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="10" data-full="rollinpic2026-11.jpg" aria-label="大会写真 11 を拡大表示"><img src="rollinpic2026-11 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 11" loading="lazy" decoding="async"><span class="gallery-thumb-num">#11</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="11" data-full="rollinpic2026-12.jpg" aria-label="大会写真 12 を拡大表示"><img src="rollinpic2026-12 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 12" loading="lazy" decoding="async"><span class="gallery-thumb-num">#12</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="12" data-full="rollinpic2026-13.jpg" aria-label="大会写真 13 を拡大表示"><img src="rollinpic2026-13 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 13" loading="lazy" decoding="async"><span class="gallery-thumb-num">#13</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="13" data-full="rollinpic2026-14.jpg" aria-label="大会写真 14 を拡大表示"><img src="rollinpic2026-14 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 14" loading="lazy" decoding="async"><span class="gallery-thumb-num">#14</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="14" data-full="rollinpic2026-15.jpg" aria-label="大会写真 15 を拡大表示"><img src="rollinpic2026-15 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 15" loading="lazy" decoding="async"><span class="gallery-thumb-num">#15</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="15" data-full="rollinpic2026-16.jpg" aria-label="大会写真 16 を拡大表示"><img src="rollinpic2026-16 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 16" loading="lazy" decoding="async"><span class="gallery-thumb-num">#16</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="16" data-full="rollinpic2026-17.jpg" aria-label="大会写真 17 を拡大表示"><img src="rollinpic2026-17 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 17" loading="lazy" decoding="async"><span class="gallery-thumb-num">#17</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="17" data-full="rollinpic2026-18.jpg" aria-label="大会写真 18 を拡大表示"><img src="rollinpic2026-18 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 18" loading="lazy" decoding="async"><span class="gallery-thumb-num">#18</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="18" data-full="rollinpic2026-19.jpg" aria-label="大会写真 19 を拡大表示"><img src="rollinpic2026-19 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 19" loading="lazy" decoding="async"><span class="gallery-thumb-num">#19</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="19" data-full="rollinpic2026-20.jpg" aria-label="大会写真 20 を拡大表示"><img src="rollinpic2026-20 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 20" loading="lazy" decoding="async"><span class="gallery-thumb-num">#20</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="20" data-full="rollinpic2026-21.jpg" aria-label="大会写真 21 を拡大表示"><img src="rollinpic2026-21 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 21" loading="lazy" decoding="async"><span class="gallery-thumb-num">#21</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="21" data-full="rollinpic2026-22.jpg" aria-label="大会写真 22 を拡大表示"><img src="rollinpic2026-22 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 22" loading="lazy" decoding="async"><span class="gallery-thumb-num">#22</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="22" data-full="rollinpic2026-23.jpg" aria-label="大会写真 23 を拡大表示"><img src="rollinpic2026-23 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 23" loading="lazy" decoding="async"><span class="gallery-thumb-num">#23</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="23" data-full="rollinpic2026-24.jpg" aria-label="大会写真 24 を拡大表示"><img src="rollinpic2026-24 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 24" loading="lazy" decoding="async"><span class="gallery-thumb-num">#24</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="24" data-full="rollinpic2026-25.jpg" aria-label="大会写真 25 を拡大表示"><img src="rollinpic2026-25 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 25" loading="lazy" decoding="async"><span class="gallery-thumb-num">#25</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="25" data-full="rollinpic2026-26.jpg" aria-label="大会写真 26 を拡大表示"><img src="rollinpic2026-26 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 26" loading="lazy" decoding="async"><span class="gallery-thumb-num">#26</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="26" data-full="rollinpic2026-27.jpg" aria-label="大会写真 27 を拡大表示"><img src="rollinpic2026-27 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 27" loading="lazy" decoding="async"><span class="gallery-thumb-num">#27</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="27" data-full="rollinpic2026-28.jpg" aria-label="大会写真 28 を拡大表示"><img src="rollinpic2026-28 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 28" loading="lazy" decoding="async"><span class="gallery-thumb-num">#28</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="28" data-full="rollinpic2026-29.jpg" aria-label="大会写真 29 を拡大表示"><img src="rollinpic2026-29 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 29" loading="lazy" decoding="async"><span class="gallery-thumb-num">#29</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="29" data-full="rollinpic2026-30.jpg" aria-label="大会写真 30 を拡大表示"><img src="rollinpic2026-30 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 30" loading="lazy" decoding="async"><span class="gallery-thumb-num">#30</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="30" data-full="rollinpic2026-31.jpg" aria-label="大会写真 31 を拡大表示"><img src="rollinpic2026-31 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 31" loading="lazy" decoding="async"><span class="gallery-thumb-num">#31</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="31" data-full="rollinpic2026-32.jpg" aria-label="大会写真 32 を拡大表示"><img src="rollinpic2026-32 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 32" loading="lazy" decoding="async"><span class="gallery-thumb-num">#32</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="32" data-full="rollinpic2026-33.jpg" aria-label="大会写真 33 を拡大表示"><img src="rollinpic2026-33 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 33" loading="lazy" decoding="async"><span class="gallery-thumb-num">#33</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="33" data-full="rollinpic2026-34.jpg" aria-label="大会写真 34 を拡大表示"><img src="rollinpic2026-34 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 34" loading="lazy" decoding="async"><span class="gallery-thumb-num">#34</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="34" data-full="rollinpic2026-35.jpg" aria-label="大会写真 35 を拡大表示"><img src="rollinpic2026-35 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 35" loading="lazy" decoding="async"><span class="gallery-thumb-num">#35</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="35" data-full="rollinpic2026-36.jpg" aria-label="大会写真 36 を拡大表示"><img src="rollinpic2026-36 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 36" loading="lazy" decoding="async"><span class="gallery-thumb-num">#36</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="36" data-full="rollinpic2026-37.jpg" aria-label="大会写真 37 を拡大表示"><img src="rollinpic2026-37 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 37" loading="lazy" decoding="async"><span class="gallery-thumb-num">#37</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="37" data-full="rollinpic2026-38.jpg" aria-label="大会写真 38 を拡大表示"><img src="rollinpic2026-38 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 38" loading="lazy" decoding="async"><span class="gallery-thumb-num">#38</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="38" data-full="rollinpic2026-39.jpg" aria-label="大会写真 39 を拡大表示"><img src="rollinpic2026-39 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 39" loading="lazy" decoding="async"><span class="gallery-thumb-num">#39</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="39" data-full="rollinpic2026-40.jpg" aria-label="大会写真 40 を拡大表示"><img src="rollinpic2026-40 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 40" loading="lazy" decoding="async"><span class="gallery-thumb-num">#40</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="40" data-full="rollinpic2026-41.jpg" aria-label="大会写真 41 を拡大表示"><img src="rollinpic2026-41 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 41" loading="lazy" decoding="async"><span class="gallery-thumb-num">#41</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="41" data-full="rollinpic2026-42.jpg" aria-label="大会写真 42 を拡大表示"><img src="rollinpic2026-42 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 42" loading="lazy" decoding="async"><span class="gallery-thumb-num">#42</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="42" data-full="rollinpic2026-43.jpg" aria-label="大会写真 43 を拡大表示"><img src="rollinpic2026-43 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 43" loading="lazy" decoding="async"><span class="gallery-thumb-num">#43</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="43" data-full="rollinpic2026-44.jpg" aria-label="大会写真 44 を拡大表示"><img src="rollinpic2026-44 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 44" loading="lazy" decoding="async"><span class="gallery-thumb-num">#44</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="44" data-full="rollinpic2026-45.jpg" aria-label="大会写真 45 を拡大表示"><img src="rollinpic2026-45 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 45" loading="lazy" decoding="async"><span class="gallery-thumb-num">#45</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="45" data-full="rollinpic2026-46.jpg" aria-label="大会写真 46 を拡大表示"><img src="rollinpic2026-46 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 46" loading="lazy" decoding="async"><span class="gallery-thumb-num">#46</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="46" data-full="rollinpic2026-47.jpg" aria-label="大会写真 47 を拡大表示"><img src="rollinpic2026-47 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 47" loading="lazy" decoding="async"><span class="gallery-thumb-num">#47</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="47" data-full="rollinpic2026-48.jpg" aria-label="大会写真 48 を拡大表示"><img src="rollinpic2026-48 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 48" loading="lazy" decoding="async"><span class="gallery-thumb-num">#48</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="48" data-full="rollinpic2026-49.jpg" aria-label="大会写真 49 を拡大表示"><img src="rollinpic2026-49 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 49" loading="lazy" decoding="async"><span class="gallery-thumb-num">#49</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="49" data-full="rollinpic2026-50.jpg" aria-label="大会写真 50 を拡大表示"><img src="rollinpic2026-50 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 50" loading="lazy" decoding="async"><span class="gallery-thumb-num">#50</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="50" data-full="rollinpic2026-51.jpg" aria-label="大会写真 51 を拡大表示"><img src="rollinpic2026-51 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 51" loading="lazy" decoding="async"><span class="gallery-thumb-num">#51</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="51" data-full="rollinpic2026-52.jpg" aria-label="大会写真 52 を拡大表示"><img src="rollinpic2026-52 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 52" loading="lazy" decoding="async"><span class="gallery-thumb-num">#52</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="52" data-full="rollinpic2026-53.jpg" aria-label="大会写真 53 を拡大表示"><img src="rollinpic2026-53 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 53" loading="lazy" decoding="async"><span class="gallery-thumb-num">#53</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="53" data-full="rollinpic2026-54.jpg" aria-label="大会写真 54 を拡大表示"><img src="rollinpic2026-54 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 54" loading="lazy" decoding="async"><span class="gallery-thumb-num">#54</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="54" data-full="rollinpic2026-55.jpg" aria-label="大会写真 55 を拡大表示"><img src="rollinpic2026-55 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 55" loading="lazy" decoding="async"><span class="gallery-thumb-num">#55</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="55" data-full="rollinpic2026-56.jpg" aria-label="大会写真 56 を拡大表示"><img src="rollinpic2026-56 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 56" loading="lazy" decoding="async"><span class="gallery-thumb-num">#56</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="56" data-full="rollinpic2026-57.jpg" aria-label="大会写真 57 を拡大表示"><img src="rollinpic2026-57 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 57" loading="lazy" decoding="async"><span class="gallery-thumb-num">#57</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="57" data-full="rollinpic2026-58.jpg" aria-label="大会写真 58 を拡大表示"><img src="rollinpic2026-58 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 58" loading="lazy" decoding="async"><span class="gallery-thumb-num">#58</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="58" data-full="rollinpic2026-59.jpg" aria-label="大会写真 59 を拡大表示"><img src="rollinpic2026-59 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 59" loading="lazy" decoding="async"><span class="gallery-thumb-num">#59</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="59" data-full="rollinpic2026-60.jpg" aria-label="大会写真 60 を拡大表示"><img src="rollinpic2026-60 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 60" loading="lazy" decoding="async"><span class="gallery-thumb-num">#60</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="60" data-full="rollinpic2026-61.jpg" aria-label="大会写真 61 を拡大表示"><img src="rollinpic2026-61 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 61" loading="lazy" decoding="async"><span class="gallery-thumb-num">#61</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="61" data-full="rollinpic2026-62.jpg" aria-label="大会写真 62 を拡大表示"><img src="rollinpic2026-62 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 62" loading="lazy" decoding="async"><span class="gallery-thumb-num">#62</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="62" data-full="rollinpic2026-63.jpg" aria-label="大会写真 63 を拡大表示"><img src="rollinpic2026-63 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 63" loading="lazy" decoding="async"><span class="gallery-thumb-num">#63</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="63" data-full="rollinpic2026-64.jpg" aria-label="大会写真 64 を拡大表示"><img src="rollinpic2026-64 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 64" loading="lazy" decoding="async"><span class="gallery-thumb-num">#64</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="64" data-full="rollinpic2026-65.jpg" aria-label="大会写真 65 を拡大表示"><img src="rollinpic2026-65 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 65" loading="lazy" decoding="async"><span class="gallery-thumb-num">#65</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="65" data-full="rollinpic2026-66.jpg" aria-label="大会写真 66 を拡大表示"><img src="rollinpic2026-66 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 66" loading="lazy" decoding="async"><span class="gallery-thumb-num">#66</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="66" data-full="rollinpic2026-67.jpg" aria-label="大会写真 67 を拡大表示"><img src="rollinpic2026-67 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 67" loading="lazy" decoding="async"><span class="gallery-thumb-num">#67</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="67" data-full="rollinpic2026-68.jpg" aria-label="大会写真 68 を拡大表示"><img src="rollinpic2026-68 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 68" loading="lazy" decoding="async"><span class="gallery-thumb-num">#68</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="68" data-full="rollinpic2026-69.jpg" aria-label="大会写真 69 を拡大表示"><img src="rollinpic2026-69 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 69" loading="lazy" decoding="async"><span class="gallery-thumb-num">#69</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="69" data-full="rollinpic2026-70.jpg" aria-label="大会写真 70 を拡大表示"><img src="rollinpic2026-70 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 70" loading="lazy" decoding="async"><span class="gallery-thumb-num">#70</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="70" data-full="rollinpic2026-71.jpg" aria-label="大会写真 71 を拡大表示"><img src="rollinpic2026-71 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 71" loading="lazy" decoding="async"><span class="gallery-thumb-num">#71</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="71" data-full="rollinpic2026-72.jpg" aria-label="大会写真 72 を拡大表示"><img src="rollinpic2026-72 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 72" loading="lazy" decoding="async"><span class="gallery-thumb-num">#72</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="72" data-full="rollinpic2026-73.jpg" aria-label="大会写真 73 を拡大表示"><img src="rollinpic2026-73 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 73" loading="lazy" decoding="async"><span class="gallery-thumb-num">#73</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="73" data-full="rollinpic2026-74.jpg" aria-label="大会写真 74 を拡大表示"><img src="rollinpic2026-74 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 74" loading="lazy" decoding="async"><span class="gallery-thumb-num">#74</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="74" data-full="rollinpic2026-75.jpg" aria-label="大会写真 75 を拡大表示"><img src="rollinpic2026-75 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 75" loading="lazy" decoding="async"><span class="gallery-thumb-num">#75</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="75" data-full="rollinpic2026-76.jpg" aria-label="大会写真 76 を拡大表示"><img src="rollinpic2026-76 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 76" loading="lazy" decoding="async"><span class="gallery-thumb-num">#76</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="76" data-full="rollinpic2026-77.jpg" aria-label="大会写真 77 を拡大表示"><img src="rollinpic2026-77 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 77" loading="lazy" decoding="async"><span class="gallery-thumb-num">#77</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="77" data-full="rollinpic2026-78.jpg" aria-label="大会写真 78 を拡大表示"><img src="rollinpic2026-78 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 78" loading="lazy" decoding="async"><span class="gallery-thumb-num">#78</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="78" data-full="rollinpic2026-79.jpg" aria-label="大会写真 79 を拡大表示"><img src="rollinpic2026-79 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 79" loading="lazy" decoding="async"><span class="gallery-thumb-num">#79</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="79" data-full="rollinpic2026-80.jpg" aria-label="大会写真 80 を拡大表示"><img src="rollinpic2026-80 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 80" loading="lazy" decoding="async"><span class="gallery-thumb-num">#80</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="80" data-full="rollinpic2026-81.jpg" aria-label="大会写真 81 を拡大表示"><img src="rollinpic2026-81 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 81" loading="lazy" decoding="async"><span class="gallery-thumb-num">#81</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="81" data-full="rollinpic2026-82.jpg" aria-label="大会写真 82 を拡大表示"><img src="rollinpic2026-82 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 82" loading="lazy" decoding="async"><span class="gallery-thumb-num">#82</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="82" data-full="rollinpic2026-83.jpg" aria-label="大会写真 83 を拡大表示"><img src="rollinpic2026-83 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 83" loading="lazy" decoding="async"><span class="gallery-thumb-num">#83</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="83" data-full="rollinpic2026-84.jpg" aria-label="大会写真 84 を拡大表示"><img src="rollinpic2026-84 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 84" loading="lazy" decoding="async"><span class="gallery-thumb-num">#84</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="84" data-full="rollinpic2026-85.jpg" aria-label="大会写真 85 を拡大表示"><img src="rollinpic2026-85 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 85" loading="lazy" decoding="async"><span class="gallery-thumb-num">#85</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="85" data-full="rollinpic2026-86.jpg" aria-label="大会写真 86 を拡大表示"><img src="rollinpic2026-86 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 86" loading="lazy" decoding="async"><span class="gallery-thumb-num">#86</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="86" data-full="rollinpic2026-87.jpg" aria-label="大会写真 87 を拡大表示"><img src="rollinpic2026-87 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 87" loading="lazy" decoding="async"><span class="gallery-thumb-num">#87</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="87" data-full="rollinpic2026-88.jpg" aria-label="大会写真 88 を拡大表示"><img src="rollinpic2026-88 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 88" loading="lazy" decoding="async"><span class="gallery-thumb-num">#88</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="88" data-full="rollinpic2026-89.jpg" aria-label="大会写真 89 を拡大表示"><img src="rollinpic2026-89 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 89" loading="lazy" decoding="async"><span class="gallery-thumb-num">#89</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="89" data-full="rollinpic2026-90.jpg" aria-label="大会写真 90 を拡大表示"><img src="rollinpic2026-90 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 90" loading="lazy" decoding="async"><span class="gallery-thumb-num">#90</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="90" data-full="rollinpic2026-91.jpg" aria-label="大会写真 91 を拡大表示"><img src="rollinpic2026-91 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 91" loading="lazy" decoding="async"><span class="gallery-thumb-num">#91</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="91" data-full="rollinpic2026-92.jpg" aria-label="大会写真 92 を拡大表示"><img src="rollinpic2026-92 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 92" loading="lazy" decoding="async"><span class="gallery-thumb-num">#92</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="92" data-full="rollinpic2026-93.jpg" aria-label="大会写真 93 を拡大表示"><img src="rollinpic2026-93 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 93" loading="lazy" decoding="async"><span class="gallery-thumb-num">#93</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="93" data-full="rollinpic2026-94.jpg" aria-label="大会写真 94 を拡大表示"><img src="rollinpic2026-94 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 94" loading="lazy" decoding="async"><span class="gallery-thumb-num">#94</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="94" data-full="rollinpic2026-95.jpg" aria-label="大会写真 95 を拡大表示"><img src="rollinpic2026-95 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 95" loading="lazy" decoding="async"><span class="gallery-thumb-num">#95</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="95" data-full="rollinpic2026-96.jpg" aria-label="大会写真 96 を拡大表示"><img src="rollinpic2026-96 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 96" loading="lazy" decoding="async"><span class="gallery-thumb-num">#96</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="96" data-full="rollinpic2026-97.jpg" aria-label="大会写真 97 を拡大表示"><img src="rollinpic2026-97 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 97" loading="lazy" decoding="async"><span class="gallery-thumb-num">#97</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="97" data-full="rollinpic2026-98.jpg" aria-label="大会写真 98 を拡大表示"><img src="rollinpic2026-98 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 98" loading="lazy" decoding="async"><span class="gallery-thumb-num">#98</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="98" data-full="rollinpic2026-99.jpg" aria-label="大会写真 99 を拡大表示"><img src="rollinpic2026-99 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 99" loading="lazy" decoding="async"><span class="gallery-thumb-num">#99</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="99" data-full="rollinpic2026-100.jpg" aria-label="大会写真 100 を拡大表示"><img src="rollinpic2026-100 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 100" loading="lazy" decoding="async"><span class="gallery-thumb-num">#100</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="100" data-full="rollinpic2026-101.jpg" aria-label="大会写真 101 を拡大表示"><img src="rollinpic2026-101 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 101" loading="lazy" decoding="async"><span class="gallery-thumb-num">#101</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="101" data-full="rollinpic2026-102.jpg" aria-label="大会写真 102 を拡大表示"><img src="rollinpic2026-102 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 102" loading="lazy" decoding="async"><span class="gallery-thumb-num">#102</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="102" data-full="rollinpic2026-103.jpg" aria-label="大会写真 103 を拡大表示"><img src="rollinpic2026-103 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 103" loading="lazy" decoding="async"><span class="gallery-thumb-num">#103</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="103" data-full="rollinpic2026-104.jpg" aria-label="大会写真 104 を拡大表示"><img src="rollinpic2026-104 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 104" loading="lazy" decoding="async"><span class="gallery-thumb-num">#104</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="104" data-full="rollinpic2026-105.jpg" aria-label="大会写真 105 を拡大表示"><img src="rollinpic2026-105 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 105" loading="lazy" decoding="async"><span class="gallery-thumb-num">#105</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="105" data-full="rollinpic2026-106.jpg" aria-label="大会写真 106 を拡大表示"><img src="rollinpic2026-106 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 106" loading="lazy" decoding="async"><span class="gallery-thumb-num">#106</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="106" data-full="rollinpic2026-107.jpg" aria-label="大会写真 107 を拡大表示"><img src="rollinpic2026-107 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 107" loading="lazy" decoding="async"><span class="gallery-thumb-num">#107</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="107" data-full="rollinpic2026-108.jpg" aria-label="大会写真 108 を拡大表示"><img src="rollinpic2026-108 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 108" loading="lazy" decoding="async"><span class="gallery-thumb-num">#108</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="108" data-full="rollinpic2026-109.jpg" aria-label="大会写真 109 を拡大表示"><img src="rollinpic2026-109 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 109" loading="lazy" decoding="async"><span class="gallery-thumb-num">#109</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="109" data-full="rollinpic2026-110.jpg" aria-label="大会写真 110 を拡大表示"><img src="rollinpic2026-110 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 110" loading="lazy" decoding="async"><span class="gallery-thumb-num">#110</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="110" data-full="rollinpic2026-111.jpg" aria-label="大会写真 111 を拡大表示"><img src="rollinpic2026-111 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 111" loading="lazy" decoding="async"><span class="gallery-thumb-num">#111</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="111" data-full="rollinpic2026-112.jpg" aria-label="大会写真 112 を拡大表示"><img src="rollinpic2026-112 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 112" loading="lazy" decoding="async"><span class="gallery-thumb-num">#112</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="112" data-full="rollinpic2026-113.jpg" aria-label="大会写真 113 を拡大表示"><img src="rollinpic2026-113 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 113" loading="lazy" decoding="async"><span class="gallery-thumb-num">#113</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="113" data-full="rollinpic2026-114.jpg" aria-label="大会写真 114 を拡大表示"><img src="rollinpic2026-114 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 114" loading="lazy" decoding="async"><span class="gallery-thumb-num">#114</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="114" data-full="rollinpic2026-115.jpg" aria-label="大会写真 115 を拡大表示"><img src="rollinpic2026-115 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 115" loading="lazy" decoding="async"><span class="gallery-thumb-num">#115</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="115" data-full="rollinpic2026-116.jpg" aria-label="大会写真 116 を拡大表示"><img src="rollinpic2026-116 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 116" loading="lazy" decoding="async"><span class="gallery-thumb-num">#116</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="116" data-full="rollinpic2026-117.jpg" aria-label="大会写真 117 を拡大表示"><img src="rollinpic2026-117 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 117" loading="lazy" decoding="async"><span class="gallery-thumb-num">#117</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="117" data-full="rollinpic2026-118.jpg" aria-label="大会写真 118 を拡大表示"><img src="rollinpic2026-118 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 118" loading="lazy" decoding="async"><span class="gallery-thumb-num">#118</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="118" data-full="rollinpic2026-119.jpg" aria-label="大会写真 119 を拡大表示"><img src="rollinpic2026-119 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 119" loading="lazy" decoding="async"><span class="gallery-thumb-num">#119</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="119" data-full="rollinpic2026-120.jpg" aria-label="大会写真 120 を拡大表示"><img src="rollinpic2026-120 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 120" loading="lazy" decoding="async"><span class="gallery-thumb-num">#120</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="120" data-full="rollinpic2026-121.jpg" aria-label="大会写真 121 を拡大表示"><img src="rollinpic2026-121 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 121" loading="lazy" decoding="async"><span class="gallery-thumb-num">#121</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="121" data-full="rollinpic2026-122.jpg" aria-label="大会写真 122 を拡大表示"><img src="rollinpic2026-122 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 122" loading="lazy" decoding="async"><span class="gallery-thumb-num">#122</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="122" data-full="rollinpic2026-123.jpg" aria-label="大会写真 123 を拡大表示"><img src="rollinpic2026-123 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 123" loading="lazy" decoding="async"><span class="gallery-thumb-num">#123</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="123" data-full="rollinpic2026-124.jpg" aria-label="大会写真 124 を拡大表示"><img src="rollinpic2026-124 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 124" loading="lazy" decoding="async"><span class="gallery-thumb-num">#124</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="124" data-full="rollinpic2026-125.jpg" aria-label="大会写真 125 を拡大表示"><img src="rollinpic2026-125 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 125" loading="lazy" decoding="async"><span class="gallery-thumb-num">#125</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="125" data-full="rollinpic2026-126.jpg" aria-label="大会写真 126 を拡大表示"><img src="rollinpic2026-126 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 126" loading="lazy" decoding="async"><span class="gallery-thumb-num">#126</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="126" data-full="rollinpic2026-127.jpg" aria-label="大会写真 127 を拡大表示"><img src="rollinpic2026-127 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 127" loading="lazy" decoding="async"><span class="gallery-thumb-num">#127</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="127" data-full="rollinpic2026-128.jpg" aria-label="大会写真 128 を拡大表示"><img src="rollinpic2026-128 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 128" loading="lazy" decoding="async"><span class="gallery-thumb-num">#128</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="128" data-full="rollinpic2026-129.jpg" aria-label="大会写真 129 を拡大表示"><img src="rollinpic2026-129 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 129" loading="lazy" decoding="async"><span class="gallery-thumb-num">#129</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="129" data-full="rollinpic2026-130.jpg" aria-label="大会写真 130 を拡大表示"><img src="rollinpic2026-130 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 130" loading="lazy" decoding="async"><span class="gallery-thumb-num">#130</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="130" data-full="rollinpic2026-131.jpg" aria-label="大会写真 131 を拡大表示"><img src="rollinpic2026-131 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 131" loading="lazy" decoding="async"><span class="gallery-thumb-num">#131</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="131" data-full="rollinpic2026-132.jpg" aria-label="大会写真 132 を拡大表示"><img src="rollinpic2026-132 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 132" loading="lazy" decoding="async"><span class="gallery-thumb-num">#132</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="132" data-full="rollinpic2026-133.jpg" aria-label="大会写真 133 を拡大表示"><img src="rollinpic2026-133 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 133" loading="lazy" decoding="async"><span class="gallery-thumb-num">#133</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="133" data-full="rollinpic2026-134.jpg" aria-label="大会写真 134 を拡大表示"><img src="rollinpic2026-134 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 134" loading="lazy" decoding="async"><span class="gallery-thumb-num">#134</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="134" data-full="rollinpic2026-135.jpg" aria-label="大会写真 135 を拡大表示"><img src="rollinpic2026-135 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 135" loading="lazy" decoding="async"><span class="gallery-thumb-num">#135</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="135" data-full="rollinpic2026-136.jpg" aria-label="大会写真 136 を拡大表示"><img src="rollinpic2026-136 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 136" loading="lazy" decoding="async"><span class="gallery-thumb-num">#136</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="136" data-full="rollinpic2026-137.jpg" aria-label="大会写真 137 を拡大表示"><img src="rollinpic2026-137 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 137" loading="lazy" decoding="async"><span class="gallery-thumb-num">#137</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="137" data-full="rollinpic2026-138.jpg" aria-label="大会写真 138 を拡大表示"><img src="rollinpic2026-138 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 138" loading="lazy" decoding="async"><span class="gallery-thumb-num">#138</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="138" data-full="rollinpic2026-139.jpg" aria-label="大会写真 139 を拡大表示"><img src="rollinpic2026-139 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 139" loading="lazy" decoding="async"><span class="gallery-thumb-num">#139</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="139" data-full="rollinpic2026-140.jpg" aria-label="大会写真 140 を拡大表示"><img src="rollinpic2026-140 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 140" loading="lazy" decoding="async"><span class="gallery-thumb-num">#140</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="140" data-full="rollinpic2026-141.jpg" aria-label="大会写真 141 を拡大表示"><img src="rollinpic2026-141 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 141" loading="lazy" decoding="async"><span class="gallery-thumb-num">#141</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="141" data-full="rollinpic2026-142.jpg" aria-label="大会写真 142 を拡大表示"><img src="rollinpic2026-142 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 142" loading="lazy" decoding="async"><span class="gallery-thumb-num">#142</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="142" data-full="rollinpic2026-143.jpg" aria-label="大会写真 143 を拡大表示"><img src="rollinpic2026-143 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 143" loading="lazy" decoding="async"><span class="gallery-thumb-num">#143</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="143" data-full="rollinpic2026-144.jpg" aria-label="大会写真 144 を拡大表示"><img src="rollinpic2026-144 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 144" loading="lazy" decoding="async"><span class="gallery-thumb-num">#144</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="144" data-full="rollinpic2026-145.jpg" aria-label="大会写真 145 を拡大表示"><img src="rollinpic2026-145 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 145" loading="lazy" decoding="async"><span class="gallery-thumb-num">#145</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="145" data-full="rollinpic2026-146.jpg" aria-label="大会写真 146 を拡大表示"><img src="rollinpic2026-146 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 146" loading="lazy" decoding="async"><span class="gallery-thumb-num">#146</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="146" data-full="rollinpic2026-147.jpg" aria-label="大会写真 147 を拡大表示"><img src="rollinpic2026-147 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 147" loading="lazy" decoding="async"><span class="gallery-thumb-num">#147</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="147" data-full="rollinpic2026-148.jpg" aria-label="大会写真 148 を拡大表示"><img src="rollinpic2026-148 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 148" loading="lazy" decoding="async"><span class="gallery-thumb-num">#148</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="148" data-full="rollinpic2026-149.jpg" aria-label="大会写真 149 を拡大表示"><img src="rollinpic2026-149 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 149" loading="lazy" decoding="async"><span class="gallery-thumb-num">#149</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="149" data-full="rollinpic2026-150.jpg" aria-label="大会写真 150 を拡大表示"><img src="rollinpic2026-150 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 150" loading="lazy" decoding="async"><span class="gallery-thumb-num">#150</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="150" data-full="rollinpic2026-151.jpg" aria-label="大会写真 151 を拡大表示"><img src="rollinpic2026-151 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 151" loading="lazy" decoding="async"><span class="gallery-thumb-num">#151</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="151" data-full="rollinpic2026-152.jpg" aria-label="大会写真 152 を拡大表示"><img src="rollinpic2026-152 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 152" loading="lazy" decoding="async"><span class="gallery-thumb-num">#152</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="152" data-full="rollinpic2026-153.jpg" aria-label="大会写真 153 を拡大表示"><img src="rollinpic2026-153 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 153" loading="lazy" decoding="async"><span class="gallery-thumb-num">#153</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="153" data-full="rollinpic2026-154.jpg" aria-label="大会写真 154 を拡大表示"><img src="rollinpic2026-154 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 154" loading="lazy" decoding="async"><span class="gallery-thumb-num">#154</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="154" data-full="rollinpic2026-155.jpg" aria-label="大会写真 155 を拡大表示"><img src="rollinpic2026-155 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 155" loading="lazy" decoding="async"><span class="gallery-thumb-num">#155</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="155" data-full="rollinpic2026-156.jpg" aria-label="大会写真 156 を拡大表示"><img src="rollinpic2026-156 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 156" loading="lazy" decoding="async"><span class="gallery-thumb-num">#156</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="156" data-full="rollinpic2026-157.jpg" aria-label="大会写真 157 を拡大表示"><img src="rollinpic2026-157 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 157" loading="lazy" decoding="async"><span class="gallery-thumb-num">#157</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="157" data-full="rollinpic2026-158.jpg" aria-label="大会写真 158 を拡大表示"><img src="rollinpic2026-158 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 158" loading="lazy" decoding="async"><span class="gallery-thumb-num">#158</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="158" data-full="rollinpic2026-159.jpg" aria-label="大会写真 159 を拡大表示"><img src="rollinpic2026-159 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 159" loading="lazy" decoding="async"><span class="gallery-thumb-num">#159</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="159" data-full="rollinpic2026-160.jpg" aria-label="大会写真 160 を拡大表示"><img src="rollinpic2026-160 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 160" loading="lazy" decoding="async"><span class="gallery-thumb-num">#160</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="160" data-full="rollinpic2026-161.jpg" aria-label="大会写真 161 を拡大表示"><img src="rollinpic2026-161 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 161" loading="lazy" decoding="async"><span class="gallery-thumb-num">#161</span></button>
+          <button type="button" class="gallery-thumb-btn" data-index="161" data-full="rollinpic2026-162.jpg" aria-label="大会写真 162 を拡大表示"><img src="rollinpic2026-162 (カスタム).jpg" alt="Rollin'pic Tokyo 2026 大会写真 162" loading="lazy" decoding="async"><span class="gallery-thumb-num">#162</span></button>
+        </div>
+      </section>
+
+      <!-- =========================================================
            CLOSING : 集合写真＆次回予告
       ========================================================= -->
       <section class="closing-thanks-section" aria-label="集合写真および次回開催予告">
@@ -1704,6 +2113,96 @@
 
     </div>
   </section>
+
+  <!-- フォトギャラリー ライトボックスモーダル -->
+  <div id="rollinLightbox" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="大会写真拡大表示">
+    <div class="lightbox-topbar">
+      <div id="lightboxCounter" class="lightbox-counter">1 / 162</div>
+      <button type="button" id="lightboxClose" class="lightbox-close-btn">✕ 閉じる (ESC)</button>
+    </div>
+
+    <button type="button" id="lightboxPrev" class="lightbox-nav-btn lightbox-prev" aria-label="前の写真">◀</button>
+
+    <div class="lightbox-stage">
+      <img id="lightboxImage" src="" alt="拡大写真">
+    </div>
+
+    <button type="button" id="lightboxNext" class="lightbox-nav-btn lightbox-next" aria-label="次の写真">▶</button>
+
+    <div id="lightboxCaption" class="lightbox-caption">rollinpic2026-1.jpg</div>
+  </div>
+
+  <script>
+    (function() {
+      const totalPhotos = 162;
+      const lightbox = document.getElementById('rollinLightbox');
+      const lightboxImg = document.getElementById('lightboxImage');
+      const lightboxCounter = document.getElementById('lightboxCounter');
+      const lightboxCaption = document.getElementById('lightboxCaption');
+      const btnClose = document.getElementById('lightboxClose');
+      const btnPrev = document.getElementById('lightboxPrev');
+      const btnNext = document.getElementById('lightboxNext');
+      const grid = document.getElementById('rollinGalleryGrid');
+
+      let currentIndex = 0;
+
+      function showPhoto(index) {
+        if (index < 0) index = totalPhotos - 1;
+        if (index >= totalPhotos) index = 0;
+        currentIndex = index;
+        const num = currentIndex + 1;
+        const fullSrc = `rollinpic2026-${num}.jpg`;
+        lightboxImg.src = fullSrc;
+        lightboxImg.alt = `Rollin'pic Tokyo 2026 大会写真 ${num}`;
+        lightboxCounter.textContent = `${num} / ${totalPhotos}`;
+        lightboxCaption.textContent = `Rollin'pic Tokyo 2026 — Photo #${num} (${fullSrc})`;
+      }
+
+      function openLightbox(index) {
+        showPhoto(index);
+        lightbox.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('is-open');
+        lightboxImg.src = '';
+        document.body.style.overflow = '';
+      }
+
+      if (grid) {
+        grid.addEventListener('click', function(e) {
+          const btn = e.target.closest('.gallery-thumb-btn');
+          if (!btn) return;
+          const idx = parseInt(btn.getAttribute('data-index'), 10);
+          if (!isNaN(idx)) openLightbox(idx);
+        });
+      }
+
+      btnClose.addEventListener('click', closeLightbox);
+      btnPrev.addEventListener('click', function(e) {
+        e.stopPropagation();
+        showPhoto(currentIndex - 1);
+      });
+      btnNext.addEventListener('click', function(e) {
+        e.stopPropagation();
+        showPhoto(currentIndex + 1);
+      });
+
+      lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox || e.target.classList.contains('lightbox-stage')) {
+          closeLightbox();
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (!lightbox.classList.contains('is-open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') showPhoto(currentIndex - 1);
+        if (e.key === 'ArrowRight') showPhoto(currentIndex + 1);
+      });
+    })();
+  </script>
 
 </body>
 </html>
